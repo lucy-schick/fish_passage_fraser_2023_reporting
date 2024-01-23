@@ -5,11 +5,12 @@
 dir_project <- 'sern_peace_fwcp_2023'
 
 
-# read in the crossings data for the study area.  Use our naming convention of calling the object bcfishpass so
-# we don't need to worry about breaking standardized code
-
-
-# 2. use the newly updated extract-pg.R template script to see how to read in the crossings data from the database
+# read in the crossings data for the study area.
+# 2. use the newly updated extract-pg.R template script to see how to read in the crossings data from the database.
+# use fpr to list the names of the colunns in the bcfishpass.crossings_vw table.  Search up (or use copilot/chattr) or
+# look in past report scripts see how to list the unique values for a column in a table in SQL and write that query
+# to the PG database.  Use the fpr_db_query function to do this. Print it to the console but also assign it to a variable
+# and look at it that way too....
 
 
 # 3.  Read in the pscis assessments layer from the database.  Use our naming convention of calling the object pscis
@@ -26,6 +27,8 @@ dir_project <- 'sern_peace_fwcp_2023'
 
 # 4 This stuff below is the old code from planning from the peace last year.  I will put ### hashmarks on new comments
 # about how to customize it now that we are in the future in a different region.
+### fyi - we don't really need to put things in a sqlite for this but it is a good example of how we use a local
+### portable database to get a snapshot of the data at a point in time.
 
 conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
 readwritesqlite::rws_list_tables(conn)
@@ -105,13 +108,15 @@ planning <- left_join(
 
 ### this is going to write it into the mergin project.
 ### open it in QGIS and view the file.  Have a look at the Peace project to see where we put it.
+### check out this function with the help (?st_write) and see if you can figure out how to write it to a geopackage
+### called "planning.gpkg" with the layer name "planning_20210527" (or whatever the date is today)
 planning %>%
   sf::st_write(paste0('../../gis/',
                       dir_project,
                       '/',
 
 
-                      ### let's change this so it gives us a version number that we specify at the header of this file
+
                       paste0('planning_', format(lubridate::now(), "%Y%m%d")),
 
 
