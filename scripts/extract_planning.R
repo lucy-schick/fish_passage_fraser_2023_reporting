@@ -109,7 +109,13 @@ planning %>%
   sf::st_write(paste0('../../gis/',
                       dir_project,
                       '/',
+
+
+                      ### let's change this so it gives us a version number that we specify at the header of this file
                       paste0('planning_', format(lubridate::now(), "%Y%m%d")),
+
+
+
                       '.gpkg'),
                # turned this T now that we have time in name
                delete_layer = T)
