@@ -2,7 +2,7 @@
 
 
 # 1. change this to the correct project name in our GIS folder and delete this comment
-dir_project <- 'sern_peace_fwcp_2023'
+dir_project <- 'sern_fraser_2023'
 
 
 # read in the crossings data for the study area.
