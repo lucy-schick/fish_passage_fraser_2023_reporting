@@ -57,19 +57,6 @@ unique(planning_raw$utm_zone)
 # unsure why this is neccesary but will re-visit later
 
 
-
-planning <- left_join(planning_raw, pscis_raw, by = c('aggregated_crossings_id' = 'stream_crossing_id'))
-
-
-
-
-
-
-
-
-
-
-
 ### If you can - and its helpful perhaps break out litle bits of this big MULTIPLE join
 ### join and run them a move at a time to see what is going on
 planning <- left_join(
