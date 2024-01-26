@@ -28,10 +28,10 @@ mydb <- DBI::dbConnect(RSQLite::SQLite(), "data/bcfishpass.sqlite")
 # Connecing to the bcfishpass.sqlite database
 conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
 
-# Burning the bcfishpass table to the bcfishpass.sqlite database
+# Burning the bcfishpass table to the bcfishpass.sqlite database, only need to do this once
 readwritesqlite::rws_write(bcfishpass, exists = FALSE, conn = conn)
 
-# Burning the pscis table to the bcfishpass.sqlite database
+# Burning the pscis table to the bcfishpass.sqlite database, only need to do this once
 readwritesqlite::rws_write(pscis, exists = FALSE, conn = conn)
 
 
@@ -51,8 +51,23 @@ planning_raw <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
 pscis_raw <- readwritesqlite::rws_read_table("pscis", conn = conn) %>%
   sf::st_drop_geometry()
 
+
 ### this ise that the data is in the right projectionevant below but may not be necesary anymore. you will see why
 unique(planning_raw$utm_zone)
+# unsure why this is neccesary but will re-visit later
+
+
+
+planning <- left_join(planning_raw, pscis_raw, by = c('aggregated_crossings_id' = 'stream_crossing_id'))
+
+
+
+
+
+
+
+
+
 
 
 ### If you can - and its helpful perhaps break out litle bits of this big MULTIPLE join
@@ -60,15 +75,17 @@ unique(planning_raw$utm_zone)
 planning <- left_join(
 
   ### have a look at the new function fpr_sp_assign_sf_from_utm to see another way to do this because if the data
-  ### is in more than one utm zone the way this is written will  not work. Give it a try
+  ### is in more than one utm zone the way this is written will not work. Give it a try
   planning_raw %>%
-    st_as_sf(coords = c('utm_easting', 'utm_northing'), crs = 26910, remove = F) %>%
-    st_transform(crs = 3005),
+    fpr_sp_assign_sf_from_utm(col_northing = 'utm_northing',
+                              col_easting = 'utm_easting'),
+    # st_as_sf(coords = c('utm_easting', 'utm_northing'), crs = 26910, remove = F) %>%
+    # st_transform(crs = 3005),
 
   ### another join
   planning_raw2 <- left_join(
     planning_raw %>%
-      arrange(aggregated_crossings_id) ,
+      arrange(aggregated_crossings_id),
 
     pscis_raw %>%
       mutate(stream_crossing_id = as.character(stream_crossing_id)) %>%
