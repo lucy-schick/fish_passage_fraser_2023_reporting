@@ -22,6 +22,17 @@ dir_project <- 'sern_fraser_2023'
 # 3. make a sqlite database named bcfishpass.sqlite and burn in the table naming it bcfishpass
 # https://github.com/NewGraphEnvironment/fish_passage_peace_2022_reporting/blob/7ec363e88d8034ffeaa577092ec0731438ffaee0/scripts/02_reporting/0160-load-bcfishpass-data.R#L180
 
+# Making a sqlite database named bcfishpass.sqlite
+mydb <- DBI::dbConnect(RSQLite::SQLite(), "data/bcfishpass.sqlite")
+
+# Connecing to the bcfishpass.sqlite database
+conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
+
+# Burning the bcfishpass table to the bcfishpass.sqlite database
+readwritesqlite::rws_write(bcfishpass, exists = FALSE, conn = conn)
+
+# Burning the pscis table to the bcfishpass.sqlite database
+readwritesqlite::rws_write(pscis, exists = FALSE, conn = conn)
 
 
 
@@ -30,9 +41,13 @@ dir_project <- 'sern_fraser_2023'
 ### fyi - we don't really need to put things in a sqlite for this but it is a good example of how we use a local
 ### portable database to get a snapshot of the data at a point in time.
 
-conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
+# Listing all the tables in the bcfishpass.sqlite database, should be empty at the moment
 readwritesqlite::rws_list_tables(conn)
+
+# Reading the bcfishpass table from the bcfishpass.sqlite database
 planning_raw <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
+
+# Reading the pscis table from the bcfishpass.sqlite database
 pscis_raw <- readwritesqlite::rws_read_table("pscis", conn = conn) %>%
   sf::st_drop_geometry()
 

@@ -25,19 +25,3 @@ pscis <- st_read(conn, query =  query)
 dbDisconnect(conn = conn)
 
 
-# Making a sqlite database named bcfishpass.sqlite
-mydb <- DBI::dbConnect(RSQLite::SQLite(), "data/bcfishpass.sqlite")
-
-# Connecing to the bcfishpass.sqlite database
-conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
-
-# Burning the bcfishpass table to the bcfishpass.sqlite database
-dbWriteTable(conn, "bcfishpass", bcfishpass)
-
-# Listing all the tables in the bcfishpass.sqlite database, should be empty at the moment
-readwritesqlite::rws_list_tables(conn)
-
-# Writing the bcfishpass table to the bcfishpass.sqlite database
-planning_raw <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
-
-
