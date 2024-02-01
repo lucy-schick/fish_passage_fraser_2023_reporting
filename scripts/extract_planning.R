@@ -22,17 +22,17 @@ dir_project <- 'sern_fraser_2023'
 # 3. make a sqlite database named bcfishpass.sqlite and burn in the table naming it bcfishpass
 # https://github.com/NewGraphEnvironment/fish_passage_peace_2022_reporting/blob/7ec363e88d8034ffeaa577092ec0731438ffaee0/scripts/02_reporting/0160-load-bcfishpass-data.R#L180
 
-# Making a sqlite database named bcfishpass.sqlite
-mydb <- DBI::dbConnect(RSQLite::SQLite(), "data/bcfishpass.sqlite")
+# Making a sqlite database named bcfishpass.sqlite only need to do this once?
+# mydb <- DBI::dbConnect(RSQLite::SQLite(), "data/bcfishpass.sqlite")
 
 # Connecing to the bcfishpass.sqlite database
 conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
 
 # Burning the bcfishpass table to the bcfishpass.sqlite database, only need to do this once
-readwritesqlite::rws_write(bcfishpass, exists = FALSE, conn = conn)
+# readwritesqlite::rws_write(bcfishpass, exists = FALSE, conn = conn)
 
 # Burning the pscis table to the bcfishpass.sqlite database, only need to do this once
-readwritesqlite::rws_write(pscis, exists = FALSE, conn = conn)
+# readwritesqlite::rws_write(pscis, exists = FALSE, conn = conn)
 
 
 
@@ -56,7 +56,6 @@ pscis_raw <- readwritesqlite::rws_read_table("pscis", conn = conn) %>%
 unique(planning_raw$utm_zone)
 # unsure why this is neccesary but will re-visit later
 
-
 ### If you can - and its helpful perhaps break out litle bits of this big MULTIPLE join
 ### join and run them a move at a time to see what is going on
 planning <- left_join(
@@ -64,16 +63,19 @@ planning <- left_join(
   ### have a look at the new function fpr_sp_assign_sf_from_utm to see another way to do this because if the data
   ### is in more than one utm zone the way this is written will not work. Give it a try
   planning_raw %>%
-    fpr_sp_assign_sf_from_utm(col_northing = 'utm_northing',
-                              col_easting = 'utm_easting'),
+    fpr_sp_assign_sf_from_utm(col_utm_zone = "utm_zone", col_northing = "utm_northing",
+                              col_easting = "utm_easting"),
     # st_as_sf(coords = c('utm_easting', 'utm_northing'), crs = 26910, remove = F) %>%
     # st_transform(crs = 3005),
 
-  ### another join
+  ### joining pcsis_raw to planning_raw when the aggregated_crossings_id is the same as the stream_crossing_id
   planning_raw2 <- left_join(
+
+    #arranging the planning_raw table by aggregated_crossings_id
     planning_raw %>%
       arrange(aggregated_crossings_id),
 
+    # selecting certain columns from the pscis table
     pscis_raw %>%
       mutate(stream_crossing_id = as.character(stream_crossing_id)) %>%
       dplyr::select(
@@ -86,6 +88,9 @@ planning <- left_join(
         image_view_url),
 
     by = c('aggregated_crossings_id' = 'stream_crossing_id')) %>%
+
+    # filtering where pscis_status is NA or not equal to 'HABITAT CONFIRMATION' and barrier_status is not equal to
+    # 'PASSABLE' or 'UNKNOWN'
     filter(is.na(pscis_status) | (pscis_status != 'HABITAT CONFIRMATION' &
                                     barrier_status != 'PASSABLE' &
                                     barrier_status != 'UNKNOWN')) %>%
@@ -93,17 +98,17 @@ planning <- left_join(
     ### over 1km of rearing habitat to start. Don't forget about fpr_dbq_lscols .  Also - if not familiar have a look at
     ###  our tables in methods of past reports (Skeena has salmon) which explain the thresholds in general. Look at the
     ### csv in bcfishpass that decided what they are too though because they are new!
-    filter(bt_rearing_km > 0.3) %>%
+    filter(bt_rearing_km > 1) %>%
     filter(crossing_type_code != 'OBS') %>%
     filter(is.na(barriers_anthropogenic_dnstr)) %>%
-    ### this will not work because we have no pdf maps for this area.
-    ### Can be useful (mostly for other collaborators) when we do. can nuke
-    mutate(map_link = paste0('https://hillcrestgeo.ca/outgoing/fishpassage/projects/parsnip/archive/2022-05-27/FishPassage_', dbm_mof_50k_grid, '.pdf')) %>%
+
+    # remove the geometry column so not class sf
+    st_drop_geometry(planning_raw2) %>%
 
     ### make a note that this is the column that you will use to in the mergin project to query in the "Query Builder"
     ### so that you filter to only see the ones that you tagged as "my_review" = TRUE. Do a bit of homework to see how
-    ### to see how to use the `Query Builder`.  Note also that you can add a query that will make it so that you only
-    ###see the ones that you have not yet reviewed. I will leave it to you to try to do that. Can help of course if need be
+    ### to use the `Query Builder`.  Note also that you can add a query that will make it so that you only
+    ### see the ones that you have not yet reviewed. I will leave it to you to try to do that. Can help of course if need be
     mutate(my_review = TRUE) %>%
     dplyr::select(aggregated_crossings_id,
                   my_review,
@@ -145,6 +150,8 @@ planning %>%
                delete_layer = T)
 
 
+
+dbDisconnect(conn)
 
 
 
