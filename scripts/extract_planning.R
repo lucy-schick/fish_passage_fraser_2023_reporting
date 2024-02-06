@@ -2,7 +2,7 @@
 
 
 # 1. Selecting the correct project directory
-dir_project <- 'sern_fraser_2023'
+dir_project <- 'sern_lchl_necr_fran_2023'
 
 
 # read in the crossings data for the study area.
