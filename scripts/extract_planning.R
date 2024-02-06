@@ -98,7 +98,7 @@ planning <- left_join(
     ### over 1km of rearing habitat to start. Don't forget about fpr_dbq_lscols .  Also - if not familiar have a look at
     ###  our tables in methods of past reports (Skeena has salmon) which explain the thresholds in general. Look at the
     ### csv in bcfishpass that decided what they are too though because they are new!
-    filter(bt_rearing_km > 1) %>%
+    filter(co_rearing_km > 1) %>%
     filter(crossing_type_code != 'OBS') %>%
     filter(is.na(barriers_anthropogenic_dnstr)) %>%
 
@@ -152,39 +152,5 @@ planning %>%
 
 
 dbDisconnect(conn)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
