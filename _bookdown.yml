@@ -1,7 +1,7 @@
-book_filename: "Template"
+book_filename: "Fraser2023"
 language:
   ui:
     chapter_name: ""
-delete_merged_file: false
+delete_merged_file: true
 output_dir: "docs"
 
