@@ -61,14 +61,7 @@ unique(planning_raw$utm_zone)
 ### join and run them a move at a time to see what is going on
 planning <- left_join(
 
-  ### have a look at the new function fpr_sp_assign_sf_from_utm to see another way to do this because if the data
-  ### is in more than one utm zone the way this is written will not work. Give it a try
-  # Using the fpr_sp_assign_sf_from_utm function to create spatial dataframe from the utm coordinates
-  planning_raw %>%
-    fpr_sp_assign_sf_from_utm(col_utm_zone = "utm_zone", col_northing = "utm_northing",
-                              col_easting = "utm_easting"),
-    # st_as_sf(coords = c('utm_easting', 'utm_northing'), crs = 26910, remove = F) %>%
-    # st_transform(crs = 3005),
+  planning_raw,
 
   # joining pcsis_raw to planning_raw when the aggregated_crossings_id is the same as the stream_crossing_id
   planning_raw2 <- left_join(
@@ -146,17 +139,12 @@ planning <- left_join(
 # writing the planning table to a geopackage in the correct directory and with the correct name. We will use this layer
 # in the QGis project
 planning %>%
-  sf::st_write(paste0('../../gis/',
-                      dir_project,
-                      '/',
-
-
-
-                      paste0('planning_', format(lubridate::now(), "%Y%m%d")),
-
-
-
-                      '.gpkg'),
+  sf::st_write(dsn = paste0('../../gis/',
+                            dir_project,
+                            '/',
+                            paste0('planning',
+                            '.gpkg')),
+               layer = (paste0('planning_', format(lubridate::now(), "%Y%m%d"))),
                # turned this T now that we have time in name
                delete_layer = T)
 
