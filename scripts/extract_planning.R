@@ -139,17 +139,12 @@ planning <- left_join(
 # writing the planning table to a geopackage in the correct directory and with the correct name. We will use this layer
 # in the QGis project
 planning %>%
-  sf::st_write(paste0('../../gis/',
-                      dir_project,
-                      '/',
-
-
-
-                      paste0('planning_', format(lubridate::now(), "%Y%m%d")),
-
-
-
-                      '.gpkg'),
+  sf::st_write(dsn = paste0('../../gis/',
+                            dir_project,
+                            '/',
+                            paste0('planning',
+                            '.gpkg')),
+               layer = (paste0('planning_', format(lubridate::now(), "%Y%m%d"))),
                # turned this T now that we have time in name
                delete_layer = T)
 
