@@ -1,4 +1,4 @@
-##funciton ot find a string in your directory from https://stackoverflow.com/questions/45502010/is-there-an-r-version-of-rstudios-find-in-files
+##function to find a string in your directory from https://stackoverflow.com/questions/45502010/is-there-an-r-version-of-rstudios-find-in-files
 
 fif <- function(what, where=".", in_files="\\.[Rr]$", recursive = TRUE,
                 ignore.case = TRUE) {
@@ -24,12 +24,13 @@ fif <- function(what, where=".", in_files="\\.[Rr]$", recursive = TRUE,
 }
 
 # Function to clip a point layer to a polygon layer based on a join column and factor
-# @param schema_table_point String (quoted) name of point layer schema.table
-# @param schema_table_polygon String (quoted) name of polygon layer schema.table
-# @param join_column String (quoted) name of column to join tables on from polygon. See column names of any table with \link{fpr_dbq_lscols}
-# @param join_on String (quoted) or vector of specific terms to join on.
+#' @param schema_table_point String (quoted) name of point layer schema.table
+#' @param schema_table_polygon String (quoted) name of polygon layer schema.table
+#' @param join_column String (quoted) name of column to join tables on from polygon. See column names of any table with \link{fpr_dbq_lscols}
+#' @param join_on String (quoted) or vector of specific terms to join on.
 #
-fpr_dbq_clip_local <- function(
+
+lfpr_dbq_clip <- function(
     schema_table_point,
     schema_table_polygon,
     join_column,
@@ -46,11 +47,15 @@ fpr_dbq_clip_local <- function(
 }
 
 # Creates hydrographs
-# @param station String (quoted) number of station
-# @param pane_hydat Boolean TRUE if you want a pane layout of all hydrographs
-# @param single_hydat Boolean TRUE if you want a single hydrograph with mean flows
+#' @param station String (quoted) number of station
+#' @param pane_hydat Boolean TRUE if you want a pane layout of all hydrographs
+#' @param single_hydat Boolean TRUE if you want a single hydrograph with mean flows
+#' @param start_year Specific start year, if not specified, will use the first year of the data
+#' @param end_year Specific end year, if not specified, will use the first year of the data
+#' @param fig/hydrology_stats_ hydrology stats figure saved to the fig folder
+#' @param fig/hydrograph_ hydrograph figure saved to the fig folder
 
-fpr_create_hydrograph_local <- function(
+lfpr_create_hydrograph <- function(
     station = NULL,
     pane_hydat = TRUE,
     single_hydat = TRUE,
@@ -61,17 +66,11 @@ fpr_create_hydrograph_local <- function(
     poisutils::ps_error('Please provide a station number, for example "08EE004"')
   }
 
-  class(station)
-
   chk::chk_string(station)
   chk::chk_flag(pane_hydat)
   chk::chk_flag(single_hydat)
 
   flow_raw <- tidyhydat::hy_daily_flows(station)
-
-  if(is.null(flow_raw)){
-    poisutils::ps_error('No data found for this station')
-  }
 
   if(is.null(start_year)){
     start_year <- flow_raw$Date %>% min() %>% lubridate::year()
@@ -86,7 +85,34 @@ fpr_create_hydrograph_local <- function(
 
   tidyhat_info <- tidyhydat::search_stn_number(station)
 
+  # make a function for downloading files straight from skt ckan
+  fetch_package <- function(package_nm = NULL,
+                            ckan_info = data_deets,
+                            store = "disk",
+                            path_stub = "data/skt/",
+                            csv_output = TRUE) {
+    info <- ckan_info %>%
+      filter(package_name == package_nm)
 
+    urls <- info %>%
+      pull(url) %>%
+      # to avoid dl errors we need to remove the NAs as well as those files that end without a file extension at the end (ex. .com/ and *123)
+      na.omit() %>%
+      .[str_detect(., ".*\\.[a-zA-Z0-9]+$")]
+
+    # create the directory if it doesn't exist
+    dir.create(paste0(path_stub, package_nm))
+
+    walk(.x = urls,
+         .f = ~ckan_fetch(.x, store = store, path = paste0(path_stub, package_nm, "/", basename(.x))))
+
+    # if csv_output = TRUE burn out a little csv file of the information about everything that is downloaded
+    if (csv_output) {
+      info %>%
+        arrange(basename(url)) %>%
+        write_csv(paste0(path_stub, package_nm, "/001_pkg_info_", package_nm, ".csv"))
+    }
+  }
 
   ##### Hydrograph Pane #####
 
@@ -139,7 +165,7 @@ fpr_create_hydrograph_local <- function(
                        daily_sd = sd(Value, na.rm = TRUE),
                        max = max(Value, na.rm = TRUE),
                        min = min(Value, na.rm = TRUE)) %>%
-      dplyr::mutate(Date = as.Date(day_of_year, origin = "2015-12-31"))
+      dplyr::mutate(Date = as.Date(day_of_year))
 
     plot <- ggplot2::ggplot()+
       ggplot2::geom_ribbon(data = flow, aes(x = Date, ymax = max,
@@ -161,21 +187,41 @@ fpr_create_hydrograph_local <- function(
 }
 
 
-# Determine replacement structure type and size based on measured field metrics.
-# @param dat PSCIS data
-# @param fill_dpth standard fill depth, default is 3m.
-# @param brdg_wdth standard bridge width, default is 15m.
-# @param chn_wdth_max maximum channel width where the bridge should start to be more than brdg_wdth, default is brdg_wdth - 5m.
-# @param fill_dpth_mult for every 1 m deeper than 3m, we need a 1.5:1 slope so there is 3m more bridge required
-# @param
-#
+#' Determine replacement structure type and size based on measured field metrics.
+#' @param dat PSCIS data
+#' @param fill_dpth standard fill depth, default is 3m.
+#' @param brdg_wdth standard bridge width, default is 15m.
+#' @param chn_wdth_max maximum channel width where the bridge should start to be more than brdg_wdth, default is brdg_wdth - 5m.
+#' @param fill_dpth_mult for every 1 m deeper than 3m, we need a 1.5:1 slope so there is 3m more bridge required
+#'
+#' @importFrom dplyr mutate filter select case_when
+#' @importFrom plyr round_any
+#' @importFrom readr write_csv
+#' @importFrom chk chk_numeric
+#'
+#' @export
+#'
+#' #' @examples \dontrun{
+#' fpr_structure_size_type(dat)
+#' }
+#'
 
-fpr_structure_size_type <- function(
-    dat,
+lfpr_structure_size_type <- function(
+    dat = NULL,
     fill_dpth = 3,
     brdg_wdth = 15,
     chn_wdth_max = brdg_wdth - 5,
     fill_dpth_mult = 3) {
+
+  if (is.null(dat))
+    stop('please provide "dat" (dataframe) object')
+  if (!is.data.frame(dat))
+    stop('"dat" must inherit from a data.frame')
+
+  chk::chk_numeric(fill_dpth)
+  chk::chk_numeric(brdg_wdth)
+  chk::chk_numeric(chn_wdth_max)
+  chk::chk_numeric(fill_dpth_mult)
 
   # Unsure if this still needs to be included, but can't find pcsis2...
   # ##according to the moe specs in MoE 2011 - backwatering requires od<30 and slope <2, swr <1.2 see if there are options
@@ -188,64 +234,52 @@ fpr_structure_size_type <- function(
 
 
   str_type <- dat %>%
-    select(rowid, aggregated_crossings_id, pscis_crossing_id, my_crossing_reference, source, barrier_result,
+    dplyr::select(rowid, aggregated_crossings_id, pscis_crossing_id, my_crossing_reference, source, barrier_result,
            downstream_channel_width_meters, fill_depth_meters) %>%
-    mutate(fill_dpth_over = fill_depth_meters - fill_dpth_mult) %>%
-    mutate(crossing_fix = case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
+    dplyr::mutate(fill_dpth_over = fill_depth_meters - fill_dpth_mult) %>%
+    dplyr::mutate(crossing_fix = dplyr::case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
                                     & downstream_channel_width_meters >= 2 ~ 'Replace with New Open Bottom Structure',
                                     barrier_result == 'Passable' | barrier_result == 'Unknown' ~ NA_character_,
                                     T ~ 'Replace Structure with Streambed Simulation CBS'))  %>%
-    mutate(span_input = case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
+    dplyr::mutate(span_input = dplyr::case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
                                   & downstream_channel_width_meters >= 2 ~ brdg_wdth,
                                   barrier_result == 'Passable' | barrier_result == 'Unknown' ~ NA_real_,
                                   T ~ 3))  %>%
-    mutate(span_input = case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
+    dplyr::mutate(span_input = dplyr::case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
                                   & fill_dpth_over > 0 & !crossing_fix %ilike% 'Simulation' ~
                                     (brdg_wdth + fill_dpth_mult * fill_dpth_over),  ##1m more fill = 3 m more bridge
                                   T ~ span_input)) %>%
-    mutate(span_input = case_when(span_input < (downstream_channel_width_meters + 4) & ##span not need be extended if already 4m bigger than channel width
+    dplyr::mutate(span_input = dplyr::case_when(span_input < (downstream_channel_width_meters + 4) & ##span not need be extended if already 4m bigger than channel width
                                     downstream_channel_width_meters > chn_wdth_max ~
                                     (downstream_channel_width_meters - chn_wdth_max) + span_input,  ##for every m bigger than a 5 m channel add that much to each side in terms of span
                                   T ~ span_input)) %>%
     ##let's add an option that if the stream is under 3.5m wide and under more than 5m of fill we do a streambed simulation with a 4.5m embedded multiplate like 4607464 on Flathead fsr
-    mutate(crossing_fix = case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
+    dplyr::mutate(crossing_fix = dplyr::case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
                                     & downstream_channel_width_meters > 2 &
                                       downstream_channel_width_meters <= 3.5 &
                                       fill_depth_meters > 5 ~ 'Replace Structure with Streambed Simulation CBS',
                                     T ~ crossing_fix),
-           span_input = case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
+           span_input = dplyr::case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
                                   & downstream_channel_width_meters > 2 &
                                     downstream_channel_width_meters <= 3.5 &
                                     fill_depth_meters > 5 ~ 4.5,
                                   T ~ span_input)) %>%
-    mutate(span_input = plyr::round_any(span_input, 0.5))
+    dplyr::mutate(span_input = plyr::round_any(span_input, 0.5))
 
 
-  ##burn to a csvs so we can copy and paste into spreadsheet (could make a function to do this all at once....)
-  str_type %>%
-    filter(source %ilike% 'phase1') %>%
-    readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis1.csv'),
-                     na = '')
-  str_type %>%
-    filter(source %ilike% 'phase2') %>%
-    readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis2.csv'),
-                     na = '')
-  str_type %>%
-    filter(source %ilike% 'reasses') %>%
-    readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis_reassessments.csv'),
-                     na = '')
+  ##burn to a csvs so we can copy and paste into spreadsheet
+
+    str_type %>%
+      dplyr::filter(source %ilike% 'phase1') %>%
+      readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis1.csv'),
+                       na = '')
+    str_type %>%
+      dplyr::filter(source %ilike% 'phase2') %>%
+      readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis2.csv'),
+                       na = '')
+    str_type %>%
+      dplyr::filter(source %ilike% 'reasses') %>%
+      readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis_reassessments.csv'),
+                       na = '')
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
