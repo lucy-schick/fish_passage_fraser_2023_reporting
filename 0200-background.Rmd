@@ -1,19 +1,23 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 # Background
 
-Hydrometric station for the project area 
+## Project Location
 
-```{r}
-hydat_stations <- fpr::fpr_db_query(query = fpr_dbq_clip_local('whse_environmental_monitoring.envcan_hydrometric_stn_sp',
+```{r overview-map, fig.cap = 'Overview map of Study Areas',eval=T}
+knitr::include_graphics("fig/nge-icon_name.png")
+```
+
+## Nechako River
+
+The Nechako River is an 8th order stream that drains an area of `r fwapgr::fwa_watershed_at_measure(356362759) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% mutate(area_km2 = ifelse(area_km2 >= 1000, format(area_km2, big.mark = ",", scientific = FALSE), area_km2)) %>% pull(area_km2)` km^2^. Beginning at the Nechako Plateau, it flows north towards Fort Fraser then east to its confluence with the Fraser River in Prince George. The Nachako River has three main tributaries: the Stuart River, the Endako River, and the Chilako River. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08JC001")$LTMAD,1)` m^3^/s at station 08JC001 located in Vanderhoof and `r round(fasstr::calc_longterm_mean(station_number = "08JC002")$LTMAD,1)` m^3^/s at station 08JC002 located in Isle Pierre, \~25km downstream of the Stuart River confluence. Flow patterns at Isle Pierre are heavily influenced by inflows from the Stuart River (enters downstream of Vanderhoof) resulting in higher peak levels and average discharge (Figures \@ref(fig:hydrology-plots) - \@ref(fig:hydrology-stats2)). The hygrograph at station 08JC001 in Vanderhoof peaks in June and August, with lower peak levels and average discharge (Figures \@ref(fig:hydrology-plots) - \@ref(fig:hydrology-stats1)).
+
+
+```{r, eval=FALSE}
+hydat_stations <- fpr::fpr_db_query(query = lfpr_dbq_clip('whse_environmental_monitoring.envcan_hydrometric_stn_sp',
 'whse_basemapping.fwa_watershed_groups_poly', 'watershed_group_code', c("FRAN", "LCHL","NECR")))
 ```
 
 ```{r, eval= FALSE}
-# Use if you want to create a hydrograph for a each station
+# Use if you want to create a hydrograph for a each station, won't print captions though
 hydat_stations %>% 
   dplyr::filter(station_operating_status == "ACTIVE-REALTIME") %>% 
   dplyr::filter(!(station_number == '08JB007')) %>% 
@@ -24,39 +28,62 @@ hydat_stations %>%
 
 
 ```{r, eval=TRUE}
-fpr_create_hydrograph_local("08JB002")
+# starting at 1948 because that's where consistent data starts
+lfpr_create_hydrograph("08JC001", start_year = 1948)
 ```
-
-```{r pane-hydat-08JB002, fig.cap = "Stellako River At Glenannan (Station #08JB002 - Lat 54.0078 Lon -125.00892). Available daily discharge data from 1929 to 2021."}
-knitr::include_graphics("fig/hydrology_stats_08JB002.png")
-```
-
 
 ```{r, eval=TRUE}
-fpr_create_hydrograph_local("08JB003")
+lfpr_create_hydrograph("08JC002")
 ```
 
-```{r pane-hydat-08JB003, fig.cap = "Nautley River Near Fort Fraser (Station #08JB003 - Lat 54.08507 Lon -124.60085). Available daily discharge data from 1950 to 2021."}
-knitr::include_graphics("fig/hydrology_stats_08JB003.png")
+```{r hydrology-plots, fig.cap = 'Hydrograph for Nechako River at Vanderhoof (Station #08JC001) and at Isle Pierre (Station #08JC002).', fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=T}
+knitr::include_graphics("fig/hydrograph_08JC001.png")
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics("fig/hydrograph_08JC002.png")
 ```
 
-
-```{r, eval=TRUE}
-fpr_create_hydrograph_local("08JB008")
+```{r hydrology-stats1, fig.cap = "Nechako River At Vanderhoof (Station #08JC001 - Lat 54.02673 Lon -124.00865). Available daily discharge data from 1948 to 2021."}
+knitr::include_graphics("fig/hydrology_stats_08JC001.png")
 ```
 
-```{r pane-hydat-08JB008, fig.cap = "Nadina River At Outlet Of Nadina Lake (Station #08JB008 - Lat 53.9025 Lon -126.95472). Available daily discharge data from 1964 to 2021."}
-knitr::include_graphics("fig/hydrology_stats_08JB008.png")
-```
-
-## Project Location
-
-```{r overview-map, fig.cap = 'Overview map of Study Areas',eval=T}
-knitr::include_graphics("fig/nge-icon_name.png")
+```{r hydrology-stats2, fig.cap = "Nechako River At Isle Pierre (Station #08JC002 - Lat 53.96044 Lon -123.23486). Available daily discharge data from 1950 to 2022."}
+knitr::include_graphics("fig/hydrology_stats_08JC002.png")
 ```
 
 
+## Endako River
 
-`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("<br><br><br><br>")`
+The Endako River is a 6th order stream that flows south east from Burns Lake to Fraser Lake. It drains an area of `r fwapgr::fwa_watershed_at_measure(356361442) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% mutate(area_km2 = ifelse(area_km2 >= 1000, format(area_km2, big.mark = ",", scientific = FALSE), area_km2)) %>% pull(area_km2)` km^2^. There is one hydrometric station on the Endako River located in Endako, but it was only active for one year during 1951. Given the one year of data, the mean annual discharge is `r round(fasstr::calc_longterm_mean(station_number = "08JB004")$LTMAD,1)` m^3^/s at station 08JB004. The hydrograph peaks in May-June (Figure \@ref(fig:hydrograph1)).
+
+```{r, eval=FALSE}
+lfpr_create_hydrograph("08JB004")
+```
+
+
+```{r hydrology-stats3, fig.cap = "Endako River At Endako (Station #08JB004 - Lat 54.08194 Lon -125.021111). Available daily discharge data from 1950 to 1951.", eval=FALSE}
+knitr::include_graphics("fig/hydrology_stats_08JB004.png")
+```
+
+
+```{r hydrograph1, fig.cap = "Endako River At Endako (Station #08JB004 - Lat 54.08194 Lon -125.021111). Available mean daily discharge data from 1950 to 1951."}
+knitr::include_graphics("fig/hydrograph_08JB004.png")
+```
+
+
+## Chilako River
+
+The Chilako River is a 6th order stream that flows north from the Nechako Plateau to the Nechako River. It drains an area of `r fwapgr::fwa_watershed_at_measure(356363121) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% mutate(area_km2 = ifelse(area_km2 >= 1000, format(area_km2, big.mark = ",", scientific = FALSE), area_km2)) %>% pull(area_km2)` km^2^. There is one hydrometric station on the Chilako River located ~10km upstream of the mouth, but it was only active from 1960-1974. Given this data, the hydrograph peaks in May-June (Figures \@ref(fig:hydrograph2) - \@ref(fig:hydrology-stats4)).
+
+```{r, eval=FALSE}
+lfpr_create_hydrograph("08JC005")
+```
+
+```{r hydrograph2, fig.cap = "Chilako River Near Prince George (Station #08JC005 - Lat 53.808891 Lon -122.988892). Available mean daily discharge data from 1960 to 1974."}
+knitr::include_graphics("fig/hydrograph_08JC005.png")
+```
+
+```{r hydrology-stats4, fig.cap = "Chilako River Near Prince George (Station #08JC005 - Lat 53.808891 Lon -122.988892). Available daily discharge data from 1960 to 1974."}
+knitr::include_graphics("fig/hydrology_stats_08JC005.png")
+```
 
 
