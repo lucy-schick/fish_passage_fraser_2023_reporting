@@ -4,10 +4,10 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Template</a></li>
+        <li><a href="./">Fish Passage Planning Fraser 2023</a></li>
       after: |
-        <li><a href="https://github.com/NewGraphEnvironment/mybookdown-template" target="blank">Scripts and Data</a></li>
-    download: ["Template.pdf", "Template.html"]
+        <li><a href="https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting" target="blank">Scripts and Data</a></li>
+    download: ["Fraser2023.pdf", "Fraser2023.html"]
     fontsettings:
       theme: night
       family: sans
