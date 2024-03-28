@@ -9,7 +9,7 @@ path <- "~/Projects/gis/sern_lchl_necr_fran_2023/data_field/2023/form_pscis_2023
 
 fpr_sp_gpkg_backup(
   path_gpkg = path,
-  dir_backup = "data/test/",
+  dir_backup = "data/backup/",
   update_utm = TRUE,
   update_site_id = TRUE,
   write_back_to_path = TRUE,
