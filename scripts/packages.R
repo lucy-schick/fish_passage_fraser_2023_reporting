@@ -9,7 +9,8 @@ pkgs_cran <- c(
   'readwritesqlite',
   'RPostgres',
   'sf',
-  'data.table'
+  'data.table', #do we need this?
+  'devtools'
 )
 
 pkgs_gh <- c(
