@@ -2,3 +2,6 @@
 # best way to do this is perhaps to do joins and then write back to the csv....
 # just a place holder for now.
 
+# this script gives an example of the type of updates we will do https://github.com/NewGraphEnvironment/fish_passage_template_reporting/blob/main/scripts/tutorials/road_tenure.Rmd
+#  this work was previously done in `scripts/01_prep_inputs` directories of reports.
+
