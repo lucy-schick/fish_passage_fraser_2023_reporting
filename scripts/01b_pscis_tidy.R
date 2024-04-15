@@ -1,18 +1,6 @@
 # Re-tidy data from the field forms that was once cleaned with 01_pscis_tidy.R.
-# cache the current comments in `assessment_comment2`, concatenate all `discuss` and `notes` columns and add the moti
-# crossing IDs
-
-# name the project directory we are pulling from
-# dir_project <- 'sern_lchl_necr_fran_2023'
-#
-# # back up the current copy of the form
-#
-# form_pscis <- sf::st_read(
-#   paste0(
-#     '../../gis/',
-#     dir_project,
-#     '/data_field/2023/form_pscis_2023.gpkg')
-# )
+# THIS IS AN OUT OF STEP WORKFLOW - WE SHOULD HAVE DONE MUSCH OF THIS IN 01_pscis_tidy.R
+# cache the current comments in `assessment_comment2`
 
 path <- "~/Projects/gis/sern_lchl_necr_fran_2023/data_field/2023/form_pscis_2023.gpkg"
 
@@ -43,28 +31,8 @@ form_pscis_refreshed <- form_pscis %>%
                                         simplify = TRUE)[, 1],
          assessment_comment = str_split(assessment_comment,
                                         pattern = "\\s+\\d{2}:\\d{2}",
-                                        simplify = TRUE)[, 1],
-         # we need more MoTi sturcture columns so that we can add multiple structure IDs in Q)
-         moti_chris_culvert_id2 = NA_integer_,
-         moti_chris_culvert_id3 = NA_integer_,
-         # we may as well have a place for priority follow up ranking and citation keys too.
-         # no fix, low, medium and high.  Justify why in the assessment comments
-         my_priority = NA_character_,
-         my_citation_key1 = NA_character_,
-         my_citation_key2 = NA_character_,
-         my_citation_key3 = NA_character_) %>%
-  # we want these new columns to land at a logical place in the table so we will reorder them
-  dplyr::select(
-    site_id,
-    crew_members,
-    date_time_start,
-    my_priority,
-    assessment_comment,
-    contains("_notes"),
-    contains("moti_chris_culvert_id"),
-    contains("my_citation_key"),
-    everything()) %>%
-  arrange(crew_members, date_time_start)
+                                        simplify = TRUE)[, 1]
+         )
 
 
 
@@ -74,17 +42,9 @@ form_pscis_refreshed %>%
   sf::st_write(path, append = FALSE,
                delete_dsn = TRUE)
 
-# burn to version controlled csv, so changes can be viewed on git
-# this is actually pretty ugly because even one minor change in a row and git sees the whole row change
-# that is b/c git is for code and not designed for data.  We should use a different diff tool for this but we are not there yet
-
-form_pscis_refreshed %>%
-  readr::write_csv('data/backup/form_pscis_2023.csv', na='')
-
 # we will also save the refreshed form as an RData file so we can easily reload it in the future
 # use fpr to be consistent as far as row order issue #57
-
-# we actually grab it back from Q
+# now that it is in Q we back up all the changes by reading it back in again
 fpr_sp_gpkg_backup(
   path_gpkg = path,
   update_utm = TRUE,
