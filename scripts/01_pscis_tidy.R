@@ -25,25 +25,34 @@ form_pscis %>%
 
 # check for sites that have a culvert length over 99.9 or a fill depth over 9.9 asanything over this will cause error
 # in submission sheet
-# NOTE: THIS SHOULD BE TURNED INTO CASE_WHEN STATEMENTS AND INCLUDED AS PART OF THE TIDY
-# PROCESS IS TO CHANGE TO THESE MAXIMUMS AND APPEND NOTE TO ASSESSMENT COMMENTS
-# NEXT TIME - WE SHOULD DO THIS
+# NOTE: THIS SHOULD BE TURNED INTO CASE_WHEN STATEMENTS AND INCLUDED AS PART OF THE TIDY. PROCESS IS TO CHANGE TO THESE
+# MAXIMUMS AND APPEND NOTE TO ASSESSMENT COMMENTS - NEXT TIME - WE SHOULD SCRIPT THIS
 form_pscis %>%
   filter(length_or_width_meters > 99.9 | fill_depth_meters > 9.9)
+
+# consider records without a date if there is no into.  Had weird ones that needed removal before...
+# look for any sites that have a date_time_start that is NA
+form_pscis %>%
+  filter(is.na(date_time_start))
 
 
 # clean the form
 form_pscis_cleaned <- form_pscis %>%
-  # remove the site used to make the form and any records without a date as this autofill.  Had weird ones
-  # that needed removal before...
+  # remove the site used to make the form
   filter(site_id != '12345' | !is.na(date_time_start)) %>%
+
   #split date time column into date and time
   dplyr::mutate(
     date_time_start = lubridate::ymd_hms(date_time_start),
     date = lubridate::date(date_time_start),
     time = hms::as_hms(date_time_start),
+
+    # This should be done in the form as per https://github.com/NewGraphEnvironment/dff-2022/issues/119#issuecomment-1781242709
     across(contains('yes_no'), ~replace_na(.,'No')),
-    across(c(outlet_drop_meters, outlet_pool_depth_0_01m, culvert_slope_percent, stream_slope), # some numeric fields for CBS have NA values when a user input 0
+
+    # some numeric fields for CBS have NA values when a user input 0 https://github.com/NewGraphEnvironment/dff-2022/issues/119#issuecomment-1781242709
+    # this could lead to errors as is. Should be fixed in form if possible
+    across(c(outlet_drop_meters, outlet_pool_depth_0_01m, culvert_slope_percent, stream_slope),
            ~case_when(
              crossing_type == 'Closed Bottom Structure' ~
                replace_na(.,0),
@@ -55,6 +64,9 @@ form_pscis_cleaned <- form_pscis %>%
     assessment_comment_og = assessment_comment,
   ) %>%
   select(-time) %>%
+  ################################################################################################################
+  #---------------------------------------------START HACK---------------------------------------------------
+  ################################################################################################################
   # THIS STEP WAS ADDED AFTER THE FACT AND CAME FROM O1b_pscis_tidy.R.  In the future we should have
   # all of these columns already in the form as per https://github.com/NewGraphEnvironment/dff-2022/issues/119#issuecomment-1781242709
   dplyr::mutate(
@@ -67,6 +79,10 @@ form_pscis_cleaned <- form_pscis %>%
     my_citation_key1 = NA_character_,
     my_citation_key2 = NA_character_,
     my_citation_key3 = NA_character_) %>%
+  ################################################################################################################
+  #---------------------------------------------END HACK---------------------------------------------------
+  ################################################################################################################
+
   # we want these new columns to land at a logical place in the table so we will reorder them
   dplyr::select(
     site_id,
@@ -85,6 +101,12 @@ form_pscis_cleaned %>%
   sf::st_write(paste0(path, '/data_field/2023/form_pscis_2023.gpkg'), append=F, delete_dsn=T)
 
 # burn to version controlled csv, and commit again with informative commit
-form_pscis_cleaned %>%
-  readr::write_csv(paste0('data/backup/form_pscis_2023.csv'), na='')
+fpr_sp_gpkg_backup(
+  path_gpkg = path,
+  update_utm = TRUE,
+  update_site_id = TRUE,
+  write_back_to_path = FALSE,
+  write_to_csv = TRUE,
+  write_to_rdata = TRUE,
+  return_object = FALSE)
 
