@@ -29,16 +29,39 @@ source('scripts/packages.R')
 
 
 
-## Fetch the data
+## Fetch and backup the data
 
-Name the project directory we are pulling from and import the data. We can assign the UTM zone using `fpr_sp_assign_utm()`.
+Name the project directory we are pulling from and import the data. We use `fpr_sp_gpkg_backup` to import and backup the data, as well as update the UTMS. We will also write the data to a csv and Rdata file and commit for version control using git.
 
 ```{r import}
 path <- "~/Projects/gis/sern_simpcw_2023"
 
-form_pscis <- sf::st_read(dsn= paste0(path, '/form_pscis.gpkg')) |> 
-  fpr::fpr_sp_assign_utm()  ## assign the UTM zone, easting, and northing
+form_pscis <- fpr_sp_gpkg_backup(
+  path_gpkg = paste0(path, "/data_field/2023/form_pscis_2023.gpkg"),
+  dir_backup = "data/backup/simpcw/",
+  update_utm = TRUE,
+  update_site_id = F,
+  write_back_to_path = FALSE,
+  write_to_csv = TRUE,
+  write_to_rdata = TRUE,
+  return_object = TRUE)
 
+# pscic_2023 <- sf::st_read('/Users/lucyschick/Projects/gis/sern_simpcw_2023/data_field/2023/form_pscis_2023.gpkg') |> 
+#   arrange(my_crossing_reference)
+# 
+# pscic_old <- sf::st_read('/Users/lucyschick/Projects/gis/sern_simpcw_2023/form_pscis.gpkg') |> 
+#   arrange(my_crossing_reference)|> 
+#   slice(2:(nrow(pscic_old) - 1)) |> 
+#   mutate(my_crossing_reference = case_when(
+#     my_crossing_reference == 1300094 ~ 13900094,
+#     TRUE ~ my_crossing_reference
+#   )) |> 
+#   arrange(my_crossing_reference)
+# 
+# 
+# setdiff(unique(pscic_2023$my_crossing_reference), unique(pscic_old$my_crossing_reference))
+# 
+# waldo::compare(pscic_2023, pscic_old, max_diffs = Inf)
   
 ```
 
@@ -57,10 +80,14 @@ form_pscis %>%
 
 We need to check for sites that have a culvert length (length_or_width_meters) over 99.9 or a fill depth (fill_depth_meters) over 9.9, anything over this will cause errors in submission sheet. If over the maximums, we will change them to 99.9 and 9.9, respectively, and will append a note to the assessment comments.
 
-In this case we have 4 sites with `fill_depth_meters` > 9.9, they are 13905538, 13900064, 13900157, 13900066.
-
 
 ```{r max-length-fill}
+
+# First lets check
+form_pscis |> 
+  filter(length_or_width_meters > 99.9 | fill_depth_meters > 9.9)
+
+# Now we will change them to 99.9 and 9.9, respectively, and will append a note to the assessment comments.
 form_pscis <- form_pscis %>%
   dplyr::mutate(
     assessment_comment = case_when(
@@ -82,6 +109,24 @@ form_pscis <- form_pscis %>%
   )
 
 ```
+
+We need to fix the times because they are in UTC and we need them in PDT. This issue is documented here https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/18
+
+```{r}
+
+form_pscis <- form_pscis |> 
+# make a new column for the time as is with different name then mutate to PST
+  # we don't need the new column but will leave here for now so we can visualize and confirm the time is correct
+  mutate(date_time_start_raw = date_time_start,
+         date_time_start = lubridate::force_tz(date_time_start_raw, tzone = "America/Vancouver"),
+         date_time_start = lubridate::with_tz(date_time_start, tzone = "UTC")) |> 
+  relocate(date_time_start_raw, .after = date_time_start)
+
+## Double check the time is correct and now remove the date_time_start_raw column
+form_pscis <- form_pscis |> 
+  select(-date_time_start_raw)
+```
+
 
 
 Now we will:
