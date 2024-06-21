@@ -202,7 +202,8 @@ form_pscis_cleaned %>%
 
 #backup the cleaned data to a csv and Rdata and commit for version control using git
 fpr_sp_gpkg_backup(
-  path_gpkg = path,
+  path_gpkg = paste0(path, "/data_field/2023/form_pscis_2023.gpkg"),
+  dir_backup = "data/backup/simpcw/",
   update_utm = TRUE,
   update_site_id = TRUE,
   write_back_to_path = FALSE,
