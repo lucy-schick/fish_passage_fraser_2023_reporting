@@ -267,7 +267,14 @@ fpr_photo_qa_missing_all(
   dir_photos = dir_photos_mergin_raw
 )
 
-# nuke the resized folder
+# before we nuke the resized folder we should compare that all the photos in the resized directory are accounted for
+# this was not done but should be.  setdiff with a list of file names starting with the resized directory should work
+# to identify any missing photos
+setdiff(
+  list.files(dir_photos_mergin_resized, full.names = T, recursive = T),
+  list.files(dir_photos_mergin_raw, full.names = T, recursive = T)
+)
+
 fs::dir_delete(dir_photos_mergin_resized)
 
 #############################################################################################
