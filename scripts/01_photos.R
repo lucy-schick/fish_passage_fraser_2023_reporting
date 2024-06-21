@@ -267,7 +267,8 @@ fpr_photo_qa_missing_all(
   dir_photos = dir_photos_mergin_raw
 )
 
-
+# nuke the resized folder
+fs::dir_delete(dir_photos_mergin_resized)
 
 #############################################################################################
 ####################  NOT RUN YET  ##############################################################
