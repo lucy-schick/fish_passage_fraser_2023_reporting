@@ -2,9 +2,26 @@
 
 ## Project Location
 
+simpcw watersheds with 2023 assessments:
+- upper fraser river (UFRA)
+- Morkill River (MORK)
+
+## Upper Fraser River
+
+The Fraser River flows nearly 1400km from the Rocky Mountains of Mount Robson Provincial Park to the Straight of Georgia near Vancouver and is the largest salmon-producing river on Canada's west coast [@bradford_taylor2023Diversityfreshwater]. The river is economically significant due to its role in supporting forestry, agriculture, and hydroelectric power generation. Additionally, the Upper Fraser River is crucial for fisheries, particularly for salmon populations, which are vital to both the local ecosystem and indigenous communities. NEED INFO ABOUT FN IN AREA.
+
+The Upper Fraser River is commonly defined as the section of mainstem north of Quenel, which flows through the Cariboo and Fraser Plateau regions. Major tributaries include the Nechako, Quesnel, and McGregor rivers [@shaw_tuominenWaterQuality].
+The seasonal hydrograph has a single broad peak in early summer due to snow and glacial melt from surrounding mountain ranges. NEED TO GET HYDAT STATION
+
+Fraser important for white sturgeon. https://www2.gov.bc.ca/gov/content/environment/plants-animals-ecosystems/fish/fish-management/fraser-sturgeon-plan
+
+
 ```{r overview-map, fig.cap = 'Overview map of Study Areas',eval=T}
 knitr::include_graphics("fig/nge-icon_name.png")
 ```
+
+## Morkill River
+
 
 ## Nechako River
 
