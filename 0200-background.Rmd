@@ -153,6 +153,8 @@ knitr::include_graphics("fig/hydrology_stats_08JC005.png")
 ```
 
 
+## Fisheries
+
 ### Salmon Stock Assessment Data
 
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
@@ -233,4 +235,26 @@ dfo_sad_tr |>
 
 ```
 
+### Fish Species
 
+Certain species (Sockeye, Coho) only have conservation data for sub-populations, so for example Sockeye says it has no cosewic classification which may seem odd to the reader. We can add in the sub-populations so its more informative but I need to look into which sub populations to include. Too bad the` whse_fish.fiss_fish_obsrvtn_pnt_sp` layer doesn't recognize sub populations... just says Sockeye (general)
+
+```{r fiss-species-table}
+fiss_species_table <- readr::read_csv('data/inputs_extracted/fiss_species_table.csv')
+
+fiss_species_table %>% 
+  fpr::fpr_kable(caption_text = 'Fish species recorded in the Upper Fraser River, Nechako River, Lower Chilako River, and François Lake watershed groups.', 
+                 footnote_text = 'COSEWIC abbreviations : 
+                 SC - Special concern 
+                 DD - Data deficient
+                 NAR - Not at risk
+                 E - Endangered
+                 T - Threatened
+                 
+                 BC List definitions : 
+                 Yellow - Species that is apparently secure 
+                 Blue - Species that is of special concern
+                 Exotic - Species that have been moved beyond their natural range as a result of human activity
+                 ',
+                 scroll = gitbook_on)
+```
