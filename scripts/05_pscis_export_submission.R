@@ -33,7 +33,7 @@ pscis_export <- pscis_export_raw %>%
           crew_members,
           date_time_start)
 
-# write to the imports_extracted dir. This is data we import to the project but they are extracted from other places.
-dir.create("data/imports_extracted")
+# write to the inputs_extracted dir. This is data we import to the project but they are extracted from other places.
+dir.create("data/inputs_extracted")
 pscis_export %>%
-  readr::write_csv(paste0('data/imports_extracted/pscis_export_submission.csv'), na='')
+  readr::write_csv(paste0('data/inputs_extracted/pscis_export_submission.csv'), na='')
