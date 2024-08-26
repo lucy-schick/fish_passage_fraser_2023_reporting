@@ -11,7 +11,12 @@
 <!-- For now, I have just added info about the watershed groups in which we had 2023 assessments -->
 
 
-The study area includes the Nechako River, Chilako River, François Lake, and Upper Fraser River watershed groups and is within the traditional territories of the Dakelh (Carrier) and Simpcw.
+Select sites were assessed between Burns Lake and Valemount British Columbia within the Nechako River, Chilako River, François Lake, Morkhill River and Upper Fraser River watershed groups.
+
+```{r eval = FALSE}
+#and is within the traditional territories of the Dakelh (Carrier) and Simpcw.
+```
+
 
 
 ## Lhtakoh
@@ -185,8 +190,14 @@ library("ckanr")
 # set up the connection to the data portal
 ckanr_setup(url = "https://open.canada.ca/data/en")
 
-all_area_nuseds <- ckan_fetch("https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS_20240627.xlsx") 
+# this crashes Als rstudio due to too much memory use.... Discussed in linked memo in paragraph above
+# all_area_nuseds <- ckanr::ckan_fetch("https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS_20240627.xlsx") 
 
+# ignore the huge file
+usethis::use_git_ignore("data/inputs_raw/nuseds_all.csv")
+url <- "https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS.csv"
+# burn directly without bringing into memory
+ckanr::ckan_fetch(url, store = "disk", path = "data/inputs_raw/nuseds_all.csv") 
 ## Since the study area for this project is massive, I tried using the area codes to filter the results instead of 
 ## using each gazette name (u can find area codes here  https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6/resource/6200a6a0-690f-3bfa-a55d-9183df47a2fa). We are still left with 9580 results... we may to just use gazette names i guess. 
 
@@ -202,18 +213,20 @@ all_area_nuseds <- ckan_fetch("https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/c
 
 ## If we filter by gazette name we get more broad results, or we can filter by waterbody but this means we need to sort through the waterbodies for each gazette name and choose the ones we want which is going to take some work, so just filtered by gazette name for now. I can totally sort through the waterbodies to refine the results but I may not be the best person for that job because I don't know the area too well, but can look into it!
 
-#hmm. not our areas waterbodies <- ("NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|SOUTH THOMPSON RIVER|NORTH THOMPSON RIVER|ADAMS RIVER|MORKILL RIVER|CLEARWATER RIVER")
+#hmm. cool but many here are not within our areas 
+# waterbodies <- ("NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|SOUTH THOMPSON RIVER|NORTH THOMPSON RIVER|ADAMS RIVER|MORKILL RIVER|CLEARWATER RIVER")
 
+csv <- readr::read_csv('data/inputs_raw/nuseds_all.csv')
 waterbodies <- ("NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|MORKILL RIVER")
 
 # # filter for our area of interest
-sample_study_area <- all_area_nuseds %>%
-  janitor::clean_names() %>%
+sample_study_area <- csv |> 
+  janitor::clean_names() |> 
   dplyr::filter(stringr::str_detect(gazetted_name, waterbodies))
 
 
 ## Burn to csv. Updated name so it's clear this contains only the study area waterbodies.
-sample_study_area %>% 
+sample_study_area |> 
   readr::write_csv('data/inputs_raw/study_area_NuSEDS.csv')
 
 
