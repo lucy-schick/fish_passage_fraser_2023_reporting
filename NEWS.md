@@ -1,9 +1,2 @@
-# mybookdown-template 0.0.2
-
-  * 20220516
-  * add references.bib
-  * add `NEWS.md` file
-  * update `README.md`
-  * update logos
-  * put date on line with version numbers
-  * tighten packages and functions
+# fish_passage_fraser_2023_reporting 0.0.1 (2024-08-25)
+- push for permit
