@@ -11,14 +11,8 @@
 <!-- For now, I have just added info about the watershed groups in which we had 2023 assessments -->
 
 
-This study area includes the Nechako River, Chilako River, François Lake, and Upper Fraser River watershed groups and is within the traditional territories of the Dakelh (Carrier) and Simpcw.
+The study area includes the Nechako River, Chilako River, François Lake, and Upper Fraser River watershed groups and is within the traditional territories of the Dakelh (Carrier) and Simpcw.
 
-
-
-
-```{r overview-map, fig.cap = 'Overview map of Study Areas',eval=T}
-knitr::include_graphics("fig/nge-icon_name.png")
-```
 
 ## Lhtakoh
 
@@ -26,11 +20,16 @@ Known as the Lhtakoh, meaning "rivers within one another" to the Dakelh (Carrier
 
 <br>
 
-The Upper Fraser River is commonly defined as the section of the mainstem north of Quesnel, flowing through the Cariboo and Fraser Plateau regions. Major tributaries include the Nechako, Quesnel, and McGregor rivers [@shaw_tuominenWaterQuality]. This vast expanse supports many Indigenous groups who utilize the land for cultural, spiritual, and economic practices. Among these groups are the Simpcw First Nation, occupying the North Thomposon area, and the Carrier Sekani Tribal Council which unifies six nations west of Price George: the Ts’il Kaz Koh First Nation (Burns Lake Band), Nadleh Whut’en First Nation, Saik’uz First Nation, Stellat’en First Nation, Takla Nation, and Wet’suwet’en First Nation [@CSTCCSFNs; @SimpcwFirstNationHistory]
+```{r fn, eval= FALSE}
+#incomplete to the point we should not publish.  Lheidli T'enneh are maaaaajor stakeholders
+# The Upper Fraser River is commonly defined as the section of the mainstem north of Quesnel, flowing through the Cariboo and Fraser Plateau regions. Major tributaries include the Nechako, Quesnel, and McGregor rivers [@shaw_tuominenWaterQuality]. This vast expanse supports many Indigenous groups who utilize the land for cultural, spiritual, and economic practices. Among these groups are the Simpcw First Nation, occupying the North Thompson area, and the Carrier Sekani Tribal Council which unifies six nations west of Price George: the Ts’il Kaz Koh First Nation (Burns Lake Band), Nadleh Whut’en First Nation, Saik’uz First Nation, Stellat’en First Nation, Takla Nation, and Wet’suwet’en First Nation [@CSTCCSFNs; @SimpcwFirstNationHistory]
+```
+
+
 
 <br>
 
-The Upper Fraser River, an 8th order stream, drains an area of 232,134 km^2^ upstream of the McGregor River confluence. The seasonal hydrograph has a single broad peak in early summer due to snow and glacial melt from surrounding mountain ranges (Figures \@ref(fig:hydrograph1) - \@ref(fig:hydrology-stats1)). The mean annual discharge at station 08KA005 in McBride, located roughly 200km southeast of Price George, is `r round(fasstr::calc_longterm_mean(station_number = "08KA005")$LTMAD,1)` m^3^/.
+The Upper Fraser River, an 8th order stream, drains an area of 232,134 km^2^ upstream of the McGregor River confluence. The seasonal hydrograph has a single broad peak in early summer due to snow and glacial melt from surrounding mountain ranges (Figures \@ref(fig:hydrograph1) - \@ref(fig:hydrology-stats1)). The mean annual discharge at station 08KA005 in McBride, located roughly 200km southeast of Prince George, is `r round(fasstr::calc_longterm_mean(station_number = "08KA005")$LTMAD,1)` m^3^/.
 
 <!-- - FR in McBride, station 08KA005 -->
 ```{r mcbride-hydat, eval=F}
@@ -61,7 +60,7 @@ lfpr_create_hydrograph("08KE018")
 ```
 
 
-## Morkill River
+<!-- ## Morkill River -->
 
 <!-- Unsure if we want to include this one, see note above.  -->
 
@@ -72,11 +71,25 @@ lfpr_create_hydrograph("08KA013")
 
 ## Nechakoh
 
-The Nechako River, meaning "Blackwater people's river", is home to the Cheslatta Carrier Nation who are part of the Dakelh people. Traditionally, they lived off the land near Tsetl'adak Bunk'ut "Peak Rock Lake" (Cheslatta Lake), however, in 1952, the construction of the Kenney Dam by the Aluminum Company of Canada (Alcan) and the subsequent flooding of the Nechako Reservoir forced the Cheslatta Carrier people to abandon their ancestral lands [@HistoryCheslattaCarrierNation; @DaklehPlacenames]. This relocation was done with little notice or compensation, causing significant disruptions to their community, culture, and way of life. Despite these challenges, the Cheslatta Carrier Nation has worked to preserve their cultural heritage and advocate for their rights and land restoration.
+```{r fn-nechako, eval=FALSE}
+# The Nechako River, meaning "Blackwater people's river", is home to the Cheslatta Carrier Nation who are part of the Dakelh people. Traditionally, they lived off the land near Tsetl'adak Bunk'ut "Peak Rock Lake" (Cheslatta Lake), however, in 1952, the construction of the Kenney Dam by the Aluminum Company of Canada (Alcan) and the subsequent flooding of the Nechako Reservoir forced the Cheslatta Carrier people to abandon their ancestral lands [@HistoryCheslattaCarrierNation; @DaklehPlacenames]. This relocation was done with little notice or compensation, causing significant disruptions to their community, culture, and way of life. Despite these challenges, the Cheslatta Carrier Nation has worked to preserve their cultural heritage and advocate for their rights and land restoration.
+# 
+# <br>
+```
 
-<br>
 
-The Nechako River is an 8th order stream that drains an area of `r fwapgr::fwa_watershed_at_measure(356362759) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% mutate(area_km2 = ifelse(area_km2 >= 1000, format(area_km2, big.mark = ",", scientific = FALSE), area_km2)) %>% pull(area_km2)` km^2^. Beginning at the Nechako Plateau, it flows north towards Fort Fraser then east to its confluence with the Fraser River in Prince George. The Nachako River has three main tributaries: the Stuart River, the Endako River, and the Chilako River. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08JC001")$LTMAD,1)` m^3^/s at station 08JC001 located in Vanderhoof and `r round(fasstr::calc_longterm_mean(station_number = "08JC002")$LTMAD,1)` m^3^/s at station 08JC002 located in Isle Pierre, \~25km downstream of the Stuart River confluence. Flow patterns at Isle Pierre are heavily influenced by inflows from the Stuart River (enters downstream of Vanderhoof) resulting in higher peak levels and average discharge (Figures \@ref(fig:hydrology-plots2) - \@ref(fig:hydrology-stats2)). The hygrograph at station 08JC001 in Vanderhoof peaks in June and August, with lower peak levels and average discharge (Figures \@ref(fig:hydrology-plots2) - \@ref(fig:hydrology-stats3)).
+
+```{r wsh-areas, eval=F}
+# nechako
+fwapgr::fwa_watershed_at_measure(356362759)
+# endako
+fwapgr::fwa_watershed_at_measure(356361442) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% mutate(area_km2 = ifelse(area_km2 >= 1000, format(area_km2, big.mark = ",", scientific = FALSE), area_km2)) %>% pull(area_km2)
+# chilako
+fwapgr::fwa_watershed_at_measure(356363121) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% mutate(area_km2 = ifelse(area_km2 >= 1000, format(area_km2, big.mark = ",", scientific = FALSE), area_km2)) %>% pull(area_km2)
+```
+
+
+The Nechako River is an 8th order stream that drains an area of 47,269km^2^. Beginning at the Nechako Plateau, it flows north towards Fort Fraser then east to its confluence with the Fraser River in Prince George. The Nachako River has three main tributaries: the Stuart River, the Endako River, and the Chilako River. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08JC001")$LTMAD,1)` m^3^/s at station 08JC001 located in Vanderhoof and `r round(fasstr::calc_longterm_mean(station_number = "08JC002")$LTMAD,1)` m^3^/s at station 08JC002 located in Isle Pierre, \~25km downstream of the Stuart River confluence. Flow patterns at Isle Pierre are heavily influenced by inflows from the Stuart River (enters downstream of Vanderhoof) resulting in higher peak levels and average discharge (Figures \@ref(fig:hydrology-plots2) - \@ref(fig:hydrology-stats2)). The hygrograph at station 08JC001 in Vanderhoof peaks in June and August, with lower peak levels and average discharge (Figures \@ref(fig:hydrology-plots2) - \@ref(fig:hydrology-stats3)).
 
 
 ```{r, eval=FALSE}
@@ -122,7 +135,7 @@ knitr::include_graphics("fig/hydrology_stats_08JC001.png")
 
 ## Endako River
 
-The Endako River is a 6th order stream that flows south east from Burns Lake to Fraser Lake. It drains an area of `r fwapgr::fwa_watershed_at_measure(356361442) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% mutate(area_km2 = ifelse(area_km2 >= 1000, format(area_km2, big.mark = ",", scientific = FALSE), area_km2)) %>% pull(area_km2)` km^2^. There is one hydrometric station on the Endako River located in Endako, but it was only active for one year during 1951. Given the one year of data, the mean annual discharge is `r round(fasstr::calc_longterm_mean(station_number = "08JB004")$LTMAD,1)` m^3^/s at station 08JB004. The hydrograph peaks in May-June (Figures \@ref(fig:hydrograph3)).
+The Endako River is a 6th order stream that flows south east from Burns Lake to Fraser Lake. It drains an area of 5,970km^2^. There is one hydrometric station on the Endako River located in Endako, but it was only active for one year during 1951. Given the one year of data, the mean annual discharge is `r round(fasstr::calc_longterm_mean(station_number = "08JB004")$LTMAD,1)` m^3^/s at station 08JB004. The hydrograph peaks in May-June (Figures \@ref(fig:hydrograph3)).
 
 ```{r, eval=FALSE}
 lfpr_create_hydrograph("08JB004")
@@ -138,7 +151,13 @@ knitr::include_graphics("fig/hydrology_stats_08JB004.png")
 
 ## 	Tsalakoh
 
-The Chilako River, known as the Tsalakoh by the Dakelh people, translates to the "beaver paw river". The Chilako River is a 6th order stream that flows north from the Nechako Plateau to the Nechako River and drains an area of `r fwapgr::fwa_watershed_at_measure(356363121) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% mutate(area_km2 = ifelse(area_km2 >= 1000, format(area_km2, big.mark = ",", scientific = FALSE), area_km2)) %>% pull(area_km2)` km^2^. There is one hydrometric station on the Chilako River located ~10km upstream of the mouth, but it was only active from 1960-1974. Given this data, the hydrograph peaks in May-June (Figures \@ref(fig:hydrograph4) - \@ref(fig:hydrology-stats5)).
+```{r fn-chilako, eval=FALSE}
+# The Chilako River, known as the Tsalakoh by the Dakelh people, translates to the "beaver paw river". 
+
+```
+
+
+The Chilako River is a 6th order stream that flows north from the Nechako Plateau to the Nechako River and drains an area of 3,634km^2^. There is one hydrometric station on the Chilako River located ~10km upstream of the mouth, but it was only active from 1960-1974. Given this data, the hydrograph peaks in May-June (Figures \@ref(fig:hydrograph4) - \@ref(fig:hydrology-stats5)).
 
 ```{r, eval=FALSE}
 lfpr_create_hydrograph("08JC005")
@@ -158,7 +177,7 @@ knitr::include_graphics("fig/hydrology_stats_08JC005.png")
 ### Salmon Stock Assessment Data
 
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
-through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on){knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)")}else(knitr::asis_output("[here](https://www.newgraphenvironment.com/fish_passage_skeena_2023_reporting/background.html)"))`. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
+through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on){knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)")}else(knitr::asis_output("[here](https://www.newgraphenvironment.com/fish_passage_fraser_2023_reporting/background.html)"))`. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
 
 ```{r stock-assess-download, eval=FALSE}
 library("ckanr")
@@ -183,8 +202,9 @@ all_area_nuseds <- ckan_fetch("https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/c
 
 ## If we filter by gazette name we get more broad results, or we can filter by waterbody but this means we need to sort through the waterbodies for each gazette name and choose the ones we want which is going to take some work, so just filtered by gazette name for now. I can totally sort through the waterbodies to refine the results but I may not be the best person for that job because I don't know the area too well, but can look into it!
 
-waterbodies <- ("NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|SOUTH THOMPSON RIVER|NORTH THOMPSON RIVER|ADAMS RIVER|MORKILL RIVER|	
-CLEARWATER RIVER")
+#hmm. not our areas waterbodies <- ("NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|SOUTH THOMPSON RIVER|NORTH THOMPSON RIVER|ADAMS RIVER|MORKILL RIVER|CLEARWATER RIVER")
+
+waterbodies <- ("NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|MORKILL RIVER")
 
 # # filter for our area of interest
 sample_study_area <- all_area_nuseds %>%
@@ -206,7 +226,7 @@ sample_study_area %>%
 my_caption <- "Fisheries and Oceans Canada stock assessment data for select watershed groups in the Fraser watershed.  Data can be filtered to specific waterbodies, columns can be dragged to reorder and filtered/reordered table can be exported to csv/excel."
 
 # not the results="asis", echo=FALSE in the chunk header
-ltab_caption()
+my_tab_caption()
 
 dfo_sad_tr <- readr::read_csv('data/inputs_raw/study_area_NuSEDS.csv') %>% 
   # filtering by total_return_to_river doesn't lose any data so lets keep it for this case (it removed data after 19)
