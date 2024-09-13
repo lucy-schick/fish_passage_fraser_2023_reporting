@@ -3,15 +3,19 @@
 # this is a weird workflow b/c we have two different projects and want to combine them for one submission.
 
 path1 <- "~/Projects/gis/sern_lchl_necr_fran_2023/data_field/2023/form_pscis_2023.gpkg"
+dir_backup1 = "data/backup/sern_lchl_necr_fran_2023/"
 path2 <- "~/Projects/gis/sern_simpcw_2023/data_field/2023/form_pscis_2023.gpkg"
+dir_backup2 = "data/backup/sern_simpcw_2023/"
+
 # read in cleaned form from Q after review and finalization
 # first we back up the gpkg in the repo and update the coordinate columns in the gpkg in QGIS
 pscis_export_raw1 <- fpr::fpr_sp_gpkg_backup(
+  dir_backup = dir_backup1,
   path_gpkg = path1,
   update_utm = TRUE,
   update_site_id = TRUE,
   write_back_to_path = FALSE,
-  write_to_csv = FALSE,
+  write_to_csv = TRUE,
   # this versions on git everytime due to metadata and can't be tracked visually. Should only be committed when
   # csv is versioned
   write_to_rdata = FALSE,
@@ -19,11 +23,12 @@ pscis_export_raw1 <- fpr::fpr_sp_gpkg_backup(
 
 
 pscis_export_raw2 <- fpr::fpr_sp_gpkg_backup(
+  dir_backup = dir_backup2,
   path_gpkg = path2,
   update_utm = TRUE,
   update_site_id = TRUE,
   write_back_to_path = FALSE,
-  write_to_csv = FALSE,
+  write_to_csv = TRUE,
   # this versions on git everytime due to metadata and can't be tracked visually. Should only be committed when
   # csv is versioned
   write_to_rdata = FALSE,
