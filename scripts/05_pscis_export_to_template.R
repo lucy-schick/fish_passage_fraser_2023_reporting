@@ -101,3 +101,13 @@ pscis_export <- pscis_export_raw_clean %>%
 dir.create("data/inputs_extracted")
 pscis_export %>%
   readr::write_csv(paste0('data/inputs_extracted/pscis_export_submission.csv'), na='')
+
+
+## Add Structure, type, and size
+
+# Only phase 1 assessments in this project
+pscis_list <- fpr_import_pscis_all()
+pscis_phase1 <- pscis_list %>% pluck('pscis_phase1')
+
+# Get structure, type, and size
+lfpr_structure_size_type(pscis_phase1)
