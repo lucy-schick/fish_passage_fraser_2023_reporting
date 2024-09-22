@@ -28,14 +28,14 @@ tfpr_photo_change_name <- function(filenames_to_change = filestocopy_list){
 
 
 name_repo <- 'fish_passage_fraser_2023_reporting'
-name_pdf <- 'fish_passage_fraser_2023.pdf'
+name_pdf <- 'fish_passage_fraser_2023_reporting.pdf' #see the output.yml
 url_github <- 'https://github.com/NewGraphEnvironment/'
 url_gitpages <- 'https://newgraphenvironment.github.io/'
 name_submission <- 'pscis_phase1.xlsm'
 
 
 # need to add photos to local machine to upload to PSCIS
-targetdir = fs::path('/Users/lucyschick/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2023/fraser')
+targetdir = fs::path('~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2023/fraser')
 
 # folders must be created and photos extracted for each project separately (or else we will run into errors bc it will
 # look for all photos in one project when they are actually spit between two project)
