@@ -106,6 +106,7 @@ pscis_export %>%
 ## Add Structure, type, and size
 
 # Only phase 1 assessments in this project
+# fpr_import_pscis_all backs up to flatfile (csv)
 pscis_list <- fpr_import_pscis_all()
 pscis_phase1 <- pscis_list %>% pluck('pscis_phase1')
 
