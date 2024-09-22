@@ -100,7 +100,7 @@ pscis_export <- pscis_export_raw_clean %>%
 # write to the imports_extracted dir. This is data we import to the project but they are extracted from other places.
 dir.create("data/inputs_extracted")
 pscis_export %>%
-  readr::write_csv(paste0('data/inputs_extracted/pscis_export_submission.csv'), na='')
+  readr::write_csv('data/inputs_extracted/pscis_export_submission.csv', na='')
 
 
 ## Add Structure, type, and size
@@ -111,3 +111,93 @@ pscis_phase1 <- pscis_list %>% pluck('pscis_phase1')
 
 # Get structure, type, and size
 lfpr_structure_size_type(pscis_phase1)
+
+################################################################################################################
+#--------------------------------------------------fix surveyor initials---------------------------------------------------
+################################################################################################################
+# simpcw had no surveyor initials so needs case when
+
+path1 <- "~/Projects/gis/sern_lchl_necr_fran_2023/data_field/2023/form_pscis_2023.gpkg"
+dir_backup1 = "data/backup/sern_lchl_necr_fran_2023/"
+path2 <- "~/Projects/gis/sern_simpcw_2023/data_field/2023/form_pscis_2023.gpkg"
+dir_backup2 = "data/backup/sern_simpcw_2023/"
+
+# read in cleaned form from Q after review and finalization
+# first we back up the gpkg in the repo and update the coordinate columns in the gpkg in QGIS
+pscis_export_raw1 <- fpr::fpr_sp_gpkg_backup(
+  dir_backup = dir_backup1,
+  path_gpkg = path1,
+  update_utm = TRUE,
+  update_site_id = TRUE,
+  write_back_to_path = FALSE,
+  write_to_csv = FALSE,
+  # this versions on git everytime due to metadata and can't be tracked visually. Should only be committed when
+  # csv is versioned
+  write_to_rdata = FALSE,
+  return_object = TRUE)
+
+
+pscis_export_raw2 <- fpr::fpr_sp_gpkg_backup(
+  dir_backup = dir_backup2,
+  path_gpkg = path2,
+  update_utm = TRUE,
+  update_site_id = TRUE,
+  write_back_to_path = FALSE,
+  write_to_csv = FALSE,
+  # this versions on git everytime due to metadata and can't be tracked visually. Should only be committed when
+  # csv is versioned
+  write_to_rdata = FALSE,
+  return_object = TRUE)
+
+
+p_raw  <- dplyr::bind_rows(
+  pscis_export_raw1,
+  pscis_export_raw2
+) |>
+  sf::st_drop_geometry()
+
+# case when the surveyor initials
+p_fixed <- p_raw |>
+  dplyr::mutate(crew_members = dplyr::case_when(mergin_user == "newgraph_airvine" ~ "AI",
+                                                TRUE ~ "MW")
+  )
+
+# check this covered them all
+unique(p_fixed$crew_members)
+
+# read in the csv that was used to make the form and get rid of the duplicate as mentio
+c <- readr::read_csv(
+  'data/inputs_extracted/pscis_export_submission.csv'
+) |>
+  # remove the duplicate crossing 15600468
+  dplyr::distinct(my_crossing_reference, .keep_all = TRUE) |>
+  dplyr::select(-geom)
+
+# join the new data, case_when into place, remove "duplicate" renamed column and fix the "medium"
+c_fixed <- dplyr::left_join(
+  c,
+  p_fixed |> dplyr::select(my_crossing_reference, crew_members2 = crew_members),
+  by = "my_crossing_reference"
+) |>
+  # watch out to keep what is there already by only updateing when it is na yo.
+  dplyr::mutate(crew_members = dplyr::case_when(
+    is.na(crew_members) & !is.na(crew_members2) ~ crew_members2,
+                TRUE ~ crew_members)) |>
+  dplyr::select(-crew_members2)
+
+#burn local to test after ignoring it
+usethis::use_git_ignore('test.csv')
+
+# learned a bunch through this test.  was good to do
+c_fixed |>
+  readr::write_csv(
+    'test.csv', na = ''
+  )
+
+
+# ok - looks good finally - burn over the old one
+c_fixed |>
+  readr::write_csv(
+    'data/inputs_extracted/pscis_export_submission.csv', na = ''
+  )
+
