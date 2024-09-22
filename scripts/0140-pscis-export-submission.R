@@ -43,9 +43,12 @@ targetdir = fs::path('~/Library/CloudStorage/OneDrive-Personal/Projects/submissi
 
 ### First project: sern_lchl_necr_fran_2023
 
-path <- fs::path('/Users/lucyschick/Projects/gis/sern_lchl_necr_fran_2023/ignore_mobile/photos')
+path <- fs::path('~/Projects/gis/sern_lchl_necr_fran_2023/ignore_mobile/photos')
 
 d <- read.csv(fs::path_wd('data/backup/sern_lchl_necr_fran_2023/form_pscis_2023.csv'))
+
+
+
 
 folderstocopy<- d$my_crossing_reference %>% as.character()
 
@@ -101,7 +104,7 @@ mapply(fs::file_copy,
 
 ### Second project: sern_simpcw_2023
 
-path <- fs::path('/Users/lucyschick/Projects/gis/sern_simpcw_2023/ignore_mobile/photos')
+path <- fs::path('~/Projects/gis/sern_simpcw_2023/ignore_mobile/photos')
 
 d <- read.csv(fs::path_wd('data/backup/sern_simpcw_2023/form_pscis_2023.csv'))
 
@@ -128,6 +131,7 @@ filestocopy_list <- path_to_photos %>%
 ##view which files do not have any photos to paste by reviewing the empty_files object
 empty_idx <- which(!lengths(filestocopy_list))
 empty_files <- empty_idx %>% tfpr_filter_list()
+
 
 ##rename long names if necessary
 
@@ -183,3 +187,16 @@ writeLines(
 ##in the future we will need to add the copy calls to move the directory off of onedrive to
 #  the windows machine used for project submission.  Don't want to set up the machine right now
 # so will do it by hand. What an insane pain
+
+################################################################################################################
+#--------------here is a qa step I forgot about---------------------------------
+################################################################################################################
+d1  <- read.csv(fs::path_wd('data/backup/sern_lchl_necr_fran_2023/form_pscis_2023.csv'))
+d2 <- read.csv(fs::path_wd('data/backup/sern_simpcw_2023/form_pscis_2023.csv'))
+d_all <- dplyr::bind_rows(d1, d2)
+
+# do a little qa to be sure all the photos are there
+# we will cheat and jump right to onedrive since they are all together there
+# its importnat (for now - till we go to fs) to
+
+t <- fpr::fpr_photo_qa_df(dat = d_all, dir_photos = "/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2023/fraser/")
