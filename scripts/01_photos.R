@@ -277,6 +277,113 @@ setdiff(
 
 fs::dir_delete(dir_photos_mergin_resized)
 
+################################################################################################################
+#--------------------------------------------------qa amalgamated photos---------------------------------------------------
+################################################################################################################
+
+# read in both raw forms and join
+path_form1 <- "~/Projects/gis/sern_lchl_necr_fran_2023/data_field/2023/form_pscis_2023.gpkg"
+path_form2 <- "~/Projects/gis/sern_simpcw_2023/data_field/2023/form_pscis_2023.gpkg"
+dir_photos <- "~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2023/fraser/phase1/"
+
+form_pscis_photos_raw1 <- fpr::fpr_sp_gpkg_backup(
+  path_gpkg = path_form1,
+  update_utm = TRUE,
+  update_site_id = TRUE,
+  write_back_to_path = FALSE,
+  write_to_csv = FALSE,
+  write_to_rdata = FALSE,
+  return_object = TRUE)
+
+form_pscis_photos_raw2 <- fpr::fpr_sp_gpkg_backup(
+  path_gpkg = path_form2,
+  update_utm = TRUE,
+  update_site_id = TRUE,
+  write_back_to_path = FALSE,
+  write_to_csv = FALSE,
+  write_to_rdata = FALSE,
+  return_object = TRUE)
+
+form_both <- bind_rows(
+  form_pscis_photos_raw1,
+  form_pscis_photos_raw2
+)
+
+
+fpr_photo_qa_missing_all(
+  dat = form_both,
+  dir_photos = dir_photos
+) %>%
+  pull(site)
+
+qa_all <- fpr::fpr_photo_qa2(
+  dat = form_both,
+  dir_photos = dir_photos
+) %>%
+  data.table::rbindlist(fill = TRUE)
+
+
+# here is the test for missing individual photos
+fpr::fpr_photo_qa2(
+  dat = form_both,
+  dir_photos = dir_photos
+) |>
+  bind_rows() |>
+  dplyr::filter(if_any(everything(), is.na))
+
+
+################################################################################################################
+#--------------------------------------------------strip metadata---------------------------------------------------
+################################################################################################################
+
+# copy over the entire submission directory to a new location
+dir_og <- fs::path_expand("~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2023/fraser/phase1")
+dir_new <- fs::path_expand("~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2023/fraser/photo_meta_rm")
+
+fs::dir_create(dir_new)
+fs::dir_copy(
+  dir_og,
+  dir_new
+)
+
+# list the jpg files in the new location
+
+paths_ls <- fs::dir_ls(
+  dir_new, type = "file", glob = "*.JPG", recurse = TRUE
+)
+
+# have a quick look at some
+head(paths_ls)
+
+# test with an example photo
+# test <- "/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2023/fraser/phase1_photos_metadata_stripped/phase1/20231003_145000_road.JPG"
+# t <- exifr::read_exif(test)
+# rfp_photo_metadata_rm(test)
+# t2 <- exifr::read_exif(test)
+# fs::file_delete(test)
+
+
+# remove the metadata from all the photos listed from the new directory. Be careful here. Make sure you have the correct list!!
+log_df <- paths_ls |>
+  purrr::map_dfr(rfp_photo_metadata_rm)
+
+# burn out a record of what happened in case it is helpful later
+log_df |>
+  readr::write_csv(
+    "data/backup/photo_strip_meta.csv"
+  )
+
+# summarize the results of the log
+t <- log_df |>
+  dplyr::mutate(
+    warning = dplyr::case_when(
+      stringr::str_detect(status_message, "Warning") ~ TRUE,
+      TRUE ~ FALSE
+    )
+  ) |>
+  dplyr::group_by(warning) |>
+  summarise(n())
+
 #############################################################################################
 ####################  NOT RUN YET  ##############################################################
 ##############################################################################################
