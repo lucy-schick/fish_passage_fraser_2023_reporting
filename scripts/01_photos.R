@@ -285,6 +285,8 @@ fs::dir_delete(dir_photos_mergin_resized)
 path_form1 <- "~/Projects/gis/sern_lchl_necr_fran_2023/data_field/2023/form_pscis_2023.gpkg"
 path_form2 <- "~/Projects/gis/sern_simpcw_2023/data_field/2023/form_pscis_2023.gpkg"
 dir_photos <- "~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2023/fraser/phase1/"
+# I put the orignal photos together here to look for the issues
+# dir_photos <- "/Users/airvine/test/"
 
 form_pscis_photos_raw1 <- fpr::fpr_sp_gpkg_backup(
   path_gpkg = path_form1,
@@ -322,6 +324,20 @@ qa_all <- fpr::fpr_photo_qa2(
 ) %>%
   data.table::rbindlist(fill = TRUE)
 
+# find duplicates (based on if there is a comma in the returned column)
+qa_mult <- qa_all %>%
+  # Detect multiple photos in each column
+  dplyr::mutate(across(c(road:downstream), ~ ifelse(stringr::str_detect(., ","), TRUE, FALSE))) %>%
+  # Replace FALSE values with "-"
+  dplyr::mutate(across(c(road:downstream), ~ ifelse(. == FALSE, "-", .))) %>%
+  # Keep only rows with at least one TRUE
+  dplyr::filter(rowSums(across(c(road:downstream), ~ . == TRUE)) > 0)
+
+# burn it out so we can see
+qa_mult |>
+  readr::write_csv(
+    "data/backup/photos_multiple.csv"
+  )
 
 # here is the test for missing individual photos
 fpr::fpr_photo_qa2(
