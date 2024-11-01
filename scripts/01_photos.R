@@ -383,20 +383,20 @@ head(paths_ls)
 log_df <- paths_ls |>
   purrr::map_dfr(rfp_photo_metadata_rm)
 
-# burn out a record of what happened in case it is helpful later
-log_df |>
-  readr::write_csv(
-    "data/backup/photo_strip_meta.csv"
-  )
 
 # summarize the results of the log
-t <- log_df |>
+log_df_cleaned <- log_df |>
   dplyr::mutate(
     warning = dplyr::case_when(
       stringr::str_detect(status_message, "Warning") ~ TRUE,
       TRUE ~ FALSE
     )
-  ) |>
+  )
+
+log_df_cleaned |>
+  readr::write_csv(
+    "data/backup/photo_strip_meta.csv"
+  )
   dplyr::group_by(warning) |>
   summarise(n())
 
