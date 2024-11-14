@@ -3,12 +3,20 @@ title: "Restoring Fish Passage in the Fraser Region - 2023"
 author: |
  |
  | Prepared for
- | Society for Ecosystem Restoration in Northern BC (SERN)
+ | Ministry of Transportation and Infrastructure
+ |
+ | and
+ |
+ | Society for Ecosystem Restoration in Northern BC (SERNbc)
  |
  |
  | Prepared by
  | Al Irvine, B.Sc., R.P.Bio. and Lucy Schick, B.Sc.
  | New Graph Environment Ltd.
+ |
+ | on behalf of
+ | 
+ | Society for Ecosystem Restoration in Northern BC (SERNbc)
 
 date: |
  |
@@ -88,6 +96,6 @@ Modern civilization has a long journey ahead to acknowledge and address the hist
 
 ```{js, logo-header, echo = FALSE, eval= T}
 title=document.getElementById('header');
-title.innerHTML = '<img src="fig/nge-full_white.png" alt="NewGraph">' + title.innerHTML
+title.innerHTML = '<img src="fig/logo_sern/SERNbc-Logo-HALF.jpg" alt="NewGraph">' + title.innerHTML
 ```
 
