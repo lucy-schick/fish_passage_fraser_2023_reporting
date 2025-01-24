@@ -45,7 +45,7 @@ Known as the Lhtakoh, meaning "rivers within one another" to the Dakelh (Carrier
 
 <br>
 
-The Upper Fraser River, an 8th order stream, drains an area of 232,134 km^2^ upstream of the McGregor River confluence. The seasonal hydrograph has a single broad peak in early summer due to snow and glacial melt from surrounding mountain ranges (Figures \@ref(fig:hydrograph1) - \@ref(fig:hydrology-stats1)). The mean annual discharge at station 08KA005 in McBride, located roughly 200km southeast of Prince George, is `r round(fasstr::calc_longterm_mean(station_number = "08KA005")$LTMAD,1)` m^3^/.
+The Upper Fraser River, an 8th order stream, drains an area of 232,134 km^2^ upstream of the McGregor River confluence. The seasonal hydrograph has a single broad peak in early summer due to snow and glacial melt from surrounding mountain ranges (Figure \@ref(fig:hydrograph1)). The mean annual discharge at station 08KA005 in McBride, located roughly 200km southeast of Prince George, is `r round(fasstr::calc_longterm_mean(station_number = "08KA005")$LTMAD,1)` m^3^/.
 
 <!-- - FR in McBride, station 08KA005 -->
 ```{r mcbride-hydat, eval=F}
@@ -56,7 +56,7 @@ lfpr_create_hydrograph("08KA005")
 knitr::include_graphics("fig/hydrograph_08KA005.png")
 ```
 
-```{r hydrology-stats1, fig.cap = "Fraser River At Mcbride (Station #08KA005 - Lat 53.30172 Lon -120.14092). Available daily discharge data from 1953 to 2021. "}
+```{r hydrology-stats1, fig.cap = "Fraser River At Mcbride (Station #08KA005 - Lat 53.30172 Lon -120.14092). Available daily discharge data from 1953 to 2021. ", , eval = FALSE}
 knitr::include_graphics("fig/hydrology_stats_08KA005.png")
 ```
 
@@ -105,7 +105,7 @@ fwapgr::fwa_watershed_at_measure(356363121) %>% mutate(area_km2 = round(area_ha/
 ```
 
 
-The Nechako River is an 8th order stream that drains an area of 47,269km^2^. Beginning at the Nechako Plateau, it flows north towards Fort Fraser then east to its confluence with the Fraser River in Prince George. The Nachako River has three main tributaries: the Stuart River, the Endako River, and the Chilako River. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08JC001")$LTMAD,1)` m^3^/s at station 08JC001 located in Vanderhoof and `r round(fasstr::calc_longterm_mean(station_number = "08JC002")$LTMAD,1)` m^3^/s at station 08JC002 located in Isle Pierre, \~25km downstream of the Stuart River confluence. Flow patterns at Isle Pierre are heavily influenced by inflows from the Stuart River (enters downstream of Vanderhoof) resulting in higher peak levels and average discharge (Figures \@ref(fig:hydrology-plots2) - \@ref(fig:hydrology-stats2)). The hygrograph at station 08JC001 in Vanderhoof peaks in June and August, with lower peak levels and average discharge (Figures \@ref(fig:hydrology-plots2) - \@ref(fig:hydrology-stats3)).
+The Nechako River is an 8th order stream that drains an area of 47,269km^2^. Beginning at the Nechako Plateau, it flows north towards Fort Fraser then east to its confluence with the Fraser River in Prince George. The Nachako River has three main tributaries: the Stuart River, the Endako River, and the Chilako River. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08JC001")$LTMAD,1)` m^3^/s at station 08JC001 located in Vanderhoof and `r round(fasstr::calc_longterm_mean(station_number = "08JC002")$LTMAD,1)` m^3^/s at station 08JC002 located in Isle Pierre, \~25km downstream of the Stuart River confluence. Flow patterns at Isle Pierre are heavily influenced by inflows from the Stuart River (enters downstream of Vanderhoof) resulting in higher peak levels and average discharge (Figure \@ref(fig:hydrology-plots2)). The hygrograph at station 08JC001 in Vanderhoof peaks in June and August, with lower peak levels and average discharge (Figure \@ref(fig:hydrology-plots2)).
 
 
 ```{r, eval=FALSE}
@@ -139,11 +139,11 @@ knitr::include_graphics("fig/pixel.png")
 knitr::include_graphics("fig/hydrograph_08JC002.png")
 ```
 
-```{r hydrology-stats2, fig.cap = "Nechako River At Isle Pierre (Station #08JC002 - Lat 53.96044 Lon -123.23486). Available daily discharge data from 1950 to 2022."}
+```{r hydrology-stats2, fig.cap = "Nechako River At Isle Pierre (Station #08JC002 - Lat 53.96044 Lon -123.23486). Available daily discharge data from 1950 to 2022.", eval = FALSE}
 knitr::include_graphics("fig/hydrology_stats_08JC002.png")
 ```
 
-```{r hydrology-stats3, fig.cap = "Nechako River At Vanderhoof (Station #08JC001 - Lat 54.02673 Lon -124.00865). Available daily discharge data from 1948 to 2021."}
+```{r hydrology-stats3, fig.cap = "Nechako River At Vanderhoof (Station #08JC001 - Lat 54.02673 Lon -124.00865). Available daily discharge data from 1948 to 2021.", eval = FALSE}
 knitr::include_graphics("fig/hydrology_stats_08JC001.png")
 ```
 
@@ -151,7 +151,7 @@ knitr::include_graphics("fig/hydrology_stats_08JC001.png")
 
 ## Endako River
 
-The Endako River is a 6th order stream that flows south east from Burns Lake to Fraser Lake. It drains an area of 5,970km^2^. There is one hydrometric station on the Endako River located in Endako, but it was only active for one year during 1951. Given the one year of data, the mean annual discharge is `r round(fasstr::calc_longterm_mean(station_number = "08JB004")$LTMAD,1)` m^3^/s at station 08JB004. The hydrograph peaks in May-June (Figures \@ref(fig:hydrograph3)).
+The Endako River is a 6th order stream that flows south east from Burns Lake to Fraser Lake. It drains an area of 5,970km^2^. There is one hydrometric station on the Endako River located in Endako, but it was only active for one year during 1951. Given the one year of data, the mean annual discharge is `r round(fasstr::calc_longterm_mean(station_number = "08JB004")$LTMAD,1)` m^3^/s at station 08JB004. The hydrograph peaks in May-June (Figure \@ref(fig:hydrograph3)).
 
 ```{r, eval=FALSE}
 lfpr_create_hydrograph("08JB004")
@@ -173,7 +173,7 @@ knitr::include_graphics("fig/hydrology_stats_08JB004.png")
 ```
 
 
-The Chilako River is a 6th order stream that flows north from the Nechako Plateau to the Nechako River and drains an area of 3,634km^2^. There is one hydrometric station on the Chilako River located ~10km upstream of the mouth, but it was only active from 1960-1974. Given this data, the hydrograph peaks in May-June (Figures \@ref(fig:hydrograph4) - \@ref(fig:hydrology-stats5)).
+The Chilako River is a 6th order stream that flows north from the Nechako Plateau to the Nechako River and drains an area of 3,634km^2^. There is one hydrometric station on the Chilako River located ~10km upstream of the mouth, but it was only active from 1960-1974. Given this data, the hydrograph peaks in May-June (Figure \@ref(fig:hydrograph4)).
 
 ```{r, eval=FALSE}
 lfpr_create_hydrograph("08JC005")
@@ -183,7 +183,7 @@ lfpr_create_hydrograph("08JC005")
 knitr::include_graphics("fig/hydrograph_08JC005.png")
 ```
 
-```{r hydrology-stats5, fig.cap = "Chilako River Near Prince George (Station #08JC005 - Lat 53.808891 Lon -122.988892). Available daily discharge data from 1960 to 1974."}
+```{r hydrology-stats5, fig.cap = "Chilako River Near Prince George (Station #08JC005 - Lat 53.808891 Lon -122.988892). Available daily discharge data from 1960 to 1974.", eval = FALSE}
 knitr::include_graphics("fig/hydrology_stats_08JC005.png")
 ```
 

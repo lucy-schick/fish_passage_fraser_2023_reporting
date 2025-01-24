@@ -1,12 +1,8 @@
 fig:overview-map
 fig:hydrograph1
-fig:hydrology-stats1
 fig:hydrology-plots2
-fig:hydrology-stats2
-fig:hydrology-stats3
 fig:hydrograph3
 fig:hydrograph4
-fig:hydrology-stats5
 tab:stock-assess-dat-all
 tab:fiss-species-table
 tab:tab-sites-sum-cap
