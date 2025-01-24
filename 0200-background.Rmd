@@ -17,6 +17,17 @@ Select sites were assessed between Burns Lake and Valemount British Columbia wit
 #and is within the traditional territories of the Dakelh (Carrier) and Simpcw.
 ```
 
+```{r overview-map, fig.cap = 'Overview map of Study Areas in the Skeena, Fraser and Mackenzie (FWCP Peace) watersheds',eval=T}
+# grab the latest version when updates happen
+# fs::file_copy(
+#   path = "~/Projects/gis/restoration_bc_2024/exports/maps/fishpassage_2024_sern_summary.jpeg",
+#   new_path = "fig/fishpassage_2024_sern_summary.jpeg",
+#   overwrite = TRUE
+# )
+knitr::include_graphics("fig/fishpassage_2024_sern_summary.jpeg")
+```
+
+
 
 
 ## Lhtakoh
