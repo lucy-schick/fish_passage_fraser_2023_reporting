@@ -10,7 +10,7 @@ bookdown::gitbook:
       collapse: section
     download: ["fish_passage_fraser_2023_reporting.pdf", "fish_passage_fraser_2023_reporting.html"]
     fontsettings:
-      theme: night
+      theme: white
       family: sans
 pagedown::html_paged:
   front_cover: "fig/new graph text only.png"

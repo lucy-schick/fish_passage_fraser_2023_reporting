@@ -8,6 +8,8 @@ fig:hydrograph4
 fig:hydrology-stats5
 tab:stock-assess-dat-all
 tab:fiss-species-table
+tab:tab-sites-sum-cap
+tab:tab-sites-cap
 intro
 background
 project-location
@@ -18,3 +20,4 @@ tsalakoh
 fisheries
 salmon-stock-assessment-data
 fish-species
+results
