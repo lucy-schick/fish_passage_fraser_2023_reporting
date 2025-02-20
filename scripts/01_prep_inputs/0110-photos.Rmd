@@ -6,9 +6,9 @@ output:
     code_folding: "hide"
 params:
   repo_owner: "NewGraphEnvironment"
-  repo_name: "fish_passage_template_reporting"
-  gis_name: "sern_peace_fwcp_2023"
-  job_name: "2024-073-sern-peace-fish-passage"
+  repo_name: "fish_passage_fraser_2023_reporting"
+  gis_name: "sern_fraser_2024"
+  job_name: "2024-074-sern-fraser-fish-passage"
 ---
 
 
@@ -94,13 +94,13 @@ p <- fs::dir_ls(dir_photos_mergin_raw, recurse = T)
 
 
 # see how large the photos are in MB rounded to 1 decimal using purrr
-s <- p %>%
-  purrr::map(file.info) %>%
+s <- p |> 
+  purrr::map(file.info) |> 
   purrr::map_dbl("size")/1024/1024
 
 # identify the range of sizes
 range(s)
-# [1] 0.06309891 0.57638550 Not bad.  Lets resize anyway so that we know they fit the reporting
+# [1] 0.1013966 0.5582142 Not bad.  Lets resize anyway so that we know they fit the reporting
 
 # create the target directory
 fs::dir_create(dir_photos_mergin_resized, recurse = TRUE)
@@ -144,7 +144,7 @@ fs::dir_delete("/Users/airvine/Projects/gis/sern_peace_fwcp_2023/photos")
 
 ```{r dir-site-create-pscis}
 form_raw <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, 'form_pscis.gpkg'))
-form_new <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, 'data_field/2024/form_pscis_2024.gpkg'))
+form_new <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, 'data_field/2024/form_pscis_2024_raw.gpkg'))
 
 #this can be run for the ow photos once the issue with ids is resolved
 # form_new <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, 'data_field/2024/form_pscis_ow_2024.gpkg'))
@@ -160,25 +160,19 @@ fs::file_copy(
 
 form_pscis_photos_raw <- fpr::fpr_sp_gpkg_backup(
   form_new,
-  update_site_id = TRUE,
+  update_site_id = TRUE, #this checks for duplicate photos 
   # turned this off for now but was on first time
   write_back_to_path = FALSE,
   return_object = TRUE
 ) |> 
   dplyr::arrange(site_id)
 
-# check for duplicate sites
-form_pscis_photos_raw |>
-  dplyr::filter(!is.na(site_id)) |>
-  group_by(site_id) |>
-  dplyr::filter(n()>1) |>
-  nrow()
-
 # check for empty sites
 form_pscis_photos_raw |>
   dplyr::filter(is.na(site_id)) |>
   nrow()
 
+# NOT RUN for fraser 2024 - just putting sorted photos on OneDrive so simplicity. 
 # create site photo directories right on mergin to make them easy to share...
 form_pscis_photos_raw |>
   dplyr::pull(site_id) |>
@@ -188,7 +182,6 @@ form_pscis_photos_raw |>
   )
 
 # also create on onedrive
-#!didn't do this for ow skeena phtos 2024!!!
 form_pscis_photos_raw |>
   dplyr::pull(site_id) |>
   as.character() |>
@@ -199,29 +192,45 @@ form_pscis_photos_raw |>
 
 ```{r rename-qa-pscis}
 
-# NOTE - needed to add a / to the end of the dir names for now untill we update fpr::fpr_photo_rename with fs functions
+### HACK for Fraser 2024 - which does not contain the column `photo_extra3_tag` so fpr_photo_rename() is failing ###
+# See issue here https://github.com/NewGraphEnvironment/fpr/issues/39#issuecomment-2443203763
+
+# we will just add in the `photo_extra3_tag` column and make it NA.
+
+form_pscis_photos_raw_hack <- form_pscis_photos_raw |> 
+  dplyr::mutate(photo_extra3_tag = NA)
+
+form_pscis_photos_raw <- form_pscis_photos_raw_hack
+
+rm(form_pscis_photos_raw_hack)
+
+### END HACK ###
+
+
+# NOTE - needed to add a / to the end of the dir names for now until we update `fpr::fpr_photo_rename` with fs functions
 fpr::fpr_photo_rename(
   dat = form_pscis_photos_raw,
   dir_from_stub = paste0(dir_photos_mergin_resized, "/"),
-  dir_to_stub = paste0(dir_photos_mergin_raw, "/")
+  dir_to_stub = paste0(dir_photos_onedrive, "/")
 )
 ##this section does not seem to be working
-qa_missing <- fpr_photo_qa_missing_all(
+qa_missing <- fpr::fpr_photo_qa_missing_all(
   dat = form_pscis_photos_raw,
   # needed to add a / to the end of the dir names for now
-  dir_photos =  paste0(dir_photos_mergin_raw, "/")
+  dir_photos =  paste0(dir_photos_onedrive, "/")
 ) 
+
 qa_all <- fpr::fpr_photo_qa(
   dat = form_pscis_photos_raw,
   # needed to add a / to the end of the dir names for now
-  dir_photos = paste0(dir_photos_mergin_raw, "/")
+  dir_photos = paste0(dir_photos_onedrive, "/")
 ) |>
   data.table::rbindlist(fill = TRUE)
 
-qa <- fpr_photo_qa_df(
+qa <- fpr::fpr_photo_qa_df(
   dat = form_pscis_photos_raw,
   # needed to add a / to the end of the dir names for now
-  dir_photos = paste0(dir_photos_mergin_raw, "/")
+  dir_photos = paste0(dir_photos_onedrive, "/")
 )
 
 # here is the test for missing individual photos
@@ -233,7 +242,7 @@ test <- fpr::fpr_photo_qa(dat = form_pscis_photos_raw) |>
 
 # FISS Site - Rename the photos from the FISS cards and remove duplicates
 
-CANT USUALLY DO THIS UNTILL WE SUBMIT THE DATA AND GET THE PSCIS IDS BUT WE HAVE NO NEW SITES IN THE PEACE SO WE ALREADY HAVE THE IDS...
+CANT USUALLY DO THIS UNTILL WE SUBMIT THE DATA AND GET THE PSCIS IDS
 
 ```{r dir-site-create-fiss}
 
