@@ -1,0 +1,1158 @@
+# Results
+
+```{r}
+source("scripts/staticimports.R")
+```
+
+
+```{r dl-bcdata, eval = TRUE}
+
+l_ids <- c(
+  "pscis-assessments",
+  "pscis-habitat-confirmations",
+  "pscis-design-proposal",
+  "pscis-remediation"
+)
+
+bcdata_raw <- l_ids |> 
+  purrr::map(
+    rfp::rfp_bcd_get_data
+  ) |> 
+  purrr::set_names(nm = l_ids)
+  
+
+# for each layer find the column name that includes the string responsible_party_name and then filter that column for values that contain "ECOSYSTEM RESTORATION".  or consultant actually since not all assessments were through sern.
+# note that this does not capture the remediations and 
+
+bcdata <- bcdata_raw |> 
+  purrr::map(
+    ~ ngr::ngr_str_df_detect_filter(
+      .x, 
+      col_filter = "consultant_name", #"responsible_party_name" 
+      str_filter = "IRVINE|NEW GRAPH ENVIRONMENT LTD." #"ECOSYSTEM RESTORATION"
+    )
+  )
+
+```
+
+```{r paths}
+# here we use local repos but we could get the data online. this is easiest though
+# TO DO - dir_ls with glob to get this list dynamically
+dir_paths_repo_raw <- c(
+  "~/Projects/repo/fish_passage_elk_2020_reporting/data",
+  "~/Projects/repo/fish_passage_elk_2021_reporting/data",
+  "~/Projects/repo/fish_passage_elk_2022_reporting/data",
+  
+  "~/Projects/repo/fish_passage_moti_2022_reporting/data",
+  
+  "~/Projects/repo/fish_passage_bulkley_2020_reporting/data",
+  "~/Projects/repo/fish_passage_skeena_2021_reporting/data",
+  "~/Projects/repo/fish_passage_skeena_2022_reporting/data",
+  "~/Projects/repo/fish_passage_bulkley_2022_reporting/data",
+  "~/Projects/repo/fish_passage_skeena_2023_reporting/data",
+  # "~/Projects/repo/fish_passage_skeena_2024_reporting/data",
+  
+  # this is a huge repo so to just grab the files in the data directory we run in the cmd
+  # mkdir -p Parsnip_Fish_Passage/data then downloaded the file into there from github
+  "~/Projects/repo/Parsnip_Fish_Passage/data",
+  "~/Projects/repo/fish_passage_peace_2022_reporting/data",
+  "~/Projects/repo/fish_passage_peace_2023_reporting/data",
+  "~/Projects/repo/fish_passage_peace_2024_reporting/data",
+  
+  "~/Projects/repo/fish_passage_fraser_2023_reporting/data"
+)
+
+
+# get only those repos that contain exact matches for the following file names
+# looks like elk 2020 
+file_names <- c(
+  "pscis_phase1.xlsm", 
+  "pscis_phase1a.xlsm",
+  "pscis_phase1b.xlsm",
+  "pscis_phase2.xlsm", 
+  "pscis_reassessments.xlsm",
+  "habitat_confirmations.xls"
+)
+
+# determine which files are in which repos and give result as tibble
+# TO DO: this should be a stand alone function
+dir_paths_repo <- purrr::map(file_names, function(file_name) {
+  dir_paths_repo_raw |> 
+    purrr::map(
+      ~ ngr::ngr_str_dir_from_file(
+        .x,
+        file_name = file_name
+      )
+    ) |> 
+    # Remove NULLs from the result
+    purrr::compact()
+}) |> 
+  purrr::set_names(nm = file_names) |> 
+  # if there are no results (ex. no pscis-phase1a.xlsm") we return NULL vs a tibble with only filename col populated
+  purrr::map(~ if (
+    length(.x) > 0
+    ) tibble::tibble(
+      # we have a list of lists so we unlist to get a character vector
+      dir_path = unlist(.x))
+    else NULL
+    ) |>
+  # remove the NULLS
+  purrr::compact() |> 
+  dplyr::bind_rows(.id = "file_name")
+
+
+# we need the sites from 2024 so let's get from the GIS projects
+dir_paths_gis <- c(
+  "~/Projects/gis/sern_fraser_2024",
+  "~/Projects/gis/sern_peace_fwcp_2023",
+  "~/Projects/gis/sern_skeena_2023"
+)
+
+```
+
+
+```{r functions}
+
+# this is a helper but really not likely necessary.
+lfpr_import_fish_repo <- function(
+    path_workbooks,
+    sheet_pluck = "step_1_ref_and_loc_info"
+) {
+  path_workbooks |> 
+    # purrr::map(fs::path_expand) |>
+    purrr::map(
+      ~ fpr::fpr_import_hab_con(
+        backup = FALSE,
+        row_empty_remove = T,
+        col_filter_na = TRUE,
+        path = .x
+      ) 
+    ) |> 
+    purrr::map(~ purrr::pluck(.x, sheet_pluck)) |>
+    purrr::set_names(nm = ngr::ngr_str_dir_from_path(path_workbooks, 2)) |> 
+    dplyr::bind_rows(.id = "source")
+}
+
+# not convinced this is advantagous at all as really it just reads the files
+# in and combines them.  we could just read them in and combine them in the next steps
+lrfp_import_form <- function(
+    dir_paths,
+    dir_data = "data_field/2024",
+    form_name = "form_pscis_2024.gpkg",
+    cols_na_remove = FALSE
+) {
+  dir_paths |>
+    # purrr::map(fs::path_expand) |>
+    purrr::map(
+      ~ {
+        df <- sf::st_read(
+          dsn = fs::path(.x, dir_data, form_name),
+          quiet = TRUE
+        ) |>
+          dplyr::mutate(
+            source_gis = basename(.x)
+            # date = as.Date(date, format = "%Y-%m-%d")
+          )
+        # this is a hack to get around column type conflicts with pscis data by quickly by removing empty cols. we prob should keep all cols in the long term!!!!
+        if (cols_na_remove) {
+          df <- ngr::ngr_tidy_cols_rm_na(df)
+          # df <- dplyr::select(df, dplyr::where(~ !all(is.na(.))))
+        }
+
+        df
+      }
+    ) |> 
+    dplyr::bind_rows()
+}
+
+
+```
+
+
+```{r ld-pscis-repo}
+# with our tibble of repos and files read them all in and assign a source
+
+dir_paths_repo_pscis <- dir_paths_repo |> 
+  dplyr::filter(stringr::str_detect(file_name, "pscis"))
+
+sites_pscis_raw <- purrr::map2_df(
+  .x = dir_paths_repo_pscis$file_name, 
+  .y = dir_paths_repo_pscis$dir_path, 
+  ~ {
+    # Import the PSCIS data
+    df <- fpr::fpr_import_pscis(workbook_name = .x, dir_root = .y)
+    # Add file_name and dir_path columns to the result
+    df |> 
+      dplyr::mutate(
+        source_repo = ngr::ngr_str_dir_from_path(.y)
+        )
+  }
+) |> 
+  # Make it spatial
+  fpr::fpr_sp_assign_sf_from_utm() |> 
+  # to avoid type conflicts turn pscis_crossing_id numeric
+  dplyr::mutate(
+    pscis_crossing_id = as.numeric(pscis_crossing_id)
+  )
+
+
+
+# see sites surveyed more than once
+dupes_repo <- janitor::get_dupes(sites_pscis_raw, "site_id", "source")
+
+
+# test table view
+# sites_pscis_raw |>
+#   sf::st_drop_geometry() |>
+#   my_dt_table(escape = FALSE)
+
+```
+
+
+```{r ld-p2-gis, eval = TRUE}
+# load the p2 sites from 2024 gis
+form_pscis_2024_raw <- lrfp_import_form(dir_paths_gis, cols_na_remove = TRUE) |> 
+  fpr::fpr_sp_assign_utm()
+
+sites_p2_gis_raw <- form_pscis_2024_raw |> 
+  dplyr::filter(assess_type_phase2 == "Yes")
+
+my_xing_id <- sites_p2_gis_raw |> 
+  # these are in our field data without pscis ids
+  dplyr::filter(!is.na(my_crossing_reference)) |> 
+  dplyr::pull(my_crossing_reference)
+
+# so we preferably we have pscis ids for our phase 2 sites when they are actually uploaded
+# we can see the pscis ids from xreferenceing with PSCIS
+# !!!!here is wehre we see the WARNING that tells us we have dropped some my_corossing_references!!!!!
+xref_pscis_my_crossing_modelled <- bcdata$`pscis-assessments` |>
+  # dplyr::filter(funding_project_number == my_funding_project_number) |>
+  dplyr::select(external_crossing_reference, stream_crossing_id_extracted = stream_crossing_id) |> 
+  dplyr::mutate(external_crossing_reference = as.numeric(external_crossing_reference)) |>
+  dplyr::arrange(external_crossing_reference) |>
+  sf::st_drop_geometry()
+
+# which pscis entries where originally entered by us
+xref_pscis_my_crossing_modelled_p2 <- xref_pscis_my_crossing_modelled |> 
+  dplyr::filter(external_crossing_reference %in% my_xing_id) 
+
+
+# join pscis ids to our p2 gis sites
+sites_p2_gis <- dplyr::left_join(
+  sites_p2_gis_raw,
+  xref_pscis_my_crossing_modelled_p2,
+  by = c("my_crossing_reference" = "external_crossing_reference")
+) |> 
+  dplyr::mutate(
+    stream_crossing_id = dplyr::case_when(
+      is.na(pscis_crossing_id) ~ stream_crossing_id_extracted,
+      TRUE ~ pscis_crossing_id
+    ),
+    date = lubridate::as_date(date_time_start)
+  ) 
+
+```
+
+```{r combine-p2, eval = TRUE}
+# for mapping in Q provincial we will just join them and burn into the project
+sites_p2 <- dplyr::bind_rows(
+  sites_pscis_raw |> 
+    dplyr::filter(stringr::str_detect(source, "phase2")) |> 
+    dplyr::select(
+      date, 
+      pscis_crossing_id, 
+    ) |> 
+    sf::st_drop_geometry(),
+                               
+  sites_p2_gis |> 
+    dplyr::select(
+      date, 
+      stream_name,
+      road_name,
+      # these are derived and combined
+      pscis_crossing_id = stream_crossing_id,
+      # some sites haven't been submitted yet!!
+      my_crossing_reference,
+      utm_zone:northing,
+      source_gis
+    ) |> 
+    sf::st_drop_geometry()
+)
+
+# sites_p2 |> 
+#   sf::st_write(
+#     dsn = fs::path_expand("~/Projects/gis/data/fish_passage/fish_passage_summary.gpkg"),
+#                           layer = "phase2_2024"
+#   )
+
+
+# sites_p2_string <- paste(site_ids, collapse = ", ")
+# print(site_ids_string)
+
+```
+
+```{r submitted-flag-reassess, eval = TRUE}
+
+# we have all the sites that have been submitted in the past
+#if the latest date for each crossing_reference in our files is after the latest date for each crossing_reference in the pscis data then we still need to submit
+
+# use the pscis_crossing_id and date from the raw pscis then filter for when the data in the reassessment is newer
+sites_reassess_unsubmitted <-  dplyr::left_join(
+  
+  sites_pscis_raw,
+  
+  bcdata$`pscis-assessments` |> 
+    dplyr::select(stream_crossing_id, assessment_date) |> 
+    # drop this one b/c we want our repo points
+    sf::st_drop_geometry(), 
+    
+  by = c("pscis_crossing_id" = "stream_crossing_id")
+    
+  ) |> 
+  # dplyr::select(stream_crossing_id, assessment_date, date, source_repo, assessemnt_comment_sern) |> 
+  dplyr::filter(!is.na(date)) |> 
+  dplyr::filter(assessment_date < date) 
+  # dplyr::select(-assessment_date)
+
+# TO DO: submit this data!!!!
+# make a little summary dataframe that tells us how many sites are in each repo
+sites_reassess_summary <- sites_reassess_unsubmitted |> 
+  dplyr::group_by(source_repo) |> 
+  dplyr::summarise(n = dplyr::n())
+
+```
+
+```{r ld-design}
+#we want to know all the sites where designs were done.  this will help us with our submissions too
+ids_design <- c(
+  # skeena
+  197640,
+  124500,
+  123445,
+  124420,
+  197379,
+  198217,
+  58067,
+  123377,
+  197360, 
+  8547, 
+  8530, 
+  197378,
+  
+  # fwcp peace
+  # table
+  125231, 
+  #missinka
+  125179,
+  # arctic
+  125000,
+  # Chuchinka-Colbourne
+  125345, 
+  #fern
+  125261
+  )
+```
+
+
+```{r ld-remediations}
+# remediations
+ids_remediation <- c(
+  # skeena
+  197962,
+  197912,
+  58159,
+  197967,
+  198217,
+  
+  # fwcp peace
+  125231,
+  #missinka
+  125179,
+  # Chuchinka-Colbourne
+  125345
+
+  # TO DO - get info on the bridges that went in the ELK!
+  )
+```
+
+```{r ld-fish-sampling, eval = TRUE}
+# filter our paths for the hab con sites
+dir_paths_repo_habitat_con <- dir_paths_repo |> 
+  dplyr::filter(stringr::str_detect(file_name, "habitat"))
+
+fish_sampling_raw_repo <- lfpr_import_fish_repo(
+  # path_workbooks = fs::path(
+  #   dir_paths_repo_p2, "habitat_confirmations.xls"
+  # )
+    path_workbooks = fs::path(
+    dir_paths_repo_habitat_con$dir_path, "habitat_confirmations.xls"
+  )
+) |> 
+  dplyr::mutate(
+    survey_date = janitor::excel_numeric_to_date(
+      survey_date
+      )
+    ) |> 
+  tidyr::separate(alias_local_name, into = c('site', 'location', 'ef'), remove = FALSE)
+
+# form_fiss_2024_raw <- lrfp_import_form(
+#   dir_paths_gis,
+#   form_name = "form_fiss_site_2024.gpkg",
+#   # hack to deal with type conflicts in cols that are empty anyway
+#   cols_na_remove = TRUE
+#   ) 
+
+# form_fiss_2024_raw_test <- dir_paths_gis |> 
+#   purrr::map(
+#     ~ sf::st_read(
+#       dsn = fs::path(.x, "data_field/2024", "form_fiss_site_2024.gpkg"),
+#       quiet = TRUE
+#     )
+#   ) |> 
+#   purrr::set_names(nm = basename(dir_paths_gis)) 
+
+# compare types
+# types_fish_gis <- ngr::ngr_tidy_cols_type_compare(form_fiss_2024_raw_test) |> 
+#   dplyr::filter(consistent == FALSE)
+
+
+# read them in, address type conflicts and join
+form_to_read <- "data_field/2024/form_fiss_site_2024.gpkg"
+form_fiss_2024_raw <- dir_paths_gis |> 
+  purrr::map(
+    ~ sf::st_read(
+      dsn = fs::path(.x, form_to_read),
+      quiet = TRUE
+    ) |> 
+      # Convert all columns containing "method" to character
+      dplyr::mutate(
+        dplyr::across(
+          .cols = dplyr::contains("method"), 
+          .fns = as.character
+        )
+      )
+  ) |> 
+  purrr::set_names(nm = fs::path(basename(dir_paths_gis), form_to_read)) |> 
+  dplyr::bind_rows(.id = "source")
+
+types_fish_repo_vs_form <- list(fish_sampling_raw_repo,
+       form_fiss_2024_raw) |> 
+  purrr::set_names(nm = c("repo", "gis")) |> 
+  ngr::ngr_tidy_cols_type_compare() |> 
+  dplyr::filter(consistent == FALSE)
+
+# determine the fish sampling sites from the gis data
+fish_sampling_raw_gis <- form_fiss_2024_raw |> 
+  #str_detect _ef in local_name
+  dplyr::filter(stringr::str_detect(local_name, "_ef")) |>
+  #change the names to match teh repo
+  dplyr::select(source, date_time_start, alias_local_name = local_name) |> 
+  sf::st_drop_geometry() |> 
+  # tidyr::separate(alias_local_name, into = c('site', 'location', 'ef'), remove = FALSE) |> 
+  dplyr::mutate(date_time_start_zone_utc =
+                  dplyr::case_when(stringr::str_detect(source,"sern_peace_fwcp_2023") ~ lubridate::force_tz(date_time_start, tzone = "America/Vancouver"), 
+                                   T ~ lubridate::NA_Date_),
+                date_time_start =
+                  dplyr::case_when(stringr::str_detect(source,"sern_peace_fwcp_2023") ~ lubridate::with_tz(date_time_start, tzone = "UTC"), 
+                                   T ~ date_time_start),
+                survey_date = as.Date(date_time_start, format = "%Y-%m-%d")
+  ) 
+# dplyr::distinct(source, survey_date, site, .keep_all = F)
+
+
+```
+
+
+```{r tidy-fish}
+# we want to know which sites had fish sampling done. if ef is in the alias_local_name we add a "yes" in a column fish_ef
+fish_sampling_raw <- dplyr::bind_rows(
+  
+  fish_sampling_raw_repo,
+  
+  fish_sampling_raw_gis
+) 
+  # dplyr::distinct(source, site, .keep_all = T)
+
+# if mt is in the alias_local_name we add a "yes" in a column fish_mt
+fish_sampling <- fish_sampling_raw |> 
+  dplyr::mutate(
+    fish_ef = stringr::str_detect(alias_local_name, "_ef"),
+    fish_mt = stringr::str_detect(alias_local_name, "_mt")
+  ) |> 
+  # keep rows where fish_ef or fish_mt is true
+  dplyr::filter(fish_ef | fish_mt) |> 
+  tidyr::separate(alias_local_name, into = c('site', 'location', 'ef'), remove = FALSE) |>
+  dplyr::mutate(
+    year = lubridate::year(survey_date)
+  ) |> 
+  dplyr::distinct(year, site, fish_ef, fish_mt) |> 
+  dplyr::select(year, site, fish_ef, fish_mt) 
+
+# see duplicates - same sites but all different years!
+dupes_fish <- janitor::get_dupes(fish_sampling, site)
+
+```
+
+```{r ld-uav}
+# import our summary data from the uav flights
+uav_raw <- readr::read_csv(
+  "data/inputs_raw/uav_tracking.csv"
+) |> 
+  dplyr::mutate(
+    date = lubridate::ymd(date)
+  ) |> 
+  dplyr::mutate(
+      link_uav = ngr::ngr_str_link_url(
+        url_base = url_uav_ortho
+      )
+    )
+
+uav_dupes <- janitor::get_dupes(uav_raw, stream_crossing_id)
+
+
+# for testing
+# my_dt_table(uav_raw, escape = FALSE)
+
+```
+
+
+```{r amalgamation}
+# how found this is below
+# ids_p2_missing <- t2 |> dplyr::pull(external_crossing_reference)
+ids_p2_missing <- c("BR1","BR2","CV1","16602686","1802374")
+
+
+# was sites_pscis_assigned
+sites_repo_p2_prep <- sites_pscis_raw  |> 
+  # add the missing p2 ids
+  dplyr::mutate(
+    source = 
+      dplyr::case_when(
+        !is.na(my_crossing_reference) & my_crossing_reference %in% ids_p2_missing ~ "phase2",
+        T ~ source
+      )
+  ) |> 
+  # drop this b/c we need some raw coords from 2024 data anyway
+  sf::st_drop_geometry() |> 
+  # here we were dropping the phase 1s but then we couldn't match all the crossings b/c sites_pscis_raw comes from the 
+  # P1 spreadsheets for the fraser so we need those my_crossing_ids!!
+  # dplyr::filter(
+  #   stringr::str_detect(source, "phase2|reassessment")
+  # ) |>
+  dplyr::mutate(
+  #   assessment =
+  #     dplyr::case_when(
+  #       stringr::str_detect(source, "phase1") ~ "yes",
+  #       T ~ NA_character_),
+    reassessment = 
+      dplyr::case_when(
+        stringr::str_detect(source, "reassessment") ~ "yes",
+        T ~ NA_character_),
+    # this also deals with the sites in the repos that are not yet in the data sheets
+    habitat_confirmation = 
+      dplyr::case_when(
+        stringr::str_detect(source, "phase2") | 
+          # watch out for matching nas!!!
+          !is.na(pscis_crossing_id) & pscis_crossing_id %in% unique(sites_p2$pscis_crossing_id) |
+        !is.na(my_crossing_reference) &  my_crossing_reference %in% unique(sites_p2$my_crossing_reference)
+        ~ "yes",
+        T ~ NA_character_),
+    design =
+      dplyr::case_when(
+        !is.na(pscis_crossing_id) & pscis_crossing_id %in% ids_design ~ "yes",
+        T ~ NA_character_),
+    remediation =
+      dplyr::case_when(
+        !is.na(pscis_crossing_id) & pscis_crossing_id %in% ids_remediation ~ "yes",
+        T ~ NA_character_),
+    fish_sampling = 
+      dplyr::case_when(
+        !is.na(pscis_crossing_id) & pscis_crossing_id %in% unique(fish_sampling$site) ~ "yes",
+        T ~ NA_character_),
+    link_repo = ngr::ngr_str_link_url(
+      url_resource = source_repo
+    )
+  ) |> 
+  dplyr::select(
+      # date, 
+      pscis_crossing_id,
+      # # get road and stream after to avoid dupes
+      # stream_name,
+      # road_name,
+  ## get utms later so we don't get multiple joins
+      # utm_zone,
+      # easting,
+      # northing,
+      my_crossing_reference,
+      reassessment:fish_sampling,
+      link_repo
+  ) |> 
+  # need to arrang for the fill to work due to duplicated ids
+  dplyr::arrange(pscis_crossing_id) |> 
+  dplyr::group_by(
+    pscis_crossing_id, 
+    my_crossing_reference
+    ) |> 
+  tidyr::fill(reassessment:fish_sampling, .direction = "downup")
+
+# we need the pscis ids for the PAW sites then we drop the my_crossing_ref so we can continue with our workflow
+xref_p2 <- dplyr::left_join(
+  sites_repo_p2_prep |> 
+    dplyr::filter(habitat_confirmation == "yes") |> 
+    dplyr::ungroup() |>
+    dplyr::filter(is.na(pscis_crossing_id) & !is.na(my_crossing_reference)) |> 
+    dplyr::select(my_crossing_reference),
+  sites_p2 |> dplyr::select(pscis_crossing_id_sub = pscis_crossing_id, my_crossing_reference),
+  by = "my_crossing_reference"
+) 
+
+sites_repo_p2 <- dplyr::left_join(
+  sites_repo_p2_prep |> 
+    dplyr::ungroup(),
+  xref_p2,
+  by = "my_crossing_reference"
+) |> 
+  dplyr::mutate(
+    pscis_crossing_id = dplyr::case_when(
+      !is.na(pscis_crossing_id_sub) ~ pscis_crossing_id_sub,
+      TRUE ~ pscis_crossing_id
+    )
+  ) |> 
+  dplyr::select(-pscis_crossing_id_sub, -my_crossing_reference)
+
+
+sites_repo_p1_prep<- sites_pscis_raw  |> 
+  # drop this b/c we need some raw coords from 2024 data anyway
+  sf::st_drop_geometry() |> 
+  # here we are dropping the phase2|reassessment"!!
+  dplyr::filter(
+    !stringr::str_detect(source, "phase2|reassessment")
+  ) |>
+  dplyr::mutate(
+    assessment =
+      dplyr::case_when(
+        stringr::str_detect(source, "phase1") ~ "yes",
+        T ~ NA_character_),
+    link_repo = ngr::ngr_str_link_url(
+      url_resource = source_repo
+    )
+  ) |> 
+  dplyr::select(
+      my_crossing_reference,
+      stream_name,
+      road_name,
+      assessment,
+      link_repo
+  ) 
+
+ #lots of dupes that will be dealt with by pivot 
+dupes <- sites_repo_p2 |> 
+  dplyr::filter(!is.na(pscis_crossing_id)) |>
+  janitor::get_dupes("pscis_crossing_id")
+
+dupes <- sites_repo_p1_prep |> 
+  dplyr::filter(!is.na(my_crossing_reference)) |>
+  janitor::get_dupes("my_crossing_reference")
+
+# get the pscis ids for the p1s with simple join to bcdata
+sites_repo_p1_prep2 <- dplyr::left_join(
+  sites_repo_p1_prep |> 
+    dplyr::filter(!is.na(my_crossing_reference)) |> 
+    dplyr::mutate(my_crossing_reference = as.character(my_crossing_reference)),
+  
+  bcdata$`pscis-assessments` |> 
+    dplyr::select(
+      # assessment_date,
+      stream_crossing_id,
+      external_crossing_reference
+    ) |> 
+    sf::st_drop_geometry(),
+  by = c("my_crossing_reference" = "external_crossing_reference")
+) |> 
+  dplyr::relocate(stream_crossing_id, .before = everything())
+
+# this tells us all the duplicate crossings in pscis
+# we have documented in https://github.com/smnorris/PSCIS_datafixes/issues/13
+dupes_pscis_all <- sites_repo_p1_prep2 |> 
+  dplyr::filter(!is.na(my_crossing_reference)) |>
+  janitor::get_dupes("my_crossing_reference") |> 
+  dplyr::select(
+    my_crossing_reference, 
+    stream_crossing_id,
+    # to replicate output spreadsheet we need stream and road 
+    stream_name,
+    road_name
+    ) |> 
+  dplyr::group_by(my_crossing_reference) |> 
+  dplyr::mutate(dupe_number = dplyr::row_number()) |> 
+  dplyr::arrange(my_crossing_reference, stream_crossing_id) |> 
+  dplyr::mutate(remove = dplyr::case_when(
+    dupe_number == 2 ~ TRUE,
+    T ~ FALSE
+  )) |> 
+  readr::write_csv("data/qa/duplicates_pscis.csv", na = "")
+
+# now we actually remove those dupes
+sites_repo_p1 <-  sites_repo_p1_prep2 |>
+  dplyr::arrange(my_crossing_reference, stream_crossing_id) |> 
+  # we remove these then get them from PSCIS at the end to avoid issues with multiple stream/road names for same site
+  dplyr::select(
+    -stream_name,
+    -road_name
+    ) |>
+  dplyr::distinct(my_crossing_reference, .keep_all = T)
+
+#----- Test dupe removal-----------------------------------------------------------------------------------------------------
+
+# test to be sure we have the ones we thought we would have
+ids_keep_dupes <- dupes_pscis_all |> 
+      dplyr::filter(
+        remove == FALSE
+      ) |> 
+      dplyr::pull(stream_crossing_id)
+
+# number of dupes matches tested filter
+identical(
+  # length gives num cols for df
+  nrow(
+    sites_repo_p1 |>
+      dplyr::filter(
+        stream_crossing_id %in% ids_keep_dupes
+      )
+  ),
+  length(ids_keep_dupes)
+)
+
+# how many don't have stream_crossing_ids - just the one documented here https://github.com/smnorris/PSCIS_datafixes/issues/22
+ids_repo_p1_no_stream_xing_id <- sites_repo_p1 |> 
+  dplyr::filter(
+    is.na(stream_crossing_id)
+  )
+
+# we have a ghost crossing in the mix without either ID -  due to incorrect type (string) in my_crossing_reference
+# will need to remove
+ids_repo_p2_no_stream_xing_id  <- sites_repo_p2 |> 
+  dplyr::filter(
+    is.na(pscis_crossing_id)
+  )
+
+# now we ned to put together sites_repo_p1 and sites_repo_p2 while dealing with duplicates
+sites_all_prep <- dplyr::full_join(
+  
+  sites_repo_p1 |> 
+    # deal with na identified above
+    dplyr::filter(
+    !is.na(stream_crossing_id)
+  ),
+  
+  sites_repo_p2 |> 
+    dplyr::filter(
+    !is.na(pscis_crossing_id)
+  ) |> 
+    dplyr::rename(
+      stream_crossing_id = pscis_crossing_id,
+      link_repo2 = link_repo
+      ),
+  
+  by = c("stream_crossing_id")
+)
+
+# here is how we figured out how to deal with the duplicates which are a result of multiple repos for the same stream_crossing_ids
+dupes_repos <- sites_all_prep |> 
+    janitor::get_dupes(stream_crossing_id) |> 
+  dplyr::distinct(.keep_all = T) 
+    
+## deal with duplicate repos and pivot them out  
+sites_all_prep2 <- sites_all_prep |> 
+  # to deal with multiple repos for the same xing id we do the following
+  dplyr::mutate(
+    link_repo = dplyr::case_when(
+      is.na(link_repo) ~ link_repo2,
+      link_repo != link_repo2 ~ link_repo2,
+      T ~ link_repo
+    )
+  ) |> 
+  # need link_repo at the end to allow a series grouping:call
+  dplyr::relocate(link_repo, .after = everything()) |> 
+  dplyr::select(-link_repo2) |> 
+  dplyr::group_by(dplyr::across(c(stream_crossing_id, assessment:fish_sampling))) |>
+  dplyr::mutate(link_number = dplyr::row_number()) |>
+  tidyr::pivot_wider(
+    names_from = link_number,
+    values_from = link_repo,
+    names_glue = "link_repo{link_number}"
+  ) |> 
+  #  198380 UTMs were input incorrectly - it is meant to be where 198400 is...Not sure why - but we retained 198380 instead
+  dplyr::mutate(
+    stream_crossing_id = dplyr::case_when(
+      stream_crossing_id == 198380 ~ 198400,
+      T ~ stream_crossing_id
+    )
+  )
+
+#  we add the name of the stream and the road from pscis with the geometries landing in the dataframe
+# !!!!!!!NOTE: we have reassessment data from peace 2023 that has not landed yet and that is the reason for a lack of stream_names
+# for a number of crossings. We will not worry about that for now as it would require a join that we will be throwing
+# out later once the PSCIS is submitted and bcdata$`stream-crossing-assessments` layer is updated.
+sites_all_prep3 <- dplyr::left_join(
+  sites_all_prep2,
+  
+  bcdata_raw$`pscis-assessments` |> 
+    dplyr::select(
+      stream_crossing_id, 
+      stream_name, 
+      road_name
+      ),
+  
+  by = "stream_crossing_id"
+) |> 
+  dplyr::relocate(
+    stream_name, 
+      road_name,
+    .after = my_crossing_reference
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::rename(geom = geometry) |> 
+  sf::st_as_sf(crs = 3005)
+
+# lets check to be sure we don't have duplicates - OMG - none. wow.
+dupes_sites_all_prep3 <- sites_all_prep3 |> 
+  janitor::get_dupes(stream_crossing_id)
+
+
+## Get the watershed groups for each crossing -----------------------------------------------------------------------------------------------------
+# burn sites_pscis into the project as 3005 spatial object (it is already)
+conn <- fpr::fpr_db_conn()
+  
+  
+# create a unique id 
+sites_db <- sites_all_prep3 |> 
+  tibble::rowid_to_column("idx") 
+
+sf::st_write(
+  obj = sites_db, 
+             dsn = conn, 
+             DBI::Id(schema= "working", table = "misc"))
+# sf doesn't automagically create a spatial index or a primary key
+DBI::dbExecute(
+  conn, 
+  "CREATE INDEX ON working.misc USING GIST (geom)"
+  )
+DBI::dbExecute(
+  conn, 
+  "ALTER TABLE working.misc ADD PRIMARY KEY (idx)"
+  )
+
+# to see which cols we choose from
+# fpr::fpr_db_query(
+#   fpr::fpr_dbq_lscols("whse_basemapping", "fwa_watershed_groups_poly")
+# )
+
+# add the watershed group
+query <- ngr::ngr_dbqs_filter_predicate(
+  target_tbl = "working.misc",
+  mask_tbl = "whse_basemapping.fwa_watershed_groups_poly",
+  mask_col_return = "watershed_group_name"
+)
+
+sites_all_prep4 <- fpr::fpr_db_query(query) |> 
+  # need to remove 197488 since the utm is incorrect https://github.com/smnorris/PSCIS_datafixes/issues/22
+  dplyr::filter(stream_crossing_id != 197488) |> 
+  dplyr::select(-idx)
+
+DBI::dbDisconnect(conn)
+
+
+
+#UAV urls-----------------------------------------------------------------------------------------------------
+
+# # add the urls for the uav flights
+sites_all_prep5 <- dplyr::left_join(
+
+  sites_all_prep4,
+
+  uav_raw |>
+    dplyr::filter(!is.na(stream_crossing_id)) |>
+    # dplyr::mutate(year = lubridate::year(date)) |>
+    dplyr::select(
+      # year,
+      stream_crossing_id,
+      link_uav
+    ) ,
+
+  by = c("stream_crossing_id")
+) |>
+  dplyr::group_by(stream_crossing_id) |>
+  dplyr::mutate(link_number = dplyr::row_number()) |>
+  tidyr::pivot_wider(
+    names_from = link_number,
+    values_from = link_uav,
+    names_glue = "link_uav{link_number}"
+  ) |> 
+  dplyr::ungroup()
+
+dupes_uav <- sites_all_prep5 |> 
+  janitor::get_dupes(stream_crossing_id)
+
+
+sites_all <- sites_all_prep5 |> 
+  dplyr::rename(
+    watershed_group = watershed_group_name
+  ) |> 
+  dplyr::arrange(stream_crossing_id)
+
+# wsgf <- c(
+#   "Lower Chilako River",
+#   "Willow River",
+#   "Tabor River",
+#   "Upper Fraser River",
+#   "Nechako River",
+#   "Morkill River",
+#   "Francois Lake"
+# )
+# t <- sites_all |> 
+#   dplyr::filter(watershed_group %in% wsgf) |> 
+#   dplyr::filter(habitat_confirmation == 'yes')
+  
+```
+
+
+```{r summarize-sites}
+
+# unique(sites_all$watershed_group_name)
+# 
+# # here is a list of SERN wtershed groups
+# wsg_skeena <- c("Bulkley River",
+#               "Zymoetz River",
+#               "Kispiox River", 
+#               "Kalum River", 
+#               "Morice River", 
+#               "Parsnip River",
+#               "Carp Lake", 
+#               "Crooked River")
+
+# wsg_peace <- c(
+#               "Parsnip River",
+#               "Carp Lake",
+#               "Crooked River"
+#               )
+
+# more straight forward is new graph only watersheds
+wsg_ng <- "Elk River"
+
+# here is a summary with Elk watershed group removed
+sites_all_summary <- sites_all |> 
+  # make a flag column for uav flights
+  dplyr::mutate(
+    uav = dplyr::case_when(
+      !is.na(link_uav1) ~ "yes",
+      T ~ NA_character_
+    )) |> 
+  # remove the elk counts
+  dplyr::filter(!watershed_group %in% wsg_ng) |>
+  dplyr::group_by(watershed_group) |> 
+  dplyr::summarise(
+    dplyr::across(assessment:fish_sampling, ~ sum(!is.na(.x))),
+    uav = sum(!is.na(uav))
+  ) |> 
+  sf::st_drop_geometry() |> 
+  # make pretty names
+  dplyr::rename_with(~ stringr::str_replace_all(., "_", " ") |> 
+                       stringr::str_to_title()) |> 
+  # annoying special case
+  dplyr::rename(
+    `Drone Imagery` = Uav) |> 
+  janitor::adorn_totals()
+```
+
+```{r tab-sites-sum-cap, results="asis"}
+my_caption = "Summary of fish passage assessment procedures conducted in northern British Columbia through SERNbc."
+my_tab_caption()
+```
+
+```{r tab-sites-sum}
+sites_all_summary |> 
+  my_dt_table(
+    page_length = 20,
+    cols_freeze_left = 0
+              )
+```
+
+<br>
+
+
+```{r tab-sites-cap, results="asis"}
+my_caption = "Details of fish passage assessment procedures conducted in northern British Columbia through SERNbc."
+my_tab_caption()
+```
+
+```{r tab-sites-all}
+sites_all |>
+  sf::st_drop_geometry() |>
+  dplyr::relocate(watershed_group, .after = my_crossing_reference) |> 
+  # dplyr::select(-idx) |>
+  # make pretty names
+  dplyr::rename_with(~ . |>
+                       stringr::str_replace_all("_", " ") |>
+                       stringr::str_replace_all("repo", "Report") |>
+                       stringr::str_replace_all("uav", "Drone") |>
+                       stringr::str_to_title()) |> 
+  # dplyr::arrange(desc(stream_crossing_id)) |> 
+  
+  my_dt_table(
+    cols_freeze_left = 1,
+    escape = FALSE
+  )
+```
+
+
+```{r write-db, eval = FALSE}
+# have this turned off untill we want to rewrite. will require some thought on how we will work updates
+# burn table into working schema of remote db for now to allow access from wherever
+# burn sites_pscis into the project as 3005 spatial object (it is already)
+conn = fpr::fpr_db_conn()
+
+# create a unique id 
+sites_all_db <- sites_all |> 
+  tibble::rowid_to_column("idx") 
+
+sf::st_write(
+  obj = sites_all_db, 
+             dsn = conn, 
+             DBI::Id(schema= "working", table = "fp_sites_tracking"))
+# sf doesn't automagically create a spatial index or a primary key
+DBI::dbExecute(
+  conn, 
+  "CREATE INDEX ON working.fp_sites_tracking USING GIST (geom)"
+  )
+DBI::dbExecute(
+  conn, 
+  "ALTER TABLE working.fp_sites_tracking ADD PRIMARY KEY (idx)"
+  )
+
+DBI::dbDisconnect(conn)
+
+```
+
+
+```{r track-ids-p2-missing, eval = FALSE}
+################################################################################################################
+#---------leaving below to track how we got ids_p2_missing---------------------------------------------------
+################################################################################################################
+
+t <- dplyr::left_join(
+  
+  bcdata$`pscis-assessments` |> 
+    dplyr::select(
+      assessment_date,
+      stream_crossing_id,
+      external_crossing_reference,
+      stream_name,
+      road_name,
+      zone = utm_zone,
+      utm_easting,
+      utm_northing
+    ),
+  
+  sites_pscis_raw |> 
+    dplyr::select(
+      date, 
+      pscis_crossing_id, 
+      my_crossing_reference,
+      source_repo,
+      source_p2 = source
+    ) |> 
+    sf::st_drop_geometry() |> 
+    # arrange date descending so we keep the newest repo
+    dplyr::arrange(desc(date)) |>
+    dplyr::distinct(pscis_crossing_id, my_crossing_reference, source_repo, source_p2, .keep_all = T),
+  
+  by = c("stream_crossing_id" = "pscis_crossing_id")
+)
+
+
+t2 <- dplyr::left_join(
+  
+  t,
+  
+  sites_pscis_raw |> 
+    dplyr::mutate(
+      my_crossing_reference = as.character(my_crossing_reference)
+    ) |> 
+    dplyr::select(
+      my_crossing_reference,
+      source_repo_p1 = source_repo,
+      source_p1 = source
+    ) |> 
+    sf::st_drop_geometry(),
+
+  
+  by = c("external_crossing_reference" = "my_crossing_reference")
+) |> 
+  ##if we want to see xings that we haven't flagged we filter rows that have na in both source_p1 and source_p2
+  dplyr::filter(is.na(source_p1) & is.na(source_p2)) |>
+  ## and we actually use the line above to get the ids_missing we assigned above as we need to flag manually (form 2019 - god knows why anymore)
+  ## everything before 2018 was not us so we will remove for now
+  dplyr::filter(assessment_date > "2018-01-01") |> 
+  dplyr::mutate(
+    source_repo = dplyr::case_when(
+      # ids_p2_missing comes from the `amalgamation` chunk built from this object - weird I know
+      external_crossing_reference %in% ids_p2_missing ~ "Parsnip_Fish_Passage",
+      TRUE ~ source_repo
+    )
+  ) 
+
+#left above-----------------------------------------------------------------------------------------------------
+# 
+# ## now we need to flag the phase 2 sites from the gis repos for the ones that have a pscis id
+# t3 <- dplyr::full_join(
+# 
+#   t2,
+# 
+#   sites_p2_gis |>
+#     dplyr::filter(!is.na(pscis_crossing_id)) |>
+#     dplyr::select(
+#       pscis_crossing_id,
+#       utm_zone,
+#       easting,
+#       northing,
+#       source_gis
+#       ) |>
+#     sf::st_drop_geometry(),
+# 
+#   by = c("stream_crossing_id" = "pscis_crossing_id")
+# )
+# 
+# ## now we need to flag the phase 2 sites from the gis repos for the ones that have a my_crossing_reference only
+# t4 <- dplyr::full_join(
+#   
+#   t3,
+#   
+#   sites_p2_gis |> 
+#     dplyr::filter(!is.na(my_crossing_reference)) |> 
+#     dplyr::mutate(my_crossing_reference = as.character(my_crossing_reference)) |> 
+#     dplyr::select(
+#       my_crossing_reference,
+#       utm_zone2 = utm_zone,
+#       easting2 = easting,
+#       northing2 = northing,
+#       source_gis2 = source_gis
+#       ) |> 
+#     sf::st_drop_geometry(),
+#   
+#   by = c("external_crossing_reference" = "my_crossing_reference")
+# ) |> 
+#   # now add a flag when there was a design by using ids_design
+#   dplyr::mutate(
+#     design_commissioned = 
+#       dplyr::case_when(
+#         stream_crossing_id %in% ids_design ~ TRUE,
+#         T ~ NA),
+#     remediation = 
+#       dplyr::case_when(
+#         stream_crossing_id %in% ids_remediation ~ TRUE,
+#         T ~ NA)
+#   ) 
+
+```
+
