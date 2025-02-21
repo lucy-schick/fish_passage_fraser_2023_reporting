@@ -511,6 +511,6 @@ photos_dry_run_after <- fpr::fpr_photo_remove_dupes(fs::path(dir_photos_onedrive
                                                   
 
 # backup the dry runs to a csv so we can track which photos were removed.
-readr::write_csv(photos_dry_run, "data/inputs_extracted/photo_duplicate_rm_log.csv" )
+readr::write_csv(photos_dry_run, "data/backup/photo_duplicate_rm_log.csv" )
 
 ```
