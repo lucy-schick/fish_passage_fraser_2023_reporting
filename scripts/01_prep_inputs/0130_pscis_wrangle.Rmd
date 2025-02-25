@@ -73,7 +73,9 @@ form_pscis_time_fix <-  form_pscis_raw |>
                date_time_start = dplyr::case_when(time_correct == FALSE ~ lubridate::with_tz(date_time_start, tzone = "America/Vancouver"), TRUE ~ date_time_start_raw)) |> 
   dplyr::relocate(date_time_start_raw, .before = date_time_start)
 
-### IF RUN, must update code below with pscis_export_raw_clean2
+
+form_pscis_raw <- form_pscis_time_fix |> 
+  dplyr::select(-date_time_start_raw)
 
 ```
 
@@ -144,7 +146,7 @@ Add the PSCIS Ids once they are in the system and burn back to geopackage.
 ```{r add-pscis-ids, eval = F}
 
 # Add pscis Ids
-form_pscis_ids <- dplyr::left_join(pscis_export_raw,
+form_pscis_ids <- dplyr::left_join(form_pscis_raw,
                          xref_pscis_my_crossing_modelled,
   by = c('my_crossing_reference' = 'external_crossing_reference')) |>
   
