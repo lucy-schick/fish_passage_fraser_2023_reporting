@@ -6,9 +6,9 @@ output:
     code_folding: "hide"
 params:
   repo_owner: "NewGraphEnvironment"
-  repo_name: "fish_passage_template_reporting"
-  gis_name: "sern_peace_fwcp_2023"
-  job_name: "2024-073-sern-peace-fish-passage"
+  repo_name: "fish_passage_fraser_2023_reporting"
+  gis_name: "sern_fraser_2024"
+  job_name: "2024-074-sern-fraser-fish-passage"
 editor_options: 
   chunk_output_type: console
 ---
@@ -23,10 +23,10 @@ This script is still a WIP and there is an issue about what still needs to be ad
 
 ```{r params}
 # path to raw form_fiss_site after QA
-path_form_pscis_raw <- fs::path('~/Projects/gis/sern_peace_fwcp_2023/data_field/2024/form_pscis_2024_raw.gpkg')
+path_form_pscis_raw <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_pscis_2024_raw.gpkg"))
 
 #NEW geopcackage path for the form after we have added columns as per this script
-path_form_pscis <- fs::path('~/Projects/gis/sern_peace_fwcp_2023/data_field/2024/form_pscis_2024.gpkg')
+path_form_pscis <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_pscis_2024.gpkg"))
 ```
 
 
@@ -57,19 +57,21 @@ form_pscis_raw <- fpr::fpr_sp_gpkg_backup(
 
 This is not always applicable and we will hopefully have a permanent fix soon.
 
-We need to fix the times because they are in UTC and we need them in PDT. This issue is documented here https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/18
+For Fraser 2024 - times are even more funky than usual- see issue here https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/123
 
-For peace 2024, the times are correct in `form_pscis` but are incorrect (in UTC) when `form_pscis_2024` gets read in in Q.
+The times in `form_pscis_2024_raw` are incorrect in the form they are in UTC - but for some reason when read into R the timezone is set to America/Vancouver even though the times are in UTC.
+
+In addition - the 4 sites I added by hand (issue here https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/121) are the correct time and timezone - so they don't need any fixing. 
+
 
 
 ```{r time-fix, eval F}
 
-## Fix time zone, issue here https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/18
- form_pscis_time_fix <- form_pscis_raw |>
- dplyr::mutate(date_time_start_raw = date_time_start,
-               date_time_start = lubridate::force_tz(date_time_start_raw, tzone = "America/Vancouver"),
-               date_time_start = lubridate::with_tz(date_time_start, tzone = "UTC"))
-
+form_pscis_time_fix <-  form_pscis_raw |> 
+ dplyr::mutate(date_time_start_raw = date_time_start) |> 
+ dplyr::mutate(date_time_start = dplyr::case_when(time_correct == FALSE ~ lubridate::force_tz(date_time_start_raw, tzone = "UTC"), TRUE ~ date_time_start_raw),
+               date_time_start = dplyr::case_when(time_correct == FALSE ~ lubridate::with_tz(date_time_start, tzone = "America/Vancouver"), TRUE ~ date_time_start_raw)) |> 
+  dplyr::relocate(date_time_start_raw, .before = date_time_start)
 
 ### IF RUN, must update code below with pscis_export_raw_clean2
 
