@@ -5,11 +5,15 @@
 # this is the name of the funding project we used to submit our phase 1 data to the province.  we use it to filter the raw
 # pscis data for our entire study area to obtain just the data we submitted. We use it to filter xref_pscis_my_crossing_modelled
 # but not sure that filtering is actually necessary - we could test and remove if it is not
-my_funding_project_number = "peace_2024_Phase1"
+my_funding_project_number = "fraser_2024_phase1"
+
+#Lets load the crossings from 2023 as well since this hasn't been done yet
+my_funding_project_number2 = "fraser_2023_phase1"
 
 
 # name the watershed groups in our study area
-wsg <- c('PARS', 'CARP', 'CRKD')
+wsg <- c('LCHL', 'NECR', 'FRAN', "MORK", "UFRA")
+
 
 
 # this object should be called bcfishpass_crossings_vw or something that better reflects what it is
@@ -45,9 +49,10 @@ pscis_assessment_svw <- fpr::fpr_db_query(
   )
 )
 
+
 # build a cross reference table for the stream_crossing_id and the external_crossing_reference which is the crossing id we assigned it in the field
 xref_pscis_my_crossing_modelled <- pscis_assessment_svw |>
-  dplyr::filter(funding_project_number == my_funding_project_number) |>
+  dplyr::filter(funding_project_number %in% c(my_funding_project_number, my_funding_project_number2)) |>
   dplyr::select(external_crossing_reference, stream_crossing_id) |>
   dplyr::mutate(external_crossing_reference = as.numeric(external_crossing_reference)) |>
   dplyr::arrange(external_crossing_reference) |>
