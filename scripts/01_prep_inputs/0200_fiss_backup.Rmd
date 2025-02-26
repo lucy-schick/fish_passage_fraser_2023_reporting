@@ -6,9 +6,9 @@ output:
     code_folding: "hide"
 params:
   repo_owner: "NewGraphEnvironment"
-  repo_name: "fish_passage_template_reporting"
-  gis_name: "sern_peace_fwcp_2023"
-  job_name: "2024-073-sern-peace-fish-passage"
+  repo_name: "fish_passage_fraser_2023_reporting"
+  gis_name: "sern_fraser_2024"
+  job_name: "2024-074-sern-fraser-fish-passage"
 editor_options: 
   chunk_output_type: console
 ---
@@ -23,7 +23,7 @@ options(knitr.kable.NAN = '--')
 
 # Purpose of this script
 
-This scripts is used to backup the `form_fiss_site_2024.gpkg` file before QA in QGIS.
+This scripts is used to backup the `form_fiss_site_2024_raw.gpkg` file before QA in QGIS.
 
 As of January 2025, we are now doing all pre-QA edits in QGIS instead of R, to reduce the amount of back and forth between Q and R. Most of the changes previously made in this script have been moved to `0210_fiss_export_to_template.Rmd`. 
 
@@ -36,7 +36,7 @@ Name the project directory we are pulling from and import the data. We use `fpr_
 `update_site_id = TRUE` now checks for duplicate sites.
 
 ```{r import}
-path_form_fiss_site_raw <- fs::path('~/Projects/gis/sern_peace_fwcp_2023/data_field/2024/form_fiss_site_2024_raw.gpkg')
+path_form_fiss_site_raw <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_fiss_site_2024_raw.gpkg"))
 
 form_fiss_site_raw <- fpr::fpr_sp_gpkg_backup(
   path_gpkg = path_form_fiss_site_raw,
@@ -64,7 +64,7 @@ Peace 2024 - No duplicate sites found
 dups <- form_fiss_site_raw  |> 
   dplyr::filter(!is.na(local_name)) |> 
   dplyr::group_by(local_name) |> 
-  dplyr::filter(n()>1)
+  dplyr::filter(dplyr::n()>1)
 ```
 
 
