@@ -86,6 +86,8 @@ Do some more cleaning
 - fix some vocabulary
 - add in the pscis assessment phase
 
+Crossing 22202142 is a phase 1 and phase 2 site. It needs to be submitted in the pscis_phase1 spreadsheet, then resubmitted in the pscis_phase2 spreadsheet once we have its PSCIS ID.
+
 ```{r pscis-clean}
 
 form_pscis_clean <- form_pscis_raw |>
@@ -94,7 +96,10 @@ form_pscis_clean <- form_pscis_raw |>
   
   # add in pscis phase
   ## DOUBLE CHECK IF THERE ARE ANY SITES THAT ARE PHASE 1 AND 2 SITES!!! FIRST TIME HAB CON SITES
-  dplyr::mutate(pscis_phase = case_when(
+  # Crossing 22202142 is a phase 1 and phase 2 site. It needs to be submitted in the pscis_phase1 spreadsheet, then resubmitted in the pscis phase 2 spreadsheet once we have its PSCIS ID. 
+  dplyr::mutate(across(tidyselect::starts_with("assess_"), stringr::str_to_title)) |>
+
+  dplyr::mutate(pscis_phase = dplyr::case_when(
     assess_type_phase1 == "Yes" ~ "phase 1",
     assess_type_phase2 == "Yes" ~ "phase 2",
     assess_type_reassessment == "Yes" ~ "reassessment"),

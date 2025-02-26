@@ -6,7 +6,9 @@ output:
     code_folding: "hide"
 params:
   repo_owner: "NewGraphEnvironment"
-  repo_name: "fish_passage_template_reporting"
+  repo_name: "fish_passage_fraser_2023_reporting"
+  gis_name: "sern_fraser_2024"
+  job_name: "2024-074-sern-fraser-fish-passage"
 editor_options: 
   chunk_output_type: console
 ---
@@ -21,7 +23,7 @@ This scripts is used to export pscis data to a csv for cut and paste into PSCIS 
 Name the project directory we are pulling from and import the form.
 
 ```{r import}
-path_form_pscis <- fs::path('~/Projects/gis/sern_peace_fwcp_2023/data_field/2024/form_pscis_2024.gpkg')
+path_form_pscis <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_pscis_2024.gpkg"))
 
 # read in cleaned form from Q after review and finalization
 # backup to csv and rdata
@@ -37,12 +39,11 @@ pscis_export_raw <- fpr::fpr_sp_gpkg_backup(
 
 
 ## Fix times
+Fraser 2024 - NOT RUN
 
 This is not always applicable and we will hopefully have a permanent fix soon.
 
 We need to fix the times because they are in UTC and we need them in PDT. This issue is documented here https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/18
-
-For peace 2024, the times are correct in `form_pscis` but are incorrect (in UTC) when `form_pscis_2024` gets read in in Q.
 
 
 ```{r time-fix, eval F}
@@ -63,6 +64,8 @@ For peace 2024, the times are correct in `form_pscis` but are incorrect (in UTC)
 We need to check for sites that have a culvert length (`length_or_width_meters`) over 99.9 or a fill depth (`fill_depth_meters`) over 9.9, because 
 anything over this will cause errors in submission sheet. If over the maximums, we will change them to 99.9 and 9.9,
 respectively, and will append a note to the assessment comments.
+
+Fraser 2024 - no sites have this issue.
 
 ```{r max-cul-leng-fill-dpt}
 
@@ -98,16 +101,13 @@ pscis_export_prep1 <- pscis_export_raw |>
 ## Clean and prep
 
 Do some final cleaning and prepare the data for easy copy paste into the spreadsheets.
-- append MoTi ids to the comments
+- append MoTi ids to the comments - for Fraser 2024 we only have the one `moti_chris_culvert_id` column and not `moti_chris_culvert_id2` or `moti_chris_culvert_id3` so we will comment out the code to add the 2nd and 3rd culvert ids. 
 
-TO ADD:
-- change crossing type to other if subtype is ford 
-- fill in resemble channel to no if not yes. This is required when in the spreadsheet. ugh.
 
 ```{r clean-prep}
 
 ## prep for cut and paste to csvs by subsetting columns to those in spreadsheet
-pscis_export <- pscis_export_prep1 |>
+pscis_export <- pscis_export_raw |>
   dplyr::mutate(date_time_start = lubridate::ymd_hms(date_time_start, tz = "America/Vancouver"),
                 date = lubridate::date(date_time_start)) |> 
   
@@ -116,8 +116,13 @@ pscis_export <- pscis_export_prep1 |>
     moti_chris_culvert_id > 1000000 ~ paste0(assessment_comment, ' MoTi chris_culvert_id: ', moti_chris_culvert_id),
     moti_chris_culvert_id < 1000000 ~ paste0(assessment_comment, ' MoTi chris_hwy_structure_road_id: ', moti_chris_culvert_id),
     TRUE ~ assessment_comment)) |>
-  dplyr::mutate(assessment_comment = dplyr::case_when(moti_chris_culvert_id2 > 1000000 ~ paste0(assessment_comment, ', ', moti_chris_culvert_id2), TRUE ~ assessment_comment)) |>
-  dplyr::mutate(assessment_comment = dplyr::case_when(moti_chris_culvert_id3 > 1000000 ~ paste0(assessment_comment, ', ', moti_chris_culvert_id3), TRUE ~ assessment_comment)) |>
+  #for Fraser 2024 we only have the one `moti_chris_culvert_id` column so lets comment out these below
+  # dplyr::mutate(assessment_comment = dplyr::case_when(moti_chris_culvert_id2 > 1000000 ~ paste0(assessment_comment, ', ', moti_chris_culvert_id2), TRUE ~ assessment_comment)) |>
+  # dplyr::mutate(assessment_comment = dplyr::case_when(moti_chris_culvert_id3 > 1000000 ~ paste0(assessment_comment, ', ', moti_chris_culvert_id3), TRUE ~ assessment_comment)) |>
+  
+  # If the crossing subtype is a ford then change the crossing type to other to fit spreadsheet requirements
+  dplyr::mutate(crossing_type = dplyr::case_when(crossing_subtype == "Ford" ~ "Other", TRUE ~ crossing_type)) |> 
+  
   
   # only select columns from the template object, as well as site_id, pscis_phase, and date_time_start
   dplyr::select(
@@ -146,10 +151,10 @@ pscis_export <- pscis_export_prep1 |>
 Now burn to a csv in the the `imports_extracted` directory. This is data we import to the project but they are extracted from other places.
 
 ```{r pscis-burn-csv}
-dir.create("data/inputs_extracted")
+fs::dir_create("data/inputs_extracted")
 
-pscis_export %>%
-  readr::write_csv('data/inputs_extracted/pscis_export_submission.csv', na='')
+pscis_export |> 
+  readr::write_csv('data/inputs_extracted/pscis_export_submission_2024.csv', na='')
 
 ```
 
@@ -174,9 +179,9 @@ calculate the recommended replacement structure, type, and size using `sfpr_stru
 # `fpr_import_pscis_all` reads and backups all pscis spreadsheets but you only need to run `sfpr_structure_size_type` for the
 # assessment phases you have.
 pscis_list <- fpr::fpr_import_pscis_all()
-pscis_phase1 <- pscis_list %>% purrr::pluck('pscis_phase1')
-pscis_phase2 <- pscis_list %>% purrr::pluck('pscis_phase2')
-pscis_reassessments <- pscis_list %>% purrr::pluck('pscis_reassessments')
+pscis_phase1 <- pscis_list |> purrr::pluck('pscis_phase1')
+pscis_phase2 <- pscis_list |> purrr::pluck('pscis_phase2')
+pscis_reassessments <- pscis_list |> purrr::pluck('pscis_reassessments')
 
 # `sfpr_structure_size_type` burns the structure, type, and size to a csv called `str_type_{your_assessment_phase}.csv`
 sfpr_structure_size_type(pscis_phase1)
