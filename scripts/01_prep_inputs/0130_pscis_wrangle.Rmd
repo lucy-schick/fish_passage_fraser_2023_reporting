@@ -13,6 +13,13 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r setup, echo=TRUE, include = TRUE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, dpi=60, out.width = "100%", eval = FALSE)
+options(scipen=999)
+options(knitr.kable.NA = '--') #'--'
+options(knitr.kable.NAN = '--')
+```
+
 
 # Purpose of this script
 

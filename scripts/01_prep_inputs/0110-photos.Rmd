@@ -160,7 +160,7 @@ fs::file_copy(
 
 form_pscis_photos_raw <- fpr::fpr_sp_gpkg_backup(
   form_new,
-  update_site_id = TRUE, #this checks for duplicate photos 
+  update_site_id = FALSE, #this checks for duplicate photos 
   # turned this off for now but was on first time
   write_back_to_path = FALSE,
   return_object = TRUE
