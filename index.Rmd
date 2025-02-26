@@ -29,19 +29,21 @@ output:
             in_header: header.html
             
 params:
-  repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/'
-  report_url: 
+  repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting'
+  report_url: 'https://www.newgraphenvironment.com/fish_passage_fraser_2023_reporting'
+  job_name: '2024-074-sern-fraser-fish-passage'
+  gis_project_name: "sern_fraser_2023"
+  model_species: "st"
   update_packages: FALSE
   update_form_pscis: TRUE
+  update_form_fiss_site: FALSE
   update_gis: FALSE
-  gis_project_name: "sern_fraser_2023"
 nocite: |
 
 documentclass: book
 bibliography: "`r rbbt::bbt_write_bib('references.bib', overwrite = TRUE)`"
 biblio-style: apalike
 link-citations: no
-github-repo: https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting
 description: "Restoring Fish Passage in the Fraser Region"
 
 
