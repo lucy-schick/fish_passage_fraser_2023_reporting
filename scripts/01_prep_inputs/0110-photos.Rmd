@@ -248,7 +248,7 @@ CANT USUALLY DO THIS UNTILL WE SUBMIT THE DATA AND GET THE PSCIS IDS
 
 # copy the gpkg to the new location - this is just as easily done by hand. Named it weird
 form_raw <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, 'form_fiss_site.gpkg'))
-form_new <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, 'data_field/2024/form_fiss_site_2024.gpkg'))
+form_new <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, 'data_field/2024/form_fiss_site_2024_raw.gpkg'))
 
 fs::dir_create(fs::path_dir(form_new))
 
@@ -266,20 +266,27 @@ form_fiss_photos_raw <- fpr::fpr_sp_gpkg_backup(
   col_northing = "utm_northing"
 ) 
 
-
 form_fiss_photos <- form_fiss_photos_raw |> 
-  tidyr::separate(local_name, into = c('site', 'photo_tag_site'),
-                  extra = "merge", 
-                  fill = "right", 
-                  remove = FALSE) |> 
-  tidyr::separate(local_name, into = c('site', 'location', 'ef'), remove = FALSE) |> 
-  mutate(site_id = paste0(site, location))
+  tidyr::separate_wider_delim(local_name, 
+                              delim = "_", 
+                              names = c('site', 'location', 'ef'),
+                              too_few = "align_start",
+                              cols_remove = FALSE) |> 
+  dplyr::mutate(site = stringr::str_replace_all(site, " ", "_")) |> 
+  # create the photo_tag_site
+  dplyr::mutate(photo_tag_site = stringr::str_extract(local_name, "(?<=_).*")) |> 
+  dplyr::relocate(photo_tag_site, .after = gazetted_names) |> 
+  dplyr::relocate(location:ef, .after = local_name) |>
+  # remove any whitespace because this messes up the naming later on
+  dplyr::mutate(photo_tag_site = stringr::str_trim(photo_tag_site))
+
+
 
 # check for duplicate sites
 form_fiss_photos |>
   dplyr::filter(!is.na(local_name)) |>
-  group_by(local_name) |>
-  dplyr::filter(n()>1) |>
+  dplyr::group_by(local_name) |>
+  dplyr::filter(dplyr::n()>1) |>
   nrow()
 
 # check for empty sites
@@ -287,13 +294,14 @@ form_fiss_photos |>
   dplyr::filter(is.na(local_name)) |>
   nrow()
 
+# Fraser 2024 - NOT RUN - all sorted photos are kept on OneDrive
 # create site photo directories right on mergin to make them easy to share...
-form_fiss_photos |>
-  dplyr::pull(site) |>
-  as.character() |>
-  purrr::map(
-    fpr::fpr_photo_folders, path = dir_photos_mergin_raw
-  )
+# form_fiss_photos |>
+#   dplyr::pull(site) |>
+#   as.character() |>
+#   purrr::map(
+#     fpr::fpr_photo_folders, path = dir_photos_mergin_raw
+#   )
 
 # also create the directories on onedrive
 form_fiss_photos |>
@@ -314,7 +322,7 @@ fpr::fpr_photo_rename(
   # we need to pick the correct column for this dataframe
   col_directories = site,
   dir_from_stub = paste0(dir_photos_mergin_resized, "/"),
-  dir_to_stub = paste0(dir_photos_mergin_raw, "/"),
+  dir_to_stub = paste0(dir_photos_onedrive, "/"),
   col_string_add = TRUE,
   # we just made this column
   col_string_append = photo_tag_site
@@ -331,7 +339,7 @@ identical(
     fs::dir_ls(dir_photos_mergin_raw, recurse = T)),
   # 202 - there were a few photos in the "Photos" directory from a mistake in one of the forms... Can't rememver 
   length(
-    fs::dir_ls(dir_photos_mergin_resized, recurse = T))
+    fs::dir_ls(dir_photos_onedrive, recurse = T))
 )
 ```
 
@@ -414,6 +422,13 @@ When a photo is renamed using `fpr::fpr_photo_rename` the photo renamed is not d
 
 # looks we are having the same issue as documented above, where there are some photos with no metadata so they are being scene as duplicates. We will follow the same fix as in that issue:
 
+# use fpr_photo_remove_dupes to see the duplicated photos
+photos_dry_run <- fpr::fpr_photo_remove_dupes(fs::path(dir_photos_onedrive, "sorted"))
+
+# use fpr_photo_remove_dupes to see the triplicated photos
+photos_dry_run3 <- fpr::fpr_photo_remove_dupes(fs::path(dir_photos_onedrive, "sorted"), min_replicates = 3)
+
+
 # These are the photos that are missing metadata and are NOT duplicated but they are being seen as duplicates. 
 photos_no_metadata <- photos_dry_run |> 
   dplyr::filter(is.na(date_time_original))
@@ -473,7 +488,7 @@ photos_dry_run_after <- fpr::fpr_photo_remove_dupes(fs::path(dir_photos_onedrive
                                                   
 
 # backup the dry runs to a csv so we can track which photos were removed.
-readr::write_csv(photos_dry_run, "data/inputs_extracted/photo_duplicate_rm_log.csv" )
+readr::write_csv(photos_dry_run, "data/inputs_extracted/photo_duplicate_rm_log2.csv" )
 
 
 # DONT FORGET !!!
