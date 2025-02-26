@@ -1,20 +1,42 @@
-# Scripts to transfer photos and excel file to the PSCIS submission folder
+---
+title: "0150_pscis_export_submission"
+date: "Created: 2025-02-25 | Updated: `r format(Sys.Date(), '%Y-%m-%d')`"
+output: 
+  html_document:
+    code_folding: "hide"
+params:
+  repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting'
+  report_url: 'https://www.newgraphenvironment.com/fish_passage_fraser_2023_reporting'
+  repo_name: "fish_passage_fraser_2023_reporting"
+  gis_name: "sern_fraser_2024"
+  job_name: "2024-074-sern-fraser-fish-passage"
+  name_pdf: "fish_passage_fraser_2023_reporting.pdf"
+  project_area: "fraser"
+  project_year: "2024"
+editor_options: 
+  chunk_output_type: console
+---
 
-##QA to be sure that you have all 6 required photos for submission to PSCIS
-##convert jpg (or other formats - need to code) to JPG for consistency and to avoid issues with submission/reporting
-##move the photos and spreadsheet ready for submission to pscis
-
-## Prepped and updated for Peace 2024 data.
-
-source('scripts/packages.R')
-source('scripts/functions.R')
-
-library(fpr)
-library(tidyverse)
-library(fs)
+```{r setup, echo=TRUE, include = TRUE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, dpi=60, out.width = "100%", eval = FALSE)
+options(scipen=999)
+options(knitr.kable.NA = '--') #'--'
+options(knitr.kable.NAN = '--')
+```
 
 
-# PSCIS Submissions -------------
+# Purpose of this script
+
+Scripts to transfer photos and excel file to the PSCIS submission folder
+
+We also QA to be sure that we have all 6 required photos for submission to PSCIS
+
+
+# PSCIS Submissions
+
+Functions needed for this script
+
+```{r functions}
 
 tfpr_filter_list <- function(idx){
   filestocopy_list[idx]
@@ -23,33 +45,33 @@ tfpr_filter_list <- function(idx){
 tfpr_photo_change_name <- function(filenames_to_change = filestocopy_list){
   gsub(filenames_to_change, pattern = path_photos, replacement = targetdir)
 }
+```
 
 
-name_repo <- 'fish_passage_template_reporting'
-name_pdf <- 'fish_passage_peace_2024_reporting.pdf' #see the output.yml
-url_github <- 'https://github.com/NewGraphEnvironment/'
-url_gitpages <- 'https://newgraphenvironment.github.io/'
+## Phase 1
 
+### Move Photos
 
+Move photos to Onedrive
 
-## Phase 1-----------------------------------------------------------------
+```{r copy-photos}
 
 name_submission <- 'pscis_phase1.xlsm'
+name_folder <- paste0("PSCIS_", params$project_area,"_", params$project_year, "_phase1")
 
 # Create folders and copy over photos -------------
 
-# need to add photos to local machine to upload to PSCIS
-targetdir = fs::path('~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2024/peace/PSCIS_peace_2024_phase1')
+targetdir = fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/", params$project_year, params$project_area, name_folder))
 
 # create the directory. Take note about which phase
 fs::dir_create(targetdir)
 
 
-# use the pscis spreadsheet to make the folders to copy the photos to. For peace 2024, the photos are stored in Onedrive.
+# use the pscis spreadsheet to make the folders to copy the photos to. For Fraser 2024, the photos are stored in Onedrive.
 
-path_photos <- fs::path('/Users/lucyschick/Library/CloudStorage/OneDrive-Personal/Projects/2024-073-sern-peace-fish-passage/data/photos')
+path_photos = fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/", params$job_name, "data/photos"))
 
-d <- fpr::fpr_import_pscis(workbook_name = 'pscis_phase1.xlsm')
+d <- fpr::fpr_import_pscis(workbook_name = name_submission)
 
 
 folderstocopy<- d$my_crossing_reference |> as.character()
@@ -87,7 +109,7 @@ photo_sort_tracking <- path_to_photos |>
 
 ##burn to csv
 photo_sort_tracking |>
-  readr::write_csv(file = 'data/photos/photo_sort_tracking_phase1.csv')
+  readr::write_csv(file = "data/backup/photo_sort_tracking_phase1.csv")
 
 ## change path name so we can paste to folders
 filestopaste_list <- filestocopy_list |>
@@ -98,71 +120,93 @@ mapply(fs::file_copy,
        path =  filestocopy_list,
        new_path = filestopaste_list)
 
+```
 
-# QA photos -------------
+
+### QA Photos
+
+QA to be sure that we have all 6 required photos for submission to PSCIS.
+
+```{r photo-qa}
 
 # do a little QA to be sure all the photos are there.
 
-t <- fpr::fpr_photo_qa_df(dat = d, dir_photos = '/Users/lucyschick/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2024/peace/PSCIS_peace_2024_phase1/')
+t <- fpr::fpr_photo_qa_df(dat = d, dir_photos = fs::path(targetdir, "/"))
+
+# t shows any MISSING photos - no missing photos in this case
+
+```
 
 
-# Move Pscis file -------------
+### Move Files
 
-##also move over the pscis file
+Move Pscis file
+
+```{r move-pscis-file}
+
 fs::file_copy(path = fs::path('data', name_submission),
               new_path = fs::path(targetdir, name_submission),
               overwrite = T)
+```
+
+
+Make a little readme for the pdf for upload to ecocat and other details
+
+```{r make-readme}
 
 #make a little readme for the pdf for upload to ecocat and other details
 writeLines(
   paste(
     "Online interactive report is located at: ",
-    paste0(url_gitpages, name_repo),
+    params$report_url,
     "",
-    "A versioned pdf of the report can be downloaded from: ",
-    paste0(url_github, name_repo, "/raw/main/docs/", name_pdf),
+    "A versioned PDF of the report can be downloaded from: ",
+    paste0(params$repo_url, "/raw/main/docs/", params$name_pdf),
     "",
     "Raw data is available here: ",
-    paste0(url_github, name_repo, "/tree/main/data"),
+    paste0(params$repo_url, "/blob/main/data"),
     "",
-    "All scripts to produce online interactive reporting and pdf are located at: ",
-    paste0(url_github, name_repo),
+    "All scripts to produce the online interactive report and PDF are located at: ",
+    params$repo_url,
     sep = "\n"
   ),
-  fs::path(targetdir, 'readme.txt')
+  fs::path(targetdir, "readme.txt")
 )
 
-## in the future we will need to add the copy calls to move the directory off of onedrive to
-#  the windows machine used for project submission.  Don't want to set up the machine right now
-# so will do it by hand. What an insane pain
+
+```
 
 
 
+## Phase 2
 
-## Phase 2-----------------------------------------------------------------
+### Move Photos
+
+Move photos to Onedrive
+
+```{r copy-photos}
 
 name_submission <- 'pscis_phase2.xlsm'
+name_folder <- paste0("PSCIS_", params$project_area,"_", params$project_year, "_phase2")
 
 # Create folders and copy over photos -------------
 
-# need to add photos to local machine to upload to PSCIS
-targetdir = fs::path('~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2024/peace/PSCIS_peace_2024_phase2')
+targetdir = fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/", params$project_year, params$project_area, name_folder))
 
 # create the directory. Take note about which phase
 fs::dir_create(targetdir)
 
 
-# use the pscis spreadsheet to make the folders to copy the photos to. For peace 2024, the photos are stored in Onedrive.
+# use the pscis spreadsheet to make the folders to copy the photos to. For Fraser 2024, the photos are stored in Onedrive.
 
-path_photos <- fs::path('/Users/lucyschick/Library/CloudStorage/OneDrive-Personal/Projects/2024-073-sern-peace-fish-passage/data/photos')
+path_photos = fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/", params$job_name, "data/photos"))
 
-d <- fpr::fpr_import_pscis(workbook_name = 'pscis_phase2.xlsm')
+d <- fpr::fpr_import_pscis(workbook_name = name_submission)
 
 
-folderstocopy<- d$pscis_crossing_id |> as.character()
+folderstocopy<- d$my_crossing_reference |> as.character()
 
 path_to_photos <- fs::path(path_photos, folderstocopy)
-
 
 # here we transfer just the photos with labels over into the PSCIS directory where we will upload from to the gov interface
 
@@ -195,7 +239,7 @@ photo_sort_tracking <- path_to_photos |>
 
 ##burn to csv
 photo_sort_tracking |>
-  readr::write_csv(file = 'data/photos/photo_sort_tracking_phase2.csv')
+  readr::write_csv(file = "data/backup/photo_sort_tracking_phase2.csv")
 
 ## change path name so we can paste to folders
 filestopaste_list <- filestocopy_list |>
@@ -206,67 +250,94 @@ mapply(fs::file_copy,
        path =  filestocopy_list,
        new_path = filestopaste_list)
 
+```
 
-# QA photos -------------
+
+### QA Photos
+
+QA to be sure that we have all 6 required photos for submission to PSCIS.
+
+```{r photo-qa}
 
 # do a little QA to be sure all the photos are there.
 
-t <- fpr::fpr_photo_qa_df(dat = d, dir_photos = '/Users/lucyschick/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2024/peace/PSCIS_peace_2024_phase2/')
+t <- fpr::fpr_photo_qa_df(dat = d, dir_photos = fs::path(targetdir, "/"))
+
+# t shows any MISSING photos - no missing photos in this case
+
+```
 
 
-# Move Pscis file -------------
+### Move Files
 
-##also move over the pscis file
+Move Pscis file
+
+```{r move-pscis-file}
+
 fs::file_copy(path = fs::path('data', name_submission),
               new_path = fs::path(targetdir, name_submission),
               overwrite = T)
+```
+
+
+Make a little readme for the pdf for upload to ecocat and other details
+
+```{r make-readme}
 
 #make a little readme for the pdf for upload to ecocat and other details
 writeLines(
   paste(
     "Online interactive report is located at: ",
-    paste0(url_gitpages, name_repo),
+    params$report_url,
     "",
-    "A versioned pdf of the report can be downloaded from: ",
-    paste0(url_github, name_repo, "/raw/main/docs/", name_pdf),
+    "A versioned PDF of the report can be downloaded from: ",
+    paste0(params$repo_url, "/raw/main/docs/", params$name_pdf),
     "",
     "Raw data is available here: ",
-    paste0(url_github, name_repo, "/tree/main/data"),
+    paste0(params$repo_url, "/blob/main/data"),
     "",
-    "All scripts to produce online interactive reporting and pdf are located at: ",
-    paste0(url_github, name_repo),
+    "All scripts to produce the online interactive report and PDF are located at: ",
+    params$repo_url,
     sep = "\n"
   ),
-  fs::path(targetdir, 'readme.txt')
+  fs::path(targetdir, "readme.txt")
 )
 
 
+```
 
 
-## Reassessments -----------------------------------------------------------------
+
+
+## Reassessments
+
+### Move Photos
+
+Move photos to Onedrive
+
+```{r copy-photos}
 
 name_submission <- 'pscis_reassessments.xlsm'
+name_folder <- paste0("PSCIS_", params$project_area,"_", params$project_year, "_reassessments")
 
 # Create folders and copy over photos -------------
 
-# need to add photos to local machine to upload to PSCIS
-targetdir = fs::path('~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2024/peace/PSCIS_peace_2024_reassessments')
+targetdir = fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/", params$project_year, params$project_area, name_folder))
 
 # create the directory. Take note about which phase
 fs::dir_create(targetdir)
 
 
-# use the pscis spreadsheet to make the folders to copy the photos to. For peace 2024, the photos are stored in Onedrive.
+# use the pscis spreadsheet to make the folders to copy the photos to. For Fraser 2024, the photos are stored in Onedrive.
 
-path_photos <- fs::path('/Users/lucyschick/Library/CloudStorage/OneDrive-Personal/Projects/2024-073-sern-peace-fish-passage/data/photos')
+path_photos = fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/", params$job_name, "data/photos"))
 
-d <- fpr::fpr_import_pscis(workbook_name = 'pscis_reassessments.xlsm')
+d <- fpr::fpr_import_pscis(workbook_name = name_submission)
 
 
-folderstocopy<- d$pscis_crossing_id |> as.character()
+folderstocopy<- d$my_crossing_reference |> as.character()
 
 path_to_photos <- fs::path(path_photos, folderstocopy)
-
 
 # here we transfer just the photos with labels over into the PSCIS directory where we will upload from to the gov interface
 
@@ -299,7 +370,7 @@ photo_sort_tracking <- path_to_photos |>
 
 ##burn to csv
 photo_sort_tracking |>
-  readr::write_csv(file = 'data/photos/photo_sort_tracking_reassessments.csv')
+  readr::write_csv(file = "data/backup/photo_sort_tracking_reassessments.csv")
 
 ## change path name so we can paste to folders
 filestopaste_list <- filestocopy_list |>
@@ -310,37 +381,61 @@ mapply(fs::file_copy,
        path =  filestocopy_list,
        new_path = filestopaste_list)
 
+```
 
-# QA photos -------------
+
+### QA Photos
+
+QA to be sure that we have all 6 required photos for submission to PSCIS.
+
+```{r photo-qa}
 
 # do a little QA to be sure all the photos are there.
 
-t <- fpr::fpr_photo_qa_df(dat = d, dir_photos = '/Users/lucyschick/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2024/peace/PSCIS_peace_2024_reassessments/')
+t <- fpr::fpr_photo_qa_df(dat = d, dir_photos = fs::path(targetdir, "/"))
+
+# t shows any MISSING photos - no missing photos in this case
+
+```
 
 
-# Move Pscis file -------------
+### Move Files
 
-##also move over the pscis file
+Move Pscis file
+
+```{r move-pscis-file}
+
 fs::file_copy(path = fs::path('data', name_submission),
               new_path = fs::path(targetdir, name_submission),
               overwrite = T)
+```
+
+
+Make a little readme for the pdf for upload to ecocat and other details
+
+```{r make-readme}
 
 #make a little readme for the pdf for upload to ecocat and other details
 writeLines(
   paste(
     "Online interactive report is located at: ",
-    paste0(url_gitpages, name_repo),
+    params$report_url,
     "",
-    "A versioned pdf of the report can be downloaded from: ",
-    paste0(url_github, name_repo, "/raw/main/docs/", name_pdf),
+    "A versioned PDF of the report can be downloaded from: ",
+    paste0(params$repo_url, "/raw/main/docs/", params$name_pdf),
     "",
     "Raw data is available here: ",
-    paste0(url_github, name_repo, "/tree/main/data"),
+    paste0(params$repo_url, "/blob/main/data"),
     "",
-    "All scripts to produce online interactive reporting and pdf are located at: ",
-    paste0(url_github, name_repo),
+    "All scripts to produce the online interactive report and PDF are located at: ",
+    params$repo_url,
     sep = "\n"
   ),
-  fs::path(targetdir, 'readme.txt')
+  fs::path(targetdir, "readme.txt")
 )
+
+
+```
+
+
 
