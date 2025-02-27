@@ -33,7 +33,7 @@ params:
   report_url: 'https://www.newgraphenvironment.com/fish_passage_fraser_2023_reporting'
   job_name: '2024-074-sern-fraser-fish-passage'
   gis_project_name: "sern_fraser_2023"
-  model_species: "st"
+  model_species: "ch"
   update_packages: FALSE
   update_form_pscis: TRUE
   update_form_fiss_site: FALSE

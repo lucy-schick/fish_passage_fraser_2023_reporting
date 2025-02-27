@@ -18,6 +18,7 @@ replace_empty_with_na <- function(x) {
 # specify in index.Rmd YAML which species you want to use for the modelling
 # For Skeena we use steelhead
 # For Peace we use bull trout
+# For Fraser we are using Chinook, maybe we should use bt?
 
 # Convert the species-specific rearing column to a symbol upfront
 model_species_rearing_km <- rlang::sym(paste0(params$model_species, "_rearing_km"))
@@ -26,17 +27,19 @@ hab_priority_prep <- form_fiss_site |>
   dplyr::select(
     stream_name = gazetted_names,
     local_name,
+    site,
+    ef,
     date_time_start
   ) |>
-  tidyr::separate(local_name, c("site", "location", "ef"), sep = "_", remove = FALSE) |>
   dplyr::rowwise() |>
   dplyr::mutate(
     crew_members = list(fpr::fpr_my_bcfishpass(dat = form_fiss_site, site = local_name, col_filter = local_name, col_pull = crew_members)),
     length_surveyed = list(fpr::fpr_my_bcfishpass(dat = form_fiss_site, site = local_name, col_filter = local_name, col_pull = site_length)),
     hab_value = list(fpr::fpr_my_bcfishpass(dat = form_fiss_site, site = local_name, col_filter = local_name, col_pull = habitat_value_rating)),
 
+    # Fraser 2024- no my_priority column in form_pscis
     # Priority pulled from form_pscis
-    priority = list(fpr::fpr_my_bcfishpass(dat = form_pscis, site = site, col_filter = site_id, col_pull = my_priority)),
+    # priority = list(fpr::fpr_my_bcfishpass(dat = form_pscis, site = site, col_filter = site_id, col_pull = my_priority)),
 
     # Comments field
     comments = list(fpr::fpr_my_bcfishpass(dat = form_fiss_site, site = local_name, col_filter = local_name, col_pull = comments)),
@@ -54,9 +57,11 @@ hab_priority_prep <- form_fiss_site |>
     dplyr::across(everything(), ~replace_empty_with_na(.))
   ) |>
   dplyr::ungroup() |>
-  dplyr::filter(is.na(ef)) |>
-  dplyr::mutate(priority = dplyr::case_when(priority == "mod" ~ "moderate", TRUE ~ priority)) |>
-  dplyr::mutate(priority = stringr::str_to_title(priority)) |>
+  # if we have ef sites then we also have normal hab con sites, so then filterout the ef sites. If no ef sites then comments out this code
+  # dplyr::filter(is.na(ef)) |>
+  # Fraser 2024- no my_priority column in form_pscis
+  # dplyr::mutate(priority = dplyr::case_when(priority == "mod" ~ "moderate", TRUE ~ priority)) |>
+  # dplyr::mutate(priority = stringr::str_to_title(priority)) |>
   dplyr::mutate(hab_value = stringr::str_to_title(hab_value)) |>
   dplyr::arrange(local_name, crew_members, date_time_start) |>
   sf::st_drop_geometry()
@@ -108,11 +113,12 @@ rd_class_surface <- bcfishpass |>
          my_road_class = stringr::word(my_road_class, 1),
          my_road_class = stringr::str_to_lower(my_road_class))
 
-## Unique to peace 2024 - bcfishpass says Fern FSR is paved which it is definitely not. Need to change by hand so
+## Unique to fraser 2024 - bcfishpass says Stella road is loose but it is paved. Need to change by hand so
 # that the cost estimate works.
 
 rd_class_surface <- rd_class_surface |>
-  dplyr::mutate(my_road_surface = dplyr::case_when(stream_crossing_id == "125261" ~ "rough",
+  dplyr::mutate(my_road_surface = dplyr::case_when(stream_crossing_id == "199172" ~ "paved",
+                                                   stream_crossing_id == "7622" ~ "paved",
                                                    TRUE ~ my_road_surface))
 
 
