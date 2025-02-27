@@ -6,12 +6,20 @@ output:
     code_folding: "hide"
 params:
   repo_owner: "NewGraphEnvironment"
-  repo_name: "fish_passage_template_reporting"
-  gis_name: "sern_peace_fwcp_2023"
-  job_name: "2024-073-sern-peace-fish-passage"
+  repo_name: "fish_passage_fraser_2023_reporting"
+  gis_name: "sern_fraser_2024"
+  job_name: "2024-074-sern-fraser-fish-passage"
 editor_options: 
   chunk_output_type: console
 ---
+
+```{r setup, echo=TRUE, include = TRUE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, dpi=60, out.width = "100%", eval = FALSE)
+options(scipen=999)
+options(knitr.kable.NA = '--') #'--'
+options(knitr.kable.NAN = '--')
+```
+
 
 # Purpose of this script
 
@@ -19,19 +27,17 @@ Add columns to `form_fiss_site_2024` and then burn back a NEW geopackage.
 
 ```{r params}
 # path to raw form_fiss_site after QA
-path_form_fiss_site_raw <- fs::path('~/Projects/gis/sern_peace_fwcp_2023/data_field/2024/form_fiss_site_2024_raw.gpkg')
+path_form_fiss_site_raw <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_fiss_site_2024_raw.gpkg"))
 
 #NEW geopcackage path for the form after we have added columns as per this script
-path_form_fiss_site <- fs::path('~/Projects/gis/sern_peace_fwcp_2023/data_field/2024/form_fiss_site_2024.gpkg')
+path_form_fiss_site <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_fiss_site_2024.gpkg"))
 ```
-
-
 
 ## Backup the form after the QA
 
 ```{r backup-raw}
 
-form_fiss_site <- fpr::fpr_sp_gpkg_backup(
+form_fiss_site_raw <- fpr::fpr_sp_gpkg_backup(
   path_gpkg = path_form_fiss_site_raw,
   dir_backup = "data/backup/",
   update_utm = TRUE,
@@ -43,13 +49,85 @@ form_fiss_site <- fpr::fpr_sp_gpkg_backup(
 ) 
 ```
 
+
+## Fix times
+
+This is not always applicable and we will hopefully have a permanent fix soon.
+
+For Fraser 2024 - times are even more funky than usual- see issue here https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/123
+
+The times in `form_pscis_2024_raw` are incorrect in the form they are in UTC - but for some reason when read into R the timezone is set to America/Vancouver even though the times are in UTC.
+
+In addition - the 4 sites I added by hand (issue here https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/121) are the correct time and timezone - so they don't need any fixing. 
+
+
+
+```{r time-fix, eval F}
+
+form_fiss_time_fix <-  form_fiss_site_raw |> 
+ dplyr::mutate(date_time_start_raw = date_time_start) |> 
+ dplyr::mutate(date_time_start = dplyr::case_when(time_correct == FALSE ~ lubridate::force_tz(date_time_start_raw, tzone = "UTC"), TRUE ~ date_time_start_raw),
+               date_time_start = dplyr::case_when(time_correct == FALSE ~ lubridate::with_tz(date_time_start, tzone = "America/Vancouver"), TRUE ~ date_time_start_raw)) |> 
+  dplyr::relocate(date_time_start_raw, .before = date_time_start)
+
+
+form_fiss_site_raw <- form_fiss_time_fix |> 
+  dplyr::select(-date_time_start_raw)
+
+```
+
+## Unique to Fraser 2024
+
+This is unique to the Fraser 2024 project where we were surveying sites without PSCIS id but they were there they just hadn't been loaded to the project, so we need to change the local names to the pscis Ids. We need the PSCIS ids because they are used for many other things in the next scripts - for example joining watershed codes in the next section. 
+
+We will also remove the monitoring sites because they are going to cause issues in the future I think. 
+
+```{r update-pscis-id, eval=FALSE}
+
+# Get the PSCIS IDs in the cross reference table in th sqlite
+conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
+xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn)
+
+
+form_fiss_site_prep1 <- form_fiss_site_raw |> 
+  # Fraser 2024- remove the monitoring sites from this form.
+  dplyr::filter(monitoring_form == FALSE) |> 
+  # Extract the modelled crossing ID from local_name (assumes it's the first numeric sequence)
+  dplyr::mutate(modelled_crossing_id = stringr::str_extract(local_name, "^[0-9]+"), 
+                # Convert to character for joining
+                modelled_crossing_id = as.character(modelled_crossing_id)) |> 
+  # Join with PSCIS data
+  dplyr::left_join(
+    xref_pscis_my_crossing_modelled |> 
+      dplyr::mutate(external_crossing_reference = as.character(external_crossing_reference)),
+    by = c("modelled_crossing_id" = "external_crossing_reference")
+  ) |> 
+  dplyr::rename(pscis_crossing_id = stream_crossing_id) |> 
+  # Replace the modelled crossing ID in local_name with PSCIS ID
+  dplyr::mutate(local_name = dplyr::case_when(
+    !is.na(pscis_crossing_id) ~ stringr::str_replace(local_name, "^[0-9]+", as.character(pscis_crossing_id)),
+    TRUE ~ local_name
+  )) |> 
+  dplyr::select(-c(pscis_crossing_id, modelled_crossing_id))
+
+
+form_fiss_site_raw <- form_fiss_site_prep1
+
+
+```
+
+
 ## Clean up the form 
 
 ```{r clean-form}
 # clean up the form
-form_fiss_site_cleaned <- form_fiss_site |> 
+form_fiss_site_cleaned <- form_fiss_site_raw |>
   # split the local_name into the site, location, and ef
-  tidyr::separate(local_name, into = c("site", "location", "ef"), remove = FALSE) |> 
+    tidyr::separate_wider_delim(local_name, 
+                              delim = "_", 
+                              names = c('site', 'location', 'ef'),
+                              too_few = "align_start",
+                              cols_remove = FALSE) |>  
   dplyr::mutate(local_name = stringr::str_trim(local_name)) |> 
   # split out the date and the time - change type of column first
   dplyr::mutate(date_time_start = lubridate::ymd_hms(date_time_start, tz = "America/Vancouver"),
@@ -57,8 +135,9 @@ form_fiss_site_cleaned <- form_fiss_site |>
                 survey_date = lubridate::date(date_time_start),
                 time = hms::as_hms(date_time_start), 
                 # Fix some vocabulary. Change "trib" to long version "Tributary" etc.
-                gazetted_names = str_replace_all(gazetted_names, 'Trib ', 'Tributary '),
-                crew_members = toupper(crew_members),
+                gazetted_names = stringr::str_replace_all(gazetted_names, 'Trib ', 'Tributary '),
+                gazetted_names = stringr::str_to_title(gazetted_names),
+                crew_members =  stringr::str_to_upper(crew_members),
                 # fill in text columns from spreadsheet that will likely never change
                 waterbody_type = 'stream',
                 method_for_utm = 'GPS general',
@@ -73,7 +152,7 @@ form_fiss_site_cleaned <- form_fiss_site |>
   # arrange by surveyor and date/time
   dplyr::arrange(mergin_user, date_time_start) |> 
   # ditch the time since we don't need anymore. Time was dropped on gpkg creation due to type conflict
-  select(-time) |>
+  dplyr::select(-time) |>
   # rearrange the columns for easier QA in QGIS.
   dplyr::select(
     date_time_start,
@@ -82,32 +161,10 @@ form_fiss_site_cleaned <- form_fiss_site |>
     crew_members,
     comments,
     everything()) |> 
-  arrange(date_time_start)
+  dplyr::arrange(date_time_start)
 
 ```
 
-
-
-## Fix the timezone
-
-Peace 2024 - times in `form_fiss_site_raw` are wrong in R and Q!
-
-We need to fix the times because they are in UTC and we need them in PDT. This issue is documented here https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/18
-
-```{r time-fix}
-
-form_fiss_site_prep1 <- form_fiss_site_cleaned |> 
-# make a new column for the time as is with different name then mutate to PST
-  # we don't need the new column but will leave here for now so we can visualize and confirm the time is correct
-  dplyr::mutate(date_time_start_raw = date_time_start,
-         date_time_start = lubridate::force_tz(date_time_start_raw, tzone = "America/Vancouver"),
-         date_time_start = lubridate::with_tz(date_time_start, tzone = "UTC")) |> 
-   dplyr::relocate(date_time_start_raw, .after = date_time_start)
-
-## Double check the time is correct and now remove the date_time_start_raw column
-form_fiss_site_prep1 <- form_fiss_site_prep1 |> 
-  select(-date_time_start_raw)
-```
 
 ## Query database to get 1:50,000 watershed codes
 Really kind of humorous that we are getting 1:50,000 watershed codes from the database then the province turns around
@@ -115,7 +172,7 @@ and converts them back to 1:20,000 (pers. comm. Dave McEwan - Fisheries Standard
 
 ```{r get-wsc}
 
-ids <- form_fiss_site_cleaned |> 
+ids <- form_fiss_site_cleaned |>
   dplyr::distinct(site) |> 
   dplyr::pull(site)
 
@@ -150,12 +207,15 @@ wscodes <- fpr::fpr_db_query(
     ORDER BY a.stream_crossing_id, b.match_type;"
   ) 
 )
+
 ```
 
 
-We need to QA the watershed codes using the `whse_fish.wdic_waterbody_route_line_svw` layer.  This layer has now been added the 2023 QGIS shared projects for Skeena and Peace. QAed and all are correct.
+We need to QA the watershed codes using the `whse_fish.wdic_waterbody_route_line_svw` layer.  This layer has now been added the 2023 QGIS shared projects for Skeena and Peace. Still needs to be done for Fraser. 
 
-Finally, lets join it to the form_fiss_site so we can copy/paste it into the spreadsheet all at once.
+FRASER 2024 - CODES STILL NEED TO BE QAED!!!!
+
+Finally, lets join it to the form_fiss_site_raw so we can copy/paste it into the spreadsheet all at once.
 
 ```{r wsc-join}
 
@@ -224,7 +284,7 @@ fpr::fpr_sp_gpkg_backup(
   update_utm = TRUE,
   update_site_id = FALSE,
   write_back_to_path = FALSE,
-  return_object = TRUE,
+  return_object = FALSE,
   col_easting = "utm_easting",
   col_northing = "utm_northing"
 ) 
