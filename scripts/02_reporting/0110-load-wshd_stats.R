@@ -3,7 +3,7 @@
 # Load required objects -------------------------------------------------
 
 # `0165-read-sqlite.R` reads in the `bcfishpass` object
-source("scripts/02_reporting/0165-read-sqlite.R")
+source("scripts/02_reporting/0120-read-sqlite.R")
 
 
 
@@ -13,7 +13,7 @@ bcfishpass_phase2 <- bcfishpass |>
     stringr::str_detect(
       stream_crossing_id,
       paste0(pscis_phase2 |>
-               pull(pscis_crossing_id),
+               dplyr::pull(pscis_crossing_id),
              collapse = "|")
     ))
 
@@ -153,14 +153,14 @@ wshds <-  dplyr::left_join(
 
 
 ## Add to the geopackage -------------------------------------------------
-path_gis_wshds <- fs::path("~/Projects/gis/sern_peace_fwcp_2023/data_field/2024/fishpass_mapping.gpkg")
+path_gis_wshds <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_project_name ,"/data_field/2024/fishpass_mapping.gpkg"))
 
 wshds |>
   sf::st_write(dsn = path_gis_wshds,
                layer = 'hab_wshds',
                delete_layer = T,
-               append = F) ##might want to f the append....
-
+               append = F,
+               driver = "GPKG")
 
 ## Burn to a kml -------------------------------------------------
 #burn to kml as well so we can see elevations

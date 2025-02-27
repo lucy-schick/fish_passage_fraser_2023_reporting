@@ -3,13 +3,14 @@
 # Parameters -------------------------------------------------
 
 # path to form_pscis_2024
-path_form_pscis <- fs::path('~/Projects/gis/sern_peace_fwcp_2023/data_field/2024/form_pscis_2024.gpkg')
+path_form_pscis <- fs::path_expand('~/Projects/gis/sern_fraser_2024/data_field/2024/form_pscis_2024.gpkg')
 
 # path to NEW `form_fiss_site_2024` made from `0205_fiss_extract_inputs.Rmd`
-path_form_fiss_site <- fs::path('~/Projects/gis/sern_peace_fwcp_2023/data_field/2024/form_fiss_site_2024.gpkg')
+path_form_fiss_site <- fs::path_expand('~/Projects/gis/sern_fraser_2024/data_field/2024/form_fiss_site_2024.gpkg')
 
+# NO FISH DATA FOR FRASER 2024
 # path to the fish data with the pit tags joined.
-path_fish_tags_joined <-  fs::path_expand('~/Projects/repo/fish_passage_peace_2024_reporting/data/fish_data_tags_joined.csv')
+# path_fish_tags_joined <-  fs::path_expand('~/Projects/repo/fish_passage_peace_2024_reporting/data/fish_data_tags_joined.csv')
 
 # specify which project data we want. for this case `2024-073-sern-peace-fish-passage`
 project = "2024-073-sern-peace-fish-passage"
@@ -106,22 +107,6 @@ if (params$update_form_fiss_site) {
     sf::st_drop_geometry()
 
 
-# Peace 2024 - times in `form_fiss_site_raw` are wrong in R and Q!
-#
-# We need to fix the times because they are in UTC and we need them in PDT. This issue is documented here https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/18
-  form_fiss_site_clean_times <- form_fiss_site |>
-    # make a new column for the time as is with different name then mutate to PST
-    # we don't need the new column but will leave here for now so we can visualize and confirm the time is correct
-    dplyr::mutate(date_time_start_raw = date_time_start,
-                  date_time_start = lubridate::force_tz(date_time_start_raw, tzone = "America/Vancouver"),
-                  date_time_start = lubridate::with_tz(date_time_start, tzone = "UTC")) |>
-    dplyr::relocate(date_time_start_raw, .after = date_time_start)
-
-  ## Double check the time is correct and now remove the date_time_start_raw column
-  form_fiss_site <- form_fiss_site_clean_times |>
-    select(-date_time_start_raw)
-
-
   # Now burn to the sqlite
   conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
   # won't run on first build if the table doesn't exist
@@ -129,8 +114,8 @@ if (params$update_form_fiss_site) {
   readwritesqlite::rws_write(form_fiss_site, exists = F, delete = TRUE,
                              conn = conn, x_name = "form_fiss_site")
   readwritesqlite::rws_disconnect(conn)
-  # remove the object to avoid issues if something breaks
-  rm(form_fiss_site_clean_times)
+
+
 }
 
 
