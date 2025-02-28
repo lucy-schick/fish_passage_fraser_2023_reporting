@@ -62,13 +62,13 @@ spawn_gradient <- bcfishpass_spawn_rear_model |>
 
 # Load data -------------------------------------------------
 
-## Reload form_pscis -------------------------------------------------
+## Reload form_pscis_2024 -------------------------------------------------
 
 # form_pscis gets read in from `02_reporting/0165-read-sqlite.R`
 
 # If update_form_pscis = TRUE then load form_pscis to sqlite - need to load the params from `index.Rmd`
 if (params$update_form_pscis) {
-  form_pscis <- fpr::fpr_sp_gpkg_backup(
+  form_pscis_2024 <- fpr::fpr_sp_gpkg_backup(
     path_gpkg = path_form_pscis,
     dir_backup = "data/backup/",
     update_utm = TRUE,
@@ -80,13 +80,63 @@ if (params$update_form_pscis) {
 
 
   conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
+  readwritesqlite::rws_list_tables(conn)
   # won't run on first build if the table doesn't exist
-  readwritesqlite::rws_drop_table("form_pscis", conn = conn)
-  readwritesqlite::rws_write(form_pscis, exists = F, delete = TRUE,
-                             conn = conn, x_name = "form_pscis")
+  readwritesqlite::rws_drop_table("form_pscis_2024", conn = conn)
+  readwritesqlite::rws_write(form_pscis_2024, exists = F, delete = TRUE,
+                             conn = conn, x_name = "form_pscis_2024")
   readwritesqlite::rws_disconnect(conn)
 }
 
+## Load form_pscis_2023 -------------------------------------------------
+
+# Unique to Fraser 2023/2024 where the phase 1 data comes from 2023 and 2024.
+# We need to load the 2023 form_pscis data to the sqlite.
+
+if (params$update_form_pscis){
+#Load form_pscis_2023 from necr, lchl, fran watershed groups, add column to specific the study_area = lchl_necr_fran
+path_form_pscis_necr_2023 <- fs::path_expand("~/Projects/gis/sern_fraser_2024/data_field/sern_lchl_necr_fran_2023/form_pscis_2023.gpkg")
+
+form_pscis_necr_2023 <- fpr::fpr_sp_gpkg_backup(
+  path_gpkg = path_form_pscis_necr_2023,
+  dir_backup = "data/backup/",
+  update_utm = TRUE,
+  update_site_id = FALSE, ## This now also checks for duplicates
+  write_back_to_path = FALSE,
+  write_to_csv = FALSE,
+  write_to_rdata = FALSE,
+  return_object = TRUE) |>
+  dplyr::mutate(study_area = "lchl_necr_fran")
+
+
+#Load form_pscis_2023 from simpcw watershed group, add column to specific the study_area = simpcw
+path_form_pscis_simpcw_2023 <- fs::path_expand("~/Projects/gis/sern_fraser_2024/data_field/sern_simpcw_2023/form_pscis_2023.gpkg")
+
+form_pscis_simpcw_2023 <- fpr::fpr_sp_gpkg_backup(
+  path_gpkg = path_form_pscis_simpcw_2023,
+  dir_backup = "data/backup/",
+  update_utm = TRUE,
+  update_site_id = FALSE, ## This now also checks for duplicates
+  write_back_to_path = FALSE,
+  write_to_csv = FALSE,
+  write_to_rdata = FALSE,
+  return_object = TRUE) |>
+  plyr::mutate(study_area = "simpcw")
+
+
+# Now join them together
+form_pscis_2023 <- dplyr::bind_rows(form_pscis_necr_2023,form_pscis_simpcw_2023)
+
+#Load to sqlite
+conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
+readwritesqlite::rws_list_tables(conn)
+# won't run on first build if the table doesn't exist
+readwritesqlite::rws_drop_table("form_pscis_2023", conn = conn)
+readwritesqlite::rws_write(form_pscis_2023, exists = F, delete = TRUE,
+                           conn = conn, x_name = "form_pscis_2023")
+readwritesqlite::rws_disconnect(conn)
+
+}
 
 ## Reload form_fiss_site -------------------------------------------------
 
@@ -125,7 +175,13 @@ if (params$update_form_fiss_site) {
 
 # For now, import data and build tables we for reporting
 pscis_list <- fpr::fpr_import_pscis_all()
-pscis_phase1 <- pscis_list |> purrr::pluck('pscis_phase1')
+
+pscis_phase1_2023 <- pscis_list |> purrr::pluck('pscis_phase1_2023')
+
+pscis_phase1_2024 <- pscis_list |> purrr::pluck('pscis_phase1')
+
+pscis_phase1 <- dplyr::bind_rows(pscis_phase1_2023, pscis_phase1_2024)
+
 pscis_phase2 <- pscis_list |> purrr::pluck('pscis_phase2') |>
   dplyr::arrange(pscis_crossing_id)
 pscis_reassessments <- pscis_list |> purrr::pluck('pscis_reassessments')
@@ -423,7 +479,7 @@ tab_hab_summary <- form_fiss_site |>
 
 # Phase 1 Appendix ----------------------------------------------
 
-# Run once we get PSCIS IDs
+#NEED TO FIGURE OUT THE PHOTOS... NEED TO PULL PHOTOS FROM 2023 YEAR
 
 # ## make result summary tables for each of the crossings, used to display phase 1 data in the appendix
 #
@@ -488,7 +544,7 @@ habitat_confirmations_priorities <- readr::read_csv(
 
 # Overview of habitat confirmation sites used in the results section
 
-tab_overview_prep1 <- form_pscis|>
+tab_overview_prep1 <- form_pscis_2024 |>
   sf::st_drop_geometry() |>
   dplyr::filter(assess_type_phase2 == "Yes") |>
   dplyr::select(pscis_crossing_id, stream_name, road_name, road_tenure, easting, northing, utm_zone, habitat_value)

@@ -26,8 +26,11 @@ rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = c
 # Table containing photo metadata. Used in the interactive map
 # photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
 
-#Read in the form_pscis
-form_pscis <- readwritesqlite::rws_read_table("form_pscis", conn = conn)
+#Read in the form_pscis_2024
+form_pscis_2024 <- readwritesqlite::rws_read_table("form_pscis_2024", conn = conn)
+
+#Read in the form_pscis_2023
+form_pscis_2023 <- readwritesqlite::rws_read_table("form_pscis_2023", conn = conn)
 
 #Read in the form_fiss_site
 form_fiss_site <- readwritesqlite::rws_read_table("form_fiss_site", conn = conn)
