@@ -21,7 +21,7 @@ bcfishpass_spawn_rear_model <- readwritesqlite::rws_read_table("bcfishpass_spawn
 xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn)
 
 # Table containing rd cost multiplier
-# rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
+rd_class_surface <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
 
 # Table containing photo metadata. Used in the interactive map
 # photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
@@ -33,12 +33,12 @@ form_pscis <- readwritesqlite::rws_read_table("form_pscis", conn = conn)
 form_fiss_site <- readwritesqlite::rws_read_table("form_fiss_site", conn = conn)
 
 
-# You must run `0170-load-wshd_stats.R` at before this
+# You must run `0110-load-wshd_stats.R` at before this
 # watershed stats for the watersheds in this project
-# wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) |>
-#   # remove any negative values
-#   dplyr::mutate(dplyr::across(contains('elev'), ~ replace(., . < 0, NA))) |>
-#   dplyr:: mutate(aspect = as.character(aspect))
+wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) |>
+  # remove any negative values
+  dplyr::mutate(dplyr::across(contains('elev'), ~ replace(., . < 0, NA))) |>
+  dplyr:: mutate(aspect = as.character(aspect))
 
 
 

@@ -28,6 +28,7 @@ hab_priority_prep <- form_fiss_site |>
     stream_name = gazetted_names,
     local_name,
     site,
+    location,
     ef,
     date_time_start
   ) |>
