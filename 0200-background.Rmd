@@ -49,7 +49,7 @@ The Upper Fraser River, an 8th order stream, drains an area of 232,134 km^2^ ups
 
 <!-- - FR in McBride, station 08KA005 -->
 ```{r mcbride-hydat, eval=F}
-lfpr_create_hydrograph("08KA005")
+sfpr_create_hydrograph("08KA005")
 ```
 
 ```{r hydrograph1, fig.cap = "Fraser River At Mcbride (Station #08KA005 - Lat 53.30172 Lon -120.14092). Available mean daily discharge data from 1953 to 2021. "}
@@ -65,14 +65,14 @@ knitr::include_graphics("fig/hydrology_stats_08KA005.png")
 
 <!-- - FR in Hansard, upstream of McGregor river confluence, station 08KA004 -->
 ```{r hansard-hydat, eval=F}
-lfpr_create_hydrograph("08KA004")
+sfpr_create_hydrograph("08KA004")
 ```
 
 <!-- - FR in Price George, just downstream of Nechako confluence, station 08KE018. It looks like its active (https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=08KE018&mode=Graph&startDate=2024-07-12&endDate=2024-07-19&prm1=46&prm2=3) but tidyhydat only pulls data from 1984 -->
 
 ```{r pg-hydat, eval=F}
 tidyhydat::hy_daily_flows(station_number = "08KE018")
-lfpr_create_hydrograph("08KE018")
+sfpr_create_hydrograph("08KE018")
 ```
 
 
@@ -82,7 +82,7 @@ lfpr_create_hydrograph("08KE018")
 
 <!-- - hydat station on Morkill river, station 08KA013 -->
 ```{r morkill-hydat, eval=F}
-lfpr_create_hydrograph("08KA013")
+sfpr_create_hydrograph("08KA013")
 ```
 
 ## Nechakoh
@@ -126,11 +126,11 @@ hydat_stations %>%
 
 ```{r, eval=TRUE}
 # starting at 1948 because that's where consistent data starts
-lfpr_create_hydrograph("08JC001", start_year = 1948)
+sfpr_create_hydrograph("08JC001", start_year = 1948)
 ```
 
 ```{r, eval=TRUE}
-lfpr_create_hydrograph("08JC002")
+sfpr_create_hydrograph("08JC002")
 ```
 
 ```{r hydrology-plots2, fig.cap = 'Hydrograph for Nechako River at Vanderhoof (Station #08JC001) and at Isle Pierre (Station #08JC002).', fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=T}
@@ -154,7 +154,7 @@ knitr::include_graphics("fig/hydrology_stats_08JC001.png")
 The Endako River is a 6th order stream that flows south east from Burns Lake to Fraser Lake. It drains an area of 5,970km^2^. There is one hydrometric station on the Endako River located in Endako, but it was only active for one year during 1951. Given the one year of data, the mean annual discharge is `r round(fasstr::calc_longterm_mean(station_number = "08JB004")$LTMAD,1)` m^3^/s at station 08JB004. The hydrograph peaks in May-June (Figure \@ref(fig:hydrograph3)).
 
 ```{r, eval=FALSE}
-lfpr_create_hydrograph("08JB004")
+sfpr_create_hydrograph("08JB004")
 ```
 
 ```{r hydrograph3, fig.cap = "Endako River At Endako (Station #08JB004 - Lat 54.08194 Lon -125.021111). Available mean daily discharge data from 1950 to 1951."}
@@ -176,7 +176,7 @@ knitr::include_graphics("fig/hydrology_stats_08JB004.png")
 The Chilako River is a 6th order stream that flows north from the Nechako Plateau to the Nechako River and drains an area of 3,634km^2^. There is one hydrometric station on the Chilako River located ~10km upstream of the mouth, but it was only active from 1960-1974. Given this data, the hydrograph peaks in May-June (Figure \@ref(fig:hydrograph4)).
 
 ```{r, eval=FALSE}
-lfpr_create_hydrograph("08JC005")
+sfpr_create_hydrograph("08JC005")
 ```
 
 ```{r hydrograph4, fig.cap = "Chilako River Near Prince George (Station #08JC005 - Lat 53.808891 Lon -122.988892). Available mean daily discharge data from 1960 to 1974."}

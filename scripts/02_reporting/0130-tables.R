@@ -28,7 +28,8 @@ repo_name <- "fish_passage_peace_2024_reporting"
 # For Skeena we use steelhead
 # For Peace we use bull trout
 model_species_name <- dplyr::case_when(params$model_species == "bt" ~ "Bull trout",
-                                       params$model_species == "st" ~ "Steelhead")
+                                       params$model_species == "st" ~ "Steelhead",
+                                       params$model_species == "ch" ~ "Chinook")
 
 # Network/access model caption
 
