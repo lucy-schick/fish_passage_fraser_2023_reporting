@@ -2,15 +2,6 @@
 
 ## Project Location
 
-<!-- The simpc qgis project includes a lot of watershed groups/big area but looks like the 2023 assessments were only in 2 of the watershed groups (see below). Should we include all the watershed groups in the report or just the ones we did assessments in? -->
-
-<!-- simpcw watersheds with 2023 assessments: -->
-<!-- - upper fraser river (UFRA) -->
-<!-- - Morkill River (MORK), not sure if we want to include this one because we didn't actually have any sites on this river. Most sites were small tribs to the fraser. -->
-
-<!-- For now, I have just added info about the watershed groups in which we had 2023 assessments -->
-
-
 Select sites were assessed between Burns Lake and Valemount British Columbia within the Nechako River, Chilako River, François Lake, Morkhill River and Upper Fraser River watershed groups.
 
 ```{r eval = FALSE}
