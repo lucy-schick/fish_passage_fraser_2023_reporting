@@ -92,6 +92,7 @@ form_pscis_raw <- form_pscis_time_fix |>
 Do some more cleaning
 - fix some vocabulary
 - add in the pscis assessment phase
+- eemove the `my_crossing_reference` if there is a `pscis_crossing_id` present. We need to do this so that `fpr_tidy_assign_site_id` can assign the `site_id` because currently it breaks if there is both a `my_crossing_reference` and `pscis_crossing_id`
 
 Crossing 22202142 is a phase 1 and phase 2 site. It needs to be submitted in the pscis_phase1 spreadsheet, then resubmitted in the pscis_phase2 spreadsheet once we have its PSCIS ID.
 
@@ -118,7 +119,12 @@ form_pscis_clean <- form_pscis_raw |>
     road_name = stringr::str_replace_all(road_name, 'Hwy', 'Highway '),
     road_name = stringr::str_replace_all(road_name, 'Fsr', 'FSR'),
     road_name = stringr::str_replace_all(road_name, 'Rd', 'Road '),
-    crew_members = stringr::str_to_upper(crew_members))
+    crew_members = stringr::str_to_upper(crew_members)) |> 
+  
+  #Lastly, remove the my_crossing_reference if there is a pscis_crossing_id present. We need to do this so that `fpr_tidy_assign_site_id` can assign the site_id because currently it breaks if there is both a my_crossing_reference and pscis_crossing_id
+  dplyr::mutate(my_crossing_reference = dplyr::case_when(!is.na(pscis_crossing_id) ~ NA, TRUE ~ my_crossing_reference)) |> 
+  # run `fpr_tidy_assign_site_id` so the `site_id` is updated
+  fpr::fpr_tidy_assign_site_id()
 
 ```
 
@@ -147,7 +153,6 @@ fpr::fpr_sp_gpkg_backup(
   write_to_rdata = TRUE,
   return_object = FALSE)
 ```
-
 
 
 
