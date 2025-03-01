@@ -6,7 +6,9 @@ output:
     code_folding: "hide"
 params:
   repo_owner: "NewGraphEnvironment"
-  repo_name: "fish_passage_peace_2024_reporting"
+  repo_name: "fish_passage_fraser_2023_reporting"
+  gis_name: "sern_fraser_2024"
+  job_name: "2024-074-sern-fraser-fish-passage"
 ---
 
 ```{r setup, eval= TRUE}
@@ -19,9 +21,9 @@ options(knitr.kable.NAN = '--')
 
 ```{r paths, eval=TRUE}
 
-dir_server_photos <- fs::path_expand("~/Library/CloudStorage/OneDrive-Personal/Projects/2024-073-sern-peace-fish-passage/data/photos/")
+dir_server_photos <- fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects", params$job_name, "data/photos/sorted"))
 
-dir_repo_photos <- fs::path_expand("~/Projects/repo/fish_passage_peace_2024_reporting/data/photos/")
+dir_repo_photos <- fs::path_expand(fs::path("~/Projects/repo/", params$repo_name, "/data/photos/"))
 ```
 
 This is a simple script to bulk import all photos tagged with `_k_` or `crossings_all`  from a shared server to the local repo directory. Idea here is that all collaborators on raw project (who have access to the shared server) can add photos to the shared server and alter
@@ -56,7 +58,8 @@ photos_to_paste <- fs::path(dir_repo_photos, files_to_paste)
 dirs_to_create <- files_to_paste |>
   fs::path_dir() |>
   unique()
-fs::dir_create(fs::path(paste0(dir_repo_photos, "/", dirs_to_create)))
+
+fs::dir_create(fs::path(dir_repo_photos, "/", dirs_to_create))
 
 
 # Copy photos from the shared server to the local repo
