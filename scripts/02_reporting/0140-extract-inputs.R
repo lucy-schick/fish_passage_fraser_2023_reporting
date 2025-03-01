@@ -114,13 +114,17 @@ rd_class_surface <- bcfishpass |>
          my_road_class = stringr::word(my_road_class, 1),
          my_road_class = stringr::str_to_lower(my_road_class))
 
-## Unique to fraser 2024 - bcfishpass says Stella road is loose but it is paved. Need to change by hand so
-# that the cost estimate works.
+## Unique to fraser 2024
+# - bcfishpass says Stella road is loose but it is paved. Need to change by hand so that the cost estimate works.
+# - bcfishpass says PSCIS crossing 199232 is on a private drive but its on Highway 16, so change my_road_surface = paved and my_road_class = highway
 
 rd_class_surface <- rd_class_surface |>
   dplyr::mutate(my_road_surface = dplyr::case_when(stream_crossing_id == "199172" ~ "paved",
                                                    stream_crossing_id == "7622" ~ "paved",
-                                                   TRUE ~ my_road_surface))
+                                                   stream_crossing_id == "199232" ~ "paved",
+                                                   TRUE ~ my_road_surface),
+                my_road_class = dplyr::case_when(stream_crossing_id == "199232" ~ "highway",
+                                                 TRUE ~ my_road_class))
 
 
 

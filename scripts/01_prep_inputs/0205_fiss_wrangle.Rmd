@@ -128,7 +128,12 @@ form_fiss_site_cleaned <- form_fiss_site_raw |>
                               names = c('site', 'location', 'ef'),
                               too_few = "align_start",
                               cols_remove = FALSE) |>  
-  dplyr::mutate(local_name = stringr::str_trim(local_name)) |> 
+    dplyr::mutate(
+    local_name = stringr::str_trim(local_name),
+    site = stringr::str_trim(site),
+    location = stringr::str_trim(location),
+    ef = stringr::str_trim(ef)
+  ) |> 
   # split out the date and the time - change type of column first
   dplyr::mutate(date_time_start = lubridate::ymd_hms(date_time_start, tz = "America/Vancouver"),
                 date_time_start = lubridate::floor_date(date_time_start, unit = "second"),  # Remove microseconds
