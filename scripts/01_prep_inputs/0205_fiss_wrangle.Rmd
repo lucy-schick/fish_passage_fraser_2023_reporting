@@ -78,7 +78,7 @@ form_fiss_site_raw <- form_fiss_time_fix |>
 
 ## Unique to Fraser 2024
 
-This is unique to the Fraser 2024 project where we were surveying sites without PSCIS id but they were there they just hadn't been loaded to the project, so we need to change the local names to the pscis Ids. We need the PSCIS ids because they are used for many other things in the next scripts - for example joining watershed codes in the next section. 
+This is unique to the Fraser 2024 project where we were surveying sites without PSCIS id but they were there they just hadn't been loaded to the project, so we need to change the local names to the pscis Ids. We need the PSCIS ids because they are used for many other things in the next scripts - for example joining watershed codes in the next section. We will keep the modelled crossing Ids in the form in case we need them later. 
 
 We will also remove the monitoring sites because they are going to cause issues in the future I think. 
 
@@ -87,15 +87,21 @@ We will also remove the monitoring sites because they are going to cause issues 
 # Get the PSCIS IDs in the cross reference table in th sqlite
 conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
 xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn)
+readwritesqlite::rws_disconnect(conn)
 
 
 form_fiss_site_prep1 <- form_fiss_site_raw |> 
-  # Fraser 2024- remove the monitoring sites from this form.
+  # Fraser 2024 - remove the monitoring sites from this form.
   dplyr::filter(monitoring_form == FALSE) |> 
-  # Extract the modelled crossing ID from local_name (assumes it's the first numeric sequence)
-  dplyr::mutate(modelled_crossing_id = stringr::str_extract(local_name, "^[0-9]+"), 
-                # Convert to character for joining
-                modelled_crossing_id = as.character(modelled_crossing_id)) |> 
+  # Extract the modelled crossing ID from local_name only if it does not contain "7622" or "203302" which are already PSCIS IDs
+  dplyr::mutate(
+    modelled_crossing_id = dplyr::case_when(
+      !stringr::str_detect(local_name, "7622|203302") ~ stringr::str_extract(local_name, "^[0-9]+"),
+      TRUE ~ NA_character_
+    ),
+    # Convert to character for joining
+    modelled_crossing_id = as.character(modelled_crossing_id)
+  ) |> 
   # Join with PSCIS data
   dplyr::left_join(
     xref_pscis_my_crossing_modelled |> 
@@ -107,8 +113,8 @@ form_fiss_site_prep1 <- form_fiss_site_raw |>
   dplyr::mutate(local_name = dplyr::case_when(
     !is.na(pscis_crossing_id) ~ stringr::str_replace(local_name, "^[0-9]+", as.character(pscis_crossing_id)),
     TRUE ~ local_name
-  )) |> 
-  dplyr::select(-c(pscis_crossing_id, modelled_crossing_id))
+  ))
+
 
 
 form_fiss_site_raw <- form_fiss_site_prep1
