@@ -2,7 +2,9 @@
 
 ## Project Location
 
-Select sites were assessed between Burns Lake and Valemount British Columbia within the Nechako River, Chilako River, François Lake, Morkhill River and Upper Fraser River watershed groups.
+Select sites were assessed between Burns Lake and Valemount, British Columbia within the Nechako River, Chilako River, François Lake, Morkhill River and Upper Fraser River watershed groups.
+
+<br>
 
 ```{r eval = FALSE}
 #and is within the traditional territories of the Dakelh (Carrier) and Simpcw.
@@ -18,21 +20,35 @@ Select sites were assessed between Burns Lake and Valemount British Columbia wit
 knitr::include_graphics("fig/fishpassage_2024_sern_summary.jpeg")
 ```
 
+## Simpcw
 
-
-
-## Lhtakoh
-
-Known as the Lhtakoh, meaning "rivers within one another" to the Dakelh (Carrier) people, the Fraser River stretches nearly 1,400 kilometers from the Rocky Mountains of Mount Robson Provincial Park to the Strait of Georgia near Vancouver. As the largest salmon-producing river on Canada's west coast [@bradford_taylor2023Diversityfreshwater; @DaklehPlacenames], it plays a crucial economic role in supporting forestry, agriculture, and hydroelectric power generation. Additionally, the Fraser River is vital for fisheries, especially for salmon populations, which are essential to both the local ecosystem and Indigenous communities.
+Simpcw, which translates to "People of the Rivers", is one of the 17 campfires (bands) that make up the Secwepemc, or Shuwap Nation. Their traditional territory stretches from north of Mcbride, all the way south to Barrier, and east to Mt.Robson Provincial Park, and includes the North Thompson River and the Upper Fraser River [@UsSimpcw]. 
 
 <br>
 
-```{r fn, eval= FALSE}
-#incomplete to the point we should not publish.  Lheidli T'enneh are maaaaajor stakeholders
-# The Upper Fraser River is commonly defined as the section of the mainstem north of Quesnel, flowing through the Cariboo and Fraser Plateau regions. Major tributaries include the Nechako, Quesnel, and McGregor rivers [@shaw_tuominenWaterQuality]. This vast expanse supports many Indigenous groups who utilize the land for cultural, spiritual, and economic practices. Among these groups are the Simpcw First Nation, occupying the North Thompson area, and the Carrier Sekani Tribal Council which unifies six nations west of Price George: the Ts’il Kaz Koh First Nation (Burns Lake Band), Nadleh Whut’en First Nation, Saik’uz First Nation, Stellat’en First Nation, Takla Nation, and Wet’suwet’en First Nation [@CSTCCSFNs; @SimpcwFirstNationHistory]
-```
+## Lheidli T’enneh
 
+The Lheidli T'enneh First Nations are a Dakelh sub-group whose traditional territory encompasses the Nechako River, Upper Fraser River, and Morkill River, spanning from west of Prince George to Valemount. "Lheidli" translates to "The People from the Confluence of the River," referring to the meeting of the Nechako ("Nee Incha Koh" – "river with strong undercurrents") and Fraser ("Ltha Koh" – "Big Mouth River") rivers in what is now Prince George, British Columbia [@OurStoryLheidliTennehFirstNationPrinceGeorgeBC2020]. 
 
+<br>
+
+Located within the traditional territory of the Lheidli T’enneh is Chun T’oh Whudujut (Ancient Forest), a Provincial Park and Protected Area 120km east of Prince George. The park has thousand-year-old western red cedars and a rich biodiversity of plants, mosses, lichens and fungi which can be explored through the trail network. Historically, Lheidli people would visit the stands from summer fishing camps along the upper Fraser River as well as gather medicinal plants, some of which were thought to be extinct. However, the park was not always a protected area and was initially slated for logging until a UNBC graduate student studying lichen biodiversity identified the ancient stands of western red cedars. Recognizing their ecological and cultural significance, trails were developed to highlight the cedars and advocate for their protection. Through partnerships with local hiking groups, UNBC, Lheidli T’enneh, and the Provincial Government, the Ancient Forest biodiversity assessment project has contributed to conservation efforts and tourism-based economic development in the Prince George area [@AncientForestLheidliTennehFirstNationPrinceGeorgeBC2020].
+
+<br>
+
+## Carrier Sekani
+
+The Carrier Sekani Tribal Council unifies six nations west of Price George: the Ts’il Kaz Koh First Nation (Burns Lake Band), Nadleh Whut’en First Nation, Saik’uz First Nation, Stellat’en First Nation, Takla Nation, and Wet’suwet’en First Nation [@CSTCCSFNs; @SimpcwFirstNationHistory], and inlcudes the Nechako and Chilako Rivers. 
+
+<br>
+
+## Lhtakoh
+
+Known as the Ltha Koh, meaning "rivers within one another" to the Dakelh (Carrier) people, the Fraser River stretches nearly 1,400 kilometers from the Rocky Mountains of Mount Robson Provincial Park to the Strait of Georgia near Vancouver. As the largest salmon-producing river on Canada's west coast [@bradford_taylor2023Diversityfreshwater; @DaklehPlacenames], it plays a crucial economic role in supporting forestry, agriculture, and hydroelectric power generation. Additionally, the Fraser River is vital for fisheries, especially for salmon populations, which are essential to both the local ecosystem and indigenous communities.
+
+<br>
+
+The Upper Fraser River is commonly defined as the section of the mainstem north of Quesnel, flowing through the Cariboo and Fraser Plateau regions. Major tributaries include the Nechako, Quesnel, and McGregor rivers [@shaw_tuominenWaterQuality]. This vast expanse supports many indigenous groups who utilize the land for cultural, spiritual, and economic practices. 
 
 <br>
 
@@ -78,13 +94,6 @@ sfpr_create_hydrograph("08KA013")
 
 ## Nechakoh
 
-```{r fn-nechako, eval=FALSE}
-# The Nechako River, meaning "Blackwater people's river", is home to the Cheslatta Carrier Nation who are part of the Dakelh people. Traditionally, they lived off the land near Tsetl'adak Bunk'ut "Peak Rock Lake" (Cheslatta Lake), however, in 1952, the construction of the Kenney Dam by the Aluminum Company of Canada (Alcan) and the subsequent flooding of the Nechako Reservoir forced the Cheslatta Carrier people to abandon their ancestral lands [@HistoryCheslattaCarrierNation; @DaklehPlacenames]. This relocation was done with little notice or compensation, causing significant disruptions to their community, culture, and way of life. Despite these challenges, the Cheslatta Carrier Nation has worked to preserve their cultural heritage and advocate for their rights and land restoration.
-# 
-# <br>
-```
-
-
 
 ```{r wsh-areas, eval=F}
 # nechako
@@ -98,6 +107,11 @@ fwapgr::fwa_watershed_at_measure(356363121) %>% mutate(area_km2 = round(area_ha/
 
 The Nechako River is an 8th order stream that drains an area of 47,269km^2^. Beginning at the Nechako Plateau, it flows north towards Fort Fraser then east to its confluence with the Fraser River in Prince George. The Nachako River has three main tributaries: the Stuart River, the Endako River, and the Chilako River. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08JC001")$LTMAD,1)` m^3^/s at station 08JC001 located in Vanderhoof and `r round(fasstr::calc_longterm_mean(station_number = "08JC002")$LTMAD,1)` m^3^/s at station 08JC002 located in Isle Pierre, \~25km downstream of the Stuart River confluence. Flow patterns at Isle Pierre are heavily influenced by inflows from the Stuart River (enters downstream of Vanderhoof) resulting in higher peak levels and average discharge (Figure \@ref(fig:hydrology-plots2)). The hygrograph at station 08JC001 in Vanderhoof peaks in June and August, with lower peak levels and average discharge (Figure \@ref(fig:hydrology-plots2)).
 
+<br>
+
+The Nechako River, meaning "Blackwater people's river", is home to the Cheslatta Carrier Nation who are part of the Dakelh people. Traditionally, they lived off the land near Tsetl'adak Bunk'ut "Peak Rock Lake" (Cheslatta Lake), however, in 1952, the construction of the Kenney Dam by the Aluminum Company of Canada (Alcan) and the subsequent flooding of the Nechako Reservoir forced the Cheslatta Carrier people to abandon their ancestral lands [@HistoryCheslattaCarrierNation; @DaklehPlacenames]. This relocation was done with little notice or compensation, causing significant disruptions to their community, culture, and way of life. Despite these challenges, the Cheslatta Carrier Nation has worked to preserve their cultural heritage and advocate for their rights and land restoration.
+
+<br>
 
 ```{r, eval=FALSE}
 hydat_stations <- fpr::fpr_db_query(query = lfpr_dbq_clip('whse_environmental_monitoring.envcan_hydrometric_stn_sp',
@@ -124,7 +138,7 @@ sfpr_create_hydrograph("08JC001", start_year = 1948)
 sfpr_create_hydrograph("08JC002")
 ```
 
-```{r hydrology-plots2, fig.cap = 'Hydrograph for Nechako River at Vanderhoof (Station #08JC001) and at Isle Pierre (Station #08JC002).', fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=T}
+```{r hydrology-plots2, fig.cap = 'Hydrograph for Nechako River at Vanderhoof (Station #08JC001)(left) and at Isle Pierre (Station #08JC002)(right).', fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=T}
 knitr::include_graphics("fig/hydrograph_08JC001.png")
 knitr::include_graphics("fig/pixel.png")
 knitr::include_graphics("fig/hydrograph_08JC002.png")
