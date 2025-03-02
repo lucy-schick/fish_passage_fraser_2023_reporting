@@ -35,7 +35,7 @@ params:
   gis_project_name: "sern_fraser_2024"
   model_species: "ch"
   update_packages: FALSE
-  update_form_pscis: TRUE
+  update_form_pscis: FALSE
   update_form_fiss_site: FALSE
   update_gis: FALSE
 nocite: |

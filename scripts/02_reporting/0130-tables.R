@@ -3,20 +3,20 @@
 # Parameters -------------------------------------------------
 
 # path to form_pscis_2024
-path_form_pscis <- fs::path_expand('~/Projects/gis/sern_fraser_2024/data_field/2024/form_pscis_2024.gpkg')
+path_form_pscis <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_pscis_2024.gpkg"))
 
 # path to NEW `form_fiss_site_2024` made from `0205_fiss_extract_inputs.Rmd`
-path_form_fiss_site <- fs::path_expand('~/Projects/gis/sern_fraser_2024/data_field/2024/form_fiss_site_2024.gpkg')
+path_form_fiss_site <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_fiss_site_2024.gpkg"))
 
 # NO FISH DATA FOR FRASER 2024
 # path to the fish data with the pit tags joined.
 # path_fish_tags_joined <-  fs::path_expand('~/Projects/repo/fish_passage_peace_2024_reporting/data/fish_data_tags_joined.csv')
 
 # specify which project data we want. for this case `2024-073-sern-peace-fish-passage`
-project = "2024-073-sern-peace-fish-passage"
+project = "2024-074-sern-fraser-fish-passage"
 
 # specify the repo
-repo_name <- "fish_passage_peace_2024_reporting"
+repo_name <- "fish_passage_fraser_2023_reporting"
 
 
 # Generate dynamic captions -------------------------------------------------
@@ -479,55 +479,58 @@ tab_hab_summary <- form_fiss_site |>
 
 # Phase 1 Appendix ----------------------------------------------
 
-#NEED TO FIGURE OUT THE PHOTOS... NEED TO PULL PHOTOS FROM 2023 YEAR
+## make result summary tables for each of the crossings, used to display phase 1 data in the appendix
 
-# ## make result summary tables for each of the crossings, used to display phase 1 data in the appendix
-#
-# ## turn spreadsheet into list of data frames
-# pscis_phase1_for_tables <- pscis_all |>
-#   dplyr::filter(!source == "pscis_phase2.xlsm") |>
-#   dplyr::arrange(pscis_crossing_id)
-#
-# pscis_split <- pscis_phase1_for_tables  |>
-#   dplyr::group_split(pscis_crossing_id) |>
-#   purrr::set_names(pscis_phase1_for_tables$pscis_crossing_id)
-#
-#
-# ##make result summary tables for each of the crossings
-# tab_summary <- pscis_split |>
-#   purrr::map(fpr::fpr_table_cv_detailed)
-#
-# tab_summary_comments <- pscis_split |>
-#   purrr::map(fpr::fpr_table_cv_detailed_comments)
-#
-#
-# tab_photo_url <- fs::dir_ls(path = "data/photos/", recurse = FALSE) |>
-#   basename() |>
-#   tibble::as_tibble() |>
-#   dplyr::mutate(value = as.integer(value)) |>  # Convert filenames to integers for sorting
-#   dplyr::arrange(value) |>
-#   dplyr::mutate(photo = paste0("![](data/photos/", value, "/crossing_all.JPG)")) |>
-#   dplyr::filter(value %in% pscis_phase1_for_tables$site_id) |>
-#   dplyr::left_join(xref_pscis_my_crossing_modelled,
-#                    by = c("value" = "external_crossing_reference")) |>
-#   dplyr::mutate(stream_crossing_id = dplyr::case_when(
-#     is.na(stream_crossing_id) ~ value,
-#     TRUE ~ stream_crossing_id
-#   )) |>
-#   dplyr::arrange(stream_crossing_id) |>
-#   dplyr::group_split(stream_crossing_id)
-#
-#
-# # used to build tables for PDF version of the report
+## The photos don't currently line up with the correct sites in the appendix because we are missing all the `sern_lchl_necr_fran_2023` photos
+## Until 2024 pscis phase 1 data is in bcfishpass (will be on monday), just filter out the crossings with no `pscis_crossing_id`
+
+## turn spreadsheet into list of data frames
+pscis_phase1_for_tables <- pscis_all |>
+  dplyr::filter(!source == "pscis_phase2.xlsm") |>
+  ## Until 2024 pscis phase 1 data is in bcfishpass (will be on monday), just filter out the crossings with no `pscis_crossing_id`
+  dplyr::filter(!is.na(pscis_crossing_id)) |>
+  dplyr::arrange(pscis_crossing_id)
+
+pscis_split <- pscis_phase1_for_tables  |>
+  dplyr::group_split(pscis_crossing_id) |>
+  purrr::set_names(pscis_phase1_for_tables$pscis_crossing_id)
+
+
+##make result summary tables for each of the crossings
+tab_summary <- pscis_split |>
+  purrr::map(fpr::fpr_table_cv_detailed)
+
+tab_summary_comments <- pscis_split |>
+  purrr::map(fpr::fpr_table_cv_detailed_comments)
+
+
+tab_photo_url <- fs::dir_ls(path = "data/photos/", recurse = FALSE) |>
+  basename() |>
+  tibble::as_tibble() |>
+  dplyr::mutate(value = as.integer(value)) |>  # Convert filenames to integers for sorting
+  dplyr::arrange(value) |>
+  dplyr::mutate(photo = paste0("![](data/photos/", value, "/crossing_all.JPG)")) |>
+  dplyr::filter(value %in% pscis_phase1_for_tables$site_id) |>
+  dplyr::left_join(xref_pscis_my_crossing_modelled,
+                   by = c("value" = "external_crossing_reference")) |>
+  dplyr::mutate(stream_crossing_id = dplyr::case_when(
+    is.na(stream_crossing_id) ~ value,
+    TRUE ~ stream_crossing_id
+  )) |>
+  dplyr::arrange(stream_crossing_id) |>
+  dplyr::group_split(stream_crossing_id)
+
+
+# used to build tables for PDF version of the report
 # tabs_phase1_pdf <- mapply(
 #   fpr::fpr_table_cv_detailed_print,
 #   tab_sum = tab_summary,
 #   comments = tab_summary_comments,
 #   photos = tab_photo_url,
 #   gitbook_switch = FALSE)
-#
-#
-# rm(pscis_phase1_for_tables,pscis_split)
+
+
+rm(pscis_phase1_for_tables,pscis_split)
 
 
 # Phase 2 Priority spreadsheet ----------------------------------------------
@@ -743,12 +746,20 @@ tab_cost_est_prep4 <- tab_cost_est_prep3 |>
 
 # Run once we have pscis IDS
 
-#
+
 # # Now prepare phase 1 cost estimates.
 #
-# sp_network_km <- rlang::sym(paste0(params$model_species, "_network_km"))
-# sp_belowupstrbarriers_network_km <- rlang::sym(paste0(params$model_species, "_belowupstrbarriers_network_km"))
+# # since we are using chinook as our model species, the column is called `ch_cm_co_pk_sk_network_km` so we can't make it dynamically.
+# sp_network_km <- "ch_cm_co_pk_sk_network_km"
+# sp_belowupstrbarriers_network_km <- "ch_cm_co_pk_sk_belowupstrbarriers_network_km"
 #
+# # Normal way to dynamically make column
+# # sp_network_km <- rlang::sym(paste0(params$model_species, "_network_km"))
+# # sp_belowupstrbarriers_network_km <- rlang::sym(paste0(params$model_species, "_belowupstrbarriers_network_km"))
+#
+# # Fraser 2024 - We need to filter put the phase 2 sites first so we don't have duplicate sites (2024 phase 2 sites that are also 2023 phase 1 sites)
+# tab_cost_est_prep4 <- tab_cost_est_prep4 |>
+#   dplyr::filter(!source == "pscis_phase2.xlsm")
 #
 # # Step 6: Add upstream modelling data to estimate potential habitat gain
 # tab_cost_est_prep5 <- dplyr::left_join(
@@ -765,7 +776,6 @@ tab_cost_est_prep4 <- tab_cost_est_prep3 |>
 #     cost_area_gross = round((!!sp_network_km * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
 #     st_network_km = round(!!sp_network_km, 1)
 #   )
-#
 #
 # # Step 7: Add the priority from `form_pscis`
 # tab_cost_est_prep6 <- dplyr::left_join(
