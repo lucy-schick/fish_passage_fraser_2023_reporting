@@ -1,0 +1,17 @@
+rowid,aggregated_crossings_id,pscis_crossing_id,my_crossing_reference,source,barrier_result,downstream_channel_width_meters,fill_depth_meters,fill_dpth_over,crossing_fix,span_input
+5,199172,199172,,pscis_phase2.xlsm,Barrier,2,4,1,Replace with New Open Bottom Structure,18
+6,7622,7622,,pscis_phase2.xlsm,Barrier,2,2.2,-0.7999999999999998,Replace with New Open Bottom Structure,15
+7,199174,199174,,pscis_phase2.xlsm,Barrier,2.5,0.4,-2.6,Replace with New Open Bottom Structure,15
+8,199232,199232,,pscis_phase2.xlsm,Barrier,9.6,1.5,-1.5,Replace with New Open Bottom Structure,15
+9,199260,199260,,pscis_phase2.xlsm,Barrier,7,9,6,Replace with New Open Bottom Structure,33
+10,199255,199255,,pscis_phase2.xlsm,Barrier,10.5,1.5,-1.5,Replace with New Open Bottom Structure,15
+11,199267,199267,,pscis_phase2.xlsm,Barrier,10.6,1,-2,Replace with New Open Bottom Structure,15
+12,199237,199237,,pscis_phase2.xlsm,Barrier,14,,,Replace with New Open Bottom Structure,19
+13,199282,199282,,pscis_phase2.xlsm,Barrier,16,2,-1,Replace with New Open Bottom Structure,21
+14,199278,199278,,pscis_phase2.xlsm,Barrier,7,0.7,-2.3,Replace with New Open Bottom Structure,15
+15,199171,199171,,pscis_phase2.xlsm,Barrier,3.1,0.5,-2.5,Replace with New Open Bottom Structure,15
+16,199204,199204,,pscis_phase2.xlsm,Barrier,5.5,0.5,-2.5,Replace with New Open Bottom Structure,15
+17,199190,199190,,pscis_phase2.xlsm,Barrier,5.22,3,0,Replace with New Open Bottom Structure,15
+18,199256,199256,,pscis_phase2.xlsm,Barrier,19,1.5,-1.5,Replace with New Open Bottom Structure,24
+19,199173,199173,,pscis_phase2.xlsm,Barrier,3,1,-2,Replace with New Open Bottom Structure,15
+20,199328,199328,,pscis_phase2.xlsm,Passable,2,1.5,-1.5,,

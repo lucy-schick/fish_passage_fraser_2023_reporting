@@ -71,22 +71,293 @@ my_news_to_appendix <- function(
 }
 
 #https://stackoverflow.com/questions/49819892/cross-referencing-dtdatatable-in-bookdown
-my_tab_caption <- function(caption_text = my_caption) {
+my_tab_caption <- function(caption_text = my_caption, tip_header = TRUE) {
   # requires results="asis" in chunk header and only works in rmarkdown and not quarto
+
+  tip <- " <b>NOTE: To view all columns in the table - please click on one of the sort arrows within column headers before scrolling to the right.</b>"
+
   cat(
     "<table>",
     paste0(
       "<caption>",
       "(#tab:",
-      # this is the chunk name!!
       knitr::opts_current$get()$label,
       ")",
       caption_text,
+      if (tip_header) tip,
       "</caption>"
     ),
     "</table>",
     sep = "\n"
   )
+}
+
+sfpr_create_hydrograph <- function(
+    station = NULL,
+    pane_hydat = TRUE,
+    single_hydat = TRUE,
+    start_year = NULL,
+    end_year = NULL){
+
+  if(is.null(station)){
+    poisutils::ps_error('Please provide a station number, for example "08EE004"')
+  }
+
+  chk::chk_string(station)
+  chk::chk_flag(pane_hydat)
+  chk::chk_flag(single_hydat)
+
+  flow_raw <- tidyhydat::hy_daily_flows(station)
+
+  if(is.null(start_year)){
+    start_year <- flow_raw$Date %>% min() %>% lubridate::year()
+  }
+
+  if(is.null(end_year)){
+    end_year <- flow_raw$Date %>% max() %>% lubridate::year()
+  }
+
+  chk::chk_number(start_year)
+  chk::chk_number(end_year)
+
+  tidyhat_info <- tidyhydat::search_stn_number(station)
+
+
+  ##### Hydrograph Stats #####
+
+  ##build caption for the pane figure
+  caption_info <- dplyr::mutate(tidyhat_info, title_stats = paste0(stringr::str_to_title(STATION_NAME),
+                                                                   " (Station #",STATION_NUMBER," - Lat " ,round(LATITUDE,6),
+                                                                   " Lon ",round(LONGITUDE,6), "). Available daily discharge data from ", start_year,
+                                                                   # FIRST_YEAR, ##removed the default here
+                                                                   " to ",end_year, "."))
+
+  hydrograph1_stats_caption <- caption_info$title_stats
+
+
+
+  if (pane_hydat == TRUE){
+    #Create pane of hydrographs with "Mean", "Minimum", "Maximum", and "Standard Deviation" flows
+    hydrograph_stats_print <- fasstr::plot_data_screening(station_number = station, start_year = start_year,
+                                                          include_stats = c("Mean", "Minimum", "Maximum", "Standard Deviation"),
+                                                          plot_availability = FALSE)[["Data_Screening"]] + ggdark::dark_theme_bw() ##first version is not dark
+    hydrograph_stats_print
+
+    #Save hydrograph pane
+    ggplot2::ggsave(plot = hydrograph_stats_print, file=paste0("fig/hydrology_stats_", station, ".png"),
+                    h=3.4, w=5.11, units="in", dpi=300)
+
+    cli::cli_alert(hydrograph1_stats_caption)
+  }
+
+
+
+
+
+  ##### Single Hydrograph  #####
+
+  ##build caption for the single figure
+  caption_info2 <- dplyr::mutate(tidyhat_info, title_stats2 = paste0(stringr::str_to_title(STATION_NAME),
+                                                                     " (Station #",STATION_NUMBER," - Lat " ,round(LATITUDE,6),
+                                                                     " Lon ",round(LONGITUDE,6), "). Available mean daily discharge data from ", start_year,
+                                                                     # FIRST_YEAR, ##removed the default here
+                                                                     " to ",end_year, "."))
+
+  hydrograph1_stats_caption2 <- caption_info2$title_stats2
+
+  if (single_hydat == TRUE){
+    # Create single hydrograph with mean flows from date range
+    flow <- flow_raw %>%
+      dplyr::mutate(day_of_year = lubridate::yday(Date)) %>%
+      dplyr::group_by(day_of_year) %>%
+      dplyr::summarise(daily_ave = mean(Value, na.rm=TRUE),
+                       daily_sd = sd(Value, na.rm = TRUE),
+                       max = max(Value, na.rm = TRUE),
+                       min = min(Value, na.rm = TRUE)) %>%
+      dplyr::mutate(Date = as.Date(day_of_year))
+
+    plot <- ggplot2::ggplot()+
+      ggplot2::geom_ribbon(data = flow, aes(x = Date, ymax = max,
+                                            ymin = min),
+                           alpha = 0.3, linetype = 1)+
+      ggplot2::scale_x_date(date_labels = "%b", date_breaks = "2 month") +
+      ggplot2::labs(x = NULL, y = expression(paste("Mean Daily Discharge (", m^3, "/s)", sep="")))+
+      ggdark::dark_theme_bw() +
+      ggplot2::geom_line(data = flow, aes(x = Date, y = daily_ave),
+                         linetype = 1, linewidth = 0.7) +
+      ggplot2::scale_colour_manual(values = c("grey10", "red"))
+    plot
+
+    ggplot2::ggsave(plot = plot, file=paste0("fig/hydrograph_", station, ".png"),
+                    h=3.4, w=5.11, units="in", dpi=300)
+
+    cli::cli_alert(hydrograph1_stats_caption2)
+  }
+}
+
+#' Determine replacement structure type and size based on measured field metrics.
+#' @param dat PSCIS data
+#' @param fill_dpth standard fill depth, default is 3m.
+#' @param brdg_wdth standard bridge width, default is 15m.
+#' @param chn_wdth_max maximum channel width where the bridge should start to be more than brdg_wdth, default is brdg_wdth - 5m.
+#' @param fill_dpth_mult for every 1 m deeper than 3m, we need a 1.5:1 slope so there is 3m more bridge required
+#'
+#' @importFrom dplyr mutate filter select case_when
+#' @importFrom plyr round_any
+#' @importFrom readr write_csv
+#' @importFrom chk chk_numeric
+#'
+#' @export
+#'
+#' #' @examples \dontrun{
+#' fpr_structure_size_type(dat)
+#' }
+#'
+sfpr_structure_size_type <- function(
+    dat = NULL,
+    fill_dpth = 3,
+    brdg_wdth = 15,
+    chn_wdth_max = brdg_wdth - 5,
+    fill_dpth_mult = 3) {
+
+  if (is.null(dat))
+    stop('please provide "dat" (dataframe) object')
+  if (!is.data.frame(dat))
+    stop('"dat" must inherit from a data.frame')
+
+  chk::chk_numeric(fill_dpth)
+  chk::chk_numeric(brdg_wdth)
+  chk::chk_numeric(chn_wdth_max)
+  chk::chk_numeric(fill_dpth_mult)
+
+
+  str_type <- dat %>%
+    dplyr::select(rowid, aggregated_crossings_id, pscis_crossing_id, my_crossing_reference, source, barrier_result,
+                  downstream_channel_width_meters, fill_depth_meters) %>%
+    dplyr::mutate(fill_dpth_over = fill_depth_meters - fill_dpth_mult) %>%
+    dplyr::mutate(crossing_fix = dplyr::case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
+                                                  & downstream_channel_width_meters >= 2 ~ 'Replace with New Open Bottom Structure',
+                                                  barrier_result == 'Passable' | barrier_result == 'Unknown' ~ NA_character_,
+                                                  T ~ 'Replace Structure with Streambed Simulation CBS'))  %>%
+    dplyr::mutate(span_input = dplyr::case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
+                                                & downstream_channel_width_meters >= 2 ~ brdg_wdth,
+                                                barrier_result == 'Passable' | barrier_result == 'Unknown' ~ NA_real_,
+                                                T ~ 3))  %>%
+    dplyr::mutate(span_input = dplyr::case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
+                                                & fill_dpth_over > 0 & !stringr::str_like(crossing_fix, 'Simulation') ~
+                                                  (brdg_wdth + fill_dpth_mult * fill_dpth_over),  ##1m more fill = 3 m more bridge
+                                                T ~ span_input)) %>%
+    dplyr::mutate(span_input = dplyr::case_when(span_input < (downstream_channel_width_meters + 4) & ##span not need be extended if already 4m bigger than channel width
+                                                  downstream_channel_width_meters > chn_wdth_max ~
+                                                  (downstream_channel_width_meters - chn_wdth_max) + span_input,  ##for every m bigger than a 5 m channel add that much to each side in terms of span
+                                                T ~ span_input)) %>%
+    ##let's add an option that if the stream is under 3.5m wide and under more than 5m of fill we do a streambed simulation with a 4.5m embedded multiplate like 4607464 on Flathead fsr
+    dplyr::mutate(crossing_fix = dplyr::case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
+                                                  & downstream_channel_width_meters > 2 &
+                                                    downstream_channel_width_meters <= 3.5 &
+                                                    fill_depth_meters > 5 ~ 'Replace Structure with Streambed Simulation CBS',
+                                                  T ~ crossing_fix),
+                  span_input = dplyr::case_when((barrier_result == 'Barrier' | barrier_result == 'Potential')
+                                                & downstream_channel_width_meters > 2 &
+                                                  downstream_channel_width_meters <= 3.5 &
+                                                  fill_depth_meters > 5 ~ 4.5,
+                                                T ~ span_input)) %>%
+    dplyr::mutate(span_input = plyr::round_any(span_input, 0.5))
+
+
+  ## Extract the pscis phase so we can use it in the file name
+  pscis_phase <- str_type |>
+    dplyr::summarise(phase = dplyr::case_when(
+      unique(source) == "pscis_phase1.xlsm" ~ "pscis1",
+      unique(source) == "pscis_phase2.xlsm" ~ "pscis2",
+      unique(source) == "pscis_reassessments.xlsm" ~ "pscis_reassessments")) |>
+    dplyr::pull(phase)
+
+
+  ## then burn to a csvs so we can copy and paste into spreadsheet
+  str_type |>
+    readr::write_csv(file = paste0('data/inputs_extracted/str_type_', pscis_phase, '.csv'),
+                     na = '')
+
+}
+
+# set up a table for the memos that contains the moti climate change data
+sfpr_xref_moti_climate_names <- function(){
+ tibble::tribble(
+                                      ~spdsht,                                                                                                               ~report, ~description, ~id_join, ~id_side,
+                          "pscis_crossing_id",                                                                                                   "pscis_crossing_id",         NA,     NA,     NA,
+                      "my_crossing_reference",                                                                                               "my_crossing_reference",         NA,     NA,     NA,
+                               "crew_members",                                                                                   "Crew Members Seperate with Spaces",         NA,     NA,     NA,
+                      "moti_chris_culvert_id",                                                                                               "moti_chris_culvert_id",         NA,     NA,     NA,
+                                "stream_name",                                                                                                         "stream_name",         NA,     NA,     NA,
+                                  "road_name",                                                                                                           "road_name",         NA,     NA,     NA,
+                             "erosion_issues",                                                                                      "Erosion (scale 1 low - 5 high)",         NA,     9L,     1L,
+                     "embankment_fill_issues",                                                                  "Embankment fill issues 1 (low) 2 (medium) 3 (high)",         NA,     2L,     1L,
+                            "blockage_issues",                                                                      "Blockage Issues 1 (0-30%) 2 (>30-75%) 3 (>75%)",         NA,     3L,     1L,
+                             "condition_rank",                                                                    "Condition Rank = embankment + blockage + erosion",         NA,     4L,     1L,
+                            "condition_notes",                                                                "Describe details and rational for condition rankings",         NA,     NA,     NA,
+   "likelihood_flood_event_affecting_culvert",                                                     "Likelihood Flood Event Affecting Culvert (scale 1 low - 5 high)",         NA,     8L,     1L,
+  "consequence_flood_event_affecting_culvert",                                                    "Consequence Flood Event Affecting Culvert (scale 1 low - 5 high)",         NA,     5L,     1L,
+                  "climate_change_flood_risk",                           "Climate Change Flood Risk (likelihood x consequence) 1-6 (low) 6-12 (medium) 10-25 (high)",         NA,     6L,     1L,
+                         "vulnerability_rank",                                                                  "Vulnerability Rank = Condition Rank + Climate Rank",         NA,     7L,     1L,
+                              "climate_notes",                                                             "Describe details and rational for climate risk rankings",         NA,     NA,     NA,
+                             "traffic_volume",                                                                         "Traffic Volume 1 (low) 5 (medium) 10 (high)",         NA,     9L,     2L,
+                           "community_access", "Community Access - Scale - 1 (high - multiple road access) 5 (medium - some road access) 10 (low - one road access)",         NA,     2L,     2L,
+                                       "cost",                                                                                       "Cost (scale: 1 high - 10 low)",         NA,     3L,     2L,
+                           "constructability",                                                                      "Constructibility (scale: 1 difficult -10 easy)",         NA,     4L,     2L,
+                               "fish_bearing",                                                             "Fish Bearing 10 (Yes) 0 (No) - see maps for fish points",         NA,     5L,     2L,
+                      "environmental_impacts",                                                                       "Environmental Impacts (scale: 1 high -10 low)",         NA,     8L,     2L,
+                              "priority_rank",  "Priority Rank = traffic volume + community access + cost + constructability + fish bearing + environmental impacts",         NA,     6L,     2L,
+                               "overall_rank",                                                                   "Overall Rank = Vulnerability Rank + Priority Rank",         NA,     7L,     2L,
+                             "priority_notes",                                                                 "Describe details and rational for priority rankings",         NA,     NA,     NA
+  )
+}
+
+sfpr_xref_rd_tenure_names <- function(){
+  tibble::tribble( ~client_name, ~client_name_abb,
+                   "DISTRICT MANAGER NADINA (DND)",       "FLNR DND",
+                   "CANADIAN FOREST PRODUCTS LTD.",         "Canfor",
+                   "SOLID GROUND CONTRACTING LTD",    "Solid Ground",
+                   "CHINOOK COMFOR LIMITED",        "Chinook Comfor",
+                   "Wetzinkwa Community Forest Corporation", "Wetzinkwa Community Forest",
+                   "West Fraser Mills Ltd.", "West Fraser",
+                   "Timber Sales Manager", "BCTS",
+                   "DISTRICT MANAGER SKEENA STIKINE (DSS)", "MoF",
+                   "DISTRICT MANAGER PRINCE GEORGE", "MoF",
+                   "Winton Global Lumber Ltd.", "Winton"
+
+)
+}
+
+# maintain up to date and complete road cost multiplier object
+sfpr_xref_road_cost <- function(){
+  tibble::tribble(
+  ~my_road_class, ~my_road_surface, ~road_class_mult, ~road_surface_mult, ~cost_m_1000s_bridge, ~cost_embed_cv,
+           "fsr",          "rough",               1L,                 1L,                  30L,           100L,
+           "fsr",          "loose",               1L,                 1L,                  30L,           100L,
+      "resource",          "loose",               1L,                 1L,                  30L,           100L,
+      "resource",          "rough",               1L,                 1L,                  30L,           100L,
+        "permit",        "unknown",               1L,                 1L,                  30L,           100L,
+        "permit",          "loose",               1L,                 1L,                  30L,           100L,
+        "permit",          "rough",               1L,                 1L,                  30L,           100L,
+  "unclassified",          "loose",               1L,                 1L,                  30L,           100L,
+  "unclassified",          "rough",               1L,                 1L,                  30L,           100L,
+  "unclassified",          "paved",               1L,                 2L,                  50L,           150L,
+  "unclassified",        "unknown",               1L,                 2L,                  50L,           150L,
+         "local",          "loose",               4L,                 1L,                 100L,           200L,
+         "local",          "paved",               4L,                 2L,                 200L,           400L,
+     "collector",          "paved",               4L,                 2L,                 200L,           400L,
+      "arterial",          "paved",              15L,                 2L,                 750L,          1500L,
+       "highway",          "paved",              15L,                 2L,                 750L,          1500L,
+          "rail",           "rail",              15L,                 2L,                 750L,          1500L
+  )
+}
+
+sngr_get_elev <- function(dat){
+  poisspatial::ps_elevation_google(dat,
+                                   key = Sys.getenv('GOOG_API_KEY'),
+                                   Z = 'elev') |>
+    mutate(elev = round(elev, 0))
 }
 
 str_replace <- function(text, pattern, replacement) {

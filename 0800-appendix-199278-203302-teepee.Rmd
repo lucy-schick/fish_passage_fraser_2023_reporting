@@ -1,0 +1,221 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+```{r setup-199278, eval = F}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
+source('scripts/packages.R')
+source('scripts/tables.R')
+source('scripts/functions.R')
+```
+
+```{r  load-data-199278}
+my_site <- 199278
+my_site2 <- 203302
+```
+
+`r fpr::fpr_appendix_title(site2 = my_site2)`
+
+
+## Site Location {.unnumbered}
+
+PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()`, which flows into the McLennan River approximately 7km north of Valemount, BC. Crossing `r as.character(my_site)` is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the McLennan River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id:`r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). Approximately 300m upstream, PSCIS crossing `r as.character(my_site2)` is located on and is the responsibility of the CN Railway. Both crossings are within the Upper Fraser River watershed group. 
+
+
+## Background {.unnumbered}
+
+At this location, `r fpr::fpr_my_pscis_info()` is a
+`r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a high elevation watershed of approximately
+`r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
+a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
+`r fpr::fpr_my_wshd(col = 'elev_site')`m near the crossing (Table
+\@ref(tab:tab-wshd-199278)).
+
+<br>
+
+In 2023, crossing `r as.character(my_site)` was assessed with a fish passage assessments [ADD_FRASER_REPORT]. This site was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream during the 2023 assessment [ADD_FRASER_REPORT]. Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+
+<br>
+
+```{r tab-wshd-199278, eval = T}
+fpr::fpr_table_wshd_sum(site_id = my_site) |>
+  fpr::fpr_kable(caption_text = paste0('Summary of derived upstream watershed statistics for PSCIS crossing ', my_site, '.'),
+           footnote_text = 'Elev P60 = Elevation at which 60% of the watershed area is above',
+           scroll = F)
+
+```
+
+<br>
+
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199278). 
+
+<br>
+
+```{r tab-culvert-bcfp-199278, eval = T}
+fpr::fpr_table_bcfp(scroll = gitbook_on) 
+```
+
+<br>
+
+
+## Stream Characteristics at Crossings `r as.character(my_site)` and `r as.character(my_site2)`  {.unnumbered}
+
+At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199278)). The culvert had a moderate 0.4m outlet drop.
+
+<br>
+
+PSCIS crossing  `r as.character(my_site2)` on the CN `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` was un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(site = my_site2, col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol
+[@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-203302)). This culvert had a significant 0.75m outlet drop. 
+
+<br>
+
+In 2024, two other nearby PSCIS crossings were reassessed on Teepee Creek [LINK_APPENDIX_1]. Approximately 700m downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, PSCIS crossing 7620 was located on the CN Railway. Although the crossing ranked was as barrier to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment], the culvert was embedded, 100% backwatered, and was not a barrier to fish passage at the time of the survey.  
+
+<br>
+
+Approximately 600m downstream of PSCIS crossing  `r as.character(my_site2)` on the CN Railway, PSCIS crossing 4931 was located on Mount Tinsley Pit Road, which falls under the road tenure of	Carrier Lumber R13564. The culvert had a significant 1.3m outlet drop. 
+
+
+<br>
+
+At all crossings, the water temperature was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'temperature_c')`$^\circ$C,
+pH was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'p_h')` and
+conductivity was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'conductivity_m_s_cm')` uS/cm.
+
+`r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
+
+<br>
+
+```{r tab-culvert-199278, eval = T}
+fpr::fpr_table_cv_summary_memo()
+
+```
+
+<br>
+
+```{r tab-culvert-203302, eval = T}
+fpr::fpr_table_cv_summary_memo(site = my_site2, site_photo_id = my_site2)
+
+```
+
+
+<br>
+
+```{r eval=F}
+##this is useful to get some comments for the report
+hab_site |>filter(site == my_site & location == 'ds') |>pull(comments)
+hab_site |>filter(site == my_site2 & location == 'ds') |>pull(comments)
+hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
+
+```
+
+
+## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
+
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199278-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199278-d01))."))`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'ds')`. 
+
+<br>
+
+## Stream Characteristics Upstream of Crossing `r as.character(my_site)` and Downstream of Crossing `r as.character(my_site2)` {.unnumbered}
+
+The stream was surveyed upstream from crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` to crossing `r as.character(my_site2)` on the CN Railway, a distance of approximately 300m `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199278-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199278-d01)"))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'us')`
+
+
+## Stream Characteristics Upstream of Crossing `r as.character(my_site2)` {.unnumbered}
+
+`r fpr_my_survey_dist(sit = my_site2, loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-203302-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-203302-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us') |>stringr::str_to_lower()`.  `r fpr_my_habitat_paragraph(sit = my_site2, loc = 'us')`
+
+<br>
+ 
+
+## Structure Remediation and Cost Estimate {.unnumbered}
+
+Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name)` crossing (`r as.character(my_site)`) with a bridge (`r fpr::fpr_my_pscis_info( col_pull = recommended_diameter_or_span_meters)` m span) is recommended. At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
+
+<br>
+
+Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing (`r as.character(my_site2)`) with a bridge (`r fpr::fpr_my_pscis_info(site = my_site2, col_pull = recommended_diameter_or_span_meters)` m span) is recommended. 
+
+<!-- DOESNT RUN BECAUSE COST ESTIMATES DONT WORK WITH RAILWAY -->
+<!-- At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(site = my_site2), big.mark = ',')`. -->
+
+<br>
+
+
+## Conclusion {.unnumbered}
+
+
+`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
+
+<br>
+
+```{r tab-habitat-summary-199278, eval = T}
+tab_hab_summary |>
+  dplyr::filter(Site %in% c(my_site, my_site2)) |> 
+  fpr::fpr_kable(caption_text = paste0("Summary of habitat details for PSCIS crossings ", my_site, " and ", my_site2, "."),
+                 scroll = F) 
+
+```
+
+`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
+
+```{r photo-199278-01-prep, eval=T}
+my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = 'ds_typical_1_')
+
+my_caption1 = paste0('Typical habitat downstream of PSCIS crossing ', my_site, '.')
+
+
+```
+
+```{r photo-199278-01, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+knitr::include_graphics(my_photo1)
+```
+
+<br>
+
+```{r photo-199278-02-prep, eval=T}
+my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = 'us_typical_1_')
+
+my_caption2 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, 'and downstream of PSCIS crossing ', my_site2, '.')
+
+
+```
+
+```{r photo-199278-02, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
+knitr::include_graphics(my_photo2)
+```
+
+```{r photo-199278-d01, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
+knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
+```
+
+<br>
+
+```{r photo-203302-01-prep, eval=T}
+my_photo1 = fpr::fpr_photo_pull_by_str(site = my_site2, str_to_pull = 'us_typical_1_')
+
+my_caption1 = paste0('Typical habitat upstream of PSCIS crossing ', my_site2, '.')
+
+
+```
+
+```{r photo-203302-01, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+knitr::include_graphics(my_photo1)
+```
+
+```{r photo-203302-d01, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
+knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
+```

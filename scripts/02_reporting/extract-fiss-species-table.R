@@ -1,6 +1,9 @@
+# This script is used to overcome the issue documented here https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/75
+
+
 source('scripts/packages.R')
 
-wshd_codes <- c('LCHL', 'NECR', 'FRAN', 'UFRA')
+wshd_codes <- c('MORR', 'ZYMO', 'KISP', 'BULK', 'KLUM')
 
 conn <- fpr_db_conn()
 ##get the observations from the fiss layer
@@ -11,6 +14,8 @@ fish_species_watershed <- fpr::fpr_db_query(query = glue::glue_sql("SELECT DISTI
                    ON ST_intersects(x.geom, ws.geom)
                    WHERE ws.watershed_group_code IN ({wshd_codes*})",
                                                                    .con = conn))
+
+DBI::dbDisconnect(conn)
 
 # split data frame into list of data frames based on watershed group code
 fish_spp_prep <- fish_species_watershed |>
@@ -44,7 +49,6 @@ fish_spp <- fish_spp_prep %>%
   dplyr::relocate(c(species_name, species_code), .before = everything()) |>
   purrr::set_names(names_tbl)
 
-
 fish_all <- fishbc::freshwaterfish
 fish_cdc <- fishbc::cdc
 
@@ -52,8 +56,8 @@ fish_spp2 <- left_join(fish_spp,
                        fish_all,
                        by = c("species_code" = "Code")) %>%
   filter(!is.na(Class) & !species_code == 'TR') |> ##mottled sculpin has some sort of error going on
-  mutate(CDCode = case_when(species_code == 'BT' ~ 'F-SACO-11', ##pacific population yo
-                            T ~ CDCode)) %>%
+  # mutate(CDCode = case_when(species_code == 'BT' ~ 'F-SACO-11', ##pacific population yo
+  #                           T ~ CDCode)) %>%
   select(species_code,
          species_name,
          all_of(wshd_names),
@@ -66,16 +70,16 @@ fish_spp3 <- left_join(
 ) %>%
   select(`Scientific Name`,
          'Species Name' = species_name,
-         'Species Code' = species_code,
+         # 'Species Code' = species_code,
          `BC List`,
          # `Provincial FRPA`,
          COSEWIC,
-         SARA,
+         # SARA,
          all_of(wshd_names)
          ) %>%
   mutate(across(all_of(wshd_names), ~ifelse(!is.na(.), "Yes", .))) |>
   arrange(`Scientific Name`, `Species Name`)
 
-##print your table to inputs_extracted for use in the report
+##print your table to input_raw for use in the report
 fish_spp3 %>% readr::write_csv(file = 'data/inputs_extracted/fiss_species_table.csv')
 

@@ -1,0 +1,97 @@
+---
+title: "photos import"
+date: "Created: 2024-05-17 | Updated: `r format(Sys.Date(), '%Y-%m-%d')`"
+output: 
+  html_document:
+    code_folding: "hide"
+params:
+  repo_owner: "NewGraphEnvironment"
+  repo_name: "fish_passage_fraser_2023_reporting"
+  gis_name: "sern_fraser_2024"
+  job_name: "2024-074-sern-fraser-fish-passage"
+---
+
+```{r setup, eval= TRUE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, dpi=60, out.width = "100%", eval = FALSE)
+options(scipen=999)
+options(knitr.kable.NA = '--') #'--'
+options(knitr.kable.NAN = '--')
+
+```
+
+```{r paths, eval=TRUE}
+
+# 2024 data photos
+dir_server_photos <- fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects", params$job_name, "data/photos/sorted"))
+
+dir_repo_photos <- fs::path_expand(fs::path("~/Projects/repo/", params$repo_name, "/data/photos/"))
+```
+
+This is a simple script to bulk import all photos tagged with `_k_` or `crossings_all`  from a shared server to the local repo directory. Idea here is that all collaborators on raw project (who have access to the shared server) can add photos to the shared server and alter
+photos on the shared server (ie. organize, rename) and then update the repo. 
+
+<br>
+
+Naming conventions to allow `git` to track photos are included in the project `.gitignore` (ex. `_k_` included or photo
+is named `crossing_all.JPG`).
+
+<br>
+
+This script keeps things very simple by first deleting all the photos locally, and then copying only the photos tagged with `_k_` or `crossings_all` from the shared server to the local repo. Fraser 2024 - no deleting because we also need to add photos from 2023 which makes things funky - see https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/129
+
+```{r copy, eval=TRUE}
+
+# create the new mother photos directory
+fs::dir_create(dir_repo_photos)
+
+# These are the photos we are copying
+photos_to_copy <- fs::dir_ls(dir_server_photos, recurse = TRUE, type = "file") %>% 
+  .[stringr::str_detect(., "_k_|crossing_all")]
+
+# Make the paths for where we are copying the photos to
+files_to_paste <- stringr::str_remove(photos_to_copy, paste0("^", dir_server_photos, "/"))
+photos_to_paste <- fs::path(dir_repo_photos, files_to_paste)
+
+# Create directories for the new file paths
+dirs_to_create <- files_to_paste |>
+  fs::path_dir() |>
+  unique()
+
+fs::dir_create(fs::path(dir_repo_photos, "/", dirs_to_create))
+
+
+# Copy photos from the shared server to the local repo
+purrr::map2(photos_to_copy, photos_to_paste, ~ fs::file_copy(.x, .y, overwrite = TRUE))
+```
+
+```{r 2023-photos}
+
+# This is unique to Fraser because we data and photos from 2023 and 2024 - see issue here https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/129
+
+# So we also need to move over the photos from 2023 which are stored in mergin projects
+
+# simpcw_2023 photo 
+dir_photos_simpcw_2023 <- fs::path_expand("~/Projects/gis/sern_simpcw_2023/ignore_mobile/photos")
+
+# These are the photos we are copying
+photos_to_copy <- fs::dir_ls(dir_photos_simpcw_2023, recurse = TRUE, type = "file") %>% 
+  .[stringr::str_detect(., "_k_|crossing_all")]
+
+# Make the paths for where we are copying the photos to
+files_to_paste <- stringr::str_remove(photos_to_copy, paste0("^", dir_photos_simpcw_2023, "/"))
+photos_to_paste <- fs::path(dir_repo_photos, files_to_paste)
+
+# Create directories for the new file paths
+dirs_to_create <- files_to_paste |>
+  fs::path_dir() |>
+  unique()
+
+fs::dir_create(fs::path(dir_repo_photos, "/", dirs_to_create))
+
+
+# Copy photos from the shared server to the local repo
+purrr::map2(photos_to_copy, photos_to_paste, ~ fs::file_copy(.x, .y, overwrite = TRUE))
+
+
+```
+
