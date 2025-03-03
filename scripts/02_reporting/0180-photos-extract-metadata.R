@@ -2,12 +2,12 @@
 ## NOTE: this script needs to be re run if photos are deleted or new ones added
 
 # define your project repo name b/c this is not
-repo_name <- 'fish_passage_peace_2024_reporting'
+# repo_name <- 'fish_passage_peace_2024_reporting'
 
 photo_metadata <- exifr::read_exif('data/photos', recursive=T) |>
   janitor::clean_names() |>
   dplyr::select(file_name, source_file, create_date, gps_latitude, gps_longitude) |>
-  dplyr::mutate(url  = paste0('https://github.com/NewGraphEnvironment/', repo_name, '/raw/main/',
+  dplyr::mutate(url  = paste0('https://github.com/NewGraphEnvironment/', params$repo_name, '/raw/main/',
                        source_file)) |>
   # filter photos used in hab con site memos, but do not include photos used for pscis phase 2 submission portal as we don't want to clutter map
   # portal photos have been labelled '_k_nm' to distinguish them, they are still committed to repo
