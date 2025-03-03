@@ -180,7 +180,7 @@ sites_all_summary <- sites_all |>
 
 ```{r tab-sites-sum-cap, results="asis"}
 my_caption = "Summary of fish passage assessment procedures conducted in the Upper Fraser River watershed through SERNbc since 2023."
-my_tab_caption(tip_header = FALSE)
+my_tab_caption(tip_flag = FALSE)
 ```
 
 ```{r tab-sites-sum}
