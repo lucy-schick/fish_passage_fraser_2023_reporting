@@ -26,20 +26,11 @@ sites_l |>
 
 #2023 data
 
-## simpcw
-
 # Params
-dir_photos_simpcw_2023 <- fs::path_expand("~/Projects/gis/sern_simpcw_2023/ignore_mobile/photos")
-path_sites_simpcw_2023 <- fs::path_expand("~/Projects/gis/sern_simpcw_2023/data_field/2023/form_pscis_2023.gpkg")
+# All photos from `sern_simpcw_2023` and `sern_lchl_necr_fran_2023` are on OneDrive now so we can use `dir_photos_2024`
+# form_pscis_2023 is in the sqlite
 
-sites_l <- fpr::fpr_sp_gpkg_backup(
-  path_sites_simpcw_2023,
-  update_site_id = FALSE,
-  write_to_rdata = FALSE,
-  write_to_csv = FALSE,
-  write_back_to_path = FALSE,
-  return_object = TRUE
-) |>
+sites_l <- form_pscis_2023 |>
   dplyr::distinct(site_id) |>
   dplyr::arrange(site_id) |>
   dplyr::pull(site_id)
@@ -47,11 +38,11 @@ sites_l <- fpr::fpr_sp_gpkg_backup(
 
 # burn the amalgamated photos to mergin
 sites_l |>
-  purrr::map(fpr::fpr_photo_amalg_cv, dir_photos = paste0(dir_photos_simpcw_2023, "/"))
+  purrr::map(fpr::fpr_photo_amalg_cv, dir_photos = paste0(dir_photos_2024, "/"))
 
-## STILL NEED TO DO sern_lchl_necr_fran_2023 - see issue
 
 ###### END OF CODE TO ADDRESS issue https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/129 ######
+
 
 
 
