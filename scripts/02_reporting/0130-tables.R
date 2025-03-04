@@ -738,7 +738,7 @@ tab_cost_est_prep4 <- tab_cost_est_prep3 |>
 
 
 
-# ## Phase 1  ------------------------------
+## Phase 1  ------------------------------
 
 
 # Now prepare phase 1 cost estimates.
@@ -773,34 +773,34 @@ tab_cost_est_prep5 <- dplyr::left_join(
   )
 
 
-# Use when using dynamic column names
-# # Step 6: Add upstream modelling data to estimate potential habitat gain
-# tab_cost_est_prep5 <- dplyr::left_join(
-#   tab_cost_est_prep4,
-#   bcfishpass |>
-#     dplyr::select(stream_crossing_id, !!sp_network_km, !!sp_belowupstrbarriers_network_km) |>
-#     dplyr::mutate(stream_crossing_id = as.numeric(stream_crossing_id)),
-#   by = c('pscis_crossing_id' = 'stream_crossing_id')
-# ) |>
-#   dplyr::mutate(
-#     cost_net = round(!!sp_belowupstrbarriers_network_km * 1000 / cost_est_1000s, 1),
-#     cost_gross = round(!!sp_network_km * 1000 / cost_est_1000s, 1),
-#     cost_area_net = round((!!sp_belowupstrbarriers_network_km * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
-#     cost_area_gross = round((!!sp_network_km * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
-#     st_network_km = round(!!sp_network_km, 1)
-#   )
+  # Use when using dynamic column names
+  # # Step 6: Add upstream modelling data to estimate potential habitat gain
+  # tab_cost_est_prep5 <- dplyr::left_join(
+  #   tab_cost_est_prep4,
+  #   bcfishpass |>
+  #     dplyr::select(stream_crossing_id, !!sp_network_km, !!sp_belowupstrbarriers_network_km) |>
+  #     dplyr::mutate(stream_crossing_id = as.numeric(stream_crossing_id)),
+  #   by = c('pscis_crossing_id' = 'stream_crossing_id')
+  # ) |>
+  #   dplyr::mutate(
+  #     cost_net = round(!!sp_belowupstrbarriers_network_km * 1000 / cost_est_1000s, 1),
+  #     cost_gross = round(!!sp_network_km * 1000 / cost_est_1000s, 1),
+  #     cost_area_net = round((!!sp_belowupstrbarriers_network_km * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
+  #     cost_area_gross = round((!!sp_network_km * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
+  #     st_network_km = round(!!sp_network_km, 1)
+  #   )
 
-# Step 7: Add the priority from `form_pscis`
+ # Step 7: Add the priority from `form_pscis`
 tab_cost_est_prep6 <- tab_cost_est_prep5 |>
-  # No my_priority for fraser forms
-#   dplyr::left_join(
-#   tab_cost_est_prep5 |>
-#     # only for skeena 2024 where the road names are not capitalized in the spreadsheet because I forgot:/
-#     dplyr::select(-road_name),
-#   form_pscis |>
-#     dplyr::select(pscis_crossing_id, my_priority, road_name),
-#   by = 'pscis_crossing_id'
-# ) |>
+    # No my_priority for fraser forms
+  #   dplyr::left_join(
+  #   tab_cost_est_prep5 |>
+  #     # only for skeena 2024 where the road names are not capitalized in the spreadsheet because I forgot:/
+  #     dplyr::select(-road_name),
+  #   form_pscis |>
+  #     dplyr::select(pscis_crossing_id, my_priority, road_name),
+  #   by = 'pscis_crossing_id'
+  # ) |>
   dplyr::arrange(pscis_crossing_id) |>
   dplyr::select(
     pscis_crossing_id,
@@ -847,10 +847,10 @@ tab_cost_est_phase1 <- tab_cost_est_prep6 |>
 # Step 1: Join habitat confirmation priorities data to upstream habitat length
 tab_cost_est_prep7 <- dplyr::left_join(
   tab_cost_est_prep4,
-  dplyr::select(
-    dplyr::filter(habitat_confirmations_priorities, location == 'us'),
-    site,
-    upstream_habitat_length_m
+  habitat_confirmations_priorities |>
+    dplyr::arrange(site, dplyr::desc(location == "us")) |>  # Prioritize "us" over "ds"
+    dplyr::distinct(site, .keep_all = TRUE) |>  # Keep the first row per site
+    dplyr::select(location, site, upstream_habitat_length_m
   ),
   by = c('pscis_crossing_id' = 'site')
 ) |>
