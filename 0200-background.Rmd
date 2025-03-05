@@ -176,18 +176,7 @@ The Fraser River watershed is the largest salmon-producing river system in Briti
 
 ### Lhtakoh  
 
-The Fraser River mainstem serves as the primary migration corridor for all anadromous fish species returning to spawn in its tributaries. Historically, the Fraser supported some of the largest Sockeye and Chinook salmon runs in North America. However, climate change, habitat degradation, and fisheries pressures have led to declining salmon populations in recent decades.  
-
-Fraser River salmon populations are monitored through escapement surveys and hydroacoustic assessments. Some key salmon populations include:
-
-- Early Stuart and Late Stuart Sockeye: Historically large runs but now at risk due to changing freshwater and marine conditions.
-- Upper Fraser Chinook: Many stocks are designated as threatened or endangered under SARA.
-- Pink Salmon: Typically return in odd-numbered years, with variable escapement trends.
-
-
-### Nechakoh
-
-The Nechako River is a tributary of the Fraser River and supports Chinook salmon populations and serves as a migration corridor for sockeye salmon that spawn in the Stuart and Nadina/Francois Basins. Since the construction of the Kenney Dam in the 1950s, flows in the Nechako River have been regulated by Rio Tinto Alcan for hydroelectric power generation at the Kemano Generating Station on the Pacific Coast. In response to concerns over impacts on Nechako Chinook and Upper Fraser sockeye, flow management practices have been implemented. Since 1987, the Nechako Fisheries Conservation Program (NFCP) has operated an annual monitoring program, focussed on Nechako Chinook and migratory sockeye salmon designed to monitor the effectiveness of conservation measures specified in the 1987 Settlement Agreement between Canada, British Columbia, and Alcan [@levy_nicklin2018ChinookSockeye]. 
+The Fraser River mainstem serves as the primary migration corridor for all anadromous fish species returning to spawn in its tributaries. Historically, the Fraser supported some of the largest sockeye and chinook salmon runs in North America. However, climate change, habitat degradation, and fisheries pressures have led to declining salmon populations in recent decades.  
 
 <br>
 
@@ -195,49 +184,55 @@ Upper Fraser sockeye populations have been in decline for several decades, likel
 
 <br>
 
+The Fraser River mainstem serves as the primary migration corridor for all anadromous fish species returning to spawn in its tributaries. Historically, the Fraser supported some of the largest sockeye and chinook salmon runs in North America. However, climate change, habitat degradation, and fisheries pressures have led to declining salmon populations in recent decades. 
+
+<br>
+
+The 2019 Big Bar landslide created a significant barrier to salmon migration in the Fraser River, further stressing already vulnerable populations. Extensive mitigation efforts, including rock removal and the construction of a fishway, have helped improve passage, with an estimated 2.9 million salmon successfully navigating the site in 2022. The Upper Fraser Fisheries Conservation Alliance (UFFCA) has played a key role in supporting emergency response and recovery planning, working with federal and provincial agencies to ensure First Nations' interests and traditional knowledge are incorporated into long-term recovery strategies. This includes ongoing monitoring, habitat restoration, and collaborative management to mitigate future risks to Fraser salmon populations [@Upperfraserfisheriesconservationalliance].
+
+<br>
+
+<!-- Need more detail and references -->
+<!-- Fraser River salmon populations are monitored through escapement surveys and hydroacoustic assessments. Some key salmon populations include: -->
+
+<!-- - Early Stuart and Late Stuart sockeye: Historically large runs but now at risk due to changing freshwater and marine conditions. -->
+<!-- - Upper Fraser Chinook: Many stocks are designated as threatened or endangered under SARA. -->
+<!-- - Pink Salmon: Typically return in odd-numbered years, with variable escapement trends. -->
+
+
+### Nechakoh
+
+The Nechako River, a tributary of the Fraser River, supports Chinook salmon populations and serves as a migration corridor for sockeye salmon that spawn in the Stuart and Nadina/Francois Basins. Since the construction of the Kenney Dam in the 1950s, flows in the Nechako River have been regulated by Rio Tinto Alcan for hydroelectric power generation at the Kemano Generating Station on the Pacific Coast. In response to concerns over impacts on Nechako Chinook and Upper Fraser sockeye, flow management practices have been implemented. Since 1987, the Nechako Fisheries Conservation Program (NFCP) has operated an annual monitoring program, focussed on Nechako Chinook and migratory sockeye salmon designed to monitor the effectiveness of conservation measures specified in the 1987 Settlement Agreement between Canada, British Columbia, and Alcan [@levy_nicklin2018ChinookSockeye].
+
+<br>
+
 The Nechako River also supports a genetically distinct and endangered population of white sturgeon with low natural recruitment. To address this decline, the [Nechako White Sturgeon Recovery Initiative](https://www.nechakowhitesturgeon.org/) (NWSRI) was established, implementing conservation measures such as the Nechako White Sturgeon Conservation Centre. The facility focuses on conservation aquaculture to maintain genetic diversity and support population recovery. Since 2006, the NWSRI has been releasing tagged juvenile sturgeon annually into the Nechako River to aid in species restoration [@NechakoWhiteSturgeonRecoveryInitiativeHome].
 
 <br>
 
-Indigenous fisheries organizations, including individual First Nations, the Carrier Sekani Tribal Council, and the Upper Fraser Fisheries Conservation Alliance (UFFCA), are actively involved in fisheries management in the Nechako watershed. These organizations work to support conservation while ensuring the sustainability of Indigenous fisheries, which have cultural and subsistence importance.
+Indigenous fisheries organizations, including individual First Nations, the Carrier Sekani Tribal Council, and the Upper Fraser Fisheries Conservation Alliance (UFFCA), are actively involved in fisheries management in the Nechako watershed. These organizations work to support conservation while ensuring the sustainability of Indigenous fisheries, which have cultural and subsistence importance [@Upperfraserfisheriesconservationalliance].
 
 <br>
 
-### Chilako River  
-
-The Chilako River (Tsalakoh) is a Nechako tributary with historic salmon populations, but fish passage barriers and low summer flows limit salmon migration. It provides habitat for Coho Salmon, Rainbow Trout, and Mountain Whitefish [@bcfishspecies2024].  
-
-Key fisheries challenges:  
-
-- Culverts and road crossings obstruct fish passage.  
-- Summer low flows restrict available spawning and rearing habitat.  
-- Coho Salmon are present in lower reaches, but populations are small and vulnerable to habitat degradation.  
 
 ### François Lake  
 
-François Lake is one of the largest natural lakes in BC and supports landlocked Kokanee (O. nerka), as well as migratory Sockeye Salmon that access the lake via the Stellako River. François Lake is a key rearing area for juvenile salmon before migrating to the Fraser River [@bcfishspecies2024].  
+François Lake is one of the largest natural lakes in BC and supports landlocked Kokanee (O. nerka), as well as migratory sockeye salmon that access the lake via the Stellako River. François Lake is a key rearing area for juvenile salmon before migrating to the Fraser River.  
 
-Fisheries considerations:  
-
-- Sockeye Salmon: A major spawning population for the Fraser system.  
-- Lake Trout and Burbot: Resident species with stable populations.  
-- Invasive species: Potential threats to native fish populations.  
+<br>
 
 ### Morkill River  
 
-The Morkill River, a tributary of the Upper Fraser, supports Bull Trout, Mountain Whitefish, and Rainbow Trout. It has limited salmon presence but contributes cold water inputs to the Fraser River, which may benefit migrating fish during warm summer months [@shaw_tuominenWaterQuality].  
+The Morkill River, a tributary of the Upper Fraser, supports Bull Trout, Mountain Whitefish, and Rainbow Trout. It has limited salmon presence but contributes cold water inputs to the Fraser River, which may benefit migrating fish during warm summer months.  
 
-
-### Fisheries Data  
-
-Fisheries and Oceans Canada stock assessment data for salmon populations in the Fraser River watershed was accessed through the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6). A summary of escapement estimates for salmon-bearing watersheds in the Nechako River, Upper Fraser River, François Lake, Morkill River, and Chilako River regions is presented in Table X.  
-
-```{r stock-assess-dat-all, results="asis", echo=FALSE, eval= gitbook_on}
+<br>
 
 ### Salmon Stock Assessment Data
 
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
-through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on){knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)")}else(knitr::asis_output("[here](https://www.newgraphenvironment.com/fish_passage_fraser_2023_reporting/background.html)"))`. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
+through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on) { knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)") } else { knitr::asis_output(ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "background.html", anchor_text = "here")) }`. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
+
+<br>
 
 ```{r stock-assess-download, eval=FALSE}
 library("ckanr")
@@ -323,8 +318,13 @@ dfo_sad_tr |>
 
 ```
 
+<br>
+
 ### Fish Species
 
+Summaries of historical fish observations in the Upper Fraser River, Nechako River, Lower Chilako River, and François Lake watershed groups [@moe2024KnownBC].
+
+<br>
 
 ```{r fiss-species-table}
 fiss_species_table <- readr::read_csv('data/inputs_extracted/fiss_species_table.csv')
