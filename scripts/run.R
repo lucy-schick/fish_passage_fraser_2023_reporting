@@ -9,6 +9,16 @@ preview_chapter('0100-intro.Rmd')
 rmarkdown::render('scripts/02_reporting/0160-photos-import.Rmd')
 source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
+# this will swap out the real appendix rmd and html and swap in a dummy placeholder for the build to speed it up
+file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
+# we only really need to do this if build is new and html should replace the one in hold
+file.rename("docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html", "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html")
+fs::file_copy(
+  'hold/0600-appendix-placeholder.Rmd',
+  '0600-appendix-placeholder.Rmd',
+  overwrite = TRUE
+  )
+
 
 # add/update the NEWS.md to the book as an appendix and build the gitbook
 {
@@ -17,8 +27,17 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
   source('scripts/staticimports.R')
   my_news_to_appendix()
 
+
+
   rmarkdown::render_site(output_format = 'bookdown::gitbook',
                          encoding = 'UTF-8')
+
+  # now copy back the original appendix overtop of the empty one
+  fs::file_copy(
+    "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html",
+    "docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html",
+    overwrite = TRUE
+    )
 
 }
 
