@@ -6,10 +6,6 @@ Select sites were assessed between Burns Lake and Valemount, British Columbia wi
 
 <br>
 
-```{r eval = FALSE}
-#and is within the traditional territories of the Dakelh (Carrier) and Simpcw.
-```
-
 ```{r overview-map, fig.cap = 'Overview map of Study Areas in the Skeena, Fraser and Mackenzie (FWCP Peace) watersheds',eval=T}
 # grab the latest version when updates happen
 # fs::file_copy(
@@ -20,31 +16,59 @@ Select sites were assessed between Burns Lake and Valemount, British Columbia wi
 knitr::include_graphics("fig/fishpassage_2024_sern_summary.jpeg")
 ```
 
+<br>
+
+## Dakelh
+
+The Dakelh (Carrier) people are indigenous to north-central British Columbia, with a deep connection to the region's waterways. Their name, Dakelh, translates to "people who travel by water," reflecting their reliance on rivers such as the Lhtakoh (Fraser), Nechakoh (Nechako), and Nak'alkoh (Stuart) for transportation, trade, and sustenance [@hudson2010Dakelhcarrier]. 
+
+<br>
+
+The Dakelh were key participants in the Grease Trails, trading inland goods for coastal eulachon oil [@hudson2010Dakelhcarrier]. Their Athabaskan language, Dakelh, has declined due to colonial policies, but revitalization efforts are ongoing. Organizations like the [Yinka Dene Language Institute](https://www.ydli.org/) work to document and promote Dakelh through education, literacy programs, and linguistic research [@yinkadenelanguageinstitute2025]. The Lheidli T'enneh First Nation and local school districts have also developed language programs to preserve and teach Dakelh (@Ourlanguage2025).
+
+<br>
+
+The Dakelh people traditionally organize their lands into Keyohs, family-run territories passed down through generations. Each Keyoh is overseen by a Keyohwhudachun (Keyoh Holder), who manages land use and stewardship [@Keyohhuwunline2025]. Despite historical disruptions, Keyohs remain central to Dakelh identity and land management practices.
+
+
+### Lheidli T’enneh
+
+The Lheidli T'enneh First Nations are a Dakelh sub-group whose traditional territory encompasses the Nechakoh (Nechako) River, Lhtakoh (Fraser) River, and Morkill River, and spans from west of Lheidli (Prince George) to Valemount. "Lheidli" translates to "The People from the Confluence of the River," referring to the meeting of the Nechako ("Nee Incha Koh" – "river with strong undercurrents") and Fraser ("Ltha Koh" – "Big Mouth River") rivers in what is now Prince George, British Columbia [@Ourstory2025]. 
+
+<br>
+
+Located within the traditional territory of the Lheidli T’enneh is Chun T’oh Whudujut (Ancient Forest), a Provincial Park and Protected Area 120km east of Prince George. The park has thousand-year-old western red cedars and a rich biodiversity of plants, mosses, lichens and fungi which can be explored through the trail network. Historically, Lheidli people would visit the stands from summer fishing camps along the upper Fraser River as well as gather medicinal plants, some of which were thought to be extinct. However, the park was not always a protected area and was initially slated for logging until a UNBC graduate student studying lichen biodiversity identified the ancient stands of western red cedars. Recognizing their ecological and cultural significance, trails were developed to highlight the cedars and advocate for their protection. Through partnerships with local hiking groups, UNBC, Lheidli T’enneh, and the Provincial Government, the Ancient Forest biodiversity assessment project has contributed to conservation efforts and tourism-based economic development in the Prince George area [@Chuntohwhudujutancientforest2025].
+
+<br>
+
+### Carrier Sekani
+
+The Carrier Sekani Tribal Council unifies six nations west of Lheidli (Prince George) whose traditional territories include the Lhtakoh (Fraser), Nechakoh (Nechako), Tsalakoh (Chilako), Endako, and Nadleh (Nautley) Rivers [@CSTCCSFNs]. The Carrier Sekani Tribal Council includes:
+
+  - Ts’il Kaz Koh First Nation - located near Burns Lake 
+  - Nadleh Whut’en First Nation - located near Fraser Lake 
+  - Saik’uz First Nation - located near Vanderhoof
+  - Stellat’en First Nation - located near Fraser Lake
+  - Takla Nation - located near Takla Lake
+  - Wet’suwet’en First Nation - located west of Burns Lake
+
+<br>
+
+### Nazko
+
+Nazko, meaning "river flowing from the south," is a Dakelh sub-group located 120 km west of Quesnel along the Nazko River. Originally known for its strong ranching history, the community expanded into forestry in the 1980s, establishing Nazko Logging, a successful enterprise that created jobs and supported economic growth [@adams_stokes2025Historynazko].
+
+<br>
+
 ## Simpcw
 
-Simpcw, which translates to "People of the Rivers", is one of the 17 campfires (bands) that make up the Secwepemc, or Shuwap Nation. Their traditional territory stretches from north of Mcbride, all the way south to Barrier, and east to Mt.Robson Provincial Park, and includes the North Thompson River and the Upper Fraser River [@UsSimpcw]. 
-
-<br>
-
-## Lheidli T’enneh
-
-The Lheidli T'enneh First Nations are a Dakelh sub-group whose traditional territory encompasses the Nechako River, Upper Fraser River, and Morkill River, spanning from west of Prince George to Valemount. "Lheidli" translates to "The People from the Confluence of the River," referring to the meeting of the Nechako ("Nee Incha Koh" – "river with strong undercurrents") and Fraser ("Ltha Koh" – "Big Mouth River") rivers in what is now Prince George, British Columbia [@OurStoryLheidliTennehFirstNationPrinceGeorgeBC2020]. 
-
-<br>
-
-Located within the traditional territory of the Lheidli T’enneh is Chun T’oh Whudujut (Ancient Forest), a Provincial Park and Protected Area 120km east of Prince George. The park has thousand-year-old western red cedars and a rich biodiversity of plants, mosses, lichens and fungi which can be explored through the trail network. Historically, Lheidli people would visit the stands from summer fishing camps along the upper Fraser River as well as gather medicinal plants, some of which were thought to be extinct. However, the park was not always a protected area and was initially slated for logging until a UNBC graduate student studying lichen biodiversity identified the ancient stands of western red cedars. Recognizing their ecological and cultural significance, trails were developed to highlight the cedars and advocate for their protection. Through partnerships with local hiking groups, UNBC, Lheidli T’enneh, and the Provincial Government, the Ancient Forest biodiversity assessment project has contributed to conservation efforts and tourism-based economic development in the Prince George area [@AncientForestLheidliTennehFirstNationPrinceGeorgeBC2020].
-
-<br>
-
-## Carrier Sekani
-
-The Carrier Sekani Tribal Council unifies six nations west of Price George: the Ts’il Kaz Koh First Nation (Burns Lake Band), Nadleh Whut’en First Nation, Saik’uz First Nation, Stellat’en First Nation, Takla Nation, and Wet’suwet’en First Nation [@CSTCCSFNs; @SimpcwFirstNationHistory], and inlcudes the Nechako and Chilako Rivers. 
+Simpcw, which translates to "People of the Rivers", is one of the 17 campfires (bands) that make up the Secwepemc, or Shuwap Nation. Their traditional territory stretches from north of McBride, south to Barrier, and east to Mt.Robson Provincial Park, and includes the North Thompson River and the Upper Fraser River [@UsSimpcw]. 
 
 <br>
 
 ## Lhtakoh
 
-Known as the Ltha Koh, meaning "rivers within one another" to the Dakelh (Carrier) people, the Fraser River stretches nearly 1,400 kilometers from the Rocky Mountains of Mount Robson Provincial Park to the Strait of Georgia near Vancouver. As the largest salmon-producing river on Canada's west coast [@bradford_taylor2023Diversityfreshwater; @DaklehPlacenames], it plays a crucial economic role in supporting forestry, agriculture, and hydroelectric power generation. Additionally, the Fraser River is vital for fisheries, especially for salmon populations, which are essential to both the local ecosystem and indigenous communities.
+Known as the Lhtakoh, meaning "rivers within one another" to the Dakelh (Carrier) people, the Fraser River stretches nearly 1,400 kilometers from the Rocky Mountains of Mount Robson Provincial Park to the Strait of Georgia near Vancouver. As the largest salmon-producing river on Canada's west coast [@bradford_taylor2023Diversityfreshwater; @DaklehPlacenames], it plays a crucial economic role in supporting forestry, agriculture, and hydroelectric power generation. Additionally, the Fraser River is vital for fisheries, especially for salmon populations, which are essential to both the local ecosystem and indigenous communities.
 
 <br>
 
@@ -54,6 +78,8 @@ The Upper Fraser River is commonly defined as the section of the mainstem north 
 
 The Upper Fraser River, an 8th order stream, drains an area of 232,134 km^2^ upstream of the McGregor River confluence. The seasonal hydrograph has a single broad peak in early summer due to snow and glacial melt from surrounding mountain ranges (Figure \@ref(fig:hydrograph1)). The mean annual discharge at station 08KA005 in McBride, located roughly 200km southeast of Prince George, is `r round(fasstr::calc_longterm_mean(station_number = "08KA005")$LTMAD,1)` m^3^/.
 
+<br>
+
 <!-- - FR in McBride, station 08KA005 -->
 ```{r mcbride-hydat, eval=F}
 sfpr_create_hydrograph("08KA005")
@@ -61,25 +87,6 @@ sfpr_create_hydrograph("08KA005")
 
 ```{r hydrograph1, fig.cap = "Fraser River At Mcbride (Station #08KA005 - Lat 53.30172 Lon -120.14092). Available mean daily discharge data from 1953 to 2021. "}
 knitr::include_graphics("fig/hydrograph_08KA005.png")
-```
-
-```{r hydrology-stats1, fig.cap = "Fraser River At Mcbride (Station #08KA005 - Lat 53.30172 Lon -120.14092). Available daily discharge data from 1953 to 2021. ", , eval = FALSE}
-knitr::include_graphics("fig/hydrology_stats_08KA005.png")
-```
-
-
-<!-- Other available nearby stations: -->
-
-<!-- - FR in Hansard, upstream of McGregor river confluence, station 08KA004 -->
-```{r hansard-hydat, eval=F}
-sfpr_create_hydrograph("08KA004")
-```
-
-<!-- - FR in Price George, just downstream of Nechako confluence, station 08KE018. It looks like its active (https://wateroffice.ec.gc.ca/report/real_time_e.html?stn=08KE018&mode=Graph&startDate=2024-07-12&endDate=2024-07-19&prm1=46&prm2=3) but tidyhydat only pulls data from 1984 -->
-
-```{r pg-hydat, eval=F}
-tidyhydat::hy_daily_flows(station_number = "08KE018")
-sfpr_create_hydrograph("08KE018")
 ```
 
 
@@ -109,32 +116,16 @@ The Nechako River is an 8th order stream that drains an area of 47,269km^2^. Beg
 
 <br>
 
-The Nechako River, meaning "Blackwater people's river", is home to the Cheslatta Carrier Nation who are part of the Dakelh people. Traditionally, they lived off the land near Tsetl'adak Bunk'ut "Peak Rock Lake" (Cheslatta Lake), however, in 1952, the construction of the Kenney Dam by the Aluminum Company of Canada (Alcan) and the subsequent flooding of the Nechako Reservoir forced the Cheslatta Carrier people to abandon their ancestral lands [@HistoryCheslattaCarrierNation; @DaklehPlacenames]. This relocation was done with little notice or compensation, causing significant disruptions to their community, culture, and way of life. Despite these challenges, the Cheslatta Carrier Nation has worked to preserve their cultural heritage and advocate for their rights and land restoration.
+The Nechako River, meaning "Blackwater people's river", is home to the Cheslatta Carrier Nation who are part of the Dakelh people. Traditionally, they lived off the land near Tsetl'adak Bunk'ut "Peak Rock Lake" (Cheslatta Lake), however, in 1952, the construction of the Kenney Dam by the Aluminum Company of Canada (now Rio Tinto Alcan) and the subsequent flooding of the Nechako Reservoir forced the Cheslatta Carrier people to abandon their ancestral lands [@HistoryCheslattaCarrierNation; @DaklehPlacenames]. This relocation was done with little notice or compensation, causing significant disruptions to their community, culture, and way of life. Despite these challenges, the Cheslatta Carrier Nation has worked to preserve their cultural heritage and advocate for their rights and land restoration.
 
 <br>
 
 ```{r, eval=FALSE}
-hydat_stations <- fpr::fpr_db_query(query = lfpr_dbq_clip('whse_environmental_monitoring.envcan_hydrometric_stn_sp',
-'whse_basemapping.fwa_watershed_groups_poly', 'watershed_group_code', c("FRAN", "LCHL","NECR")))
-```
-
-```{r, eval= FALSE}
-# Use if you want to create a hydrograph for a each station, won't print captions though
-hydat_stations %>% 
-  dplyr::filter(station_operating_status == "ACTIVE-REALTIME") %>% 
-  dplyr::filter(!(station_number == '08JB007')) %>% 
-  pull(station_number) %>%
-  lapply(fpr_create_hydrograph_local)
-
-```
-
-
-```{r, eval=TRUE}
 # starting at 1948 because that's where consistent data starts
 sfpr_create_hydrograph("08JC001", start_year = 1948)
 ```
 
-```{r, eval=TRUE}
+```{r, eval=FALSE}
 sfpr_create_hydrograph("08JC002")
 ```
 
@@ -144,19 +135,13 @@ knitr::include_graphics("fig/pixel.png")
 knitr::include_graphics("fig/hydrograph_08JC002.png")
 ```
 
-```{r hydrology-stats2, fig.cap = "Nechako River At Isle Pierre (Station #08JC002 - Lat 53.96044 Lon -123.23486). Available daily discharge data from 1950 to 2022.", eval = FALSE}
-knitr::include_graphics("fig/hydrology_stats_08JC002.png")
-```
-
-```{r hydrology-stats3, fig.cap = "Nechako River At Vanderhoof (Station #08JC001 - Lat 54.02673 Lon -124.00865). Available daily discharge data from 1948 to 2021.", eval = FALSE}
-knitr::include_graphics("fig/hydrology_stats_08JC001.png")
-```
-
-
+<br>
 
 ## Endako River
 
 The Endako River is a 6th order stream that flows south east from Burns Lake to Fraser Lake. It drains an area of 5,970km^2^. There is one hydrometric station on the Endako River located in Endako, but it was only active for one year during 1951. Given the one year of data, the mean annual discharge is `r round(fasstr::calc_longterm_mean(station_number = "08JB004")$LTMAD,1)` m^3^/s at station 08JB004. The hydrograph peaks in May-June (Figure \@ref(fig:hydrograph3)).
+
+<br>
 
 ```{r, eval=FALSE}
 sfpr_create_hydrograph("08JB004")
@@ -166,19 +151,13 @@ sfpr_create_hydrograph("08JB004")
 knitr::include_graphics("fig/hydrograph_08JB004.png")
 ```
 
-```{r hydrology-stats4, fig.cap = "Endako River At Endako (Station #08JB004 - Lat 54.08194 Lon -125.021111). Available daily discharge data from 1950 to 1951.", eval=FALSE}
-knitr::include_graphics("fig/hydrology_stats_08JB004.png")
-```
+<br>
 
 ## 	Tsalakoh
 
-```{r fn-chilako, eval=FALSE}
-# The Chilako River, known as the Tsalakoh by the Dakelh people, translates to the "beaver paw river". 
+The Chilako River, known as the Tsalakoh by the Dakelh people, translates to the "beaver paw river". It is a 6th order stream that flows north from the Nechako Plateau to the Nechako River and drains an area of 3,634km^2^. There is one hydrometric station on the Chilako River located ~10km upstream of the mouth, but it was only active from 1960-1974. Given this data, the hydrograph peaks in May-June (Figure \@ref(fig:hydrograph4)).
 
-```
-
-
-The Chilako River is a 6th order stream that flows north from the Nechako Plateau to the Nechako River and drains an area of 3,634km^2^. There is one hydrometric station on the Chilako River located ~10km upstream of the mouth, but it was only active from 1960-1974. Given this data, the hydrograph peaks in May-June (Figure \@ref(fig:hydrograph4)).
+<br>
 
 ```{r, eval=FALSE}
 sfpr_create_hydrograph("08JC005")
@@ -188,17 +167,72 @@ sfpr_create_hydrograph("08JC005")
 knitr::include_graphics("fig/hydrograph_08JC005.png")
 ```
 
-```{r hydrology-stats5, fig.cap = "Chilako River Near Prince George (Station #08JC005 - Lat 53.808891 Lon -122.988892). Available daily discharge data from 1960 to 1974.", eval = FALSE}
-knitr::include_graphics("fig/hydrology_stats_08JC005.png")
-```
+<br>
 
 
 ## Fisheries
 
+The Fraser River watershed is the largest salmon-producing river system in British Columbia and one of the most significant on the Pacific Coast. It provides critical habitat for anadromous salmonids, resident freshwater species, and other aquatic organisms. The river supports indigenous, commercial, and recreational fisheries, with Pacific salmon (Oncorhynchus spp.) playing a key ecological and economic role.
+
+### Lhtakoh  
+
+The Fraser River mainstem serves as the primary migration corridor for all anadromous fish species returning to spawn in its tributaries. Historically, the Fraser supported some of the largest sockeye and chinook salmon runs in North America. However, climate change, habitat degradation, and fisheries pressures have led to declining salmon populations in recent decades.  
+
+<br>
+
+Upper Fraser sockeye populations have been in decline for several decades, likely due to reduced flows and altered water temperatures, affecting migration and spawning success [@levy_nicklin2018ChinookSockeye]. The Early Stuart and Late Stuart sockeye are now classified as "Endangered" by COSEWIC [@cosewic2017COSEWICassessment]. Under the Wild Salmon Policy, several Upper Fraser sockeye conservation units have been classified as "red-zoned" [@levy_nicklin2018ChinookSockeye]. 
+
+<br>
+
+The Fraser River mainstem serves as the primary migration corridor for all anadromous fish species returning to spawn in its tributaries. Historically, the Fraser supported some of the largest sockeye and chinook salmon runs in North America. However, climate change, habitat degradation, and fisheries pressures have led to declining salmon populations in recent decades. 
+
+<br>
+
+The 2019 Big Bar landslide created a significant barrier to salmon migration in the Fraser River, further stressing already vulnerable populations. Extensive mitigation efforts, including rock removal and the construction of a fishway, have helped improve passage, with an estimated 2.9 million salmon successfully navigating the site in 2022. The Upper Fraser Fisheries Conservation Alliance (UFFCA) has played a key role in supporting emergency response and recovery planning, working with federal and provincial agencies to ensure First Nations' interests and traditional knowledge are incorporated into long-term recovery strategies. This includes ongoing monitoring, habitat restoration, and collaborative management to mitigate future risks to Fraser salmon populations [@Upperfraserfisheriesconservationalliance].
+
+<br>
+
+<!-- Need more detail and references -->
+<!-- Fraser River salmon populations are monitored through escapement surveys and hydroacoustic assessments. Some key salmon populations include: -->
+
+<!-- - Early Stuart and Late Stuart sockeye: Historically large runs but now at risk due to changing freshwater and marine conditions. -->
+<!-- - Upper Fraser Chinook: Many stocks are designated as threatened or endangered under SARA. -->
+<!-- - Pink Salmon: Typically return in odd-numbered years, with variable escapement trends. -->
+
+
+### Nechakoh
+
+The Nechako River, a tributary of the Fraser River, supports Chinook salmon populations and serves as a migration corridor for sockeye salmon that spawn in the Stuart and Nadina/Francois Basins. Since the construction of the Kenney Dam in the 1950s, flows in the Nechako River have been regulated by Rio Tinto Alcan for hydroelectric power generation at the Kemano Generating Station on the Pacific Coast. In response to concerns over impacts on Nechako Chinook and Upper Fraser sockeye, flow management practices have been implemented. Since 1987, the Nechako Fisheries Conservation Program (NFCP) has operated an annual monitoring program, focussed on Nechako Chinook and migratory sockeye salmon designed to monitor the effectiveness of conservation measures specified in the 1987 Settlement Agreement between Canada, British Columbia, and Alcan [@levy_nicklin2018ChinookSockeye].
+
+<br>
+
+The Nechako River also supports a genetically distinct and endangered population of white sturgeon with low natural recruitment. To address this decline, the [Nechako White Sturgeon Recovery Initiative](https://www.nechakowhitesturgeon.org/) (NWSRI) was established, implementing conservation measures such as the Nechako White Sturgeon Conservation Centre. The facility focuses on conservation aquaculture to maintain genetic diversity and support population recovery. Since 2006, the NWSRI has been releasing tagged juvenile sturgeon annually into the Nechako River to aid in species restoration [@NechakoWhiteSturgeonRecoveryInitiativeHome].
+
+<br>
+
+Indigenous fisheries organizations, including individual First Nations, the Carrier Sekani Tribal Council, and the Upper Fraser Fisheries Conservation Alliance (UFFCA), are actively involved in fisheries management in the Nechako watershed. These organizations work to support conservation while ensuring the sustainability of Indigenous fisheries, which have cultural and subsistence importance [@Upperfraserfisheriesconservationalliance].
+
+<br>
+
+
+### François Lake  
+
+François Lake is one of the largest natural lakes in BC and supports landlocked Kokanee (O. nerka), as well as migratory sockeye salmon that access the lake via the Stellako River. François Lake is a key rearing area for juvenile salmon before migrating to the Fraser River.  
+
+<br>
+
+### Morkill River  
+
+The Morkill River, a tributary of the Upper Fraser, supports Bull Trout, Mountain Whitefish, and Rainbow Trout. It has limited salmon presence but contributes cold water inputs to the Fraser River, which may benefit migrating fish during warm summer months.  
+
+<br>
+
 ### Salmon Stock Assessment Data
 
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
-through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on){knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)")}else(knitr::asis_output("[here](https://www.newgraphenvironment.com/fish_passage_fraser_2023_reporting/background.html)"))`. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
+through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on) { knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)") } else { knitr::asis_output(ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "background.html", anchor_text = "here")) }`. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
+
+<br>
 
 ```{r stock-assess-download, eval=FALSE}
 library("ckanr")
@@ -284,9 +318,13 @@ dfo_sad_tr |>
 
 ```
 
+<br>
+
 ### Fish Species
 
-Certain species (Sockeye, Coho) only have conservation data for sub-populations, so for example Sockeye says it has no cosewic classification which may seem odd to the reader. We can add in the sub-populations so its more informative but I need to look into which sub populations to include. Too bad the` whse_fish.fiss_fish_obsrvtn_pnt_sp` layer doesn't recognize sub populations... just says Sockeye (general)
+Summaries of historical fish observations in the Upper Fraser River, Nechako River, Lower Chilako River, and François Lake watershed groups [@moe2024KnownBC].
+
+<br>
 
 ```{r fiss-species-table}
 fiss_species_table <- readr::read_csv('data/inputs_extracted/fiss_species_table.csv')

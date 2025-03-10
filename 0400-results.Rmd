@@ -6,8 +6,8 @@
 
 <br>
 
-```{r map-interactive, fig.cap='Map of fish passage and habitat confirmation results', eval=F}
-# eval=gitbook_on
+```{r map-interactive, fig.cap='Map of fish passage and habitat confirmation results', eval=gitbook_on}
+
 
 ##make colors for the priorities
 pal <- 
@@ -49,21 +49,24 @@ leaflet::addCircleMarkers(data=dplyr::filter(tab_map_phase_1, stringr::str_detec
                  label = dplyr::filter(tab_map_phase_1, stringr::str_detect(source, 'phase1') | stringr::str_detect(source, 'pscis_reassessments')) |> dplyr::pull(pscis_crossing_id),
                  # label = tab_map_phase_1$pscis_crossing_id,
                  labelOptions = leaflet::labelOptions(noHide = F, textOnly = TRUE),
+                 # Fraser 2024 - there's no `my_priority` column
                  popup = leafpop::popupTable(x = dplyr::select((tab_map_phase_1 |> sf::st_set_geometry(NULL) |> dplyr::filter(stringr::str_detect(source, 'phase1') | stringr::str_detect(source, 'pscis_reassessments'))),
-                                                        Site = pscis_crossing_id, Priority = priority_phase1, Stream = stream_name, Road = road_name, `Habitat value`= habitat_value, `Barrier Result` = barrier_result, `Culvert data` = data_link, `Culvert photos` = photo_link, `Model data` = model_link),
+                                                        Site = pscis_crossing_id, Stream = stream_name, Road = road_name, `Habitat value`= habitat_value, `Barrier Result` = barrier_result, `Culvert data` = data_link, `Culvert photos` = photo_link, `Model data` = model_link),
+                 # popup = leafpop::popupTable(x = dplyr::select((tab_map_phase_1 |> sf::st_set_geometry(NULL) |> dplyr::filter(stringr::str_detect(source, 'phase1') | stringr::str_detect(source, 'pscis_reassessments'))),
+                 #                                        Site = pscis_crossing_id, Priority = priority_phase1, Stream = stream_name, Road = road_name, `Habitat value`= habitat_value, `Barrier Result` = barrier_result, `Culvert data` = data_link, `Culvert photos` = photo_link, `Model data` = model_link),
                                              feature.id = F,
                                              row.numbers = F),
                  radius = 9,
-                 fillColor = ~pal_phase1(priority_phase1),
+                 # fillColor = ~pal_phase1(priority_phase1),
                  color= "#ffffff",
                  stroke = TRUE,
                  fillOpacity = 1.0,
                  weight = 2,
                  opacity = 1.0,
                  group = "Phase 1") |> 
-  leaflet::addPolylines(data=habitat_confirmation_tracks,
-               opacity=0.75, color = '#e216c4',
-               fillOpacity = 0.75, weight=5, group = "Phase 2") |>
+  # leaflet::addPolylines(data=habitat_confirmation_tracks,
+  #              opacity=0.75, color = '#e216c4',
+  #              fillOpacity = 0.75, weight=5, group = "Phase 2") |>
 
 leaflet::addAwesomeMarkers(
     lng = as.numeric(photo_metadata$gps_longitude),
@@ -79,7 +82,7 @@ leaflet::addAwesomeMarkers(
     labelOptions = leaflet::labelOptions(noHide = T, textOnly = TRUE),
     popup = leafpop::popupTable(x = dplyr::select((tab_map_phase_2 |> sf::st_drop_geometry()),
                                            Site = pscis_crossing_id,
-                                           Priority = priority,
+                                           # Priority = priority,
                                            Stream = stream_name,
                                            Road = road_name,
                                            `Habitat (m)`= upstream_habitat_length_m,
@@ -90,7 +93,7 @@ leaflet::addAwesomeMarkers(
                                 feature.id = F,
                                 row.numbers = F),
     radius = 9,
-    fillColor = ~pal(priority),
+    # fillColor = ~pal(priority),
     color= "#ffffff",
     stroke = TRUE,
     fillOpacity = 1.0,
@@ -110,8 +113,6 @@ leaflet::addAwesomeMarkers(
              zoomLevelOffset = -6, width = 100, height = 100)
 
 map
-
-
 
 ```
 
@@ -325,7 +326,7 @@ The "Barrier" and "Potential Barrier" rankings used in this project followed @mo
 
 <!-- turn on once we have pscis data -->
 
-```{r cost-est-phase-1, eval = F}
+```{r cost-est-phase-1, eval = TRUE}
  tab_cost_est_phase1 |>
   select(`PSCIS ID`:`Cost Est ( $K)`) |> 
    fpr::fpr_kable(caption_text = paste0("Upstream habitat estimates and cost benefit analysis for Phase 1 assessments ranked as a 'barrier' or 'potential' barrier. ", sp_network_caption),
@@ -342,7 +343,7 @@ During the 2024 field assessments, habitat confirmation assessments were conduct
 <br>
 
 As collaborative decision making was ongoing at the time of reporting, site prioritization can be considered preliminary. 
-Results are summarized in `r if(gitbook_on){knitr::asis_output("Figure \\@ref(fig:map-interactive) and ")}` Tables \@ref(tab:tab-overview) - \@ref(fig:plot-fish-all) with raw habitat and fish sampling data included in `r knitr::asis_output(if (gitbook_on) "[Attachment 2](#raw-dat)" else ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "attachment-2---habitat-assessment-and-fish-sampling-data.html", anchor_text = "Attachment 2"))`. A summary of preliminary modeling results illustrates the estimated Chinook, coho, and steelhead spawning and rearing habitat potentially available upstream of each crossing, based on measured/modelled channel width and upstream accessible stream length, as presented in Figure \@ref(fig:plot-model-all). Detailed information for each site assessed with Phase 2 assessments (including maps) are presented within site specific appendices to this document.
+Results are summarized in `r if(gitbook_on){knitr::asis_output("Figure \\@ref(fig:map-interactive) and ")}` Table \@ref(tab:tab-overview) with raw habitat data included in `r knitr::asis_output(if (gitbook_on) "[Attachment 2](#raw-dat)" else ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "attachment-2---habitat-assessment-and-fish-sampling-data.html", anchor_text = "Attachment 2"))`. A summary of preliminary modeling results illustrates the estimated Chinook, coho, and steelhead spawning and rearing habitat potentially available upstream of each crossing, based on measured/modelled channel width and upstream accessible stream length, as presented in Figure \@ref(fig:plot-model-all). Detailed information for each site assessed with Phase 2 assessments (including maps) are presented within site specific appendices to this document.
 
 `r if(gitbook_on){knitr::asis_output("")} else knitr::asis_output("<br><br><br><br>")`
 

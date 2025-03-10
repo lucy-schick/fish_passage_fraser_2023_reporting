@@ -240,6 +240,42 @@ test <- fpr::fpr_photo_qa(dat = form_pscis_photos_raw) |>
 ```
 
 
+## Move photos 2023 photos to onedrive
+
+We need to move the resized, renamed, and sorted photos from the 2 old QGIS projects (`sern_simpcw_2023` and `sern_lchl_necr_fran_2023`) to onedrive, so that all the photos are in one place. 
+
+```{r move-2023-photos}
+
+## Move `sern_simpcw_2023` photos
+dir_photos_simpcw_2023 <- fs::path_expand("~/Projects/gis/sern_simpcw_2023/ignore_mobile/photos")
+
+# These are the photos we are copying
+photos_to_copy <- fs::dir_ls(dir_photos_simpcw_2023, recurse = TRUE, type = "file") |>
+  (\(x) x[!str_detect(x, "admin/|\\.txt$")])()
+
+
+# Make the paths for where we are copying the photos to
+files_to_paste <- stringr::str_remove(photos_to_copy, paste0("^", dir_photos_simpcw_2023, "/"))
+photos_to_paste <- fs::path(dir_photos_onedrive, "sorted", files_to_paste)
+
+# Create directories for the new file paths
+dirs_to_create <- files_to_paste |>
+  fs::path_dir() |>
+  unique()
+
+fs::dir_create(fs::path(dir_photos_onedrive, "sorted", dirs_to_create))
+
+
+# Copy photos from the shared server to the local repo
+purrr::map2(photos_to_copy, photos_to_paste, ~ fs::file_copy(.x, .y, overwrite = TRUE))
+
+
+## Move `sern_lchl_necr_fran_2023` photos by hand, which are already onedrive but different folder.
+
+
+```
+
+
 # FISS Site - Rename the photos from the FISS cards and remove duplicates
 
 CANT USUALLY DO THIS UNTILL WE SUBMIT THE DATA AND GET THE PSCIS IDS
@@ -534,107 +570,27 @@ readr::write_csv(photos_dry_run, "data/backup/photo_duplicate_rm_log.csv" )
 
 # Rename folders with PSCIS IDs
 
-For this step we copy phase 1 directories that have phase 2 events and give then the PSCIS ID. We need to do this to complete the reporting.
+For this step we copy phase 1 directories and rename them with the PSCIS ID. We need to do this to complete the reporting.
 
 <br>
 
-First lets get a list of the sites that need IDs updated to Phase 2. We will use the `fpr::fpr_import_pscis` function and cross reference with the `xref_pscis_my_crossing_modelled` object to get the new IDs.
+First lets get a list of the sites that need IDs updated.
 
-```{r p2-import}
+```{r phase1-rename}
 
-#I think this assumes we have already populated pscis_phase2.xlsm with new PSCIS IDs, I think we should use pscis_phase1.xlsm instead - 
-##use the pscis spreadsheet to make the folders to copy the photos to (d is dat)
-# phase2 <- fpr::fpr_import_pscis(workbook_name = 'pscis_phase2.xlsm')
+phase1_rename <- pscis_all |> 
+  dplyr::filter(source == 'pscis_phase1.xlsm') |> 
+  dplyr::select(pscis_crossing_id, my_crossing_reference)
 
-# cross reference table is stored in the sqlite - xref_pscis_my_crossing_modelled
+dirs_to_copy <- fs::path_expand(fs::path(dir_photos_onedrive,"sorted", phase1_rename$my_crossing_reference))
+dirs_to_paste <- fs::path_expand(fs::path(dir_photos_onedrive,"sorted", phase1_rename$pscis_crossing_id))
+  
+#Copy over the photos
+fs::dir_copy(dirs_to_copy, dirs_to_paste)
 
-```
-
-Which are the `external_crossing_reference` (a.k.a `my_crossing_reference`) IDs that we need and which are the newly assigned PSCIS IDs?
-
-```{r p2-id1}
-ids_needed <- d |>
-  dplyr::filter(!is.na(my_crossing_reference)) |>
-  dplyr::select(my_crossing_reference) |>
-  dplyr::distinct() |>
-  dplyr::arrange(my_crossing_reference) |> 
-  dplyr::pull(my_crossing_reference)
-
-r <- xref_pscis_my_crossing_modelled |> 
-  dplyr::filter(external_crossing_reference %in% ids_needed) 
-
-r
-```
-
-<br>
-
-Since this workflow is one time only we will print the result here so that we can see what happened in the future even though the `data/pscis_phase2.xlsm` file will then be changed resuling in a zero length tibble from the chunk above .
-
-```{r p2-id2, eval = TRUE}
-# r = result for this case
-r <- tibble::tribble(
-       ~external_crossing_reference, ~stream_crossing_id,
-                          14000571L,             198934L,
-                          14001106L,             198942L,
-                          24601280L,             198947L
-       )
-
-r
-```
-
-<br>
-
-We could obviously do the updating of the spreadsheet with a join and a csv to get a copy paste file ready but we will change in the PSCIS input sheets by hand. We may want to add this info to the QGIS project `.gpkg` as well but we will wait on that as we should move on. A note on that however - this may be a bit complicated with our `site_id` which should be either the `my_crossing_reference` or the `pscis_crossing_id` - and not both. We will need to think about that a bit more and see how it plays out.
-
-<br>
-
-After updating our `data/pscis_phase2.xlsm` spreadsheet we want to back up the changes and save to git with informative message... To do that we will use the `fpr::import_pscis_all` function which by default (ie. `backup=TRUE`) backs up each `.xlsm` sheet as a seperate `.csv` so `git` can see the changes (excel files are binary like `sqlite` so `git` can't tell and communicate what the changes are - even though `git` knows something has changed and tracks the versions).
-
-```         
-?fpr_sheet_trim
-```
-
-```{r p2-backup}
-fpr::fpr_import_pscis_all()
-```
-
-```{r dir-create3}
-
-pscis_new_sites <- dplyr::left_join(
-  d,
-  xref_pscis_my_crossing_modelled,
-  by = c('pscis_crossing_id' = 'stream_crossing_id')
-) |>
-  dplyr::filter(!is.na(external_crossing_reference)) |> 
-  dplyr::select(external_crossing_reference, pscis_crossing_id)
-
-# seems like the package `fs` may simplify our processes for copying directories. We will try it out here.
-fs::dir_copy(
-  path = paste0(dir_photos_shared, 
-                pscis_new_sites |> pull(external_crossing_reference) |> as.character()),
-  new_path = paste0(dir_photos_shared,
-                    pscis_new_sites |> pull(pscis_crossing_id) |> as.character())
-)
-```
-
-WOW! `fs` is a massive improvement over our past hard coded directory copy systems. We will watch out for how to 
-simplify lots of those workflows as there are many!
-
-<br>
-
-Let's close the issue we opened about this needing to happen.
-
-```{r}
-
-gh::gh(endpoint = "POST /repos/NewGraphEnvironment/fish_passage_skeena_2023_reporting/issues/67/comments",
-       body = "This is complete on onedrive as per documentation in `scripts/01_prep_inputs/01_prep_photos.Rmd` and
-       `scripts/01_prep_inputs/01_prep_photos.html`.")
-
-gh::gh(endpoint = "POST /repos/NewGraphEnvironment/fish_passage_skeena_2023_reporting/issues/67",
-       state = "closed")
+# Leave the old folders there in case we need them - not sure if some scritps full photos using the modelled crossing ID...
 
 ```
-
 
 For Fraser 2024 - we have a unique situation where we were surveying sites without PSCIS id but they were there they just hadn't been loaded to the project, all the photo folders got made using the modelled crossing ID (as if they were phase 1 sites). We need to change this photo names to the PSCIS IDs. These sites have both a `my_crossing_reference` and `pscis_crossing_id` in `form_pscis_2024.`
 
@@ -654,8 +610,7 @@ dirs_to_paste <- fs::path_expand(fs::path(dir_photos_onedrive,"sorted", sites_to
 #Copy over the photos
 fs::dir_copy(dirs_to_copy, dirs_to_paste)
 
-#Double check they are there, then delete the old directories
+#Double check they are there, then delete the old directories, so that we can add the fraser 2023 folders which are named with the same modelled crossing IDs, so we don't want duplicates
 fs::dir_delete(dirs_to_copy)
 
 ```
-

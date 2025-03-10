@@ -3,10 +3,10 @@
 # Parameters -------------------------------------------------
 
 # path to form_pscis_2024
-path_form_pscis <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_pscis_2024.gpkg"))
+path_form_pscis <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_project_name, "/data_field/2024/form_pscis_2024.gpkg"))
 
 # path to NEW `form_fiss_site_2024` made from `0205_fiss_extract_inputs.Rmd`
-path_form_fiss_site <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_fiss_site_2024.gpkg"))
+path_form_fiss_site <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_project_name, "/data_field/2024/form_fiss_site_2024.gpkg"))
 
 # NO FISH DATA FOR FRASER 2024
 # path to the fish data with the pit tags joined.
@@ -481,14 +481,10 @@ tab_hab_summary <- form_fiss_site |>
 
 ## make result summary tables for each of the crossings, used to display phase 1 data in the appendix
 
-## The photos don't currently line up with the correct sites in the appendix because we are missing all the `sern_lchl_necr_fran_2023` photos
-## Until 2024 pscis phase 1 data is in bcfishpass (will be on monday), just filter out the crossings with no `pscis_crossing_id`
 
 ## turn spreadsheet into list of data frames
 pscis_phase1_for_tables <- pscis_all |>
   dplyr::filter(!source == "pscis_phase2.xlsm") |>
-  ## Until 2024 pscis phase 1 data is in bcfishpass (will be on monday), just filter out the crossings with no `pscis_crossing_id`
-  dplyr::filter(!is.na(pscis_crossing_id)) |>
   dplyr::arrange(pscis_crossing_id)
 
 pscis_split <- pscis_phase1_for_tables  |>
@@ -742,86 +738,105 @@ tab_cost_est_prep4 <- tab_cost_est_prep3 |>
 
 
 
-# ## Phase 1  ------------------------------
-
-# Run once we have pscis IDS
+## Phase 1  ------------------------------
 
 
-# # Now prepare phase 1 cost estimates.
-#
-# # since we are using chinook as our model species, the column is called `ch_cm_co_pk_sk_network_km` so we can't make it dynamically.
-# sp_network_km <- "ch_cm_co_pk_sk_network_km"
-# sp_belowupstrbarriers_network_km <- "ch_cm_co_pk_sk_belowupstrbarriers_network_km"
-#
-# # Normal way to dynamically make column
-# # sp_network_km <- rlang::sym(paste0(params$model_species, "_network_km"))
-# # sp_belowupstrbarriers_network_km <- rlang::sym(paste0(params$model_species, "_belowupstrbarriers_network_km"))
-#
-# # Fraser 2024 - We need to filter put the phase 2 sites first so we don't have duplicate sites (2024 phase 2 sites that are also 2023 phase 1 sites)
-# tab_cost_est_prep4 <- tab_cost_est_prep4 |>
-#   dplyr::filter(!source == "pscis_phase2.xlsm")
-#
-# # Step 6: Add upstream modelling data to estimate potential habitat gain
-# tab_cost_est_prep5 <- dplyr::left_join(
-#   tab_cost_est_prep4,
-#   bcfishpass |>
-#     dplyr::select(stream_crossing_id, !!sp_network_km, !!sp_belowupstrbarriers_network_km) |>
-#     dplyr::mutate(stream_crossing_id = as.numeric(stream_crossing_id)),
-#   by = c('pscis_crossing_id' = 'stream_crossing_id')
-# ) |>
-#   dplyr::mutate(
-#     cost_net = round(!!sp_belowupstrbarriers_network_km * 1000 / cost_est_1000s, 1),
-#     cost_gross = round(!!sp_network_km * 1000 / cost_est_1000s, 1),
-#     cost_area_net = round((!!sp_belowupstrbarriers_network_km * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
-#     cost_area_gross = round((!!sp_network_km * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
-#     st_network_km = round(!!sp_network_km, 1)
-#   )
-#
-# # Step 7: Add the priority from `form_pscis`
-# tab_cost_est_prep6 <- dplyr::left_join(
-#   tab_cost_est_prep5 |>
-#     # only for skeena 2024 where the road names are not capitalized in the spreadsheet because I forgot:/
-#     dplyr::select(-road_name),
-#   form_pscis |>
-#     dplyr::select(pscis_crossing_id, my_priority, road_name),
-#   by = 'pscis_crossing_id'
-# ) |>
-#   dplyr::arrange(pscis_crossing_id) |>
-#   dplyr::select(
-#     pscis_crossing_id,
-#     my_crossing_reference,
-#     stream_name,
-#     road_name,
-#     barrier_result,
-#     habitat_value,
-#     sp_network_km,
-#     downstream_channel_width_meters,
-#     my_priority,
-#     crossing_fix_code,
-#     cost_est_1000s,
-#     cost_gross, cost_area_gross, source
-#   ) |>
-#   dplyr::filter(barrier_result != 'Unknown' & barrier_result != 'Passable')
-#
-# # Step 8: Final adjustments and renaming columns
-# tab_cost_est_phase1 <- tab_cost_est_prep6 |>
-#   dplyr::rename(
-#     `PSCIS ID` = pscis_crossing_id,
-#     `External ID` = my_crossing_reference,
-#     Priority = my_priority,
-#     Stream = stream_name,
-#     Road = road_name,
-#     `Barrier Result` = barrier_result,
-#     `Habitat value` = habitat_value,
-#     `Habitat Upstream (km)` = sp_network_km,
-#     `Stream Width (m)` = downstream_channel_width_meters,
-#     Fix = crossing_fix_code,
-#     `Cost Est ( $K)` = cost_est_1000s,
-#     `Cost Benefit (m / $K)` = cost_gross,
-#     `Cost Benefit (m2 / $K)` = cost_area_gross
-#   ) |>
-#   dplyr::filter(!source == "pscis_phase2.xlsm") |>
-#   dplyr::select(-source)
+# Now prepare phase 1 cost estimates.
+
+# since we are using chinook as our model species, the column is called `ch_cm_co_pk_sk_network_km` so we can't make it dynamically.
+sp_network_km <- "ch_cm_co_pk_sk_network_km"
+sp_belowupstrbarriers_network_km <- "ch_cm_co_pk_sk_belowupstrbarriers_network_km"
+
+# Normal way to dynamically make column
+# sp_network_km <- rlang::sym(paste0(params$model_species, "_network_km"))
+# sp_belowupstrbarriers_network_km <- rlang::sym(paste0(params$model_species, "_belowupstrbarriers_network_km"))
+
+# Fraser 2024 - We need to filter put the phase 2 sites first so we don't have duplicate sites (2024 phase 2 sites that are also 2023 phase 1 sites)
+tab_cost_est_prep5 <- tab_cost_est_prep4 |>
+  dplyr::filter(!source == "pscis_phase2.xlsm")
+
+# use when using non-dynamic columns
+# Step 6: Add upstream modelling data to estimate potential habitat gain
+tab_cost_est_prep5 <- dplyr::left_join(
+  tab_cost_est_prep4,
+  bcfishpass |>
+    dplyr::select(stream_crossing_id, !!sp_network_km, !!sp_belowupstrbarriers_network_km) |>
+    dplyr::mutate(stream_crossing_id = as.numeric(stream_crossing_id)),
+  by = c('pscis_crossing_id' = 'stream_crossing_id')
+) |>
+  dplyr::mutate(
+    cost_net = round(.data[[sp_belowupstrbarriers_network_km]] * 1000 / cost_est_1000s, 1),
+    cost_gross = round(.data[[sp_network_km]] * 1000 / cost_est_1000s, 1),
+    cost_area_net = round((.data[[sp_belowupstrbarriers_network_km]] * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
+    cost_area_gross = round((.data[[sp_network_km]] * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
+    st_network_km = round(.data[[sp_network_km]], 1)
+  )
+
+
+  # Use when using dynamic column names
+  # # Step 6: Add upstream modelling data to estimate potential habitat gain
+  # tab_cost_est_prep5 <- dplyr::left_join(
+  #   tab_cost_est_prep4,
+  #   bcfishpass |>
+  #     dplyr::select(stream_crossing_id, !!sp_network_km, !!sp_belowupstrbarriers_network_km) |>
+  #     dplyr::mutate(stream_crossing_id = as.numeric(stream_crossing_id)),
+  #   by = c('pscis_crossing_id' = 'stream_crossing_id')
+  # ) |>
+  #   dplyr::mutate(
+  #     cost_net = round(!!sp_belowupstrbarriers_network_km * 1000 / cost_est_1000s, 1),
+  #     cost_gross = round(!!sp_network_km * 1000 / cost_est_1000s, 1),
+  #     cost_area_net = round((!!sp_belowupstrbarriers_network_km * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
+  #     cost_area_gross = round((!!sp_network_km * 1000 * downstream_channel_width_meters * 0.5) / cost_est_1000s, 1),
+  #     st_network_km = round(!!sp_network_km, 1)
+  #   )
+
+ # Step 7: Add the priority from `form_pscis`
+tab_cost_est_prep6 <- tab_cost_est_prep5 |>
+    # No my_priority for fraser forms
+  #   dplyr::left_join(
+  #   tab_cost_est_prep5 |>
+  #     # only for skeena 2024 where the road names are not capitalized in the spreadsheet because I forgot:/
+  #     dplyr::select(-road_name),
+  #   form_pscis |>
+  #     dplyr::select(pscis_crossing_id, my_priority, road_name),
+  #   by = 'pscis_crossing_id'
+  # ) |>
+  dplyr::arrange(pscis_crossing_id) |>
+  dplyr::select(
+    pscis_crossing_id,
+    my_crossing_reference,
+    stream_name,
+    road_name,
+    barrier_result,
+    habitat_value,
+    sp_network_km,
+    downstream_channel_width_meters,
+    # my_priority,
+    crossing_fix_code,
+    cost_est_1000s,
+    cost_gross, cost_area_gross, source
+  ) |>
+  dplyr::filter(barrier_result != 'Unknown' & barrier_result != 'Passable')
+
+# Step 8: Final adjustments and renaming columns
+tab_cost_est_phase1 <- tab_cost_est_prep6 |>
+  dplyr::rename(
+    `PSCIS ID` = pscis_crossing_id,
+    `External ID` = my_crossing_reference,
+    # Priority = my_priority,
+    Stream = stream_name,
+    Road = road_name,
+    `Barrier Result` = barrier_result,
+    `Habitat value` = habitat_value,
+    `Habitat Upstream (km)` = sp_network_km,
+    `Stream Width (m)` = downstream_channel_width_meters,
+    Fix = crossing_fix_code,
+    `Cost Est ( $K)` = cost_est_1000s,
+    `Cost Benefit (m / $K)` = cost_gross,
+    `Cost Benefit (m2 / $K)` = cost_area_gross
+  ) |>
+  dplyr::filter(!source == "pscis_phase2.xlsm") |>
+  dplyr::select(-source)
 
 
 
@@ -832,10 +847,10 @@ tab_cost_est_prep4 <- tab_cost_est_prep3 |>
 # Step 1: Join habitat confirmation priorities data to upstream habitat length
 tab_cost_est_prep7 <- dplyr::left_join(
   tab_cost_est_prep4,
-  dplyr::select(
-    dplyr::filter(habitat_confirmations_priorities, location == 'us'),
-    site,
-    upstream_habitat_length_m
+  habitat_confirmations_priorities |>
+    dplyr::arrange(site, dplyr::desc(location == "us")) |>  # Prioritize "us" over "ds"
+    dplyr::distinct(site, .keep_all = TRUE) |>  # Keep the first row per site
+    dplyr::select(location, site, upstream_habitat_length_m
   ),
   by = c('pscis_crossing_id' = 'site')
 ) |>
@@ -903,6 +918,28 @@ rm(tab_cost_est_prep,
 
 ## Phase 1 --------------------------------------------------------------
 
+# Fraser 2024 - we need to combine form_pscis_2024 and form_pscis_2023 first, and theres no `my_priority` column
+tab_map_phase_1_prep <- pscis_all |>
+  # dplyr::filter(source !%in%c(""))
+  dplyr::select(pscis_crossing_id,
+                my_crossing_reference,
+                utm_zone,
+                utm_easting = easting,
+                utm_northing = northing,
+                stream_name,
+                road_name,
+                site_id,
+                # Fraser 2024 - there's no `my_priority` column
+                # priority_phase1 = my_priority,
+                habitat_value,
+                barrier_result,
+                source) |>
+  fpr::fpr_sp_assign_sf_from_utm(col_easting = "utm_easting", col_northing = "utm_northing") |>
+  # we must transform the data to latitude/longitude (CRS 4326)
+  sf::st_transform(4326)
+
+
+## Code we normally use when theres no fraser funkyness
 # tab_map_phase_1_prep <- dplyr::left_join(form_pscis |>
 #                                            dplyr::select(-c(barrier_result, source)),
 #                                          pscis_all |>
@@ -922,63 +959,68 @@ rm(tab_cost_est_prep,
 #                 source) |>
 #   # we must transform the data to latitude/longitude (CRS 4326)
 #   sf::st_transform(4326)
-#
-#
-#
-#
-# tab_map_phase_1 <- tab_map_phase_1_prep |>
-#   dplyr::mutate(priority_phase1 = dplyr::case_when(priority_phase1 == 'mod' ~ 'moderate',
-#                                      TRUE ~ priority_phase1),
-#                 priority_phase1 = stringr::str_to_title(priority_phase1)) |>
-#   dplyr::mutate(data_link = paste0('<a href =', 'sum/cv/', pscis_crossing_id, '.html ', 'target="_blank">Culvert Data</a>')) |>
-#   dplyr::mutate(photo_link = dplyr::case_when(is.na(my_crossing_reference) ~ paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name, '/main/data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
-#                                                                                     'target="_blank">Culvert Photos</a>'),
-#                                               TRUE ~ paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name, '/main/data/photos/', my_crossing_reference, '/crossing_all.JPG ',
-#                                                             'target="_blank">Culvert Photos</a>'))) |>
-#   dplyr::mutate(model_link = paste0('<a href =', 'sum/bcfp/', pscis_crossing_id, '.html ', 'target="_blank">Model Data</a>')) |>
-#   dplyr::distinct(site_id, .keep_all = TRUE) #just for now
-#
-#
-#
-# ## Phase 2 --------------------------------------------------------------
-#
-# #please note that the photos are only in those files because they are referenced in other parts of the document
-# tab_map_phase_2 <- dplyr::left_join(
-#   tab_cost_est_prep9,
-#   form_fiss_site |>
-#     dplyr::filter(is.na(ef) & location == "us") |>
-#     dplyr::select(site, utm_zone, easting = utm_easting, northing = utm_northing, comments),
-#   by = c('pscis_crossing_id' = 'site')
-# ) |>
-#   # we must transform the data to latitude/longitude (CRS 4326)
-#   fpr::fpr_sp_assign_sf_from_utm() |>
-#   sf::st_transform(4326) |>
-#   # We don't have a priority ranking for the hab con sites at the moment so just just add the priority from the phase 1 assessments.
-#   dplyr::left_join(tab_map_phase_1 |>
-#                      sf::st_drop_geometry() |>
-#                      dplyr::select(pscis_crossing_id, priority = priority_phase1),
-#                    by = 'pscis_crossing_id') |>
-#
-#   # Update the data link to point to the new location in docs
-#   dplyr::mutate(
-#     data_link = paste0(
-#       '<a href =',
-#       'sum/cv/', pscis_crossing_id,
-#       '.html ', 'target="_blank">Culvert Data</a>'
-#     )
-#   ) |>
-#   dplyr::mutate(
-#     model_link = paste0(
-#       '<a href =',
-#       'sum/bcfp/', pscis_crossing_id,
-#       '.html ', 'target="_blank">Model Data</a>'
-#     )
-#   ) |>
-#   dplyr::mutate(
-#     photo_link = paste0(
-#       '<a href =',
-#       'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name,'/main/data/photos/',
-#       pscis_crossing_id, '/crossing_all.JPG ',
-#       'target="_blank">Culvert Photos</a>'
-#     )
-#   )
+
+
+
+
+tab_map_phase_1 <- tab_map_phase_1_prep |>
+  # Fraser 2024 - there's no `my_priority` column
+  # dplyr::mutate(priority_phase1 = dplyr::case_when(priority_phase1 == 'mod' ~ 'moderate',
+  #                                    TRUE ~ priority_phase1),
+  #               priority_phase1 = stringr::str_to_title(priority_phase1)) |>
+  dplyr::mutate(data_link = paste0('<a href =', 'sum/cv/', pscis_crossing_id, '.html ', 'target="_blank">Culvert Data</a>')) |>
+  dplyr::mutate(photo_link = dplyr::case_when(is.na(my_crossing_reference) ~ paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name, '/main/data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
+                                                                                    'target="_blank">Culvert Photos</a>'),
+                                              TRUE ~ paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name, '/main/data/photos/', my_crossing_reference, '/crossing_all.JPG ',
+                                                            'target="_blank">Culvert Photos</a>'))) |>
+  dplyr::mutate(model_link = paste0('<a href =', 'sum/bcfp/', pscis_crossing_id, '.html ', 'target="_blank">Model Data</a>')) |>
+  dplyr::distinct(site_id, .keep_all = TRUE) #just for now
+
+
+
+## Phase 2 --------------------------------------------------------------
+
+#please note that the photos are only in those files because they are referenced in other parts of the document
+tab_map_phase_2 <- dplyr::left_join(
+  tab_cost_est_prep9,
+  form_fiss_site |>
+    dplyr::filter(is.na(ef)) |>
+    dplyr::arrange(site, dplyr::desc(location == "us")) |>  # Prioritize "us" over "ds"
+    dplyr::distinct(site, .keep_all = TRUE) |>  # Keep the first row per site
+    dplyr::select(site, utm_zone, easting = utm_easting, northing = utm_northing, comments),
+  by = c('pscis_crossing_id' = 'site')
+) |>
+  # we must transform the data to latitude/longitude (CRS 4326)
+  fpr::fpr_sp_assign_sf_from_utm() |>
+  sf::st_transform(4326) |>
+  # We don't have a priority ranking for the hab con sites at the moment so just just add the priority from the phase 1 assessments.
+  dplyr::left_join(tab_map_phase_1 |>
+                     sf::st_drop_geometry() |>
+                     # Fraser 2024 - there's no `my_priority` column
+                     dplyr::select(pscis_crossing_id),
+                     # dplyr::select(pscis_crossing_id, priority = priority_phase1),
+                   by = 'pscis_crossing_id') |>
+
+  # Update the data link to point to the new location in docs
+  dplyr::mutate(
+    data_link = paste0(
+      '<a href =',
+      'sum/cv/', pscis_crossing_id,
+      '.html ', 'target="_blank">Culvert Data</a>'
+    )
+  ) |>
+  dplyr::mutate(
+    model_link = paste0(
+      '<a href =',
+      'sum/bcfp/', pscis_crossing_id,
+      '.html ', 'target="_blank">Model Data</a>'
+    )
+  ) |>
+  dplyr::mutate(
+    photo_link = paste0(
+      '<a href =',
+      'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name,'/main/data/photos/',
+      pscis_crossing_id, '/crossing_all.JPG ',
+      'target="_blank">Culvert Photos</a>'
+    )
+  )
