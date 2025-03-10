@@ -77,6 +77,27 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 <script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet" />
+<script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.css" rel="stylesheet" />
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.Default.css" rel="stylesheet" />
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js"></script>
+<link href="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.css" rel="stylesheet" />
+<script src="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.js"></script>
+<link href="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet" />
+<script src="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
 
 <script type="text/javascript">
 
@@ -220,22 +241,32 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.1</b> Project Location</a></li>
-<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#simpcw"><i class="fa fa-check"></i><b>2.2</b> Simpcw</a></li>
-<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#lheidli-tenneh"><i class="fa fa-check"></i><b>2.3</b> Lheidli T’enneh</a></li>
-<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#carrier-sekani"><i class="fa fa-check"></i><b>2.4</b> Carrier Sekani</a></li>
-<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#lhtakoh"><i class="fa fa-check"></i><b>2.5</b> Lhtakoh</a></li>
-<li class="chapter" data-level="2.6" data-path="background.html"><a href="background.html#nechakoh"><i class="fa fa-check"></i><b>2.6</b> Nechakoh</a></li>
-<li class="chapter" data-level="2.7" data-path="background.html"><a href="background.html#endako-river"><i class="fa fa-check"></i><b>2.7</b> Endako River</a></li>
-<li class="chapter" data-level="2.8" data-path="background.html"><a href="background.html#tsalakoh"><i class="fa fa-check"></i><b>2.8</b> Tsalakoh</a></li>
-<li class="chapter" data-level="2.9" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.9</b> Fisheries</a></li>
+<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#dakelh"><i class="fa fa-check"></i><b>2.2</b> Dakelh</a></li>
+<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#simpcw"><i class="fa fa-check"></i><b>2.3</b> Simpcw</a></li>
+<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#lhtakoh"><i class="fa fa-check"></i><b>2.4</b> Lhtakoh</a></li>
+<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#nechakoh"><i class="fa fa-check"></i><b>2.5</b> Nechakoh</a></li>
+<li class="chapter" data-level="2.6" data-path="background.html"><a href="background.html#endako-river"><i class="fa fa-check"></i><b>2.6</b> Endako River</a></li>
+<li class="chapter" data-level="2.7" data-path="background.html"><a href="background.html#tsalakoh"><i class="fa fa-check"></i><b>2.7</b> Tsalakoh</a></li>
+<li class="chapter" data-level="2.8" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.8</b> Fisheries</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>3</b> Results and Discussion</a>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#site-assessment-data-since-2020"><i class="fa fa-check"></i><b>3.1</b> Site Assessment Data Since 2020</a></li>
-<li class="chapter" data-level="3.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#collaborative-gis-environment"><i class="fa fa-check"></i><b>3.2</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="3.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-1---fish-passage-assessemnts"><i class="fa fa-check"></i><b>3.3</b> Phase 1 - Fish Passage Assessemnts</a></li>
-<li class="chapter" data-level="3.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-2---habitat-confirmation-assessments"><i class="fa fa-check"></i><b>3.4</b> Phase 2 - Habitat Confirmation Assessments</a></li>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#communicate-connectivity-issues"><i class="fa fa-check"></i><b>3.1</b> Communicate Connectivity Issues</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#planning"><i class="fa fa-check"></i><b>3.2</b> Planning</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#fish-passage-assessments"><i class="fa fa-check"></i><b>3.3</b> Fish Passage Assessments</a></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#designs"><i class="fa fa-check"></i><b>3.4</b> Designs</a></li>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#habitat-confirmation-assessments"><i class="fa fa-check"></i><b>3.5</b> Habitat Confirmation Assessments</a></li>
+<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#remediations"><i class="fa fa-check"></i><b>3.6</b> Remediations</a></li>
+<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#climate-change-risk-assessment"><i class="fa fa-check"></i><b>3.7</b> Climate Change Risk Assessment</a></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>4</b> Results and Discussion</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#site-assessment-data-since-2020"><i class="fa fa-check"></i><b>4.1</b> Site Assessment Data Since 2020</a></li>
+<li class="chapter" data-level="4.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#collaborative-gis-environment-1"><i class="fa fa-check"></i><b>4.2</b> Collaborative GIS Environment</a></li>
+<li class="chapter" data-level="4.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-1---fish-passage-assessemnts"><i class="fa fa-check"></i><b>4.3</b> Phase 1 - Fish Passage Assessemnts</a></li>
+<li class="chapter" data-level="4.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-2---habitat-confirmation-assessments"><i class="fa fa-check"></i><b>4.4</b> Phase 2 - Habitat Confirmation Assessments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
 <li class="chapter" data-level="" data-path="burnt-cabin-creek---199171-7622---appendix.html"><a href="burnt-cabin-creek---199171-7622---appendix.html"><i class="fa fa-check"></i>Burnt Cabin Creek - 199171 &amp; 7622 - Appendix</a>
 <ul>
 <li class="chapter" data-level="" data-path="burnt-cabin-creek---199171-7622---appendix.html"><a href="burnt-cabin-creek---199171-7622---appendix.html#site-location"><i class="fa fa-check"></i>Site Location</a></li>
@@ -373,6 +404,8 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
+<li class="chapter" data-level="" data-path="raw-dat.html"><a href="raw-dat.html"><i class="fa fa-check"></i><strong>Attachment 2 - Habitat Assessment and Fish Sampling Data</strong></a></li>
+<li class="chapter" data-level="" data-path="attach-3-bayes.html"><a href="attach-3-bayes.html"><i class="fa fa-check"></i><strong>Attachment 3 - Bayesian analysis to map stream discharge and temperature causal effects pathways</strong></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting" target="blank">Scripts and Data</a></li>
 
@@ -406,9 +439,9 @@ third order stream and drains a watershed of approximately
 15km<sup>2</sup>. The watershed ranges in elevation from
 a maximum of 1191m to
 680m near the crossing (Table
-<a href="tributary-to-nechako-river---199173-199174---appendix.html#tab:tab-wshd-199173">3.19</a>).</p>
+<a href="tributary-to-nechako-river---199173-199174---appendix.html#tab:tab-wshd-199173">4.20</a>).</p>
 <p><br></p>
-<p>In 2023, crossings 199173 and 199174 were assessed with fish passage assessments [ADD_FRASER_REPORT]. These sites were prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream and fish observed during the 2023 assessment [ADD_FRASER_REPORT]. Upstream of the Dog Creek Road, have previously been recorded <span class="citation">(Norris [2018] 2024; MoE 2024)</span>.</p>
+<p>In 2023, crossings 199173 and 199174 were assessed with fish passage assessments. These sites were prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream and fish observed during the 2023 assessment. Upstream of the Dog Creek Road, have previously been recorded <span class="citation">(Norris [2018] 2024; MoE 2024a)</span>.</p>
 <p><br></p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="tributary-to-nechako-river---199173-199174---appendix.html#cb86-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
 <span id="cb86-2"><a href="tributary-to-nechako-river---199173-199174---appendix.html#cb86-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
@@ -416,7 +449,7 @@ a maximum of 1191m to
 <span id="cb86-4"><a href="tributary-to-nechako-river---199173-199174---appendix.html#cb86-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-wshd-199173">Table 3.19: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199173.
+<span id="tab:tab-wshd-199173">Table 4.20: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199173.
 </caption>
 <thead>
 <tr>
@@ -484,13 +517,13 @@ SE
 </table>
 <p><br></p>
 <p>A summary of habitat modelling outputs for the crossing are presented in Table
-<a href="tributary-to-nechako-river---199173-199174---appendix.html#tab:tab-culvert-bcfp-199173">3.20</a>.</p>
+<a href="tributary-to-nechako-river---199173-199174---appendix.html#tab:tab-culvert-bcfp-199173">4.21</a>.</p>
 <p><br></p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="tributary-to-nechako-river---199173-199174---appendix.html#cb87-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-bcfp-199173">Table 3.20: </span>Summary of fish habitat modelling for PSCIS crossing 199173.
+<span id="tab:tab-culvert-bcfp-199173">Table 4.21: </span>Summary of fish habitat modelling for PSCIS crossing 199173.
 </caption>
 <thead>
 <tr>
@@ -761,10 +794,10 @@ SK Rearing (ha)
 </div>
 <div id="stream-characteristics-at-crossings-199173-and-199174" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics at Crossings 199173 and 199174<a href="tributary-to-nechako-river---199173-199174---appendix.html#stream-characteristics-at-crossings-199173-and-199174" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>At the time of the 2024 assessment, PSCIS crossing 199173 on Dog Creek Road was un-embedded, non-backwatered and ranked as a barrier to upstream fish passage according to the provincial protocol <span class="citation">(MoE 2011)</span> (Table <a href="tributary-to-nechako-river---199173-199174---appendix.html#tab:tab-culvert-199173">3.21</a>). This culvert had a moderate 0.35m outlet drop.</p>
+<p>At the time of the 2024 assessment, PSCIS crossing 199173 on Dog Creek Road was un-embedded, non-backwatered and ranked as a barrier to upstream fish passage according to the provincial protocol <span class="citation">(MoE 2011)</span> (Table <a href="tributary-to-nechako-river---199173-199174---appendix.html#tab:tab-culvert-199173">4.22</a>). This culvert had a moderate 0.35m outlet drop.</p>
 <p><br></p>
 <p>PSCIS crossing 199174 on Sutherland FSR was un-embedded, non-backwatered and ranked as a barrier to upstream fish passage according to the provincial protocol
-<span class="citation">(MoE 2011)</span> (Table <a href="tributary-to-nechako-river---199173-199174---appendix.html#tab:tab-culvert-199174">3.22</a>). This culvert was dry at the time of assessment.</p>
+<span class="citation">(MoE 2011)</span> (Table <a href="tributary-to-nechako-river---199173-199174---appendix.html#tab:tab-culvert-199174">4.23</a>). This culvert was dry at the time of assessment.</p>
 <p><br></p>
 <p>At all crossings, the water temperature was 6<span class="math inline">\(^\circ\)</span>C,
 pH was 8.2 and
@@ -773,7 +806,7 @@ conductivity was 34 uS/cm.</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="tributary-to-nechako-river---199173-199174---appendix.html#cb88-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-199173">Table 3.21: </span>Summary of fish passage assessment for PSCIS crossing 199173.
+<span id="tab:tab-culvert-199173">Table 4.22: </span>Summary of fish passage assessment for PSCIS crossing 199173.
 </caption>
 <thead>
 <tr>
@@ -1037,7 +1070,7 @@ Fix Span / Diameter
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="tributary-to-nechako-river---199173-199174---appendix.html#cb89-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-199174">Table 3.22: </span>Summary of fish passage assessment for PSCIS crossing 199174.
+<span id="tab:tab-culvert-199174">Table 4.23: </span>Summary of fish passage assessment for PSCIS crossing 199174.
 </caption>
 <thead>
 <tr>
@@ -1306,18 +1339,18 @@ Fix Span / Diameter
 </div>
 <div id="stream-characteristics-downstream-of-crossing-199173" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 199173<a href="tributary-to-nechako-river---199173-199174---appendix.html#stream-characteristics-downstream-of-crossing-199173" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed downstream from crossing 199173 for 115m (Figure <a href="tributary-to-nechako-river---199173-199174---appendix.html#fig:photo-199173-01">3.9</a>).. The habitat was rated as medium, with undercut banks suitable for juvenile Chinook and rainbow trout rearing. The average channel width was 3.5m, the average wetted width was 1.3m, and the average gradient was 6%.The dominant substrate was cobbles with fines sub-dominant.Total cover amount was rated as moderate with undercut banks dominant. Cover was also present as small woody debris and boulders..</p>
+<p>The stream was surveyed downstream from crossing 199173 for 115m (Figure <a href="tributary-to-nechako-river---199173-199174---appendix.html#fig:photo-199173-01">4.11</a>).. The habitat was rated as medium, with undercut banks suitable for juvenile Chinook and rainbow trout rearing. The dominant substrate was cobbles with fines sub-dominant.Total cover amount was rated as moderate with undercut banks dominant. Cover was also present as small woody debris and boulders.The average channel width was 3.5m, the average wetted width was 1.3m, and the average gradient was 6%..</p>
 <p><br></p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199173-and-downstream-of-crossing-199174" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199173 and Downstream of Crossing 199174<a href="tributary-to-nechako-river---199173-199174---appendix.html#stream-characteristics-upstream-of-crossing-199173-and-downstream-of-crossing-199174" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199173 for 575m (Figure <a href="tributary-to-nechako-river---199173-199174---appendix.html#fig:photo-199173-02">3.10</a>). The habitat was rated as medium with some pockets of gravels present suitable for rainbow trout and potentially Chinook rearing. Fish were observed throughout the area surveyed. Heavy cattle impacts were observed throughout the surveyed area, with the most pronounced damage in low-gradient sections with easily accessible banks. The stream changed character at a beaver dam located approximately 300–350m upstream, transitioning from a channelized stream to beaver-impounded wetland areas. A fence intended to restrict cattle access had been breached. A series of beaver dams began approximately 300m upstream of the road, with over three dams observed, some up to 1.5m high. The dams were mature, well-developed, and had vegetation growing through them. The beaver dams were impounding large quantities of water, likely sustaining year-round stream flow downstream at the Dog Creek Road crossing. Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as large woody debris, deep pools, and overhanging vegetation.The average channel width was 3m, the average wetted width was 1.5m, and the average gradient was 2.4%.</p>
+<p>The stream was surveyed upstream from crossing 199173 for 575m (Figure <a href="tributary-to-nechako-river---199173-199174---appendix.html#fig:photo-199173-02">4.12</a>). The habitat was rated as medium with some pockets of gravels present suitable for rainbow trout and potentially Chinook rearing. Fish were observed throughout the area surveyed. Heavy cattle impacts were observed throughout the surveyed area, with the most pronounced damage in low-gradient sections with easily accessible banks. The stream changed character at a beaver dam located approximately 300–350m upstream, transitioning from a channelized stream to beaver-impounded wetland areas. A fence intended to restrict cattle access had been breached. A series of beaver dams began approximately 300m upstream of the road, with over three dams observed, some up to 1.5m high. The dams were mature, well-developed, and had vegetation growing through them. The beaver dams were impounding large quantities of water, likely sustaining year-round stream flow downstream at the Dog Creek Road crossing. Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as large woody debris, deep pools, and overhanging vegetation.The average channel width was 3m, the average wetted width was 1.5m, and the average gradient was 2.4%.</p>
 <p><br></p>
-<p>The stream was surveyed downstream from crossing 199174 for 300m (Figure <a href="tributary-to-nechako-river---199173-199174---appendix.html#fig:photo-199174-01">3.11</a>). The stream was intermittent for the first ~70m before transitioning into a beaver-impacted wetland area. Approximately 250m downstream of Sutherland Road, several large consecutive mature beaver dams were present and appeared to continue as far as the area surveyed. Signs of cattle trampling were observed throughout the stream, and the channel frequently split into several smaller channels. The habitat was rated as medium, with few gravels for spawning but abundant pools created by beaver dams. Total cover amount was rated as abundant with small woody debris dominant. Cover was also present as large woody debris, undercut banks, deep pools, and overhanging vegetation.The average channel width was 2m, the average wetted width was 1m, and the average gradient was 1.2%.The dominant substrate was fines with gravels sub-dominant..</p>
+<p>The stream was surveyed downstream from crossing 199174 for 300m (Figure <a href="tributary-to-nechako-river---199173-199174---appendix.html#fig:photo-199174-01">4.13</a>). The stream was intermittent for the first ~70m before transitioning into a beaver-impacted wetland area. Approximately 250m downstream of Sutherland Road, several large consecutive mature beaver dams were present and appeared to continue as far as the area surveyed. Signs of cattle trampling were observed throughout the stream, and the channel frequently split into several smaller channels. The habitat was rated as medium, with few gravels for spawning but abundant pools created by beaver dams. The dominant substrate was fines with gravels sub-dominant.The average channel width was 2m, the average wetted width was 1m, and the average gradient was 1.2%.Total cover amount was rated as abundant with small woody debris dominant. Cover was also present as large woody debris, undercut banks, deep pools, and overhanging vegetation..</p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199174" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199174<a href="tributary-to-nechako-river---199173-199174---appendix.html#stream-characteristics-upstream-of-crossing-199174" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199174 for 650m (Figure <a href="tributary-to-nechako-river---199173-199174---appendix.html#fig:photo-199174-02">3.12</a>). The habitat was rated as medium value and had been heavily impacted by cattle throughout the surveyed area, with evidence of bank trampling and extensive low-gradient muddy sections. Upstream of the culvert, the stream was primarily dry for the first 300m, with young forest and shrubs. At this point, intermittent pools began to appear, associated with beaver activity. At approximately 450–500m upstream, the stream became almost entirely watered, with pools up to 40cm deep. Many surveyed areas resembled wetland habitat, with spirea, willow, alder, and trembling aspen throughout. The dominant substrate was fines with gravels sub-dominant.The average channel width was 2.5m, the average wetted width was 0.9m, and the average gradient was 1.2%.Total cover amount was rated as moderate with undercut banks dominant. Cover was also present as small woody debris and overhanging vegetation.</p>
+<p>The stream was surveyed upstream from crossing 199174 for 650m (Figure <a href="tributary-to-nechako-river---199173-199174---appendix.html#fig:photo-199174-02">4.14</a>). The habitat was rated as medium value and had been heavily impacted by cattle throughout the surveyed area, with evidence of bank trampling and extensive low-gradient muddy sections. Upstream of the culvert, the stream was primarily dry for the first 300m, with young forest and shrubs. At this point, intermittent pools began to appear, associated with beaver activity. At approximately 450–500m upstream, the stream became almost entirely watered, with pools up to 40cm deep. Many surveyed areas resembled wetland habitat, with spirea, willow, alder, and trembling aspen throughout. The dominant substrate was fines with gravels sub-dominant.The average channel width was 2.5m, the average wetted width was 0.9m, and the average gradient was 1.2%.Total cover amount was rated as moderate with undercut banks dominant. Cover was also present as small woody debris and overhanging vegetation.</p>
 <p><br></p>
 </div>
 <div id="structure-remediation-and-cost-estimate-2" class="section level2 unnumbered hasAnchor">
@@ -1337,7 +1370,7 @@ Fix Span / Diameter
 <span id="cb91-4"><a href="tributary-to-nechako-river---199173-199174---appendix.html#cb91-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-habitat-summary-199173">Table 3.23: </span>Summary of habitat details for PSCIS crossings 199173 and 199174.
+<span id="tab:tab-habitat-summary-199173">Table 4.24: </span>Summary of habitat details for PSCIS crossings 199173 and 199174.
 </caption>
 <thead>
 <tr>
@@ -1497,7 +1530,7 @@ medium
 <div class="figure"><span style="display:block;" id="fig:photo-199173-01"></span>
 <img src="data/photos/199173/20240915_124701_ds_typical_2_k_.JPG" alt="Typical habitat downstream of PSCIS crossing 199173." width="100%" />
 <p class="caption">
-Figure 3.9: Typical habitat downstream of PSCIS crossing 199173.
+Figure 4.11: Typical habitat downstream of PSCIS crossing 199173.
 </p>
 </div>
 <p><br></p>
@@ -1508,7 +1541,7 @@ Figure 3.9: Typical habitat downstream of PSCIS crossing 199173.
 <div class="figure"><span style="display:block;" id="fig:photo-199173-02"></span>
 <img src="data/photos/199173/IMG_6208_us_typical_2_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199173." width="100%" />
 <p class="caption">
-Figure 3.10: Typical habitat upstream of PSCIS crossing 199173.
+Figure 4.12: Typical habitat upstream of PSCIS crossing 199173.
 </p>
 </div>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="tributary-to-nechako-river---199173-199174---appendix.html#cb96-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
@@ -1524,7 +1557,7 @@ Figure 3.10: Typical habitat upstream of PSCIS crossing 199173.
 <div class="figure"><span style="display:block;" id="fig:photo-199174-01"></span>
 <img src="data/photos/199174/TC_00118(1)_ds_typical_1_k_.JPG" alt="Typical habitat downstream of PSCIS crossing 199174." width="100%" />
 <p class="caption">
-Figure 3.11: Typical habitat downstream of PSCIS crossing 199174.
+Figure 4.13: Typical habitat downstream of PSCIS crossing 199174.
 </p>
 </div>
 <p><br></p>
@@ -1535,7 +1568,7 @@ Figure 3.11: Typical habitat downstream of PSCIS crossing 199174.
 <div class="figure"><span style="display:block;" id="fig:photo-199174-02"></span>
 <img src="data/photos/199174/IMG_6221_us_typical_2_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199173." width="100%" />
 <p class="caption">
-Figure 3.12: Typical habitat upstream of PSCIS crossing 199173.
+Figure 4.14: Typical habitat upstream of PSCIS crossing 199173.
 </p>
 </div>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="tributary-to-nechako-river---199173-199174---appendix.html#cb101-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>

@@ -77,6 +77,27 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 <script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet" />
+<script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.css" rel="stylesheet" />
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.Default.css" rel="stylesheet" />
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js"></script>
+<link href="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.css" rel="stylesheet" />
+<script src="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.js"></script>
+<link href="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet" />
+<script src="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
 
 <script type="text/javascript">
 
@@ -220,22 +241,32 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.1</b> Project Location</a></li>
-<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#simpcw"><i class="fa fa-check"></i><b>2.2</b> Simpcw</a></li>
-<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#lheidli-tenneh"><i class="fa fa-check"></i><b>2.3</b> Lheidli T’enneh</a></li>
-<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#carrier-sekani"><i class="fa fa-check"></i><b>2.4</b> Carrier Sekani</a></li>
-<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#lhtakoh"><i class="fa fa-check"></i><b>2.5</b> Lhtakoh</a></li>
-<li class="chapter" data-level="2.6" data-path="background.html"><a href="background.html#nechakoh"><i class="fa fa-check"></i><b>2.6</b> Nechakoh</a></li>
-<li class="chapter" data-level="2.7" data-path="background.html"><a href="background.html#endako-river"><i class="fa fa-check"></i><b>2.7</b> Endako River</a></li>
-<li class="chapter" data-level="2.8" data-path="background.html"><a href="background.html#tsalakoh"><i class="fa fa-check"></i><b>2.8</b> Tsalakoh</a></li>
-<li class="chapter" data-level="2.9" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.9</b> Fisheries</a></li>
+<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#dakelh"><i class="fa fa-check"></i><b>2.2</b> Dakelh</a></li>
+<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#simpcw"><i class="fa fa-check"></i><b>2.3</b> Simpcw</a></li>
+<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#lhtakoh"><i class="fa fa-check"></i><b>2.4</b> Lhtakoh</a></li>
+<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#nechakoh"><i class="fa fa-check"></i><b>2.5</b> Nechakoh</a></li>
+<li class="chapter" data-level="2.6" data-path="background.html"><a href="background.html#endako-river"><i class="fa fa-check"></i><b>2.6</b> Endako River</a></li>
+<li class="chapter" data-level="2.7" data-path="background.html"><a href="background.html#tsalakoh"><i class="fa fa-check"></i><b>2.7</b> Tsalakoh</a></li>
+<li class="chapter" data-level="2.8" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.8</b> Fisheries</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>3</b> Results and Discussion</a>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#site-assessment-data-since-2020"><i class="fa fa-check"></i><b>3.1</b> Site Assessment Data Since 2020</a></li>
-<li class="chapter" data-level="3.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#collaborative-gis-environment"><i class="fa fa-check"></i><b>3.2</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="3.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-1---fish-passage-assessemnts"><i class="fa fa-check"></i><b>3.3</b> Phase 1 - Fish Passage Assessemnts</a></li>
-<li class="chapter" data-level="3.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-2---habitat-confirmation-assessments"><i class="fa fa-check"></i><b>3.4</b> Phase 2 - Habitat Confirmation Assessments</a></li>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#communicate-connectivity-issues"><i class="fa fa-check"></i><b>3.1</b> Communicate Connectivity Issues</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#planning"><i class="fa fa-check"></i><b>3.2</b> Planning</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#fish-passage-assessments"><i class="fa fa-check"></i><b>3.3</b> Fish Passage Assessments</a></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#designs"><i class="fa fa-check"></i><b>3.4</b> Designs</a></li>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#habitat-confirmation-assessments"><i class="fa fa-check"></i><b>3.5</b> Habitat Confirmation Assessments</a></li>
+<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#remediations"><i class="fa fa-check"></i><b>3.6</b> Remediations</a></li>
+<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#climate-change-risk-assessment"><i class="fa fa-check"></i><b>3.7</b> Climate Change Risk Assessment</a></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>4</b> Results and Discussion</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#site-assessment-data-since-2020"><i class="fa fa-check"></i><b>4.1</b> Site Assessment Data Since 2020</a></li>
+<li class="chapter" data-level="4.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#collaborative-gis-environment-1"><i class="fa fa-check"></i><b>4.2</b> Collaborative GIS Environment</a></li>
+<li class="chapter" data-level="4.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-1---fish-passage-assessemnts"><i class="fa fa-check"></i><b>4.3</b> Phase 1 - Fish Passage Assessemnts</a></li>
+<li class="chapter" data-level="4.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-2---habitat-confirmation-assessments"><i class="fa fa-check"></i><b>4.4</b> Phase 2 - Habitat Confirmation Assessments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
 <li class="chapter" data-level="" data-path="burnt-cabin-creek---199171-7622---appendix.html"><a href="burnt-cabin-creek---199171-7622---appendix.html"><i class="fa fa-check"></i>Burnt Cabin Creek - 199171 &amp; 7622 - Appendix</a>
 <ul>
 <li class="chapter" data-level="" data-path="burnt-cabin-creek---199171-7622---appendix.html"><a href="burnt-cabin-creek---199171-7622---appendix.html#site-location"><i class="fa fa-check"></i>Site Location</a></li>
@@ -373,6 +404,8 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
+<li class="chapter" data-level="" data-path="raw-dat.html"><a href="raw-dat.html"><i class="fa fa-check"></i><strong>Attachment 2 - Habitat Assessment and Fish Sampling Data</strong></a></li>
+<li class="chapter" data-level="" data-path="attach-3-bayes.html"><a href="attach-3-bayes.html"><i class="fa fa-check"></i><strong>Attachment 3 - Bayesian analysis to map stream discharge and temperature causal effects pathways</strong></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting" target="blank">Scripts and Data</a></li>
 
@@ -407,9 +440,9 @@ fifth order stream and drains a high elevation watershed of approximately
 76.7km<sup>2</sup>. The watershed ranges in elevation from
 a maximum of 2491m to
 831m near the crossing (Table
-<a href="snowshoe-creek---199237---appendix.html#tab:tab-wshd-199237">3.36</a>).</p>
+<a href="snowshoe-creek---199237---appendix.html#tab:tab-wshd-199237">4.37</a>).</p>
 <p><br></p>
-<p>In 2023, crossing 199237 was assessed with fish passage assessments and was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream [ADD_FRASER_REPORT]. Upstream of the Highway 16, lake chub, redside shiner, rainbow trout, steelhead, and brook trout have previously been recorded <span class="citation">(Norris [2018] 2024; MoE 2024)</span>.</p>
+<p>In 2023, crossing 199237 was assessed with fish passage assessments and was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream. Upstream of the Highway 16, lake chub, redside shiner, rainbow trout, steelhead, and brook trout have previously been recorded <span class="citation">(Norris [2018] 2024; MoE 2024a)</span>.</p>
 <p><br></p>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="snowshoe-creek---199237---appendix.html#cb140-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
 <span id="cb140-2"><a href="snowshoe-creek---199237---appendix.html#cb140-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
@@ -417,7 +450,7 @@ a maximum of 2491m to
 <span id="cb140-4"><a href="snowshoe-creek---199237---appendix.html#cb140-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-wshd-199237">Table 3.36: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199237.
+<span id="tab:tab-wshd-199237">Table 4.37: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199237.
 </caption>
 <thead>
 <tr>
@@ -485,13 +518,13 @@ SE
 </table>
 <p><br></p>
 <p>A summary of habitat modelling outputs for the crossing are presented in Table
-<a href="snowshoe-creek---199237---appendix.html#tab:tab-culvert-bcfp-199237">3.37</a>.</p>
+<a href="snowshoe-creek---199237---appendix.html#tab:tab-culvert-bcfp-199237">4.38</a>.</p>
 <p><br></p>
 <div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="snowshoe-creek---199237---appendix.html#cb141-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-bcfp-199237">Table 3.37: </span>Summary of fish habitat modelling for PSCIS crossing 199237.
+<span id="tab:tab-culvert-bcfp-199237">Table 4.38: </span>Summary of fish habitat modelling for PSCIS crossing 199237.
 </caption>
 <thead>
 <tr>
@@ -762,7 +795,7 @@ SK Rearing (ha)
 </div>
 <div id="stream-characteristics-at-crossing-199237" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics at Crossing 199237<a href="snowshoe-creek---199237---appendix.html#stream-characteristics-at-crossing-199237" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>At the time of the 2024 assessment, PSCIS crossing 199237 on Highway 16 was un-embedded, non-backwatered and ranked as barrier to upstream fish passage according to the provincial protocol <span class="citation">(MoE 2011)</span> (Table <a href="snowshoe-creek---199237---appendix.html#tab:tab-culvert-199237">3.38</a>). The culvert had a moderate 0.65m outlet drop.</p>
+<p>At the time of the 2024 assessment, PSCIS crossing 199237 on Highway 16 was un-embedded, non-backwatered and ranked as barrier to upstream fish passage according to the provincial protocol <span class="citation">(MoE 2011)</span> (Table <a href="snowshoe-creek---199237---appendix.html#tab:tab-culvert-199237">4.39</a>). The culvert had a moderate 0.65m outlet drop.</p>
 <p><br></p>
 <p>The water temperature was 6<span class="math inline">\(^\circ\)</span>C,
 pH was 7.6 and
@@ -771,7 +804,7 @@ conductivity was 138 uS/cm.</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="snowshoe-creek---199237---appendix.html#cb142-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-199237">Table 3.38: </span>Summary of fish passage assessment for PSCIS crossing 199237.
+<span id="tab:tab-culvert-199237">Table 4.39: </span>Summary of fish passage assessment for PSCIS crossing 199237.
 </caption>
 <thead>
 <tr>
@@ -1043,9 +1076,9 @@ Fix Span / Diameter
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199237" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199237<a href="snowshoe-creek---199237---appendix.html#stream-characteristics-upstream-of-crossing-199237" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199237 for 750m , following the west fork at the junction (Figure <a href="snowshoe-creek---199237---appendix.html#fig:photo-199237-01">3.19</a>). The habitat was rated as high value. Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, undercut banks, deep pools, and overhanging vegetation.The dominant substrate was gravels with fines sub-dominant.The average channel width was 12.3m, the average wetted width was 11.6m, and the average gradient was 0.7%.</p>
+<p>The stream was surveyed upstream from crossing 199237 for 750m , following the west fork at the junction (Figure <a href="snowshoe-creek---199237---appendix.html#fig:photo-199237-01">4.21</a>). The habitat was rated as high value. Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, undercut banks, deep pools, and overhanging vegetation.The average channel width was 12.3m, the average wetted width was 11.6m, and the average gradient was 0.7%.The dominant substrate was gravels with fines sub-dominant.</p>
 <p><br></p>
-<p>The east fork of Snowshoe Creek was surveyed upstream for 230m (Figure <a href="snowshoe-creek---199237---appendix.html#fig:photo-199237-02">3.20</a>).. The habitat was rated as high value. The dominant substrate was gravels with fines sub-dominant.Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, undercut banks, deep pools, overhanging vegetation, and instream vegetation.The average channel width was 6.8m, the average wetted width was 5.5m, and the average gradient was 1.3%.</p>
+<p>The east fork of Snowshoe Creek was surveyed upstream for 230m (Figure <a href="snowshoe-creek---199237---appendix.html#fig:photo-199237-02">4.22</a>).. The habitat was rated as high value. The average channel width was 6.8m, the average wetted width was 5.5m, and the average gradient was 1.3%.Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, undercut banks, deep pools, overhanging vegetation, and instream vegetation.The dominant substrate was gravels with fines sub-dominant.</p>
 </div>
 <div id="structure-remediation-and-cost-estimate-6" class="section level2 unnumbered hasAnchor">
 <h2>Structure Remediation and Cost Estimate<a href="snowshoe-creek---199237---appendix.html#structure-remediation-and-cost-estimate-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1062,7 +1095,7 @@ Fix Span / Diameter
 <span id="cb144-4"><a href="snowshoe-creek---199237---appendix.html#cb144-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-habitat-summary-199237">Table 3.39: </span>Summary of habitat details for PSCIS crossing 199237.
+<span id="tab:tab-habitat-summary-199237">Table 4.40: </span>Summary of habitat details for PSCIS crossing 199237.
 </caption>
 <thead>
 <tr>
@@ -1193,7 +1226,7 @@ high
 <div class="figure"><span style="display:block;" id="fig:photo-199237-01"></span>
 <img src="data/photos/199237/20241008_150644_us_typical_1_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199237 on the west fork on Snowshoe Creek." width="100%" />
 <p class="caption">
-Figure 3.19: Typical habitat upstream of PSCIS crossing 199237 on the west fork on Snowshoe Creek.
+Figure 4.21: Typical habitat upstream of PSCIS crossing 199237 on the west fork on Snowshoe Creek.
 </p>
 </div>
 <p><br></p>
@@ -1204,7 +1237,7 @@ Figure 3.19: Typical habitat upstream of PSCIS crossing 199237 on the west fork 
 <div class="figure"><span style="display:block;" id="fig:photo-199237-02"></span>
 <img src="data/photos/199237/20241008_154833_us2_typical_2_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199237 on the east fork on Snowshoe Creek." width="100%" />
 <p class="caption">
-Figure 3.20: Typical habitat upstream of PSCIS crossing 199237 on the east fork on Snowshoe Creek.
+Figure 4.22: Typical habitat upstream of PSCIS crossing 199237 on the east fork on Snowshoe Creek.
 </p>
 </div>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="snowshoe-creek---199237---appendix.html#cb149-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>

@@ -77,6 +77,27 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 <script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet" />
+<script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.css" rel="stylesheet" />
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.Default.css" rel="stylesheet" />
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js"></script>
+<link href="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.css" rel="stylesheet" />
+<script src="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.js"></script>
+<link href="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet" />
+<script src="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
 
 <script type="text/javascript">
 
@@ -220,22 +241,32 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.1</b> Project Location</a></li>
-<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#simpcw"><i class="fa fa-check"></i><b>2.2</b> Simpcw</a></li>
-<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#lheidli-tenneh"><i class="fa fa-check"></i><b>2.3</b> Lheidli T’enneh</a></li>
-<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#carrier-sekani"><i class="fa fa-check"></i><b>2.4</b> Carrier Sekani</a></li>
-<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#lhtakoh"><i class="fa fa-check"></i><b>2.5</b> Lhtakoh</a></li>
-<li class="chapter" data-level="2.6" data-path="background.html"><a href="background.html#nechakoh"><i class="fa fa-check"></i><b>2.6</b> Nechakoh</a></li>
-<li class="chapter" data-level="2.7" data-path="background.html"><a href="background.html#endako-river"><i class="fa fa-check"></i><b>2.7</b> Endako River</a></li>
-<li class="chapter" data-level="2.8" data-path="background.html"><a href="background.html#tsalakoh"><i class="fa fa-check"></i><b>2.8</b> Tsalakoh</a></li>
-<li class="chapter" data-level="2.9" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.9</b> Fisheries</a></li>
+<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#dakelh"><i class="fa fa-check"></i><b>2.2</b> Dakelh</a></li>
+<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#simpcw"><i class="fa fa-check"></i><b>2.3</b> Simpcw</a></li>
+<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#lhtakoh"><i class="fa fa-check"></i><b>2.4</b> Lhtakoh</a></li>
+<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#nechakoh"><i class="fa fa-check"></i><b>2.5</b> Nechakoh</a></li>
+<li class="chapter" data-level="2.6" data-path="background.html"><a href="background.html#endako-river"><i class="fa fa-check"></i><b>2.6</b> Endako River</a></li>
+<li class="chapter" data-level="2.7" data-path="background.html"><a href="background.html#tsalakoh"><i class="fa fa-check"></i><b>2.7</b> Tsalakoh</a></li>
+<li class="chapter" data-level="2.8" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.8</b> Fisheries</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>3</b> Results and Discussion</a>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#site-assessment-data-since-2020"><i class="fa fa-check"></i><b>3.1</b> Site Assessment Data Since 2020</a></li>
-<li class="chapter" data-level="3.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#collaborative-gis-environment"><i class="fa fa-check"></i><b>3.2</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="3.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-1---fish-passage-assessemnts"><i class="fa fa-check"></i><b>3.3</b> Phase 1 - Fish Passage Assessemnts</a></li>
-<li class="chapter" data-level="3.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-2---habitat-confirmation-assessments"><i class="fa fa-check"></i><b>3.4</b> Phase 2 - Habitat Confirmation Assessments</a></li>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#communicate-connectivity-issues"><i class="fa fa-check"></i><b>3.1</b> Communicate Connectivity Issues</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#planning"><i class="fa fa-check"></i><b>3.2</b> Planning</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#fish-passage-assessments"><i class="fa fa-check"></i><b>3.3</b> Fish Passage Assessments</a></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#designs"><i class="fa fa-check"></i><b>3.4</b> Designs</a></li>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#habitat-confirmation-assessments"><i class="fa fa-check"></i><b>3.5</b> Habitat Confirmation Assessments</a></li>
+<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#remediations"><i class="fa fa-check"></i><b>3.6</b> Remediations</a></li>
+<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#climate-change-risk-assessment"><i class="fa fa-check"></i><b>3.7</b> Climate Change Risk Assessment</a></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>4</b> Results and Discussion</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#site-assessment-data-since-2020"><i class="fa fa-check"></i><b>4.1</b> Site Assessment Data Since 2020</a></li>
+<li class="chapter" data-level="4.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#collaborative-gis-environment-1"><i class="fa fa-check"></i><b>4.2</b> Collaborative GIS Environment</a></li>
+<li class="chapter" data-level="4.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-1---fish-passage-assessemnts"><i class="fa fa-check"></i><b>4.3</b> Phase 1 - Fish Passage Assessemnts</a></li>
+<li class="chapter" data-level="4.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#phase-2---habitat-confirmation-assessments"><i class="fa fa-check"></i><b>4.4</b> Phase 2 - Habitat Confirmation Assessments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
 <li class="chapter" data-level="" data-path="burnt-cabin-creek---199171-7622---appendix.html"><a href="burnt-cabin-creek---199171-7622---appendix.html"><i class="fa fa-check"></i>Burnt Cabin Creek - 199171 &amp; 7622 - Appendix</a>
 <ul>
 <li class="chapter" data-level="" data-path="burnt-cabin-creek---199171-7622---appendix.html"><a href="burnt-cabin-creek---199171-7622---appendix.html#site-location"><i class="fa fa-check"></i>Site Location</a></li>
@@ -373,6 +404,8 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
+<li class="chapter" data-level="" data-path="raw-dat.html"><a href="raw-dat.html"><i class="fa fa-check"></i><strong>Attachment 2 - Habitat Assessment and Fish Sampling Data</strong></a></li>
+<li class="chapter" data-level="" data-path="attach-3-bayes.html"><a href="attach-3-bayes.html"><i class="fa fa-check"></i><strong>Attachment 3 - Bayesian analysis to map stream discharge and temperature causal effects pathways</strong></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting" target="blank">Scripts and Data</a></li>
 
@@ -407,9 +440,9 @@ fourth order stream and drains a high elevation watershed of approximately
 55.2km<sup>2</sup>. The watershed ranges in elevation from
 a maximum of 2553m to
 777m near the crossing (Table
-<a href="holliday-creek---199282---appendix.html#tab:tab-wshd-199282">3.61</a>).</p>
+<a href="holliday-creek---199282---appendix.html#tab:tab-wshd-199282">4.62</a>).</p>
 <p><br></p>
-<p>In 2023, crossing 199282 was assessed with fish passage assessments and was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream [ADD_FRASER_REPORT].</p>
+<p>In 2023, crossing 199282 was assessed with fish passage assessments and was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream.</p>
 <!-- Upstream of the Highway  16,  have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. -->
 <p><br></p>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="holliday-creek---199282---appendix.html#cb216-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
@@ -418,7 +451,7 @@ a maximum of 2553m to
 <span id="cb216-4"><a href="holliday-creek---199282---appendix.html#cb216-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-wshd-199282">Table 3.61: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199282.
+<span id="tab:tab-wshd-199282">Table 4.62: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199282.
 </caption>
 <thead>
 <tr>
@@ -486,13 +519,13 @@ SSW
 </table>
 <p><br></p>
 <p>A summary of habitat modelling outputs for the crossing are presented in Table
-<a href="holliday-creek---199282---appendix.html#tab:tab-culvert-bcfp-199282">3.62</a>.</p>
+<a href="holliday-creek---199282---appendix.html#tab:tab-culvert-bcfp-199282">4.63</a>.</p>
 <p><br></p>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="holliday-creek---199282---appendix.html#cb217-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-bcfp-199282">Table 3.62: </span>Summary of fish habitat modelling for PSCIS crossing 199282.
+<span id="tab:tab-culvert-bcfp-199282">Table 4.63: </span>Summary of fish habitat modelling for PSCIS crossing 199282.
 </caption>
 <thead>
 <tr>
@@ -763,7 +796,7 @@ SK Rearing (ha)
 </div>
 <div id="stream-characteristics-at-crossing-199282" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics at Crossing 199282<a href="holliday-creek---199282---appendix.html#stream-characteristics-at-crossing-199282" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>At the time of the 2024 assessment, PSCIS crossing 199282 on Highway 16 was un-embedded, non-backwatered and ranked as barrier to upstream fish passage according to the provincial protocol <span class="citation">(MoE 2011)</span> (Table <a href="holliday-creek---199282---appendix.html#tab:tab-culvert-199282">3.63</a>). The culvert had a significant 0.8m outlet drop.</p>
+<p>At the time of the 2024 assessment, PSCIS crossing 199282 on Highway 16 was un-embedded, non-backwatered and ranked as barrier to upstream fish passage according to the provincial protocol <span class="citation">(MoE 2011)</span> (Table <a href="holliday-creek---199282---appendix.html#tab:tab-culvert-199282">4.64</a>). The culvert had a significant 0.8m outlet drop.</p>
 <p><br></p>
 <p>The water temperature was 3<span class="math inline">\(^\circ\)</span>C,
 pH was 7.5 and
@@ -772,7 +805,7 @@ conductivity was 162 uS/cm.</p>
 <div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="holliday-creek---199282---appendix.html#cb218-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-199282">Table 3.63: </span>Summary of fish passage assessment for PSCIS crossing 199282.
+<span id="tab:tab-culvert-199282">Table 4.64: </span>Summary of fish passage assessment for PSCIS crossing 199282.
 </caption>
 <thead>
 <tr>
@@ -1039,12 +1072,12 @@ Fix Span / Diameter
 </div>
 <div id="stream-characteristics-downstream-of-crossing-199282" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 199282<a href="holliday-creek---199282---appendix.html#stream-characteristics-downstream-of-crossing-199282" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed downstream from crossing 199282 for 350m (Figure <a href="holliday-creek---199282---appendix.html#fig:photo-199282-01">3.31</a>).. The habitat was rated as high value. The average channel width was 16m, the average wetted width was 9.3m, and the average gradient was 2.8%.Total cover amount was rated as abundant with large woody debris dominant. Cover was also present as boulders and undercut banks.The dominant substrate was cobbles with boulders sub-dominant..</p>
+<p>The stream was surveyed downstream from crossing 199282 for 350m (Figure <a href="holliday-creek---199282---appendix.html#fig:photo-199282-01">4.34</a>).. The habitat was rated as high value. The average channel width was 16m, the average wetted width was 9.3m, and the average gradient was 2.8%.Total cover amount was rated as abundant with large woody debris dominant. Cover was also present as boulders and undercut banks.The dominant substrate was cobbles with boulders sub-dominant..</p>
 <p><br></p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199282" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199282<a href="holliday-creek---199282---appendix.html#stream-characteristics-upstream-of-crossing-199282" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199282 for 800m (Figure <a href="holliday-creek---199282---appendix.html#fig:photo-199282-02">3.32</a>). The habitat was rated as medium value. The dominant substrate was cobbles with boulders sub-dominant.The average channel width was 11.8m, the average wetted width was 8.9m, and the average gradient was 2.5%.Total cover amount was rated as moderate with boulders dominant. Cover was also present as .</p>
+<p>The stream was surveyed upstream from crossing 199282 for 800m (Figure <a href="holliday-creek---199282---appendix.html#fig:photo-199282-02">4.35</a>). The habitat was rated as medium value. Total cover amount was rated as moderate with boulders dominant. Cover was also present as .The average channel width was 11.8m, the average wetted width was 8.9m, and the average gradient was 2.5%.The dominant substrate was cobbles with boulders sub-dominant.</p>
 <p><br></p>
 </div>
 <div id="structure-remediation-and-cost-estimate-12" class="section level2 unnumbered hasAnchor">
@@ -1062,7 +1095,7 @@ Fix Span / Diameter
 <span id="cb220-4"><a href="holliday-creek---199282---appendix.html#cb220-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-habitat-summary-199282">Table 3.64: </span>Summary of habitat details for PSCIS crossing 199282.
+<span id="tab:tab-habitat-summary-199282">Table 4.65: </span>Summary of habitat details for PSCIS crossing 199282.
 </caption>
 <thead>
 <tr>
@@ -1164,7 +1197,7 @@ medium
 <div class="figure"><span style="display:block;" id="fig:photo-199282-01"></span>
 <img src="data/photos/199282/20241009_104443_ds_logjam_k_.JPG" alt="Typical habitat downstream of PSCIS crossing 199282." width="100%" />
 <p class="caption">
-Figure 3.31: Typical habitat downstream of PSCIS crossing 199282.
+Figure 4.34: Typical habitat downstream of PSCIS crossing 199282.
 </p>
 </div>
 <p><br></p>
@@ -1175,7 +1208,7 @@ Figure 3.31: Typical habitat downstream of PSCIS crossing 199282.
 <div class="figure"><span style="display:block;" id="fig:photo-199282-02"></span>
 <img src="data/photos/199282/20241009_101552_us_typical_2_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199282." width="100%" />
 <p class="caption">
-Figure 3.32: Typical habitat upstream of PSCIS crossing 199282.
+Figure 4.35: Typical habitat upstream of PSCIS crossing 199282.
 </p>
 </div>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="holliday-creek---199282---appendix.html#cb225-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
