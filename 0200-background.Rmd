@@ -18,53 +18,58 @@ knitr::include_graphics("fig/fishpassage_2024_sern_summary.jpeg")
 
 <br>
 
-## Dakelh
+```{r}
 
-The Dakelh (Carrier) people are indigenous to north-central British Columbia, with a deep connection to the region's waterways. Their name, Dakelh, translates to "people who travel by water," reflecting their reliance on rivers such as the Lhtakoh (Fraser), Nechakoh (Nechako), and Nak'alkoh (Stuart) for transportation, trade, and sustenance [@hudson2010Dakelhcarrier]. 
+# ## Dakelh
+# 
+# The Dakelh (Carrier) people are indigenous to north-central British Columbia, with a deep connection to the region's waterways. Their name, Dakelh, translates to "people who travel by water," reflecting their reliance on rivers such as the Lhtakoh (Fraser), Nechakoh (Nechako), and Nak'alkoh (Stuart) for transportation, trade, and sustenance [@hudson2010Dakelhcarrier]. 
+# 
+# <br>
+# 
+# The Dakelh were key participants in the Grease Trails, trading inland goods for coastal eulachon oil [@hudson2010Dakelhcarrier]. Their Athabaskan language, Dakelh, has declined due to colonial policies, but revitalization efforts are ongoing. Organizations like the [Yinka Dene Language Institute](https://www.ydli.org/) work to document and promote Dakelh through education, literacy programs, and linguistic research [@yinkadenelanguageinstitute2025]. The Lheidli T'enneh First Nation and local school districts have also developed language programs to preserve and teach Dakelh (@Ourlanguage2025).
+# 
+# <br>
+# 
+# The Dakelh people traditionally organize their lands into Keyohs, family-run territories passed down through generations. Each Keyoh is overseen by a Keyohwhudachun (Keyoh Holder), who manages land use and stewardship [@Keyohhuwunline2025]. Despite historical disruptions, Keyohs remain central to Dakelh identity and land management practices.
+# 
+# 
+# ### Lheidli T’enneh
+# 
+# The Lheidli T'enneh First Nations are a Dakelh sub-group whose traditional territory encompasses the Nechakoh (Nechako) River, Lhtakoh (Fraser) River, and Morkill River, and spans from west of Lheidli (Prince George) to Valemount. "Lheidli" translates to "The People from the Confluence of the River," referring to the meeting of the Nechako ("Nee Incha Koh" – "river with strong undercurrents") and Fraser ("Ltha Koh" – "Big Mouth River") rivers in what is now Prince George, British Columbia [@Ourstory2025]. 
+# 
+# <br>
+# 
+# Located within the traditional territory of the Lheidli T’enneh is Chun T’oh Whudujut (Ancient Forest), a Provincial Park and Protected Area 120km east of Prince George. The park has thousand-year-old western red cedars and a rich biodiversity of plants, mosses, lichens and fungi which can be explored through the trail network. Historically, Lheidli people would visit the stands from summer fishing camps along the upper Fraser River as well as gather medicinal plants, some of which were thought to be extinct. However, the park was not always a protected area and was initially slated for logging until a UNBC graduate student studying lichen biodiversity identified the ancient stands of western red cedars. Recognizing their ecological and cultural significance, trails were developed to highlight the cedars and advocate for their protection. Through partnerships with local hiking groups, UNBC, Lheidli T’enneh, and the Provincial Government, the Ancient Forest biodiversity assessment project has contributed to conservation efforts and tourism-based economic development in the Prince George area [@Chuntohwhudujutancientforest2025].
+# 
+# <br>
+# 
+# ### Carrier Sekani
+# 
+# The Carrier Sekani Tribal Council unifies six nations west of Lheidli (Prince George) whose traditional territories include the Lhtakoh (Fraser), Nechakoh (Nechako), Tsalakoh (Chilako), Endako, and Nadleh (Nautley) Rivers [@CSTCCSFNs]. The Carrier Sekani Tribal Council includes:
+# 
+#   - Ts’il Kaz Koh First Nation - located near Burns Lake 
+#   - Nadleh Whut’en First Nation - located near Fraser Lake 
+#   - Saik’uz First Nation - located near Vanderhoof
+#   - Stellat’en First Nation - located near Fraser Lake
+#   - Takla Nation - located near Takla Lake
+#   - Wet’suwet’en First Nation - located west of Burns Lake
+# 
+# <br>
+# 
+# ### Nazko
+# 
+# Nazko, meaning "river flowing from the south," is a Dakelh sub-group located 120 km west of Quesnel along the Nazko River. Originally known for its strong ranching history, the community expanded into forestry in the 1980s, establishing Nazko Logging, a successful enterprise that created jobs and supported economic growth [@adams_stokes2025Historynazko].
+# 
+# <br>
+# 
+# ## Simpcw
+# 
+# Simpcw, which translates to "People of the Rivers", is one of the 17 campfires (bands) that make up the Secwepemc, or Shuwap Nation. Their traditional territory stretches from north of McBride, south to Barrier, and east to Mt.Robson Provincial Park, and includes the North Thompson River and the Upper Fraser River [@UsSimpcw]. 
+# 
+# <br>
+```
 
-<br>
 
-The Dakelh were key participants in the Grease Trails, trading inland goods for coastal eulachon oil [@hudson2010Dakelhcarrier]. Their Athabaskan language, Dakelh, has declined due to colonial policies, but revitalization efforts are ongoing. Organizations like the [Yinka Dene Language Institute](https://www.ydli.org/) work to document and promote Dakelh through education, literacy programs, and linguistic research [@yinkadenelanguageinstitute2025]. The Lheidli T'enneh First Nation and local school districts have also developed language programs to preserve and teach Dakelh (@Ourlanguage2025).
-
-<br>
-
-The Dakelh people traditionally organize their lands into Keyohs, family-run territories passed down through generations. Each Keyoh is overseen by a Keyohwhudachun (Keyoh Holder), who manages land use and stewardship [@Keyohhuwunline2025]. Despite historical disruptions, Keyohs remain central to Dakelh identity and land management practices.
-
-
-### Lheidli T’enneh
-
-The Lheidli T'enneh First Nations are a Dakelh sub-group whose traditional territory encompasses the Nechakoh (Nechako) River, Lhtakoh (Fraser) River, and Morkill River, and spans from west of Lheidli (Prince George) to Valemount. "Lheidli" translates to "The People from the Confluence of the River," referring to the meeting of the Nechako ("Nee Incha Koh" – "river with strong undercurrents") and Fraser ("Ltha Koh" – "Big Mouth River") rivers in what is now Prince George, British Columbia [@Ourstory2025]. 
-
-<br>
-
-Located within the traditional territory of the Lheidli T’enneh is Chun T’oh Whudujut (Ancient Forest), a Provincial Park and Protected Area 120km east of Prince George. The park has thousand-year-old western red cedars and a rich biodiversity of plants, mosses, lichens and fungi which can be explored through the trail network. Historically, Lheidli people would visit the stands from summer fishing camps along the upper Fraser River as well as gather medicinal plants, some of which were thought to be extinct. However, the park was not always a protected area and was initially slated for logging until a UNBC graduate student studying lichen biodiversity identified the ancient stands of western red cedars. Recognizing their ecological and cultural significance, trails were developed to highlight the cedars and advocate for their protection. Through partnerships with local hiking groups, UNBC, Lheidli T’enneh, and the Provincial Government, the Ancient Forest biodiversity assessment project has contributed to conservation efforts and tourism-based economic development in the Prince George area [@Chuntohwhudujutancientforest2025].
-
-<br>
-
-### Carrier Sekani
-
-The Carrier Sekani Tribal Council unifies six nations west of Lheidli (Prince George) whose traditional territories include the Lhtakoh (Fraser), Nechakoh (Nechako), Tsalakoh (Chilako), Endako, and Nadleh (Nautley) Rivers [@CSTCCSFNs]. The Carrier Sekani Tribal Council includes:
-
-  - Ts’il Kaz Koh First Nation - located near Burns Lake 
-  - Nadleh Whut’en First Nation - located near Fraser Lake 
-  - Saik’uz First Nation - located near Vanderhoof
-  - Stellat’en First Nation - located near Fraser Lake
-  - Takla Nation - located near Takla Lake
-  - Wet’suwet’en First Nation - located west of Burns Lake
-
-<br>
-
-### Nazko
-
-Nazko, meaning "river flowing from the south," is a Dakelh sub-group located 120 km west of Quesnel along the Nazko River. Originally known for its strong ranching history, the community expanded into forestry in the 1980s, establishing Nazko Logging, a successful enterprise that created jobs and supported economic growth [@adams_stokes2025Historynazko].
-
-<br>
-
-## Simpcw
-
-Simpcw, which translates to "People of the Rivers", is one of the 17 campfires (bands) that make up the Secwepemc, or Shuwap Nation. Their traditional territory stretches from north of McBride, south to Barrier, and east to Mt.Robson Provincial Park, and includes the North Thompson River and the Upper Fraser River [@UsSimpcw]. 
-
-<br>
 
 ## Lhtakoh
 

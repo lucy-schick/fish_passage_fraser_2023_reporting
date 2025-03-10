@@ -241,13 +241,11 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.1</b> Project Location</a></li>
-<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#dakelh"><i class="fa fa-check"></i><b>2.2</b> Dakelh</a></li>
-<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#simpcw"><i class="fa fa-check"></i><b>2.3</b> Simpcw</a></li>
-<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#lhtakoh"><i class="fa fa-check"></i><b>2.4</b> Lhtakoh</a></li>
-<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#nechakoh"><i class="fa fa-check"></i><b>2.5</b> Nechakoh</a></li>
-<li class="chapter" data-level="2.6" data-path="background.html"><a href="background.html#endako-river"><i class="fa fa-check"></i><b>2.6</b> Endako River</a></li>
-<li class="chapter" data-level="2.7" data-path="background.html"><a href="background.html#tsalakoh"><i class="fa fa-check"></i><b>2.7</b> Tsalakoh</a></li>
-<li class="chapter" data-level="2.8" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.8</b> Fisheries</a></li>
+<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#lhtakoh"><i class="fa fa-check"></i><b>2.2</b> Lhtakoh</a></li>
+<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#nechakoh"><i class="fa fa-check"></i><b>2.3</b> Nechakoh</a></li>
+<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#endako-river"><i class="fa fa-check"></i><b>2.4</b> Endako River</a></li>
+<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#tsalakoh"><i class="fa fa-check"></i><b>2.5</b> Tsalakoh</a></li>
+<li class="chapter" data-level="2.6" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.6</b> Fisheries</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
@@ -444,10 +442,10 @@ a maximum of 2491m to
 <p><br></p>
 <p>In 2023, crossing 199237 was assessed with fish passage assessments and was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream. Upstream of the Highway 16, lake chub, redside shiner, rainbow trout, steelhead, and brook trout have previously been recorded <span class="citation">(Norris [2018] 2024; MoE 2024a)</span>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="snowshoe-creek---199237---appendix.html#cb140-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
-<span id="cb140-2"><a href="snowshoe-creek---199237---appendix.html#cb140-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb140-3"><a href="snowshoe-creek---199237---appendix.html#cb140-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
-<span id="cb140-4"><a href="snowshoe-creek---199237---appendix.html#cb140-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="snowshoe-creek---199237---appendix.html#cb141-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
+<span id="cb141-2"><a href="snowshoe-creek---199237---appendix.html#cb141-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb141-3"><a href="snowshoe-creek---199237---appendix.html#cb141-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
+<span id="cb141-4"><a href="snowshoe-creek---199237---appendix.html#cb141-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-199237">Table 4.37: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199237.
@@ -520,7 +518,7 @@ SE
 <p>A summary of habitat modelling outputs for the crossing are presented in Table
 <a href="snowshoe-creek---199237---appendix.html#tab:tab-culvert-bcfp-199237">4.38</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="snowshoe-creek---199237---appendix.html#cb141-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="snowshoe-creek---199237---appendix.html#cb142-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
@@ -801,7 +799,7 @@ SK Rearing (ha)
 pH was 7.6 and
 conductivity was 138 uS/cm.</p>
 <p><br></p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="snowshoe-creek---199237---appendix.html#cb142-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="snowshoe-creek---199237---appendix.html#cb143-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-199237">Table 4.39: </span>Summary of fish passage assessment for PSCIS crossing 199237.
@@ -1065,9 +1063,9 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="snowshoe-creek---199237---appendix.html#cb143-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb143-2"><a href="snowshoe-creek---199237---appendix.html#cb143-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
-<span id="cb143-3"><a href="snowshoe-creek---199237---appendix.html#cb143-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="snowshoe-creek---199237---appendix.html#cb144-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb144-2"><a href="snowshoe-creek---199237---appendix.html#cb144-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
+<span id="cb144-3"><a href="snowshoe-creek---199237---appendix.html#cb144-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
 </div>
 <div id="stream-characteristics-downstream-of-crossing-199237" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 199237<a href="snowshoe-creek---199237---appendix.html#stream-characteristics-downstream-of-crossing-199237" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1076,9 +1074,9 @@ Fix Span / Diameter
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199237" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199237<a href="snowshoe-creek---199237---appendix.html#stream-characteristics-upstream-of-crossing-199237" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199237 for 750m , following the west fork at the junction (Figure <a href="snowshoe-creek---199237---appendix.html#fig:photo-199237-01">4.21</a>). The habitat was rated as high value. Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, undercut banks, deep pools, and overhanging vegetation.The average channel width was 12.3m, the average wetted width was 11.6m, and the average gradient was 0.7%.The dominant substrate was gravels with fines sub-dominant.</p>
+<p>The stream was surveyed upstream from crossing 199237 for 750m , following the west fork at the junction (Figure <a href="snowshoe-creek---199237---appendix.html#fig:photo-199237-01">4.21</a>). The habitat was rated as high value. Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, undercut banks, deep pools, and overhanging vegetation.The dominant substrate was gravels with fines sub-dominant.The average channel width was 12.3m, the average wetted width was 11.6m, and the average gradient was 0.7%.</p>
 <p><br></p>
-<p>The east fork of Snowshoe Creek was surveyed upstream for 230m (Figure <a href="snowshoe-creek---199237---appendix.html#fig:photo-199237-02">4.22</a>).. The habitat was rated as high value. The average channel width was 6.8m, the average wetted width was 5.5m, and the average gradient was 1.3%.Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, undercut banks, deep pools, overhanging vegetation, and instream vegetation.The dominant substrate was gravels with fines sub-dominant.</p>
+<p>The east fork of Snowshoe Creek was surveyed upstream for 230m (Figure <a href="snowshoe-creek---199237---appendix.html#fig:photo-199237-02">4.22</a>).. The habitat was rated as high value. The dominant substrate was gravels with fines sub-dominant.The average channel width was 6.8m, the average wetted width was 5.5m, and the average gradient was 1.3%.Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, undercut banks, deep pools, overhanging vegetation, and instream vegetation.</p>
 </div>
 <div id="structure-remediation-and-cost-estimate-6" class="section level2 unnumbered hasAnchor">
 <h2>Structure Remediation and Cost Estimate<a href="snowshoe-creek---199237---appendix.html#structure-remediation-and-cost-estimate-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1089,10 +1087,10 @@ Fix Span / Diameter
 <h2>Conclusion<a href="snowshoe-creek---199237---appendix.html#conclusion-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><br></p>
 <p><br></p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="snowshoe-creek---199237---appendix.html#cb144-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
-<span id="cb144-2"><a href="snowshoe-creek---199237---appendix.html#cb144-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site)) <span class="sc">|&gt;</span> </span>
-<span id="cb144-3"><a href="snowshoe-creek---199237---appendix.html#cb144-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb144-4"><a href="snowshoe-creek---199237---appendix.html#cb144-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="snowshoe-creek---199237---appendix.html#cb145-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
+<span id="cb145-2"><a href="snowshoe-creek---199237---appendix.html#cb145-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site)) <span class="sc">|&gt;</span> </span>
+<span id="cb145-3"><a href="snowshoe-creek---199237---appendix.html#cb145-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb145-4"><a href="snowshoe-creek---199237---appendix.html#cb145-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-199237">Table 4.40: </span>Summary of habitat details for PSCIS crossing 199237.
@@ -1219,10 +1217,10 @@ high
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="snowshoe-creek---199237---appendix.html#cb145-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_1_&#39;</span>)</span>
-<span id="cb145-2"><a href="snowshoe-creek---199237---appendix.html#cb145-2" tabindex="-1"></a></span>
-<span id="cb145-3"><a href="snowshoe-creek---199237---appendix.html#cb145-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; on the west fork on Snowshoe Creek.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="snowshoe-creek---199237---appendix.html#cb146-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="snowshoe-creek---199237---appendix.html#cb146-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_1_&#39;</span>)</span>
+<span id="cb146-2"><a href="snowshoe-creek---199237---appendix.html#cb146-2" tabindex="-1"></a></span>
+<span id="cb146-3"><a href="snowshoe-creek---199237---appendix.html#cb146-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; on the west fork on Snowshoe Creek.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="snowshoe-creek---199237---appendix.html#cb147-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199237-01"></span>
 <img src="data/photos/199237/20241008_150644_us_typical_1_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199237 on the west fork on Snowshoe Creek." width="100%" />
 <p class="caption">
@@ -1230,27 +1228,27 @@ Figure 4.21: Typical habitat upstream of PSCIS crossing 199237 on the west fork 
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="snowshoe-creek---199237---appendix.html#cb147-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us2_typical_2_&#39;</span>)</span>
-<span id="cb147-2"><a href="snowshoe-creek---199237---appendix.html#cb147-2" tabindex="-1"></a></span>
-<span id="cb147-3"><a href="snowshoe-creek---199237---appendix.html#cb147-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; on the east fork on Snowshoe Creek.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="snowshoe-creek---199237---appendix.html#cb148-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="snowshoe-creek---199237---appendix.html#cb148-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us2_typical_2_&#39;</span>)</span>
+<span id="cb148-2"><a href="snowshoe-creek---199237---appendix.html#cb148-2" tabindex="-1"></a></span>
+<span id="cb148-3"><a href="snowshoe-creek---199237---appendix.html#cb148-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; on the east fork on Snowshoe Creek.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="snowshoe-creek---199237---appendix.html#cb149-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199237-02"></span>
 <img src="data/photos/199237/20241008_154833_us2_typical_2_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199237 on the east fork on Snowshoe Creek." width="100%" />
 <p class="caption">
 Figure 4.22: Typical habitat upstream of PSCIS crossing 199237 on the east fork on Snowshoe Creek.
 </p>
 </div>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="snowshoe-creek---199237---appendix.html#cb149-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb149-2"><a href="snowshoe-creek---199237---appendix.html#cb149-2" tabindex="-1"></a></span>
-<span id="cb149-3"><a href="snowshoe-creek---199237---appendix.html#cb149-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb149-4"><a href="snowshoe-creek---199237---appendix.html#cb149-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb149-5"><a href="snowshoe-creek---199237---appendix.html#cb149-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="snowshoe-creek---199237---appendix.html#cb150-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb150-2"><a href="snowshoe-creek---199237---appendix.html#cb150-2" tabindex="-1"></a></span>
+<span id="cb150-3"><a href="snowshoe-creek---199237---appendix.html#cb150-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb150-4"><a href="snowshoe-creek---199237---appendix.html#cb150-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb150-5"><a href="snowshoe-creek---199237---appendix.html#cb150-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="snowshoe-creek---199237---appendix.html#cb150-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb150-2"><a href="snowshoe-creek---199237---appendix.html#cb150-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb150-3"><a href="snowshoe-creek---199237---appendix.html#cb150-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb150-4"><a href="snowshoe-creek---199237---appendix.html#cb150-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="snowshoe-creek---199237---appendix.html#cb151-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199255</span></span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="snowshoe-creek---199237---appendix.html#cb151-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb151-2"><a href="snowshoe-creek---199237---appendix.html#cb151-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb151-3"><a href="snowshoe-creek---199237---appendix.html#cb151-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
+<span id="cb151-4"><a href="snowshoe-creek---199237---appendix.html#cb151-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="snowshoe-creek---199237---appendix.html#cb152-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199255</span></span></code></pre></div>
 </div>
 </div>
             </section>
