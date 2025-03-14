@@ -88,7 +88,7 @@ if (params$update_form_pscis) {
   readwritesqlite::rws_disconnect(conn)
 }
 
-## Load form_pscis_2023 -------------------------------------------------
+## Reload form_pscis_2023 -------------------------------------------------
 
 # Unique to Fraser 2023/2024 where the phase 1 data comes from 2023 and 2024.
 # We need to load the 2023 form_pscis data to the sqlite.
@@ -211,6 +211,30 @@ pscis_all <- dplyr::left_join(
 #   janitor::clean_names() |>
 #   #filter for peace 2024
 #   dplyr::filter(project_name == project)
+
+
+# Combine form_pscis for both years -------------------------------
+#and if there are duplicate sites, take the one from 2024, the more up to date one
+
+form_pscis <- dplyr::bind_rows(form_pscis_2024, form_pscis_2023) |>
+  # add in pscis ids to 2023 data
+  dplyr::left_join(
+    xref_pscis_my_crossing_modelled,
+    by = c('my_crossing_reference' = 'external_crossing_reference')
+  ) |>
+  dplyr::mutate(pscis_crossing_id = dplyr::case_when(
+    is.na(pscis_crossing_id) ~ as.numeric(stream_crossing_id),
+    TRUE ~ pscis_crossing_id
+  )) |>
+  # fix the vocab so all the priority rankings are the same
+  dplyr::mutate(my_priority = dplyr::case_when(my_priority == "mod" ~ "moderate",
+                                               my_priority == "medium" ~ "moderate",
+                                               my_priority == "no_fix" ~ "no fix",
+                                               TRUE ~ my_priority)) |>
+  dplyr::mutate(my_priority = stringr::str_to_title(my_priority)) |>
+  #if there are duplicate sites, take the first one (the one from 2024)
+  dplyr::arrange(pscis_crossing_id, desc(date_time_start)) |>
+  dplyr::distinct(pscis_crossing_id, .keep_all = TRUE)
 
 
 # Bcfishpass modelling table setup for reporting --------------------------
@@ -550,9 +574,7 @@ tab_overview_prep1 <- form_pscis_2024 |>
 
 tab_overview_prep2 <- habitat_confirmations_priorities|>
   dplyr::filter(location == "us")|>
-  # Fraser 2024- no `my_priority` column
-  dplyr::select(site, species_codes, upstream_habitat_length_m, comments)|>
-  # dplyr::select(site, species_codes, upstream_habitat_length_m, priority, comments)|>
+  dplyr::select(site, species_codes, upstream_habitat_length_m, priority, comments)|>
   dplyr::mutate(upstream_habitat_length_km = round(upstream_habitat_length_m/1000,1))
 
 tab_overview <- dplyr::left_join(
@@ -570,8 +592,7 @@ tab_overview <- dplyr::left_join(
                 `Fish Species` = species_codes,
                 `Habitat Gain (km)` = upstream_habitat_length_km,
                 `Habitat Value` = habitat_value,
-                # Fraser 2024- no `my_priority` column
-                # Priority = priority,
+                Priority = priority,
                 Comments = comments )
 
 rm(tab_overview_prep1, tab_overview_prep2)
@@ -676,7 +697,7 @@ rm(tab_overview_prep1, tab_overview_prep2)
 
 # Cost Estimates ------------------------------
 
-# General preparation for cost estimates. Phase 1 and Phase 2 specific code in farther down.
+# General preparation for cost estimates. Phase 1 and Phase 2 specific code is farther down.
 
 # Step 1: Join the road class and surface data from `rd_class_surface` to the crossings
 tab_cost_est_prep <- dplyr::left_join(
@@ -790,17 +811,15 @@ tab_cost_est_prep5 <- dplyr::left_join(
   #     st_network_km = round(!!sp_network_km, 1)
   #   )
 
- # Step 7: Add the priority from `form_pscis`
-tab_cost_est_prep6 <- tab_cost_est_prep5 |>
-    # No my_priority for fraser forms
-  #   dplyr::left_join(
-  #   tab_cost_est_prep5 |>
-  #     # only for skeena 2024 where the road names are not capitalized in the spreadsheet because I forgot:/
-  #     dplyr::select(-road_name),
-  #   form_pscis |>
-  #     dplyr::select(pscis_crossing_id, my_priority, road_name),
-  #   by = 'pscis_crossing_id'
-  # ) |>
+
+ # Step 7: Add the priority from `form_pscis` which contains the combined data for 2024
+tab_cost_est_prep6 <- dplyr::left_join(
+    tab_cost_est_prep5,
+    form_pscis |>
+      sf::st_drop_geometry() |>
+      dplyr::select(pscis_crossing_id, my_priority),
+    by = 'pscis_crossing_id') |>
+
   dplyr::arrange(pscis_crossing_id) |>
   dplyr::select(
     pscis_crossing_id,
@@ -811,7 +830,7 @@ tab_cost_est_prep6 <- tab_cost_est_prep5 |>
     habitat_value,
     sp_network_km,
     downstream_channel_width_meters,
-    # my_priority,
+    my_priority,
     crossing_fix_code,
     cost_est_1000s,
     cost_gross, cost_area_gross, source
@@ -823,7 +842,7 @@ tab_cost_est_phase1 <- tab_cost_est_prep6 |>
   dplyr::rename(
     `PSCIS ID` = pscis_crossing_id,
     `External ID` = my_crossing_reference,
-    # Priority = my_priority,
+    Priority = my_priority,
     Stream = stream_name,
     Road = road_name,
     `Barrier Result` = barrier_result,
@@ -918,9 +937,12 @@ rm(tab_cost_est_prep,
 
 ## Phase 1 --------------------------------------------------------------
 
-# Fraser 2024 - we need to combine form_pscis_2024 and form_pscis_2023 first, and theres no `my_priority` column
-tab_map_phase_1_prep <- pscis_all |>
-  # dplyr::filter(source !%in%c(""))
+## Code we normally use when theres no fraser funkyness
+tab_map_phase_1_prep <- dplyr::left_join(form_pscis |>
+                                           dplyr::select(-c(barrier_result, source)),
+                                         pscis_all |>
+                                   dplyr::select(pscis_crossing_id, barrier_result, source),
+                                 by = c('pscis_crossing_id')) |>
   dplyr::select(pscis_crossing_id,
                 my_crossing_reference,
                 utm_zone,
@@ -929,42 +951,18 @@ tab_map_phase_1_prep <- pscis_all |>
                 stream_name,
                 road_name,
                 site_id,
-                # Fraser 2024 - there's no `my_priority` column
-                # priority_phase1 = my_priority,
+                priority_phase1 = my_priority,
                 habitat_value,
                 barrier_result,
                 source) |>
-  fpr::fpr_sp_assign_sf_from_utm(col_easting = "utm_easting", col_northing = "utm_northing") |>
   # we must transform the data to latitude/longitude (CRS 4326)
   sf::st_transform(4326)
-
-
-## Code we normally use when theres no fraser funkyness
-# tab_map_phase_1_prep <- dplyr::left_join(form_pscis |>
-#                                            dplyr::select(-c(barrier_result, source)),
-#                                          pscis_all |>
-#                                    dplyr::select(pscis_crossing_id, barrier_result, source),
-#                                  by = c('pscis_crossing_id')) |>
-#   dplyr::select(pscis_crossing_id,
-#                 my_crossing_reference,
-#                 utm_zone,
-#                 utm_easting = easting,
-#                 utm_northing = northing,
-#                 stream_name,
-#                 road_name,
-#                 site_id,
-#                 priority_phase1 = my_priority,
-#                 habitat_value,
-#                 barrier_result,
-#                 source) |>
-#   # we must transform the data to latitude/longitude (CRS 4326)
-#   sf::st_transform(4326)
 
 
 
 
 tab_map_phase_1 <- tab_map_phase_1_prep |>
-  # Fraser 2024 - there's no `my_priority` column
+  # already done for fraser 2024 data
   # dplyr::mutate(priority_phase1 = dplyr::case_when(priority_phase1 == 'mod' ~ 'moderate',
   #                                    TRUE ~ priority_phase1),
   #               priority_phase1 = stringr::str_to_title(priority_phase1)) |>
@@ -996,9 +994,7 @@ tab_map_phase_2 <- dplyr::left_join(
   # We don't have a priority ranking for the hab con sites at the moment so just just add the priority from the phase 1 assessments.
   dplyr::left_join(tab_map_phase_1 |>
                      sf::st_drop_geometry() |>
-                     # Fraser 2024 - there's no `my_priority` column
-                     dplyr::select(pscis_crossing_id),
-                     # dplyr::select(pscis_crossing_id, priority = priority_phase1),
+                     dplyr::select(pscis_crossing_id, priority = priority_phase1),
                    by = 'pscis_crossing_id') |>
 
   # Update the data link to point to the new location in docs
