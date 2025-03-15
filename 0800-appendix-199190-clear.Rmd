@@ -37,7 +37,11 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` was assessed with fish passage assessments and was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream. Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with fish passage assessments and prioritized for follow-up due to the presence of high-value habitat and a historical chinook salmon observation recorded downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024.
+
+<br>
+
+Approximately 5.2km downstream of this crossing, below PSCIS crossing 199187 on Braeside Road—which was fully backwatered and passable at the time of assessment in 2023—chinook salmon were repeatedly documented through sampling efforts in 2020, 2022, and 2023 [@booth2023SummaryMinnow; @murray_booth2023Report2023]. On Eden Creek, a tributary to Clear Creek located upstream of the Braeside Road crossing, coho salmon were detected using eDNA sampling in 2023 [@murray_booth2023Report2023]. Upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
@@ -65,7 +69,7 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 ## Stream Characteristics at Crossing `r as.character(my_site)` {.unnumbered}
 
-At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199190)). The culvert had a significant 1m outlet drop. 
+At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199190)). The culvert had a significant 1m outlet drop and a large pile of riprap placed at the outlet, possibly to reduce the drop, though its placement appeared unusual and may inhibit fish passage.
 
 <br>
 
@@ -95,13 +99,13 @@ hab_site |>filter(site == my_site & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'ds')`. 
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value for salmonid spawning an rearing. The stream contained frequent pools suitable for overwintering fish, with abundant cobbles but limited gravels. Evidence of extreme seasonal flows was observed, including large eroding banks, extensive gravel deposits from channel widening (20–30m), and significant log jams.  `r fpr_my_habitat_paragraph(loc = 'ds')`. 
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'us')`
+`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value. The stream had good flow and provided high-quality habitat for the first 100m before transitioning to subsurface flow. By approximately 200m upstream of the highway, adjacent to a quarry, the stream was fully dewatered to the top of the surveyed reach. The channel was highly confined, lacked complexity, and consisted primarily of a straight, coarse cobble and boulder substrate. While some small and large woody debris were present, they did not appear to contribute to habitat formation during periods of flow. `r fpr_my_habitat_paragraph(loc = 'us')`
 
 <br>
  
@@ -114,6 +118,8 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 
 ## Conclusion {.unnumbered}
+
+Although the habitat upstream of `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was documented as low value for salmonid spawning and rearing, downstream habitat was of high quality, and chinook salmon have been detected downstream as recently as 2023 [@murray_booth2023Report2023]. Given these factors, follow-up fish sampling (electrofishing or eDNA sampling) at the crossing is recommended. The crossing had a significant outlet drop, with a large pile of riprap placed at the outlet, possibly to reduce the drop, though its placement appeared unusual and may inhibit fish passage.
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`

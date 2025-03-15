@@ -25,7 +25,7 @@ my_site2 <- 7622
 
 PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()`, on the northern side of Fraser Lake, BC. Crossing `r as.character(my_site)` is located 50m upstream of Fraser Lake, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: 1790951). Approximately 275m upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: 1794196). Both crossings are within the Francois Lake watershed group. 
 
-<!-- `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of Tagit Creek -->
+<br>
 
 ## Background {.unnumbered}
 
@@ -38,10 +38,7 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2004, crossing `r as.character(my_site2)` was assessed with fish passage assessment by REGIONAL MANAGER NORTHERN, MoE [FIND_REPORT]. In 2023, crossing `r as.character(my_site)` was assessed with fish passage assessment and both sites were prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream during the 2023 assessment. 
-
-<!-- Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. -->
-
+Crossing `r as.character(my_site2)` was first assessed with a fish passage assessment in 2004 [@moe2023PSCISAssessments], with both crossings reassessed in 2023 and prioritized for follow-up due to the presence of high-value habitat upstream. A habitat confirmation assessment encompassing both sites was conducted in 2024. No fisheries information is documented for the stream; however, downstream in Fraser Lake, chinook, bull trout, rainbow trout, kokanee, and other species have been previously recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
@@ -69,12 +66,7 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 ## Stream Characteristics at Crossings `r as.character(my_site)` and `r as.character(my_site2)`  {.unnumbered}
 
-At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199171)). This culvert had a significant 0.9m outlet drop, likely inhibiting fish passage. 
-
-<br>
-
-PSCIS crossing  `r as.character(my_site2)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` was un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(site = my_site2, col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol
-[@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-7622)). This culvert had an even larger outlet drop of 1.15m, likely inhibiting fish passage. 
+At the time of the 2024 assessment, both crossings `r as.character(my_site)` and `r as.character(my_site2)` were un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Tables \@ref(tab:tab-culvert-199171) - \@ref(tab:tab-culvert-7622)). Crossing `r as.character(my_site)` had a significant 0.9m outlet drop, while crossing `r as.character(my_site2)` had an even larger outlet drop of 1.15m, both of which likely inhibited fish passage.
 
 <br>
 
