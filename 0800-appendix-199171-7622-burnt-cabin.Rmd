@@ -23,9 +23,10 @@ my_site2 <- 7622
 
 ## Site Location {.unnumbered}
 
-PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()`, on the northern side of Fraser Lake, BC. Crossing `r as.character(my_site)` is located 50m upstream of Fraser Lake, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: 1790951). Approximately 275m upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: 1794196). Both crossings are within the Francois Lake watershed group. 
+PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()`, approximately 8km northwest of the Nadleh Whut'en First Nations community, on the northern side of Fraser Lake, BC. Crossing `r as.character(my_site)` is located 50m upstream of Fraser Lake, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: 1790951). Approximately 275m upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: 1794196). Both crossings are within the Francois Lake watershed group. 
 
 <br>
+
 
 ## Background {.unnumbered}
 
@@ -38,7 +39,7 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-Crossing `r as.character(my_site2)` was first assessed with a fish passage assessment in 2004 [@moe2023PSCISAssessments], with both crossings reassessed in 2023 and prioritized for follow-up due to the presence of high-value habitat upstream. A habitat confirmation assessment encompassing both sites was conducted in 2024. No fisheries information is documented for the stream; however, downstream in Fraser Lake, chinook, bull trout, rainbow trout, kokanee, and other species have been previously recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+Crossing `r as.character(my_site2)` was first assessed with a fish passage assessment in 2004 [@moe2023PSCISAssessments], with both crossings reassessed in 2023 and prioritized for follow-up due to the presence of high-value habitat. A habitat confirmation assessment encompassing both sites was conducted in 2024. No fisheries information is documented for the stream; however, downstream in Fraser Lake, chinook, bull trout, rainbow trout, kokanee, and other species have been previously recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
@@ -124,7 +125,7 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
 
-Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing (`r as.character(my_site)`) with a bridge (`r fpr::fpr_my_pscis_info(site = my_site, col_pull = recommended_diameter_or_span_meters)` m span) is recommended. This culvert had a 0.9m outlet drop, very likely inhibiting fish passage.  At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
+Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing (`r as.character(my_site)`) with a bridge (`r fpr::fpr_my_pscis_info(site = my_site, col_pull = recommended_diameter_or_span_meters)` m span) is recommended. This culvert had a 0.9m outlet drop, likely inhibiting fish passage.  At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
 
 <br>
 
@@ -134,6 +135,11 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 
 ## Conclusion {.unnumbered}
+
+
+
+
+
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
@@ -167,7 +173,7 @@ knitr::include_graphics(my_photo1)
 ```{r photo-199171-02-prep, eval=T}
 my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = 'us_typical_2')
 
-my_caption2 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, 'and downstream of PSCIS crossing ', my_site2, '.')
+my_caption2 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, ' and downstream of PSCIS crossing ', my_site2, '.')
 
 
 ```
