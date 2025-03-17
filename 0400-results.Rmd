@@ -375,7 +375,7 @@ tab_overview |>
 
 ```{r phase-2-cv-assess-sum}
 fpr::fpr_table_cv_summary(dat = pscis_phase2)  |>  
-  fpr::fpr_kable(caption_text = 'Summary of Phase 2 fish passage reassessments.', scroll = F)
+  fpr::fpr_kable(caption_text = 'Summary of Phase 2 fish passage reassessments.', scroll = gitbook_on)
 ```
 
 
@@ -398,7 +398,7 @@ tab_cost_est_phase2 |>
     `Cost Benefit (m2 / $K)` = cost_area_net
   ) |> 
   fpr::fpr_kable(caption_text = paste0("Cost benefit analysis for Phase 2 assessments. ", sp_rearing_caption),
-                 scroll = F)
+                 scroll = gitbook_on)
 
 ```
 
@@ -410,7 +410,7 @@ tab_hab_summary |>
   dplyr::filter(stringr::str_like(Location, 'upstream')) |> 
   dplyr::select(-Location) |> 
   dplyr::rename(`PSCIS ID` = Site, `Length surveyed upstream (m)` = `Length Surveyed (m)`) |>
-  fpr::fpr_kable(caption_text = 'Summary of Phase 2 habitat confirmation details.', scroll = F)
+  fpr::fpr_kable(caption_text = 'Summary of Phase 2 habitat confirmation details.', scroll = gitbook_on)
 
 
 ```
@@ -420,7 +420,7 @@ tab_hab_summary |>
 ```{r tab-wshd-sum-all}
 fpr::fpr_table_wshd_sum() |> 
   fpr::fpr_kable(caption_text = paste0('Summary of watershed area statistics upstream of Phase 2 crossings.'),
-                                 footnote_text = 'Elev P60 = Elevation at which 60% of the watershed area is above', scroll = F)
+                                 footnote_text = 'Elev P60 = Elevation at which 60% of the watershed area is above', scroll = gitbook_on)
 
 ```
 
