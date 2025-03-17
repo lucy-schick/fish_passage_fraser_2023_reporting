@@ -28,8 +28,8 @@ PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info
 
 ## Background {.unnumbered}
 
-At this location, `r fpr::fpr_my_pscis_info()` is a
-`r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a high elevation watershed of approximately
+At this location, `r fpr::fpr_my_pscis_info()` is a large, glaciated,
+`r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream that drains a high elevation watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 `r fpr::fpr_my_wshd(col = 'elev_site')`m near the crossing (Table
@@ -37,9 +37,15 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` was assessed with fish passage assessments and was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream. 
+In 2023, crossing `r as.character(my_site)` was assessed with fish passage assessments and prioritized for follow-up due to the presence of high-value habitat and a historical chinook salmon observation recorded downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024.
 
-<!-- Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. -->
+<br>
+
+In 2004, chinook and bull trout were captured upstream and downstream of crossing by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. 
+
+<br>
+
+Upstream of this crossing is the Holliday Creek Arch Protected Area, a small, 395-hectare protected area showcasing a 80 m wide and 18 m high natural stone arch, which can be accessed via a trail from Highway 16 [@HollidayCreekArchProtectedArea]. 
 
 <br>
 
@@ -67,7 +73,7 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 ## Stream Characteristics at Crossing `r as.character(my_site)` {.unnumbered}
 
-At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199282)). The culvert had a significant 0.8m outlet drop. 
+At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199282)). The culvert had a significant 0.8m outlet drop and was undersized for the stream. 
 
 <br>
 
@@ -97,13 +103,13 @@ hab_site |>filter(site == my_site & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199282-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199282-d01))."))`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'ds')`. 
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199282-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199282-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value with frequent gravels suitable for spawning and occasional pools available for overwintering.  `r fpr_my_habitat_paragraph(loc = 'ds')`. 
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199282-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199282-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'us')`
+`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199282-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199282-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value for spawning and rearing. Occasional large woody debris features created deep pools, with pockets of gravels suitable for spawning. `r fpr_my_habitat_paragraph(loc = 'us')`
 
 <br>
  
@@ -118,10 +124,15 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
+Chinook and bull trout were captured both upstream and downstream of the crossing in 2005, indicating this stream provides valuable fish habitat [@manson2005Fishcollection]. Habitat modeling from bcfishpass identified 3.3km of potential chinook rearing habitat and 9km of potential bull trout spawning habitat upstream of the crossing, with no other barriers identified upstream of Highway 16.
+
+<br>
+
+Given the documented species presence and available habitat upstream, fish sampling is recommended to assess whether the 0.8m outlet drop is impeding fish passage. With the Holliday Creek Arch Protected Area upstream attracting visitors, crossing replacement could gain momentum as part of broader conservation and recreational initiatives [@HollidayCreekArchProtectedArea].
+
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
-<br>
 
 ```{r tab-habitat-summary-199282, eval = T}
 tab_hab_summary |>
