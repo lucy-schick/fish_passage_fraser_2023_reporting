@@ -41,7 +41,7 @@ In 2023, crossing `r as.character(my_site)` was assessed with fish passage asses
 
 <br>
 
-In 2004, chinook and bull trout were captured upstream and downstream of crossing by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. 
+In 2004, chinook and bull trout were captured upstream and downstream of the crossing by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. 
 
 <br>
 
@@ -124,7 +124,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-Chinook and bull trout were captured both upstream and downstream of the crossing in 2005, indicating this stream provides valuable fish habitat [@manson2005Fishcollection]. Habitat modeling from bcfishpass identified 3.3km of potential chinook rearing habitat and 9km of potential bull trout spawning habitat upstream of the crossing, with no other barriers identified upstream of Highway 16.
+Chinook and bull trout were captured both upstream and downstream of the crossing in 2004, indicating this stream provides valuable fish habitat [@manson2005Fishcollection]. Habitat modeling from bcfishpass identified 3.3km of potential chinook rearing habitat and 9km of potential bull trout spawning habitat upstream of the crossing, with no other barriers identified upstream of Highway 16.
 
 <br>
 
