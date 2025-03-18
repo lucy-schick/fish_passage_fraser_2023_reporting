@@ -41,7 +41,7 @@ In 2023, crossing `r as.character(my_site)` was assessed with fish passage asses
 
 <br>
 
-In 2004, chinook and bull trout were captured upstream and downstream of the crossing by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. 
+In 2004, chinook and bull trout were captured upstream and downstream of the crossing by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. Chinook spawners have been documented at the confluence of Holliday Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/), with 26 spawners observed in 2022 [@salmonwatershedsprogram2025Spawnerabundance]. 
 
 <br>
 
