@@ -22,7 +22,7 @@ my_site <- 199260
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 76km east of Prince George, BC. The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of Sugarbowl Creek, which flows into Kenneth Creek before joining the Fraser River. From the confluence of `r fpr::fpr_my_pscis_info()` and Sugarbowl Creek, it is approximately 2km downstream to the Fraser River. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and is under the jurisdiction of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1992815). The crossing is within the Morkill River watershed group. 
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 100km east of Prince George, BC. The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of Sugarbowl Creek, which flows into Kenneth Creek before joining the Fraser River. From the confluence of `r fpr::fpr_my_pscis_info()` and Sugarbowl Creek, it is approximately 2km downstream to the Fraser River. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and is under the jurisdiction of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1992815). The crossing is within the Morkill River watershed group. 
 
 <br>
 
