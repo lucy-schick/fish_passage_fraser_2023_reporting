@@ -22,7 +22,7 @@ my_site <- 199256
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 120km northwest of McBride, BC. The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the Fraser River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_hwy_structure_road_id: 3750). The crossing is within the Morkill River watershed group. 
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 80km east of Prince George, BC. The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the Fraser River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: 3750). The crossing is within the Morkill River watershed group. 
 
 <br>
 
@@ -37,7 +37,12 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` was assessed with fish passage assessments and was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream. Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and chinook observations documented downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. 
+
+
+<br>
+
+Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Chinook spawners have been historically documented at the confluence of Kenneth Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. 
 
 <br>
 
@@ -95,16 +100,19 @@ hab_site |>filter(site == my_site & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199256-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199256-d01))."))`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'ds')`. 
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199256-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199256-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |> stringr::str_to_lower()` value, with abundant spawning gravels and deep pools (>1m) formed by functional large woody debris, providing high-quality overwintering habitat for fish of all ages. `r fpr_my_habitat_paragraph(loc = 'ds')`
+
+<br>
+
+Downstream of the culvert, the stream ran parallel to the highway, with banks reinforced by riprap. Large wood, secured with metal wiring, was placed to create habitat and reduce flow, arranged in three sets of two logs spaced approximately 5m apart (Figure \@ref(fig:photo-199256-03)). These structures were likely installed to mitigate habitat loss caused by the riprapped banks. 
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199256-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199256-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'us')`
+`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199256-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199256-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value, with gravels suitable for chinook and resident salmonid spawning. The stream was large and gravel-dominated, with extensive deep runs, deep pools, large woody debris, and multiple channels throughout. The riparian area was intact throughout, consisting of a mix of shrub-dominated wetland areas and mature mixed forest. `r fpr_my_habitat_paragraph(loc = 'us')`
 
 <br>
- 
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
 
@@ -114,6 +122,8 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 
 ## Conclusion {.unnumbered}
+
+Kenneth Creek is a large, gravel-dominated stream with high-value habitat for salmonid spawning and rearing. Although chinook and bull trout have been documented upstream [@norris2024smnorrisbcfishobs; @moe2024KnownBC], the crossing had a significant 0.7m outlet drop, and fish sampling is recommended to determine if it is currently inhibiting fish passage. Additionally, `bcfishpass` modeling indicates nearly 50km of potential chinook spawning habitat upstream. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement.
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
@@ -162,4 +172,18 @@ my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
 knitr::include_graphics(my_photo1)
 knitr::include_graphics("fig/pixel.png")
 knitr::include_graphics(my_photo2)
+```
+
+<br>
+
+```{r photo-199256-03-prep, eval=T}
+my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = 'ds_logsandriprap')
+
+my_caption1 = paste0('Ripwrapped banks and large wood structures secured with metal wiring located downstream of crossing ', my_site, '.')
+
+
+```
+
+```{r photo-199256-03, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+knitr::include_graphics(my_photo1)
 ```
