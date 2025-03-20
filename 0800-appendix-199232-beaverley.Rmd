@@ -22,13 +22,13 @@ my_site <- 199232
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 14km west of Prince George, BC. The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the Chilako River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_hwy_structure_road_id: 4167). The crossing is within the Lower Chilako River watershed group. 
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 14km west of Prince George, BC. The crossing is `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of `r fpr::fpr_my_pscis_info()`'s confluence with the Chilako River, which flows into the Nechako River. It is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and falls under the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: 4167). The crossing is within the Lower Chilako River watershed group.  
 
 <br>
 
 ## Background {.unnumbered}
 
-At the crossing location, `r fpr::fpr_my_pscis_info()` is a
+`r fpr::fpr_my_pscis_info()` is a major tributary to the Chilako River. At the crossing location, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
@@ -37,7 +37,21 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` was assessed with fish passage assessments and was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream. Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and several historical chinook observations documented downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. 
+
+<br>
+
+Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Chinook fry were captured downstream of the crossing in 2010 and 2004 by members from Vancouver Island University [@godfreyson2010Scientificfish; @hobson2004Scientificfish]. 
+
+<br>
+
+Several other crossings were assessed within the `r fpr::fpr_my_pscis_info()` system, with results detailed in [Appendix - Phase 1 Fish Passage Assessment Data and Photos]. Approximately 250m east on Highway 16, PSCIS crossing 199233 was assessed on Little Beaverly Creek. Additionally, PSCIS crossings 203298 and 199236 were assessed on two separate tributaries to Beaverley Creek, and PSCIS crossing 199178 was assessed where Beaverley Creek crosses Blackwater Road.  
+
+<br>
+
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199232).
+
 
 <br>
 
@@ -51,11 +65,6 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 
 <br>
 
-A summary of habitat modelling outputs for the crossing are presented in Table
-\@ref(tab:tab-culvert-bcfp-199232).
-
-<br>
-
 ```{r tab-culvert-bcfp-199232, eval = T}
 fpr::fpr_table_bcfp(scroll = gitbook_on) 
 ```
@@ -65,7 +74,7 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 ## Stream Characteristics at Crossing `r as.character(my_site)` {.unnumbered}
 
-At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199232)). The culvert had a significant 1.05m outlet drop. 
+At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199232)). Two 2.8m diameter pipes were present, with no flow observed in the more northern pipe. The culverts had a significant 1.05m outlet drop.  
 
 <br>
 
@@ -95,13 +104,13 @@ hab_site |>filter(site == my_site & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199232-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199232-d01))."))`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'ds')`. 
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199232-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199232-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |> stringr::str_to_lower()` value due to sparse large woody debris, a lack of pools, and high turbidity from recent rainfall likely obscuring gravels. Below the outlet, large boulders were placed in rows to backwater the culvert, which was somewhat effective, though the culvert itself remained unbackwatered. This section had a steeper gradient (3–4%) before transitioning to ~0.5% for the remainder of the area surveyed. The upper section of the stream was somewhat channelized due to residences on both sides, while lower sections showed significant bank erosion. `r fpr_my_habitat_paragraph(loc = 'ds')`  
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199232-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199232-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'us')`
+`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199232-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199232-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |> stringr::str_to_lower()` value, with abundant gravels suitable for chinook spawning. Pools were infrequent, primarily located on outside bends and behind large woody debris. Some evidence of anthropogenic manipulation was observed, including cut cottonwood trees that had fallen into the channel. The riparian zone was in good condition, with mature shrub communities and old-growth cottonwood that should contribute to future habitat complexity. Water levels were elevated to moderate conditions due to heavy rainfall over the previous evening and preceding weeks. `r fpr_my_habitat_paragraph(loc = 'us')`  
 
 <br>
  
@@ -115,6 +124,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
+`r fpr::fpr_my_pscis_info()` is a large stream and a major tributary to the Chilako River, with documented chinook observations downstream, most recently in 2010 [@godfreyson2010Scientificfish]. The areas surveyed upstream provided high-value habitat for chinook spawning, with `bcfishpass` modeling indicating ~11km of potential chinook and ~47km of potential coho spawning habitat upstream. Both culverts had a significant 1.05m outlet drop, likely inhibiting anadromous species at lower flows. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. The watershed is within Prince George city limits, presenting opportunities for community engagement, trail network development, educational programs, and stewardship initiatives.  
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
