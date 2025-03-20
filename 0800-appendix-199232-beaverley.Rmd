@@ -124,7 +124,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-`r fpr::fpr_my_pscis_info()` is a large stream and a major tributary to the Chilako River, with documented chinook observations downstream, most recently in 2010 [@godfreyson2010Scientificfish]. The areas surveyed upstream provided high-value habitat for chinook spawning, with `bcfishpass` modeling indicating ~11km of potential chinook and ~47km of potential coho spawning habitat upstream. Both culverts had a significant 1.05m outlet drop, likely inhibiting anadromous species at lower flows. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. The watershed is within Prince George city limits, presenting opportunities for community engagement, trail network development, educational programs, and stewardship initiatives.  
+`r fpr::fpr_my_pscis_info()` is a large stream and a major tributary to the Chilako River, with documented chinook observations downstream, most recently in 2010 [@godfreyson2010Scientificfish]. The areas surveyed upstream provided high-value habitat for chinook spawning, with `bcfishpass` modeling indicating ~11km of potential chinook and ~47km of potential coho spawning habitat upstream. Both culverts had a significant 1.05m outlet drop, and the crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. The watershed is within Prince George city limits, presenting opportunities for community engagement, trail network development, educational programs, and stewardship initiatives.  
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
