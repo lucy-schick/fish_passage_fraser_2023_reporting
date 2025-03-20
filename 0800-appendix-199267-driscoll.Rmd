@@ -49,6 +49,11 @@ This crossing is located on the boundary of the Chun T’oh Whudujut (Ancient Fo
 
 <br>
 
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199267).
+
+<br>
+
 ```{r tab-wshd-199267, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |>
   fpr::fpr_kable(caption_text = paste0('Summary of derived upstream watershed statistics for PSCIS crossing ', my_site, '.'),
@@ -56,11 +61,6 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
            scroll = F)
 
 ```
-
-<br>
-
-A summary of habitat modelling outputs for the crossing are presented in Table
-\@ref(tab:tab-culvert-bcfp-199267).
 
 <br>
 

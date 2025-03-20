@@ -43,6 +43,11 @@ Crossing `r as.character(my_site2)` was first assessed with a fish passage asses
 
 <br>
 
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199171).
+
+<br>
+
 ```{r tab-wshd-199171, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |>
   fpr::fpr_kable(caption_text = paste0('Summary of derived upstream watershed statistics for PSCIS crossing ', my_site, '.'),
@@ -50,11 +55,6 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
            scroll = F)
 
 ```
-
-<br>
-
-A summary of habitat modelling outputs for the crossing are presented in Table
-\@ref(tab:tab-culvert-bcfp-199171).
 
 <br>
 

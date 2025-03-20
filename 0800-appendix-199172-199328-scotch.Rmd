@@ -41,6 +41,12 @@ In 2023, crossings `r as.character(my_site)` and `r as.character(my_site2)` were
 
 <!-- Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. -->
 
+
+<br>
+
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199328). 
+
 <br>
 
 ```{r tab-wshd-199328, eval = T}
@@ -50,11 +56,6 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
            scroll = F)
 
 ```
-
-<br>
-
-A summary of habitat modelling outputs for the crossing are presented in Table
-\@ref(tab:tab-culvert-bcfp-199328). 
 
 <br>
 

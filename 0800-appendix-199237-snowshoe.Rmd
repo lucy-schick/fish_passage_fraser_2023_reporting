@@ -45,6 +45,11 @@ Upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr:
 
 <br>
 
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199237).
+
+<br>
+
 ```{r tab-wshd-199237, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |>
   fpr::fpr_kable(caption_text = paste0('Summary of derived upstream watershed statistics for PSCIS crossing ', my_site, '.'),
@@ -52,11 +57,6 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
            scroll = F)
 
 ```
-
-<br>
-
-A summary of habitat modelling outputs for the crossing are presented in Table
-\@ref(tab:tab-culvert-bcfp-199237).
 
 <br>
 

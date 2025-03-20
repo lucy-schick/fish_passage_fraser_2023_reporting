@@ -45,6 +45,11 @@ Approximately 5.2km downstream of this crossing, below PSCIS crossing 199187 on 
 
 <br>
 
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199190).
+
+<br>
+
 ```{r tab-wshd-199190, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |>
   fpr::fpr_kable(caption_text = paste0('Summary of derived upstream watershed statistics for PSCIS crossing ', my_site, '.'),
@@ -52,11 +57,6 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
            scroll = F)
 
 ```
-
-<br>
-
-A summary of habitat modelling outputs for the crossing are presented in Table
-\@ref(tab:tab-culvert-bcfp-199190).
 
 <br>
 
