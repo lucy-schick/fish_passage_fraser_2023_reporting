@@ -133,7 +133,29 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 `r fpr_my_survey_dist(sit = my_site2, loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199174-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199174-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us') |>stringr::str_to_lower()` value and had been heavily impacted by cattle, with evidence of bank trampling and extensive low-gradient muddy sections. Upstream of the culvert, the stream was primarily dry for the first 300m, with young forest and shrubs. At this point, intermittent pools began to appear, associated with beaver activity. At approximately 450–500m upstream, the stream became almost entirely watered, with pools up to 40cm deep. Many surveyed areas resembled wetland habitat, with spirea, willow, alder, and trembling aspen throughout. `r fpr_my_habitat_paragraph(sit = my_site2, loc = 'us')`
 
 <br>
+
+## Aerial Imagery {.unnumbered}
+
+An aerial survey was conducted with a remotely piloted aircraft and the resulting imagery was processed into an orthomosaic, digital terrain model (dtm) and a digital surface model (dsm), available to view and download `r if(gitbook_on){knitr::asis_output("in Table \\@ref(tab:tab-uav-imagery-cap-199173).")}else(knitr::asis_output(ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))`
+
+<br>
+
+```{r tab-uav-imagery-cap-199173, results="asis", eval= gitbook_on}
+my_caption <- paste0("Drone imagery download and viewer links for crossings ", my_site, " and ", my_site2, ".")
+
+my_tab_caption()
+```
+
+```{r tab-uav-199173, eval= gitbook_on}
+site_item <- c("199173_necr_trib_dog", "199174_necr_trib_dog_settlement")
+
+project_uav |> 
+  dplyr::filter(item %in% site_item) |> 
+  my_dt_table(cols_freeze_left = 2, escape = FALSE)
+
+```
  
+<br>
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
 

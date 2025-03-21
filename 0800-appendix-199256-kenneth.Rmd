@@ -114,6 +114,29 @@ Downstream of the culvert, the stream ran parallel to the highway, with banks re
 
 <br>
 
+## Aerial Imagery {.unnumbered}
+
+An aerial survey was conducted with a remotely piloted aircraft and the resulting imagery was processed into an orthomosaic, digital terrain model (dtm) and a digital surface model (dsm), available to view and download `r if(gitbook_on){knitr::asis_output("in Table \\@ref(tab:tab-uav-imagery-cap-199256).")}else(knitr::asis_output(ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))`
+
+<br>
+
+```{r tab-uav-imagery-cap-199256, results="asis", eval= gitbook_on}
+my_caption <- paste0("Drone imagery download and viewer links for crossing ", my_site, ".")
+
+my_tab_caption()
+```
+
+```{r tab-uav-199256, eval= gitbook_on}
+site_item <- c("199256_kenneth_hwy16")
+
+project_uav |> 
+  dplyr::filter(item %in% site_item) |> 
+  my_dt_table(cols_freeze_left = 2, escape = FALSE)
+
+```
+
+<br>
+
 ## Structure Remediation and Cost Estimate {.unnumbered}
 
 Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name)` crossing (`r as.character(my_site)`) with a bridge (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)` m span) is recommended. At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
