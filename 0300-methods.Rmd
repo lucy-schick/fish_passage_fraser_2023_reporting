@@ -385,3 +385,10 @@ xref_moti_climate_names  %>%
 UAV imagery collected during the project was processed using [OpenDroneMap](https://github.com/OpenDroneMap/ODM) to produce orthomosaics, digital surface models (DSMs), and digital terrain models (DTMs). The resulting imagery products were converted to cloud-optimized GeoTIFFs (COGs) to support efficient storage and web-based access. These COGs were uploaded to a cloud service provider (AWS) and organized using the [SpatioTemporal Asset Catalog (STAC)](https://github.com/radiantearth/stac-spec) specification, enabling standardized spatial and temporal querying of the data. Scripts used in this workflow are available [here](https://github.com/NewGraphEnvironment/stac_uav_bc/tree/main/scripts).
 
 <br>
+
+<!-- ## Stream Discharge and Temperature Modelling -->
+
+<!-- We are working with Poisson Consulting Ltd. to map stream discharge and temperature causal effects pathways with the intent of focusing aquatic restoration actions in areas of highest potential for positive impacts on fisheries values. Detailed information regarding this project is provided in [#attach-3-bayes]. -->
+
+<!-- The project currently focuses on the Nechako watershed. Water temperature data collected between 2019 and 2021 were obtained from @gilbert_etal2022Subhourlywater, while gridded air temperature and discharge data were sourced from the Copernicus Climate Change Service and the Pacific Climate Impacts Consortium, respectively. -->
+
