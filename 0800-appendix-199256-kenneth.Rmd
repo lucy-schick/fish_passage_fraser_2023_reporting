@@ -207,6 +207,6 @@ my_caption1 = paste0('Ripwrapped banks and large wood structures secured with me
 
 ```
 
-```{r photo-199256-03, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+```{r photo-199256-03, fig.cap= my_caption1, out.width = photo_width, eval=T}
 knitr::include_graphics(my_photo1)
 ```

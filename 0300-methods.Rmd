@@ -6,13 +6,19 @@ fish_col_permit_num <-
 
 ```
 
+<br>
+
 ## Communicate Connectivity Issues 
+
+<br>
 
 ### Engage Partners 
 
 Engaging partners for ecosystem restoration initiatives is critical as it allows us to utilize available resources, tap
 into different areas of expertise, and benefit from diverse perspectives through collaboration that leads to successful
 outcomes. Engagement actions have included video conference calls, meetings, emails, presentations and phone calls.
+
+<br>
 
 ### Collaborative GIS Environment 
 Geographical Information Systems are essential for developing and communicating restoration plans as well as the reasons
@@ -46,10 +52,14 @@ below:
   - A project directory is created to hold the spatial data and `QGIS` project information (ie. layer symbology and naming conventions, metadata, etc.).
   - Metadata for individual project spatial layers is kept in the `rfp_tracking` table within the `background_layers.gpkg` along with tables related to user supplied stream width/gradient inputs to `bcfishpass` to model potentially high value habitat that is accessible to fish species of interest. 
   
+  <br>
+  
 ### Issue Tracking
 "Issues" logged on the online github platform are effective ways to track tasks, enhancements, and bugs related to project components.
 They can be referenced with the scripts, text and actions used to address them by linking documentation to the issues with text comments
 or programatically through `git` commit messages.  Issues for this project are kept `r ngr::ngr_str_link_url(url_base = params$repo_url, url_resource = "issues", anchor_text = "here")`.
+
+<br>
 
 ### Mapping
 The workflows to produce the georeferenced  `pdf` maps include using a QGIS layer file
@@ -58,7 +68,11 @@ and associated layer file were kept under version control within `bcfishpass` [h
 Loading the QGIS layer file within a QGIS project, allows load and representation of all map component layers provided
 the user points to a postgresql database populated via `bcfishpass` outputs.
 
+<br>
+
 ## Planning
+
+<br>
 
 ### Habitat Modelling
 
@@ -142,7 +156,8 @@ bcfishpass_spawn_rear_model |>
 ```
 
 
-`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\newpage")`
+`r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
+
 
 <!-- This table has not been included in the most recent reports (skeena and peace 2023). Maybe because we now use 8.5% for ST rearing habitat, which is not what is referenced in this table (they said 7.5) -->
 ```{r tab-fish-spawning-rearing-references, eval = TRUE}
@@ -276,7 +291,7 @@ Cost estimates for structure replacement with bridges and embedded culverts were
 Base costs for installation of bridges on forest service roads and permit roads with surfaces specified in provincial GIS road layers as rough and loose was estimated at \$30000/linear m and assumed that the road could be closed during construction and a minimum bridge span of 15m. For streams with channel widths <2m, embedded culverts were reported as an effective solution with total installation costs estimated at $100k/crossing (pers. comm. Phil MacDonald, Steve Page then adjusted for inflation in 2020). For larger streams (>6m), estimated span width increased proportionally to the size of the stream.  For crossings with large amounts of fill (>3m), the replacement bridge span was increased by an additional 3m for each 1m of fill >3m to account for cutslopes to the stream at a 1.5:1 ratio. To account for road type, a multiplier table was generated to estimate incremental cost increases with costs estimated for structure replacement on paved surfaces, railways and arterial/highways costing up to 15 times more than forest service roads due to expenses associate with design/engineering requirements, traffic control and paving.  The cost multiplier table (Table \@ref(tab:tab-cost-mult)) should be considered very approximate with refinement recommended for future projects.
 
 
-`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
+<br>
 
 
 ```{r tab-cost-mult, eval = TRUE}
@@ -301,6 +316,8 @@ sfpr_xref_road_cost() |>
   # filter(Class != 'FSR' & Surface != 'Paved') |>
   fpr::fpr_kable(caption_text = 'Cost multiplier table based on road class and surface type.', scroll = F)
 ```
+
+<br>
 
 ## Designs
 Engineering designs were conducted by consultants hired by forest licensees with tenure over the roads and/or timber
@@ -379,6 +396,7 @@ xref_moti_climate_names  %>%
 
 ```
 
+<br>
 
 ## Aerial Imagery
 

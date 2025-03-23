@@ -104,6 +104,8 @@ knitr::include_graphics("fig/hydrograph_08KA005.png")
 sfpr_create_hydrograph("08KA013")
 ```
 
+<br>
+
 ## Nechakoh
 
 
@@ -179,6 +181,8 @@ knitr::include_graphics("fig/hydrograph_08JC005.png")
 
 The Fraser River watershed is the largest salmon-producing river system in British Columbia and one of the most significant on the Pacific Coast. It provides critical habitat for anadromous salmonids, resident freshwater species, and other aquatic organisms. The river supports indigenous, commercial, and recreational fisheries, with Pacific salmon (Oncorhynchus spp.) playing a key ecological and economic role.
 
+<br>
+
 ### Lhtakoh  
 
 The Fraser River mainstem serves as the primary migration corridor for all anadromous fish species returning to spawn in its tributaries. Historically, the Fraser supported some of the largest sockeye and chinook salmon runs in North America. However, climate change, habitat degradation, and fisheries pressures have led to declining salmon populations in recent decades.  
@@ -237,7 +241,7 @@ The Morkill River, a tributary of the Upper Fraser, supports Bull Trout, Mountai
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
 through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on) { knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)") } else { knitr::asis_output(ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "background.html", anchor_text = "here")) }`. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
 
-<br>
+`r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
 
 ```{r stock-assess-download, eval=FALSE}
 library("ckanr")

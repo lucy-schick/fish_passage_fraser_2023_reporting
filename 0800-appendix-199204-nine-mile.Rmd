@@ -181,6 +181,6 @@ my_caption1 = paste0('Typical habitat upstream of PSCIS crossing ', my_site, '.'
 
 ```
 
-```{r photo-199204-03, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+```{r photo-199204-03, fig.cap= my_caption1, out.width = photo_width, eval=T}
 knitr::include_graphics(my_photo1)
 ```
