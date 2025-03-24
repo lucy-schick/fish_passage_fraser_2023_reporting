@@ -117,7 +117,7 @@ map
 ## Site Assessment Data Since 2020
 
 Fish passage assessment procedures conducted through SERNbc in the Upper Fraser River Watershed since 2023 are amalgamated  
-`r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Tables \\@ref(tab:tab-sites-sum-cap) - \\@ref(tab:tab-sites-cap).")}`
+`r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Tables \\@ref(tab:tab-sites-sum-cap) - \\@ref(tab:tab-sites-cap)")}`.
 
 <br>
 
@@ -176,12 +176,12 @@ sites_all_summary <- sites_all |>
 
 ```
 
-```{r tab-sites-sum-cap, results="asis"}
+```{r tab-sites-sum-cap, results="asis", eval = gitbook_on}
 my_caption = "Summary of fish passage assessment procedures conducted in the Upper Fraser River watershed through SERNbc since 2023."
 my_tab_caption(tip_flag = FALSE)
 ```
 
-```{r tab-sites-sum}
+```{r tab-sites-sum, eval = gitbook_on}
 sites_all_summary |> 
   dplyr::mutate(across(everything(), as.character)) |> 
   my_dt_table(
@@ -190,15 +190,15 @@ sites_all_summary |>
   )
 ```
 
-<br>
+`r if(gitbook_on){knitr::asis_output("<br>")}`
 
 
-```{r tab-sites-cap, results="asis"}
+```{r tab-sites-cap, results="asis", eval = gitbook_on}
 my_caption = "Details of fish passage assessment procedures conducted in the Upper Fraser River watershed through SERNbc since 2023."
 my_tab_caption()
 ```
 
-```{r tab-sites-all}
+```{r tab-sites-all, eval = gitbook_on}
 sites_all |>
   sf::st_drop_geometry() |>
   dplyr::filter(watershed_group %in% wsg) |>
@@ -220,7 +220,7 @@ sites_all |>
   )
 ```
 
-<br>
+`r if(gitbook_on){knitr::asis_output("<br>")}`
 
 
 
@@ -228,7 +228,7 @@ sites_all |>
 
 In addition to numerous layers documenting fieldwork activities since 2023, a summary of background information spatial layers and tables loaded to the collaborative GIS project (`r params$gis_project_name`) at the
 time of writing (`r format(lubridate::now(), "%Y-%m-%d")`) are included 
-`r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Table \\@ref(tab:tab-rfp-tracking).")}`.
+`r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Table \\@ref(tab:tab-rfp-tracking)")}`.
 
 <br>
 
@@ -291,6 +291,7 @@ rfp_tracking_prep |>
 
 ```
 
+`r if(gitbook_on){knitr::asis_output("<br>")}`
 
 ## Phase 1 - Fish Passage Assessemnts
 
@@ -335,14 +336,13 @@ The "Barrier" and "Potential Barrier" rankings used in this project followed @mo
 
 ## Phase 2 - Habitat Confirmation Assessments
 
-During the 2024 field assessments, habitat confirmation assessments were conducted at `r habitat_confirmations_priorities |> dplyr::distinct(stream_name) |> nrow()` sites within the Nechako River, Lower Chilako River, Upper Fraser River, Morkill River, and Francois Lake watershed groups. A total of approximately `r habitat_confirmations_priorities |> pull(length_surveyed) |> sum(na.rm = TRUE) |> round(-3)/1000` km of stream was assessed. Georeferenced field maps are provided in `r knitr::asis_output(if (gitbook_on) "[Attachment 1](#attach-1-maps)" else ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "attachment-1---maps.html", anchor_text = "Attachment 1"))`.
+During the 2024 field assessments, habitat confirmation assessments were conducted at `r habitat_confirmations_priorities |> dplyr::distinct(stream_name) |> nrow()` sites within the Nechako River, Lower Chilako River, Upper Fraser River, Morkill River, and Francois Lake watershed groups. A total of approximately `r habitat_confirmations_priorities |> pull(length_surveyed) |> sum(na.rm = TRUE) |> round(-3)/1000` km of stream was assessed.
 
 <br>
 
 As collaborative decision making was ongoing at the time of reporting, site prioritization can be considered preliminary. 
-Results are summarized in `r if(gitbook_on){knitr::asis_output("Figure \\@ref(fig:map-interactive) and ")}` Table \@ref(tab:tab-overview) with raw habitat data included in `r knitr::asis_output(if (gitbook_on) "[Attachment 2](#raw-dat)" else ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "attachment-2---habitat-assessment-and-fish-sampling-data.html", anchor_text = "Attachment 2"))`. A summary of preliminary modeling results illustrates the estimated Chinook, coho, and steelhead spawning and rearing habitat potentially available upstream of each crossing, based on measured/modelled channel width and upstream accessible stream length, as presented in Figure \@ref(fig:plot-model-all). Detailed information for each site assessed with Phase 2 assessments (including maps) are presented within site specific appendices to this document.
+Results are summarized in `r if(gitbook_on){knitr::asis_output("Figure \\@ref(fig:map-interactive) and ")}` Table \@ref(tab:tab-overview) with raw habitat data included in `r knitr::asis_output(if (gitbook_on) "[Attachment 2 - Habitat Assessment and Fish Sampling Data]" else ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "attachment-2---habitat-assessment-and-fish-sampling-data.html", anchor_text = "Attachment 2"))`. A summary of preliminary modeling results illustrates the estimated chinook, coho, and steelhead spawning and rearing habitat potentially available upstream of each crossing, based on measured/modelled channel width and upstream accessible stream length, as presented in Figure \@ref(fig:plot-model-all). Detailed information for each site assessed with Phase 2 assessments (including maps) are presented within site specific appendices to this document.
 
-`r if(gitbook_on){knitr::asis_output("")} else knitr::asis_output("<br><br><br><br>")`
 
 <br>
 
@@ -353,9 +353,9 @@ table_phase2_overview <- function(dat, caption_text = '', font = font_set, scrol
     kable(caption = caption_text, booktabs = T, label = NA) |>
     kableExtra::kable_styling(c("condensed"),
                               full_width = T,
-                              font_size = font) |>
-    kableExtra::column_spec(column = c(10), width_min = '1.5in') |>
+                              font_size = font) |> 
     kableExtra::column_spec(column = c(1:9), width_max = '1in')
+    # kableExtra::column_spec(column = c(10), width_min = '1.5in')
 
   if(identical(scroll,TRUE)){
     dat2 <- dat2 |>
@@ -490,30 +490,32 @@ Orthoimagery has been gathered for several crossings as part of fish passage res
 
 # Grab the imagery from the stac
 
+# bc bounding box
 bcbbox <-  as.numeric(
   sf::st_bbox(bcmaps::bc_bound()) |> sf::st_transform(crs = 4326)
 )
 
-q <- rstac::stac("http://images.a11s.one/") |>
-    rstac::stac_search(collections = "uav-imagery-bc",
-                       # bc bounding box
+# use rstac to query the collection
+q <- rstac::stac("https://images.a11s.one/") |>
+    rstac::stac_search(
+      # collections = "uav-imagery-bc",
+      collections = "imagery-uav-bc-prod",
                       bbox = bcbbox
-                      # This a bounding box for the [Neexdzi Kwa](https://www.newgraphenvironment.com/restoration_wedzin_kwa_2024/) watershed (aka - the Upper Bulkley River near Houston BC)
-                     # bbox = c(-126.77000, 54.08832, -125.88822, 54.68786)
+                      
                      ) |>
   rstac::post_request()
 
+# get deets of the items
 r <- q |>
   rstac::items_fetch()
-
 ```
 
 
 ```{r uav-clean-burn, eval = F}
 
-# tidy up 
+# build the table to display the info
 tab_uav <- tibble::tibble(url_download = purrr::map_chr(r$features, ~ purrr::pluck(.x, "assets", "image", "href"))) |> 
-  dplyr::mutate(stub = stringr::str_replace_all(url_download, "https://dev-imagery-uav-bc.s3.amazonaws.com/", "")) |> 
+  dplyr::mutate(stub = stringr::str_replace_all(url_download, "https://imagery-uav-bc.s3.amazonaws.com/", "")) |> 
   tidyr::separate(
     col = stub, 
     into = c("region", "watershed_group", "year", "item", "rest"),
@@ -529,6 +531,7 @@ tab_uav <- tibble::tibble(url_download = purrr::map_chr(r$features, ~ purrr::plu
   ),
   link_download = ngr::ngr_str_link_url(url_base = url_download, anchor_text = url_download)) |> 
   dplyr::select(region, watershed_group, year, item, link_view, link_download)
+
 
 
 # grab the imagery for this project area
