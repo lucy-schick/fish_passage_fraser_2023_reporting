@@ -480,7 +480,9 @@ bcfishpass_phase2_plot_prep |>
 
 ## Aerial Imagery
 
-Orthoimagery has been gathered for several crossings as part of fish passage restoration planning efforts in the Fraser River Watershed. Data has been stored as Cloud Optimized Geotiffs on a cloud service provider (AWS) with select imagery linked to in the collaborative GIS project. Additionally - a tile service has been set up to facilitate viewing and downloading of individual images, provided in Table \@ref(tab:tab-uav-imagery-cap). 
+Orthoimagery has been gathered for several crossings as part of fish passage restoration planning efforts in the Fraser River Watershed. Data has been stored as Cloud Optimized Geotiffs on a cloud service provider (AWS) with select imagery linked to in the collaborative GIS project. Additionally - a tile service has been set up to facilitate viewing and downloading of individual images, provided in `r knitr::asis_output(if (gitbook_on) "Table \\@ref(tab:tab-uav-imagery-cap)" else ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "results-and-discussion.html", anchor_text = "here"))`. 
+
+
 
 <br>
 
