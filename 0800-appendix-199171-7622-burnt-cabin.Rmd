@@ -161,8 +161,6 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 `r fpr::fpr_my_pscis_info()` is a small stream that flows into Fraser Lake, with reports of historical sockeye spawning by the adjacent landowner. The downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` had a 0.9m outlet drop, while the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing had an even larger 1.15m outlet drop, both of which are likely inhibiting upstream fish passage. Fish sampling is recommended to determine whether fish are able to ascend past the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing. Both crossing's are a high priority for replacement.
 
-`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
-
 <br>
 
 ```{r tab-habitat-summary-199171, eval = T}
@@ -173,7 +171,7 @@ tab_hab_summary |>
 
 ```
 
-`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
+<br>
 
 ```{r photo-199171-01-prep, eval=T}
 my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = 'ds_typical_2_')
