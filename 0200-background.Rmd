@@ -249,43 +249,46 @@ library("ckanr")
 # set up the connection to the data portal
 ckanr_setup(url = "https://open.canada.ca/data/en")
 
-# this crashes Als rstudio due to too much memory use.... Discussed in linked memo in paragraph above
-# all_area_nuseds <- ckanr::ckan_fetch("https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS_20240627.xlsx") 
+# Load the most recent Nuseds - currently 20250103
+url <- "https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS_20250103.csv"
+# burn directly without bringing into memory
+ckanr::ckan_fetch(url, store = "disk", path = "data/inputs_raw/nuseds_all_20250103.csv") 
 
 # ignore the huge file
-usethis::use_git_ignore("data/inputs_raw/nuseds_all.csv")
-url <- "https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS.csv"
-# burn directly without bringing into memory
-ckanr::ckan_fetch(url, store = "disk", path = "data/inputs_raw/nuseds_all.csv") 
-## Since the study area for this project is massive, I tried using the area codes to filter the results instead of 
-## using each gazette name (u can find area codes here  https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6/resource/6200a6a0-690f-3bfa-a55d-9183df47a2fa). We are still left with 9580 results... we may to just use gazette names i guess. 
+usethis::use_git_ignore("data/inputs_raw/nuseds_all_20250103.csv")
 
-# area_codes <- c("29I", "29J")
-# 
-# # filter for our area of interest by area number
-# sample_study_area <- all_area_nuseds %>%
-#   janitor::clean_names() %>%
-#   dplyr::filter(area %in% area_codes)
+#read it in
+all_area_nuseds <- readr::read_csv('data/inputs_raw/nuseds_all_20250103.csv')
 
 
-## Gazette name approach. Did my best to add all the gazette names but I'm sure I missed some so please add any missing ones! I used the watershed groups from the GIS project to get the names. Only ~1500 entries, better than 9500.
+# Big study area so lets filter using the stream names from `form_pscis` (which is the 2024 and 2024 form pscis combined)
+stream_names <- form_pscis |> 
+  dplyr::pull(stream_name) |> 
+  stringr::str_trim() |> 
+  # Must be upper case to match those in Nuseds
+  stringr::str_to_upper() |> 
+  unique()
 
-## If we filter by gazette name we get more broad results, or we can filter by waterbody but this means we need to sort through the waterbodies for each gazette name and choose the ones we want which is going to take some work, so just filtered by gazette name for now. I can totally sort through the waterbodies to refine the results but I may not be the best person for that job because I don't know the area too well, but can look into it!
+# we also need to add in these waterbodies that we didn't explicilty sample but are that heavy hitters in the project area
+major_streams <- "NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|MORKILL RIVER"
 
-#hmm. cool but many here are not within our areas 
-# waterbodies <- ("NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|SOUTH THOMPSON RIVER|NORTH THOMPSON RIVER|ADAMS RIVER|MORKILL RIVER|CLEARWATER RIVER")
+# Combine into one regex pattern
+stream_names_regex <- c(stream_names, major_streams) |> 
+  stringr::str_c(collapse = "|")
 
-csv <- readr::read_csv('data/inputs_raw/nuseds_all.csv')
-waterbodies <- ("NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|MORKILL RIVER")
-
-# # filter for our area of interest
-sample_study_area <- csv |> 
+# Filter Nuseds to just include streams we visited
+study_area_streams <- all_area_nuseds |> 
+  dplyr::filter(stringr::str_detect(WATERBODY, stream_names_regex)) |> 
+  # We have some duplicate streams so remove streams with SHORE in the name which are in the Sushwap area
+  dplyr::filter(!stringr::str_detect(WATERBODY, "SHORE")) |> 
   janitor::clean_names() |> 
-  dplyr::filter(stringr::str_detect(gazetted_name, waterbodies))
+  dplyr::arrange(waterbody)
 
+check_names <- study_area_streams |> 
+  dplyr::distinct(waterbody)
 
-## Burn to csv. Updated name so it's clear this contains only the study area waterbodies.
-sample_study_area |> 
+## Burn to csv. Updated name so it's clear this contains only the study area streams.
+study_area_streams |> 
   readr::write_csv('data/inputs_raw/study_area_NuSEDS.csv')
 
 
@@ -303,7 +306,7 @@ my_tab_caption()
 dfo_sad_tr <- readr::read_csv('data/inputs_raw/study_area_NuSEDS.csv') %>% 
   # filtering by total_return_to_river doesn't lose any data so lets keep it for this case (it removed data after 19)
   # dplyr::filter(!is.na(total_return_to_river)) %>%
-  arrange(species, analysis_yr) %>% 
+  dplyr::arrange(species, analysis_yr) %>% 
   dplyr::select(waterbody,
                 species, 
                 analysis_yr, 
