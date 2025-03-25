@@ -2,7 +2,7 @@
 
 ## Project Location
 
-Select sites were assessed between Burns Lake and Valemount, British Columbia within the Nechako River, Chilako River, François Lake, Morkhill River and Upper Fraser River watershed groups.
+Select sites were assessed between Burns Lake and Valemount, British Columbia within the Nechako River, Lower Chilako River, François Lake, Morkhill River and Upper Fraser River watershed groups.
 
 <br>
 
@@ -331,7 +331,7 @@ dfo_sad_tr |>
 
 ### Fish Species
 
-Summaries of historical fish observations in the Upper Fraser River, Nechako River, Lower Chilako River, and François Lake watershed groups [@moe2024KnownBC].
+Summary of historical fish observations in the Upper Fraser River, Nechako River, Lower Chilako River, and François Lake watershed groups (Table \@ref(tab:fiss-species-table)) [@moe2024KnownBC].
 
 <br>
 
@@ -354,3 +354,93 @@ fiss_species_table %>%
                  ',
                  scroll = gitbook_on)
 ```
+
+<br>
+
+A review of available fisheries data, for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups, stratified by different habitat characteristics can provide insight into which habitats may provide the highest intrinsic value for fish species based on the number of fish captured in those habitats in past assessment work (Figures \@ref(fig:fish-plot-grad) - \@ref(fig:fish-plot-width) - \@ref(fig:fish-plot-wshed)).  It should be noted however that it should not be assumed that all habitat types have been sampled in a non-biased fashion or that particular sites selected do not have a disproportionate influence on the overall dataset composition (ie. fish salvage sites are often located adjacent to construction sites which are more commonly located near lower gradient stream reaches).
+
+
+<br>
+
+```{r fish-fiss-summary, eval=T}
+fiss_sum_grad <- readr::read_csv(file =  'data/inputs_extracted/fiss_sum_grad.csv')
+fiss_sum_width <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_width.csv')
+fiss_sum_wshed <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_wshed.csv') 
+
+```
+
+```{r tab-fish-grad}
+my_caption <- 'Summary of historic fish observations vs. stream gradient category for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups.'
+fiss_sum_grad %>% 
+  dplyr::select(-gradient_id) |> 
+  fpr::fpr_kable(caption_text = my_caption,
+                 scroll = gitbook_on)
+```
+
+<br>
+
+```{r fish-plot-grad, out.width = photo_width, fig.cap= 'Summary of historic fish observations vs. stream gradient category for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups.', eval=T}
+
+## bar graph
+plot_grad <- fiss_sum_grad |>
+  dplyr::filter(gradient_id != 99) |>
+  ggplot2::ggplot(ggplot2::aes(x = Gradient, y = Percent)) +
+  ggplot2::geom_bar(stat = "identity") +
+  ggplot2::facet_wrap(~species_code, ncol = 2) +
+  ggplot2::theme_bw(base_size = 11) +
+  ggplot2::labs(x = "Average Stream Gradient", y = "Occurrences (%)")
+
+plot_grad
+
+```
+
+<br>
+
+```{r tab-fish-width}
+my_caption <- 'Summary of historic fish observations vs. channel width category for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups.'
+fiss_sum_width |>
+  dplyr::select(-width_id) |>
+  fpr::fpr_kable(caption_text = my_caption,
+                 scroll = gitbook_on)
+
+```
+
+<br>
+
+```{r fish-plot-width, out.width = photo_width, fig.cap= 'Summary of historic fish observations vs. channel width category for the Parsnip River watershed group.', eval=T}
+## bar graph
+plot_width <- fiss_sum_width |>
+  dplyr::filter(!is.na(width_id)) |>
+  ggplot2::ggplot(ggplot2::aes(x = Width, y = Percent)) +
+  ggplot2::geom_bar(stat = "identity") +
+  ggplot2::facet_wrap(~species_code, ncol = 2) +
+  ggplot2::theme_bw(base_size = 11) +
+  ggplot2::labs(x = "Channel Width", y = "Occurrences (%)")
+
+plot_width
+```
+
+<br>
+
+```{r tab-fish-wshed}
+my_caption <- 'Summary of historic fish observations vs. watershed size category for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups.'
+fiss_sum_wshed |>
+  fpr::fpr_kable(caption_text = my_caption,
+                 scroll = gitbook_on)
+```
+
+<br>
+
+```{r fish-plot-wshed, out.width = photo_width, fig.cap= 'Summary of historic fish observations vs. watershed size category for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups.', eval=T}
+plot_wshed <- fiss_sum_wshed |>
+  ggplot2::ggplot(ggplot2::aes(x = Watershed, y = Percent)) +
+  ggplot2::geom_bar(stat = "identity") +
+  ggplot2::facet_wrap(~species_code, ncol = 2) +
+  ggplot2::theme_bw(base_size = 11) +
+  ggplot2::labs(x = "Watershed Area", y = "Occurrences (%)") +
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
+
+plot_wshed
+
+```
+
