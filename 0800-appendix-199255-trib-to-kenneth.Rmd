@@ -62,8 +62,7 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 <br>
 
 ```{r tab-culvert-bcfp-199255, eval = T}
-# until https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/94#issuecomment-2731137903 gets fixed, change modelling to use pscis 203296
-fpr::fpr_table_bcfp(scroll = gitbook_on, site = 203296) 
+fpr::fpr_table_bcfp(scroll = gitbook_on) 
 ```
 
 <br>
