@@ -22,7 +22,16 @@ my_site <- 199255
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on a `r fpr::fpr_my_pscis_info()`, approximately 65km east of Prince George, BC. The crossing is located 3.7km upstream of the tributaries confluence with Kenneth Creek, which flows into the Fraser River approximately 9km downstream. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, which is under the jurisdiction of the Ministry of Forests. The crossing is within the Morkill River watershed group. 
+PSCIS crossing `r as.character(my_site)` is located on a `r fpr::fpr_my_pscis_info()`, approximately 65km east of Prince George, BC (Figure \@ref(fig:map-199255)). The crossing is located 3.7km upstream of the tributaries confluence with Kenneth Creek, which flows into the Fraser River approximately 9km downstream. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, which is under the jurisdiction of the Ministry of Forests. The crossing is within the Morkill River watershed group. 
+
+<br>
+
+```{r map-199255, fig.cap = my_caption}
+ my_caption <- "Map of Tributary to Kenneth Creek"
+ 
+ knitr::include_graphics("fig/gis/map_trib_kenneth.jpeg")
+ 
+```
 
 <br>
 

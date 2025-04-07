@@ -23,12 +23,20 @@ my_site2 <- 203302
 
 ## Site Location {.unnumbered}
 
-PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()`, which flows into the McLennan River approximately 7km north of Valemount, BC. Crossing `r as.character(my_site)` is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the McLennan River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). Approximately 300m upstream, PSCIS crossing `r as.character(my_site2)` is located on and is the responsibility of the CN Railway. Both crossings are within the Upper Fraser River watershed group. 
+PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()`, which flows into the McLennan River approximately 7km north of Valemount, BC (Figure \@ref(fig:map-199278)). Crossing `r as.character(my_site)` is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the McLennan River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). Approximately 300m upstream, PSCIS crossing `r as.character(my_site2)` is located on and is the responsibility of the CN Railway. Both crossings are within the Upper Fraser River watershed group. 
 
+<br>
+
+```{r map-199278, fig.cap = my_caption}
+ my_caption <- "Map of Teepee Creek"
+ 
+ knitr::include_graphics("fig/gis/map_teepee.jpeg")
+ 
+```
 
 ## Background {.unnumbered}
 
-AAt the crossing location, `r fpr::fpr_my_pscis_info()` is a
+At PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a high elevation watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to

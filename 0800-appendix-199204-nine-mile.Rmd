@@ -22,7 +22,16 @@ my_site <- 199204
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 11km northeast of the Nadleh Whut'en First Nations community near Fraser Lake, BC. The crossing is `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the confluence of `r fpr::fpr_my_pscis_info()` and the Nechako River. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, which is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). The crossing is within the Nechako River watershed group. 
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 11km northeast of the Nadleh Whut'en First Nations community near Fraser Lake, BC (Figure \@ref(fig:map-199204)). The crossing is `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the confluence of `r fpr::fpr_my_pscis_info()` and the Nechako River. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, which is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). The crossing is within the Nechako River watershed group. 
+
+<br>
+
+```{r map-199204, fig.cap = my_caption}
+ my_caption <- "Map of Nine Mile Creek"
+ 
+ knitr::include_graphics("fig/gis/map_nine_mile.jpeg")
+ 
+```
 
 <br>
 
