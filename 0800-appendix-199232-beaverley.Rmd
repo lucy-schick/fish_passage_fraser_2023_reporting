@@ -22,7 +22,7 @@ my_site <- 199232
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 14km west of Prince George, BC (Figure \@ref(fig:map-199232)). The crossing is `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of `r fpr::fpr_my_pscis_info()`'s confluence with the Chilako River, which flows into the Nechako River. It is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and falls under the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: 4167). The crossing is within the Lower Chilako River watershed group.  
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 14km west of Prince George, BC (Figure \@ref(fig:map-199232)). The crossing is `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of `r fpr::fpr_my_pscis_info()`'s confluence with the Chilako River, the later of which flows into the Nechako River. It is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and falls under the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: 4167). The crossing is within the Lower Chilako River watershed group.  
 
 <br>
 
@@ -33,9 +33,11 @@ PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info
  
 ```
 
+<br>
+
 ## Background {.unnumbered}
 
-`r fpr::fpr_my_pscis_info()` is a major tributary to the Chilako River. At the crossing location, `r fpr::fpr_my_pscis_info()` is a
+At the location of PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
@@ -44,15 +46,11 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and several historical chinook observations documented downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. 
+In 2023, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and several historical chinook observations documented downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. Several other crossings were assessed within the `r fpr::fpr_my_pscis_info()` system in 2023, with results detailed in [Appendix - Phase 1 Fish Passage Assessment Data and Photos].
 
 <br>
 
-Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Chinook fry were captured downstream of the crossing in 2010 and 2004 by members from Vancouver Island University [@godfreyson2010Scientificfish; @hobson2004Scientificfish]. 
-
-<br>
-
-Several other crossings were assessed within the `r fpr::fpr_my_pscis_info()` system, with results detailed in [Appendix - Phase 1 Fish Passage Assessment Data and Photos]. Approximately 250m east on Highway 16, PSCIS crossing 199233 was assessed on Little Beaverly Creek. Additionally, PSCIS crossings 203298 and 199236 were assessed on two separate tributaries to Beaverley Creek, and PSCIS crossing 199178 was assessed where Beaverley Creek crosses Blackwater Road.  
+Chinook fry were captured downstream of the crossing in 2010 and 2004 by members from Vancouver Island University [@godfreyson2010Scientificfish; @hobson2004Scientificfish]. Upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 

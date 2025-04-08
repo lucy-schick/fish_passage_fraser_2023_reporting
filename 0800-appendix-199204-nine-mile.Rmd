@@ -22,7 +22,7 @@ my_site <- 199204
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 11km northeast of the Nadleh Whut'en First Nations community near Fraser Lake, BC (Figure \@ref(fig:map-199204)). The crossing is `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the confluence of `r fpr::fpr_my_pscis_info()` and the Nechako River. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, which is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). The crossing is within the Nechako River watershed group. 
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 11km northeast of the Nadleh Whut'en First Nations community near Fraser Lake, BC (Figure \@ref(fig:map-199204)). The crossing is `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the confluence of `r fpr::fpr_my_pscis_info()` and the Nechako River. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, which is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). The crossing is within the Nechako River watershed group. 
 
 <br>
 
@@ -37,7 +37,7 @@ PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info
 
 ## Background {.unnumbered}
 
-At the crossing location, `r fpr::fpr_my_pscis_info()` is a
+At PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
@@ -46,11 +46,11 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat. A habitat confirmation assessment was subsequently conducted in 2024. Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray and Barry Booth at UNBC, in collaboration with School District (SD) 91, has been conducting fish sampling in the Nechako River watershed, including on `r fpr::fpr_my_pscis_info()`.  Minnow trapping by @booth2022SummaryMinnow in 2021 captured chinook just downstream of this crossing but not upstream, despite the presence of suitable habitat. The study suggested that these culverts may be a barrier to further upstream movement of chinook [@booth2022SummaryMinnow]. eDNA results from 2021 showed a strong detection for chinook immediately downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing, while 2023 results showed a weaker detection at the same location [@murray_booth2024NEWSSsalmon; @murray_booth2023Report2023]. Additonally, a strong detection for chinook was observed near the confluence of `r fpr::fpr_my_pscis_info()` and the Nechako River in 2023 [@murray_booth2023Report2023].
 
 <br>
 
-Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray and Barry Booth at UNBC, in collaboration with School District (SD) 91, has been conducting fish sampling in the Nechako River watershed, including on `r fpr::fpr_my_pscis_info()`.  Minnow trapping by @booth2022SummaryMinnow in 2021 captured chinook just downstream of this crossing but not upstream, despite the presence of suitable habitat. The study suggested that these culverts may be a barrier to further upstream movement of chinook [@booth2022SummaryMinnow]. eDNA results from 2021 showed a strong detection for chinook just downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing [@murray_booth2024NEWSSsalmon]. In 2023, eDNA results indicated a weak detection of chinook just downstream of the crossing but a strong detection near the confluence of `r fpr::fpr_my_pscis_info()` and the Nechako River [@murray_booth2023Report2023].  
+Based on these findings, in 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat. A habitat confirmation assessment was subsequently conducted in 2024. Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
@@ -131,7 +131,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-Nine Mile Creek is a tributary to the Nechako River and a known chinook system, with chinook detected through eDNA sampling just downstream of the crossing as recently as 2023 [@murray_booth2023Report2023]. Medium value habitat was observed upstream of the crossing, with `bcfishpass` modeling indicating 8km of potential chinook spawning habitat and 16km of potential coho spawning habitat upstream. Downstream provided excellent fish habitat. Beaver activity and heavy cattle use was observed both upstream and downstream of the crossing. The culverts had a 0.5m outlet drop, and the crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. 
+Nine Mile Creek is a tributary to the Nechako River and a known chinook system, with chinook captured immediately downstream of the crossing in 2021 and detected through eDNA sampling as recently as 2023 [@booth2022SummaryMinnow;@murray_booth2023Report2023]. Medium value habitat was observed upstream of the crossing, with `bcfishpass` modeling indicating 8km of potential chinook spawning habitat and 16km of potential coho spawning habitat upstream. Downstream provided excellent fish habitat with good stream flow, frequent deep pools suitable for overwintering fish, and abundant spawning gravels. Beaver activity and heavy cattle use was observed both upstream and downstream of the crossing. The culverts had a 0.5m outlet drop, and the crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. 
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
