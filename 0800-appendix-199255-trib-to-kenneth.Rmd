@@ -22,7 +22,7 @@ my_site <- 199255
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on a `r fpr::fpr_my_pscis_info()`, approximately 65km east of Prince George, BC (Figure \@ref(fig:map-199255)). The crossing is located 3.7km upstream of the tributaries confluence with Kenneth Creek, which flows into the Fraser River approximately 9km downstream. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, which is under the jurisdiction of the Ministry of Forests. The crossing is within the Morkill River watershed group. 
+PSCIS crossing `r as.character(my_site)` is located on a `r fpr::fpr_my_pscis_info()`, approximately 65km east of Prince George, BC, in the Morkill River watershed group (Figure \@ref(fig:map-199255)). The crossing is located 3.7km upstream of the tributary's confluence with Kenneth Creek, which subsequently flows into the Fraser River approximately 9km downstream. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, which is under the jurisdiction of the Ministry of Forests.
 
 <br>
 
@@ -38,7 +38,7 @@ PSCIS crossing `r as.character(my_site)` is located on a `r fpr::fpr_my_pscis_in
 
 ## Background {.unnumbered}
 
-At the crossing location, `r fpr::fpr_my_pscis_info()` is a
+At PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
@@ -51,7 +51,7 @@ In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = r
 
 <br>
 
-Upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, longnose sucker have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Chinook spawners have been historically documented at the confluence of Kenneth Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. 
+Chinook spawners have been historically documented at the confluence of Kenneth Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. Upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
@@ -79,7 +79,7 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 ## Stream Characteristics at Crossing `r as.character(my_site)` {.unnumbered}
 
-At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199255)). The outlet of the culvert was plugged with beaver sticks, and it appeared the beaver had dammed the culvert entirely, creating a large pond area upstream of the inlet with the inlet completely submerged. Despite this, the culvert still had flow. 
+At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199255)). The outlet of the culvert was plugged with beaver sticks, and it appeared the beaver had dammed the culvert entirely, creating a large pond area upstream of the inlet with the inlet completely submerged. Despite this, the culvert still had flow. A new culvert had been installed 60m north on the FSR (PSCIS 203296), with flow from that crossing entering the outlet pool from the north.
 
 <br>
 

@@ -23,7 +23,7 @@ my_site2 <- 7622
 
 ## Site Location {.unnumbered}
 
-PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()` which flows into the northern side of Fraser Lake, BC,  approximately 8km northwest of the Nadleh Whut'en First Nations community (Figure \@ref(fig:map-199171)). Crossing `r as.character(my_site)` is located 50m upstream of Fraser Lake, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1790951). Approximately 275m further upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1794196). Both crossings are within the Francois Lake watershed group. 
+PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()` which flows into the northern side of Fraser Lake, BC,  approximately 8km northwest of the Nadleh Whut'en First Nations community, in the Francois Lake watershed group (Figure \@ref(fig:map-199171)). Crossing `r as.character(my_site)` is located 50m upstream of Fraser Lake, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1790951). Approximately 275m further upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1794196).
 
 <br>
 

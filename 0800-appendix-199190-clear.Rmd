@@ -22,8 +22,7 @@ my_site <- 199190
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 19km northwest of Vanderhoof, BC (Figure \@ref(fig:map-199190)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the Nechako River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1806163). The crossing is within the Nechako River watershed group. 
-
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 19km northwest of Vanderhoof, BC, in the Nechako River watershed group (Figure \@ref(fig:map-199190)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the Nechako River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1806163).
 <br>
 
 ```{r map-199190, fig.cap = my_caption}

@@ -22,7 +22,7 @@ my_site <- 199232
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 14km west of Prince George, BC (Figure \@ref(fig:map-199232)). The crossing is `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of `r fpr::fpr_my_pscis_info()`'s confluence with the Chilako River, the later of which flows into the Nechako River. It is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and falls under the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: 4167). The crossing is within the Lower Chilako River watershed group.  
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 14km west of Prince George, BC, in the Lower Chilako River watershed group (Figure \@ref(fig:map-199232)). The crossing is `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of `r fpr::fpr_my_pscis_info()`'s confluence with the Chilako River, the later of which flows into the Nechako River. It is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and falls under the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: 4167). 
 
 <br>
 

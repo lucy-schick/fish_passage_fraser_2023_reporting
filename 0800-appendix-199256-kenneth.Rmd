@@ -22,7 +22,7 @@ my_site <- 199256
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 80km east of Prince George, BC (Figure \@ref(fig:map-199256)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the Fraser River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: 3750). The crossing is within the Morkill River watershed group. 
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 80km east of Prince George, BC, in the Morkill River watershed group (Figure \@ref(fig:map-199256)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the confluence of `r fpr::fpr_my_pscis_info()` and the Fraser River. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: 3750).
 
 <br>
 
@@ -37,7 +37,7 @@ PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info
 
 ## Background {.unnumbered}
 
-At the crossing location, `r fpr::fpr_my_pscis_info()` is a
+At PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
@@ -50,7 +50,7 @@ In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = r
 
 <br>
 
-Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Chinook spawners have been historically documented at the confluence of Kenneth Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. 
+Chinook spawners have been historically documented at the confluence of Kenneth Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
@@ -149,14 +149,14 @@ knitr::include_graphics(my_photo, dpi = NA)
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
 
-Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name)` crossing (`r as.character(my_site)`) with a bridge (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)` m span) is recommended. At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
+Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name)` crossing (PSCIS `r as.character(my_site)`) with a bridge (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)` m span) is recommended. At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
 
 <br>
 
 
 ## Conclusion {.unnumbered}
 
-Kenneth Creek is a large, gravel-dominated stream with high-value habitat for salmonid spawning and rearing. Although chinook and bull trout have been documented upstream [@norris2024smnorrisbcfishobs; @moe2024KnownBC], the crossing had a significant 0.7m outlet drop, and fish sampling is recommended to determine if it is currently inhibiting fish passage. Additionally, `bcfishpass` modeling indicates nearly 50km of potential chinook spawning habitat upstream. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement.
+Kenneth Creek is a large, gravel-dominated stream with high-value habitat for salmonid spawning and rearing. Chinook and bull trout have been documented upstream [@norris2024smnorrisbcfishobs; @moe2024KnownBC], and a dead chinook spawner was observed upstream of the Highway 16 culvert during an informal site visit in 2022. The crossing had a significant 0.7m outlet drop, and fish sampling is recommended to determine if it is currently inhibiting fish passage. Additionally, `bcfishpass` modeling indicates nearly 50km of potential chinook spawning habitat upstream. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement.
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
