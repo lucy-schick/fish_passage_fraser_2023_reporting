@@ -23,7 +23,7 @@ my_site2 <- 203302
 
 ## Site Location {.unnumbered}
 
-PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()`, which flows into the McLennan River approximately 7km north of Valemount, BC (Figure \@ref(fig:map-199278)). Crossing `r as.character(my_site)` is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the McLennan River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). Approximately 300m upstream, PSCIS crossing `r as.character(my_site2)` is located on and is the responsibility of the CN Railway. Both crossings are within the Upper Fraser River watershed group. 
+PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()`, which flows into the McLennan River approximately 7km north of Valemount, BC, in the Upper Fraser River watershed group (Figure \@ref(fig:map-199278)). Crossing `r as.character(my_site)` is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the McLennan River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). Approximately 300m upstream, PSCIS crossing `r as.character(my_site2)` is located on and is the responsibility of the CN Railway.
 
 <br>
 
@@ -40,21 +40,27 @@ At PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a high elevation watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
-`r fpr::fpr_my_wshd(col = 'elev_site')`m near the crossing (Table
+`r fpr::fpr_my_wshd(col = 'elev_site')`m near crossing `r as.character(my_site)` (Table
 \@ref(tab:tab-wshd-199278)).
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` was assessed with fish passage assessments and prioritized for follow-up due to the presence of high-value habitat and a salmon observation recorded upstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment encompassing both sites was conducted in 2024.
+In 2023, crossing `r as.character(my_site)` was assessed with fish passage assessments and prioritized for follow-up due to the presence of high-value habitat and a salmon observation recorded upstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment encompassing both crossings `r as.character(my_site)` and `r as.character(my_site2)` was conducted in 2024. 
 
 <br>
 
-In 2004, bull trout were captured upstream and downstream of the crossing by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. Additionally, a salmon observation was documented upstream of the Highway 5 crossing in 2012 in the FISS database [@moe2024KnownBC].
+Downstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` on the CN railway, PSCIS crossing 7620 was initially assessed in 2007, and upstream of the highway, PSCIS crossing 4931 was initially assessed by Cliff Jackman Contracting Ltd. in 2010 [@moe2023PSCISAssessments]. Both crossings were reassessed during the 2024 field visit.
 
 <br>
 
-A summary of habitat modelling outputs for the crossing are presented in Table
-\@ref(tab:tab-culvert-bcfp-199278). 
+As previously mentioned, a salmon observation from 2012 is documented upstream of Highway 5 in the FISS database [@moe2024KnownBC]. Additionally, in 2004, bull trout were captured upstream and downstream of crossing  `r as.character(my_site)` by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. 
+
+<br>
+
+<!-- <br> -->
+
+<!-- A summary of habitat modelling outputs for the crossing are presented in Table -->
+<!-- \@ref(tab:tab-culvert-bcfp-199278).  -->
 
 <br>
 
@@ -66,9 +72,8 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 
 ```
 
-<br>
 
-```{r tab-culvert-bcfp-199278, eval = T}
+```{r tab-culvert-bcfp-199278, eval = F}
 fpr::fpr_table_bcfp(scroll = gitbook_on) 
 ```
 
@@ -86,7 +91,7 @@ PSCIS crossing  `r as.character(my_site2)` on the CN `r fpr_my_pscis_info(col_pu
 
 <br>
 
-In 2024, two other nearby PSCIS crossings were reassessed on Teepee Creek and can be found in [Appendix - Phase 1 Fish Passage Assessment Data and Photos]. Approximately 700m downstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, PSCIS crossing 7620 was located on the CN Railway. Although the crossing ranked was as barrier to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment], the culvert was embedded, 100% backwatered, and was not a barrier to fish passage at the time of the survey. Approximately 600m upstream of PSCIS crossing  `r as.character(my_site2)` on the CN Railway, PSCIS crossing 4931 was located on Mount Tinsley Pit Road, which falls under the road tenure of Carrier Lumber R13564. The culvert had a significant 1.3m outlet drop. 
+In 2024, three other PSCIS crossings were assessed on Teepee Creek and can be found in [Appendix - Phase 1 Fish Passage Assessment Data and Photos] (Figure \@ref(fig:map-199278)). Approximately 700m downstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, PSCIS crossing 7620 was located on the CN Railway. Although the crossing ranked was as barrier to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment], the culvert was embedded, 100% backwatered, and was not a barrier to fish passage at the time of the survey. Roughly 70m downstream of Highway 5, there was a small bridge on private land (PSCIS 203300). Approximately 600m upstream of PSCIS crossing  `r as.character(my_site2)` on the CN Railway, PSCIS crossing 4931 was located on Mount Tinsley Pit Road, which falls under the road tenure of Carrier Lumber R13564. The culvert had a significant 1.3m outlet drop. 
 
 <br>
 
@@ -162,7 +167,7 @@ PSCIS crossing `r as.character(my_site)` on Highway 5 had a moderate 0.4m outlet
 
 <br>
 
-Bull trout captured upstream and downstream of the crossing in 2004, along with a salmon observation documented upstream of the Highway 5 crossing in 2012, indicate that this stream provides valuable fish habitat [@manson2005Fishcollection: @moe2024KnownBC]. Given the species present in the system and the outlet drops at both crossings, fish sampling is recommended to assess whether the culverts are impeding fish passage.
+Bull trout captured upstream and downstream of the crossing in 2004, along with a salmon observation documented upstream of Highway 5 in 2012 [@manson2005Fishcollection: @moe2024KnownBC], indicate that this stream provides valuable fish habitat. Given the species present in the system and the outlet drops at both crossings, fish sampling is recommended to assess whether the culverts are impeding fish passage.
 
 
 
