@@ -22,7 +22,7 @@ my_site <- 199267
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 100km northwest of McBride, BC (Figure \@ref(fig:map-199282)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the Fraser River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, which is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). The crossing is within the Morkill River watershed group. 
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 100km northwest of McBride, BC, in the Morkill River watershed group (Figure \@ref(fig:map-199282)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of where `r fpr::fpr_my_pscis_info()` joins the Fraser River. Situation on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, the crossing is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`).
 
 <br>
 
@@ -37,7 +37,7 @@ PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info
 
 ## Background {.unnumbered}
 
-At the crossing location, `r fpr::fpr_my_pscis_info()` is a
+At PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a high elevation watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
@@ -50,7 +50,7 @@ In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = r
 
 <br>
 
-Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Chinook spawners have been historically documented at the confluence of Driscoll Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. 
+Chinook spawners have been historically documented at the confluence of Driscoll Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. 
 
 <br>
 
@@ -82,7 +82,7 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 ## Stream Characteristics at Crossing `r as.character(my_site)` {.unnumbered}
 
-At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199267)). The culvert had a significant 0.65m outlet drop. 
+At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199267)). The culvert had a significant 0.65m outlet drop. Photos were limited due to the surveyor’s phone falling in the river.
 
 <br>
 
