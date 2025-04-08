@@ -23,7 +23,7 @@ my_site2 <- 199172
 
 ## Site Location {.unnumbered}
 
-PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()` which flows into the northern side of Fraser Lake, BC,  approximately 8km northwest of the Nadleh Whut'en First Nations community (Figure \@ref(fig:map-199328)). Crossing `r as.character(my_site)` is located 230m upstream of Fraser Lake, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: 1790947 and 3365573). Approximately 270m upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: 1794199). Both crossings are within the Francois Lake watershed group. 
+PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()` which flows into the northern side of Fraser Lake, BC,  approximately 8km northwest of the Nadleh Whut'en First Nations community (Figure \@ref(fig:map-199328)). Crossing `r as.character(my_site)` is located 230m upstream of Fraser Lake, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: 1790947 and 3365573). A further 270m upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` and is the responsibility of the Ministry of Transportation and Infrastructure (chris_culvert_id: 1794199). Both crossings are within the Francois Lake watershed group. 
 
 <br>
 
@@ -34,25 +34,27 @@ PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are loc
  
 ```
 
+<br>
+
 ## Background {.unnumbered}
 
-At the crossing location, `r fpr::fpr_my_pscis_info()` is a
+At the location of these crossings, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
-`r fpr::fpr_my_wshd(col = 'elev_site')`m near the crossing (Table
+`r fpr::fpr_my_wshd(col = 'elev_site')`m near the lower crossing (Table
 \@ref(tab:tab-wshd-199328)).
 
 <br>
 
-In 2023, both crossings were assessed with fish passage assessments and prioritized for follow-up due to the presence of high-value habitat and a chinook observations documented adjacent to the downstream crossing in the FISS database [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. A habitat confirmation assessment encompassing both sites was conducted in 2024. Downstream in Fraser Lake, white sturgeon, chinook, bull trout, rainbow trout, kokanee, and other species have been previously recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+In 2023, both crossings were assessed with fish passage assessments and prioritized for follow-up due to the presence of high-value habitat and a chinook observation from 2018 documented adjacent to crossing `r as.character(my_site)` in the FISS database [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. A habitat confirmation assessment encompassing both crossings was conducted in 2024. Downstream in Fraser Lake, white sturgeon, chinook, bull trout, rainbow trout, kokanee, and other species have been previously recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
-A summary of habitat modelling outputs for the crossing are presented in Table
-\@ref(tab:tab-culvert-bcfp-199328). 
+<!-- A summary of habitat modelling outputs for the crossing are presented in Table -->
+<!-- \@ref(tab:tab-culvert-bcfp-199328).  -->
 
-<br>
+<!-- <br> -->
 
 ```{r tab-wshd-199328, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |>
@@ -62,9 +64,8 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 
 ```
 
-<br>
 
-```{r tab-culvert-bcfp-199328, eval = T}
+```{r tab-culvert-bcfp-199328, eval = F}
 fpr::fpr_table_bcfp(scroll = gitbook_on) 
 ```
 
@@ -82,7 +83,7 @@ Further upstream, PSCIS crossing  `r as.character(my_site2)` on `r fpr_my_pscis_
 
 <br>
 
-In 2024, a third crossing (PSCIS 203297) was assessed on a private road approximately 140m upstream of Stella Road, with results provided in Table \@ref(tab:tab-culvert-203297). Two pipes were present, with the larger culvert having a significant 0.7m outlet drop. The inlet side of the road had completely eroded into the stream, obscuring the inlet from view. The road was heavily overgrown and collapsing, appeared to be unused, and would be a strong candidate for deactivation and removal.  
+In 2024, a third crossing (PSCIS 203297) was assessed on a private road approximately 150m upstream of Stella Road, with results provided in Table \@ref(tab:tab-culvert-203297). Two pipes were present, with the larger culvert having a significant 0.7m outlet drop. The inlet side of the road had completely eroded into the stream, obscuring the inlet from view. The road was heavily overgrown, collapsing, and appeared to be unused. 
 
 
 <br>
@@ -144,7 +145,7 @@ The stream was surveyed from `r fpr_my_pscis_info(col_pull = road_name, site = m
 
 <br>
 
-PSCIS crossing 203297 was located approximately 150m upstream of Stella Road on a private road, where the culvert had a significant outlet drop and severe erosion at the inlet, creating a possible barrier to fish passage.
+PSCIS crossing 203297 was located approximately 150m upstream of Stella Road on a private road, where the culvert had a significant outlet drop, severe erosion at the inlet, and the road was collapsing. 
 
 <br>
  
@@ -159,10 +160,13 @@ Should restoration/maintenance activities proceed upstream, replacement of the `
 
 <br>
 
+Further upstream, PSCIS crossing 203297 was located on a private road that appeared unused and was collapsing. With a 0.7m outlet drop, the site is a strong candidate for deactivation or removal. Follow-up engagement with the landowners is recommended to assess interest in restoration or road deactivation.
+
+<br>
 
 ## Conclusion {.unnumbered}
 
-`r fpr::fpr_my_pscis_info()` is a small stream that flows into Fraser Lake, with a documented chinook observation near the outflow into the lake [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. The downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was ranked as passable; however, PSCIS crossing `r as.character(my_site2)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` had a significant 1.35m outlet drop and presented a clear barrier to upstream fish passage. A further 150m upstream of Stella Road, PSCIS crossing 203297 was also a barrier to fish passage, with a 0.7m outlet drop and severe erosion obstructing the inlet. Fish sampling is recommended to determine whether fish are able to ascend past the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(sit = my_site2, col_pull = priority))` priority for replacement.
+`r fpr::fpr_my_pscis_info()` is a small stream that flows into Fraser Lake, with a documented chinook observation from 2018 near the outflow into the lake [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. The downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was ranked as passable; however, PSCIS crossing `r as.character(my_site2)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` had a significant 1.35m outlet drop and presented a clear barrier to upstream fish passage. Fish sampling is recommended to determine whether fish are able to ascend past the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(sit = my_site2, col_pull = priority))` priority for replacement. A further 150m upstream of Stella Road, PSCIS crossing 203297 was an additional barrier to fish passage, with a 0.7m outlet drop and severe erosion obstructing the inlet. The road was heavily overgrown and collapsing, appeared to be unused, and would be a strong candidate for deactivation and removal.
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
