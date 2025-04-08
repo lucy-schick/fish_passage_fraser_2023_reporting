@@ -37,23 +37,23 @@ PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are loc
 
 ## Background {.unnumbered}
 
-At the crossing location, `r fpr::fpr_my_pscis_info()` is a
+At the location of these crossings, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
-`r fpr::fpr_my_wshd(col = 'elev_site')`m near the crossing (Table
+`r fpr::fpr_my_wshd(col = 'elev_site')`m near the lower crossing (Table
 \@ref(tab:tab-wshd-199171)).
 
 <br>
 
-Crossing `r as.character(my_site2)` was first assessed with a fish passage assessment in 2004 [@moe2023PSCISAssessments], with both crossings reassessed in 2023 and prioritized for follow-up due to the presence of high-value habitat and reports of historical sockeye spawning by the adjacent landowner. A habitat confirmation assessment encompassing both sites was conducted in 2024. No fisheries information is documented for the stream; however, downstream in Fraser Lake, white sturgeon, rainbow trout, kokanee, sockeye salmon, chinook salmon, bull trout, dolly varden, and other species have been previously recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+PSCIS crossing `r as.character(my_site2)` was first assessed with a fish passage assessment in 2004 [@moe2023PSCISAssessments]. Both crossings `r as.character(my_site)` and `r as.character(my_site2)` were reassessed in 2023 and prioritized for follow-up due to the presence of high-value habitat and historical reports of sockeye spotted along the shoreline by the adjacent landowner. A habitat confirmation assessment encompassing both sites was conducted in 2024. No fisheries information is documented for the stream; however, downstream in Fraser Lake, white sturgeon, rainbow trout, kokanee, sockeye salmon, chinook salmon, bull trout, dolly varden, and other species have been previously recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
-A summary of habitat modelling outputs for the crossing are presented in Table
-\@ref(tab:tab-culvert-bcfp-199171).
+<!-- A summary of habitat modelling outputs for the crossing are presented in Table -->
+<!-- \@ref(tab:tab-culvert-bcfp-199171). -->
 
-<br>
+<!-- <br> -->
 
 ```{r tab-wshd-199171, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |>
@@ -63,9 +63,8 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 
 ```
 
-<br>
 
-```{r tab-culvert-bcfp-199171, eval = T}
+```{r tab-culvert-bcfp-199171, eval = F}
 fpr::fpr_table_bcfp(scroll = gitbook_on) 
 ```
 
@@ -74,7 +73,7 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 ## Stream Characteristics at Crossings `r as.character(my_site)` and `r as.character(my_site2)`  {.unnumbered}
 
-At the time of the 2024 assessment, both crossings `r as.character(my_site)` and `r as.character(my_site2)` were un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Tables \@ref(tab:tab-culvert-199171) - \@ref(tab:tab-culvert-7622)). Crossing `r as.character(my_site)` had a 0.9m outlet drop, while crossing `r as.character(my_site2)` had an even larger 1.15m outlet drop, both of which likely inhibited fish passage.
+At the time of the 2024 assessment, both PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` were un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Tables \@ref(tab:tab-culvert-199171) - \@ref(tab:tab-culvert-7622)). Crossing `r as.character(my_site)` had a 0.9m outlet drop, while crossing `r as.character(my_site2)` had an even larger 1.15m outlet drop.
 
 <br>
 
@@ -125,7 +124,7 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site2)` {.unnumbered}
 
-`r fpr_my_survey_dist(sit = my_site2, loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-7622-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-7622-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us') |>stringr::str_to_lower()` value with relatively steep gradients and abundant functional large woody debris creating steps and pools 20–30mm deep. In some sections, the stream widened and became shallow, with abundant gravels suitable for spawning. Overhead cover was extensive. Near the upper end of the site, the forest had been cleared for pipeline use, resulting in significant bank erosion and ripirian removal `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-7622-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-7622-d01))."))` A large pipe crossed the stream near the pipeline corridor. `r fpr_my_habitat_paragraph(sit = my_site2, loc = 'us')`
+`r fpr_my_survey_dist(sit = my_site2, loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-7622-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-7622-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us') |>stringr::str_to_lower()` value with relatively steep gradients and abundant functional large woody debris creating steps and pools 20–30mm deep. In some sections, the stream widened and became shallow, with abundant gravels suitable for spawning. Overhead cover was extensive. Near the upper end of the site, the forest had been cleared for pipeline use, resulting in significant bank erosion and ripirian removal `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-7622-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-7622-d01))."))` `r fpr_my_habitat_paragraph(sit = my_site2, loc = 'us')`
 
 <br>
 
