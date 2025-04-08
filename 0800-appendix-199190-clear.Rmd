@@ -46,14 +46,16 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with fish passage assessments and prioritized for follow-up due to the presence of high-value habitat and a historical chinook salmon observation recorded downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. Approximately 5.2km downstream, PSCIS crossing 199187 on Braeside Road was assessed in 2023 and found to be fully backwatered and passable at the time of assessment.  
- 
+Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray and Barry Booth at UNBC, in collaboration with School District (SD) 91, has been conducting fish sampling in the Nechako River watershed, including on `r fpr::fpr_my_pscis_info()`. In the lower section of Clear Creek, downstream of Braeside Road, chinook salmon were repeatedly documented through sampling efforts in 2020, 2022, and 2023 [@booth2023SummaryMinnow; @murray_booth2023Report2023]. Upstream of PSCIS crossing 199296, located on a tributary to Clear Creek, coho salmon were detected using eDNA sampling in 2023 [@murray_booth2023Report2023]. Further upstream on Clear Creek, above crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
-Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray and Barry Booth at UNBC, in collaboration with School District (SD) 91, has been conducting fish sampling in the Nechako River watershed, including on `r fpr::fpr_my_pscis_info()`. Downstream of Braeside Road, chinook salmon were repeatedly documented through sampling efforts in 2020, 2022, and 2023 [@booth2023SummaryMinnow; @murray_booth2023Report2023]. Upstream of PSCIS crossing 199296, located on a tributary to Clear Creek, coho salmon were detected using eDNA sampling in 2023 [@murray_booth2023Report2023]. Further upstream, above crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+Motivated by these findings, and in addition to a historical chinook salmon observation recorded downstream of Highway 27 in the FISS database [@moe2024KnownBC], several crossings within the Clear Creek system were assessed with fish passage assessments in 2023 with results found in [Appendix - Phase 1 Fish Passage Assessment Data and Photos]. 
 
+<br>
 
+Crossing 199187 on Braeside Road was found to be fully backwatered and passable, as well as crossing 199296 located on a tributary to Clear Creek which joins above Braeside Road (Figure \@ref(fig:map-199190)). On the mainstem of Clear Creek, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was ranked as a barrier, noted as being in poor condition, and was prioritized for follow-up due to the presence of high-value habitat. A habitat confirmation assessment encompassing crossing `r as.character(my_site)` was subsequently conducted in 2024. 
+ 
 <br>
 
 A summary of habitat modelling outputs for the crossing are presented in Table
@@ -110,13 +112,13 @@ hab_site |>filter(site == my_site & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value for salmonid spawning an rearing. The stream contained frequent pools suitable for overwintering fish, with abundant cobbles but limited gravels. Evidence of extreme seasonal flows was observed, including large eroding banks, extensive gravel deposits from channel widening (20–30m), and significant log jams.  `r fpr_my_habitat_paragraph(loc = 'ds')`. 
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value for salmonid spawning an rearing. The stream contained frequent pools suitable for overwintering fish, with abundant cobbles but limited gravels. Evidence of extreme seasonal flows was observed, including large eroding banks, extensive gravel deposits from channel widening (20–30m), and significant log jams.  `r fpr_my_habitat_paragraph(loc = 'ds')`
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value. The stream had good flow and provided high-quality habitat for the first 100m before transitioning to subsurface flow. By approximately 200m upstream of the highway, adjacent to a quarry, the stream was fully dewatered to the top of the surveyed reach. The channel was highly confined, lacked complexity, and consisted primarily of a straight, coarse cobble and boulder substrate. While some small and large woody debris were present, they did not appear to contribute to habitat formation during periods of flow. `r fpr_my_habitat_paragraph(loc = 'us')`
+`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value. The stream had good flow and provided high-quality habitat for the first 100m before transitioning to subsurface flow. Approximately 200m upstream of the highway, adjacent to a quarry, the stream was fully dewatered to the top of the surveyed reach. The channel was highly confined, lacked complexity, and consisted primarily of a straight, coarse cobble and boulder substrate. While some small and large woody debris were present, they did not appear to contribute to habitat formation during periods of flow. `r fpr_my_habitat_paragraph(loc = 'us')`
 
 <br>
  
