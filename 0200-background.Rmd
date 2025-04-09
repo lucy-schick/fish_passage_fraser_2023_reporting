@@ -2,18 +2,18 @@
 
 ## Project Location
 
-Select sites were assessed between Burns Lake and Valemount, British Columbia within the Nechako River, Chilako River, François Lake, Morkhill River and Upper Fraser River watershed groups.
+Select sites were assessed between Burns Lake and Valemount, British Columbia within the Nechako River, Lower Chilako River, François Lake, Morkhill River and Upper Fraser River watershed groups.
 
 <br>
 
-```{r overview-map, fig.cap = 'Overview map of Study Areas in the Skeena, Fraser and Mackenzie (FWCP Peace) watersheds',eval=T}
+```{r overview-map, fig.cap = 'Overview map of the Fraser Region study areas',eval=T}
 # grab the latest version when updates happen
 # fs::file_copy(
 #   path = "~/Projects/gis/restoration_bc_2024/exports/maps/fishpassage_2024_sern_summary.jpeg",
 #   new_path = "fig/fishpassage_2024_sern_summary.jpeg",
 #   overwrite = TRUE
 # )
-knitr::include_graphics("fig/fishpassage_2024_sern_summary.jpeg")
+knitr::include_graphics("fig/fishpassage_2024_fraser.png")
 ```
 
 <br>
@@ -104,6 +104,8 @@ knitr::include_graphics("fig/hydrograph_08KA005.png")
 sfpr_create_hydrograph("08KA013")
 ```
 
+<br>
+
 ## Nechakoh
 
 
@@ -179,6 +181,8 @@ knitr::include_graphics("fig/hydrograph_08JC005.png")
 
 The Fraser River watershed is the largest salmon-producing river system in British Columbia and one of the most significant on the Pacific Coast. It provides critical habitat for anadromous salmonids, resident freshwater species, and other aquatic organisms. The river supports indigenous, commercial, and recreational fisheries, with Pacific salmon (Oncorhynchus spp.) playing a key ecological and economic role.
 
+<br>
+
 ### Lhtakoh  
 
 The Fraser River mainstem serves as the primary migration corridor for all anadromous fish species returning to spawn in its tributaries. Historically, the Fraser supported some of the largest sockeye and chinook salmon runs in North America. However, climate change, habitat degradation, and fisheries pressures have led to declining salmon populations in recent decades.  
@@ -237,7 +241,7 @@ The Morkill River, a tributary of the Upper Fraser, supports Bull Trout, Mountai
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
 through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on) { knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)") } else { knitr::asis_output(ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "background.html", anchor_text = "here")) }`. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
 
-<br>
+`r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
 
 ```{r stock-assess-download, eval=FALSE}
 library("ckanr")
@@ -245,43 +249,46 @@ library("ckanr")
 # set up the connection to the data portal
 ckanr_setup(url = "https://open.canada.ca/data/en")
 
-# this crashes Als rstudio due to too much memory use.... Discussed in linked memo in paragraph above
-# all_area_nuseds <- ckanr::ckan_fetch("https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS_20240627.xlsx") 
+# Load the most recent Nuseds - currently 20250103
+url <- "https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS_20250103.csv"
+# burn directly without bringing into memory
+ckanr::ckan_fetch(url, store = "disk", path = "data/inputs_raw/nuseds_all_20250103.csv") 
 
 # ignore the huge file
-usethis::use_git_ignore("data/inputs_raw/nuseds_all.csv")
-url <- "https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS.csv"
-# burn directly without bringing into memory
-ckanr::ckan_fetch(url, store = "disk", path = "data/inputs_raw/nuseds_all.csv") 
-## Since the study area for this project is massive, I tried using the area codes to filter the results instead of 
-## using each gazette name (u can find area codes here  https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6/resource/6200a6a0-690f-3bfa-a55d-9183df47a2fa). We are still left with 9580 results... we may to just use gazette names i guess. 
+usethis::use_git_ignore("data/inputs_raw/nuseds_all_20250103.csv")
 
-# area_codes <- c("29I", "29J")
-# 
-# # filter for our area of interest by area number
-# sample_study_area <- all_area_nuseds %>%
-#   janitor::clean_names() %>%
-#   dplyr::filter(area %in% area_codes)
+#read it in
+all_area_nuseds <- readr::read_csv('data/inputs_raw/nuseds_all_20250103.csv')
 
 
-## Gazette name approach. Did my best to add all the gazette names but I'm sure I missed some so please add any missing ones! I used the watershed groups from the GIS project to get the names. Only ~1500 entries, better than 9500.
+# Big study area so lets filter using the stream names from `form_pscis` (which is the 2024 and 2024 form pscis combined)
+stream_names <- form_pscis |> 
+  dplyr::pull(stream_name) |> 
+  stringr::str_trim() |> 
+  # Must be upper case to match those in Nuseds
+  stringr::str_to_upper() |> 
+  unique()
 
-## If we filter by gazette name we get more broad results, or we can filter by waterbody but this means we need to sort through the waterbodies for each gazette name and choose the ones we want which is going to take some work, so just filtered by gazette name for now. I can totally sort through the waterbodies to refine the results but I may not be the best person for that job because I don't know the area too well, but can look into it!
+# we also need to add in these waterbodies that we didn't explicilty sample but are that heavy hitters in the project area
+major_streams <- "NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|MORKILL RIVER"
 
-#hmm. cool but many here are not within our areas 
-# waterbodies <- ("NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|SOUTH THOMPSON RIVER|NORTH THOMPSON RIVER|ADAMS RIVER|MORKILL RIVER|CLEARWATER RIVER")
+# Combine into one regex pattern
+stream_names_regex <- c(stream_names, major_streams) |> 
+  stringr::str_c(collapse = "|")
 
-csv <- readr::read_csv('data/inputs_raw/nuseds_all.csv')
-waterbodies <- ("NECHAKO|CHILAKO|ENDAKO|FRANÇOIS LAKE|FRASER RIVER|MORKILL RIVER")
-
-# # filter for our area of interest
-sample_study_area <- csv |> 
+# Filter Nuseds to just include streams we visited
+study_area_streams <- all_area_nuseds |> 
+  dplyr::filter(stringr::str_detect(WATERBODY, stream_names_regex)) |> 
+  # We have some duplicate streams so remove streams with SHORE in the name which are in the Sushwap area
+  dplyr::filter(!stringr::str_detect(WATERBODY, "SHORE")) |> 
   janitor::clean_names() |> 
-  dplyr::filter(stringr::str_detect(gazetted_name, waterbodies))
+  dplyr::arrange(waterbody)
 
+check_names <- study_area_streams |> 
+  dplyr::distinct(waterbody)
 
-## Burn to csv. Updated name so it's clear this contains only the study area waterbodies.
-sample_study_area |> 
+## Burn to csv. Updated name so it's clear this contains only the study area streams.
+study_area_streams |> 
   readr::write_csv('data/inputs_raw/study_area_NuSEDS.csv')
 
 
@@ -299,7 +306,7 @@ my_tab_caption()
 dfo_sad_tr <- readr::read_csv('data/inputs_raw/study_area_NuSEDS.csv') %>% 
   # filtering by total_return_to_river doesn't lose any data so lets keep it for this case (it removed data after 19)
   # dplyr::filter(!is.na(total_return_to_river)) %>%
-  arrange(species, analysis_yr) %>% 
+  dplyr::arrange(species, analysis_yr) %>% 
   dplyr::select(waterbody,
                 species, 
                 analysis_yr, 
@@ -327,7 +334,7 @@ dfo_sad_tr |>
 
 ### Fish Species
 
-Summaries of historical fish observations in the Upper Fraser River, Nechako River, Lower Chilako River, and François Lake watershed groups [@moe2024KnownBC].
+Summary of historical fish observations in the Upper Fraser River, Nechako River, Lower Chilako River, and François Lake watershed groups (Table \@ref(tab:fiss-species-table)) [@moe2024KnownBC].
 
 <br>
 
@@ -350,3 +357,93 @@ fiss_species_table %>%
                  ',
                  scroll = gitbook_on)
 ```
+
+<br>
+
+A review of available fisheries data, for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups, stratified by different habitat characteristics can provide insight into which habitats may provide the highest intrinsic value for fish species based on the number of fish captured in those habitats in past assessment work (Figures \@ref(fig:fish-plot-grad) - \@ref(fig:fish-plot-width) - \@ref(fig:fish-plot-wshed)).  It should be noted however that it should not be assumed that all habitat types have been sampled in a non-biased fashion or that particular sites selected do not have a disproportionate influence on the overall dataset composition (ie. fish salvage sites are often located adjacent to construction sites which are more commonly located near lower gradient stream reaches).
+
+
+<br>
+
+```{r fish-fiss-summary, eval=T}
+fiss_sum_grad <- readr::read_csv(file =  'data/inputs_extracted/fiss_sum_grad.csv')
+fiss_sum_width <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_width.csv')
+fiss_sum_wshed <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_wshed.csv') 
+
+```
+
+```{r tab-fish-grad}
+my_caption <- 'Summary of historic fish observations vs. stream gradient category for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups.'
+fiss_sum_grad %>% 
+  dplyr::select(-gradient_id) |> 
+  fpr::fpr_kable(caption_text = my_caption,
+                 scroll = gitbook_on)
+```
+
+<br>
+
+```{r fish-plot-grad, out.width = photo_width, fig.cap= 'Summary of historic fish observations vs. stream gradient category for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups.', eval=T}
+
+## bar graph
+plot_grad <- fiss_sum_grad |>
+  dplyr::filter(gradient_id != 99) |>
+  ggplot2::ggplot(ggplot2::aes(x = Gradient, y = Percent)) +
+  ggplot2::geom_bar(stat = "identity") +
+  ggplot2::facet_wrap(~species_code, ncol = 2) +
+  ggplot2::theme_bw(base_size = 11) +
+  ggplot2::labs(x = "Average Stream Gradient", y = "Occurrences (%)")
+
+plot_grad
+
+```
+
+<br>
+
+```{r tab-fish-width}
+my_caption <- 'Summary of historic fish observations vs. channel width category for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups.'
+fiss_sum_width |>
+  dplyr::select(-width_id) |>
+  fpr::fpr_kable(caption_text = my_caption,
+                 scroll = gitbook_on)
+
+```
+
+<br>
+
+```{r fish-plot-width, out.width = photo_width, fig.cap= 'Summary of historic fish observations vs. channel width category for the Parsnip River watershed group.', eval=T}
+## bar graph
+plot_width <- fiss_sum_width |>
+  dplyr::filter(!is.na(width_id)) |>
+  ggplot2::ggplot(ggplot2::aes(x = Width, y = Percent)) +
+  ggplot2::geom_bar(stat = "identity") +
+  ggplot2::facet_wrap(~species_code, ncol = 2) +
+  ggplot2::theme_bw(base_size = 11) +
+  ggplot2::labs(x = "Channel Width", y = "Occurrences (%)")
+
+plot_width
+```
+
+<br>
+
+```{r tab-fish-wshed}
+my_caption <- 'Summary of historic fish observations vs. watershed size category for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups.'
+fiss_sum_wshed |>
+  fpr::fpr_kable(caption_text = my_caption,
+                 scroll = gitbook_on)
+```
+
+<br>
+
+```{r fish-plot-wshed, out.width = photo_width, fig.cap= 'Summary of historic fish observations vs. watershed size category for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups.', eval=T}
+plot_wshed <- fiss_sum_wshed |>
+  ggplot2::ggplot(ggplot2::aes(x = Watershed, y = Percent)) +
+  ggplot2::geom_bar(stat = "identity") +
+  ggplot2::facet_wrap(~species_code, ncol = 2) +
+  ggplot2::theme_bw(base_size = 11) +
+  ggplot2::labs(x = "Watershed Area", y = "Occurrences (%)") +
+  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
+
+plot_wshed
+
+```
+

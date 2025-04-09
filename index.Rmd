@@ -32,6 +32,7 @@ params:
   repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting'
   report_url: 'https://www.newgraphenvironment.com/fish_passage_fraser_2023_reporting'
   job_name: '2024-074-sern-fraser-fish-passage'
+  repo_name: "fish_passage_fraser_2024_reporting"
   gis_project_name: "sern_fraser_2024"
   model_species: "ch"
   update_packages: FALSE
@@ -45,13 +46,14 @@ bibliography: "`r rbbt::bbt_write_bib('references.bib', overwrite = TRUE)`"
 biblio-style: apalike
 link-citations: no
 description: "Restoring Fish Passage in the Fraser Region"
+lof: true
 
 
 ---
 
 ```{r switch-gitbook-html, echo=FALSE}
-gitbook_on <- TRUE
-# gitbook_on <- FALSE  ##we just need turn  this on and off to switch between gitbook and pdf via paged.js
+# gitbook_on <- TRUE
+gitbook_on <- FALSE  ##we just need turn  this on and off to switch between gitbook and pdf via paged.js
 
 ```
 
@@ -78,6 +80,7 @@ font_set <- 9
 ```{r source}
 source('scripts/packages.R')
 source('scripts/staticimports.R')
+source('scripts/functions.R')
 source("scripts/02_reporting/0120-read-sqlite.R")
 source('scripts/02_reporting/0130-tables.R')
 

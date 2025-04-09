@@ -38,9 +38,8 @@ hab_priority_prep <- form_fiss_site |>
     length_surveyed = list(fpr::fpr_my_bcfishpass(dat = form_fiss_site, site = local_name, col_filter = local_name, col_pull = site_length)),
     hab_value = list(fpr::fpr_my_bcfishpass(dat = form_fiss_site, site = local_name, col_filter = local_name, col_pull = habitat_value_rating)),
 
-    # Fraser 2024- no my_priority column in form_pscis
     # Priority pulled from form_pscis
-    # priority = list(fpr::fpr_my_bcfishpass(dat = form_pscis, site = site, col_filter = site_id, col_pull = my_priority)),
+    priority = list(fpr::fpr_my_bcfishpass(dat = form_pscis_2024, site = site, col_filter = pscis_crossing_id, col_pull = my_priority)),
 
     # Comments field
     comments = list(fpr::fpr_my_bcfishpass(dat = form_fiss_site, site = local_name, col_filter = local_name, col_pull = comments)),
@@ -60,9 +59,10 @@ hab_priority_prep <- form_fiss_site |>
   dplyr::ungroup() |>
   # if we have ef sites then we also have normal hab con sites, so then filterout the ef sites. If no ef sites then comments out this code
   # dplyr::filter(is.na(ef)) |>
-  # Fraser 2024- no my_priority column in form_pscis
-  # dplyr::mutate(priority = dplyr::case_when(priority == "mod" ~ "moderate", TRUE ~ priority)) |>
-  # dplyr::mutate(priority = stringr::str_to_title(priority)) |>
+  dplyr::mutate(priority = dplyr::case_when(priority == "mod" ~ "moderate",
+                                            priority == "no_fix" ~ "no fix",
+                                            TRUE ~ priority)) |>
+  dplyr::mutate(priority = stringr::str_to_title(priority)) |>
   dplyr::mutate(hab_value = stringr::str_to_title(hab_value)) |>
   dplyr::arrange(local_name, crew_members, date_time_start) |>
   sf::st_drop_geometry()

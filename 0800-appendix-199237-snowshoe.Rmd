@@ -22,13 +22,23 @@ my_site <- 199237
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 45km northwest of McBride, BC. The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of the Fraser River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, which is the responsibility of the Ministry of Transportation and Infrastructure (chris_hwy_structure_road_id: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). The crossing is within the Morkill River watershed group. 
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 45km northwest of McBride, BC, in the Morkill River watershed group.  (Figure \@ref(fig:map-199237)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of where `r fpr::fpr_my_pscis_info()` joins the Fraser River. The crossing is situation on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`).
 
 <br>
 
+```{r map-199237, fig.cap = my_caption}
+ my_caption <- "Map of Snowshoe Creek"
+ 
+ knitr::include_graphics("fig/gis/map_snowshoe.jpeg")
+ 
+```
+
+<br>
+
+
 ## Background {.unnumbered}
 
-At this location, `r fpr::fpr_my_pscis_info()` is a
+At PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_bcfishpass() |>english::ordinal()` order stream and drains a high elevation watershed of approximately
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
@@ -37,7 +47,16 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` was assessed with fish passage assessments and was prioritized for follow-up with habitat confirmation assessments due to the presence of high-value habitat observed upstream. Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and historical salmon observations documented downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. 
+
+<br>
+
+Chinook spawners have been historically documented at the confluence of `r fpr::fpr_my_pscis_info()` and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. Upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. 
+
+<br>
+
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199237).
 
 <br>
 
@@ -51,11 +70,6 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 
 <br>
 
-A summary of habitat modelling outputs for the crossing are presented in Table
-\@ref(tab:tab-culvert-bcfp-199237).
-
-<br>
-
 ```{r tab-culvert-bcfp-199237, eval = T}
 fpr::fpr_table_bcfp(scroll = gitbook_on) 
 ```
@@ -65,7 +79,7 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 ## Stream Characteristics at Crossing `r as.character(my_site)` {.unnumbered}
 
-At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199237)). The culvert had a moderate 0.65m outlet drop. 
+At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199237)). The culvert had a significant 0.65m outlet drop. Photos were limited due to the surveyor’s phone falling in the river.
 
 <br>
 
@@ -95,7 +109,7 @@ hab_site |>filter(site == my_site & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'ds')`. No photos were available due to the surveyor’s phone falling in the river.
+`r fpr_my_survey_dist(loc = 'ds')`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'ds')` No photos were available due to the surveyor’s phone falling in the river.
 
 <br>
 
@@ -105,17 +119,21 @@ hab_site |>filter(site == my_site & location == 'us') |>pull(comments)
 
 <br>
 
-The east fork of `r fpr::fpr_my_pscis_info()` was surveyed upstream for 230m `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199237-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199237-d01))."))`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us2') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'us2')`
+The east fork of `r fpr::fpr_my_pscis_info()` was surveyed upstream for 230m `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199237-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199237-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us2') |>stringr::str_to_lower()` value. `r fpr_my_habitat_paragraph(loc = 'us2')`
  
+ <br>
+
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
 
-Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name)` crossing (`r as.character(my_site)`) with a bridge (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)` m span) is recommended. At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
+Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name)` crossing with a bridge (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)` m span) is recommended. At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
 
 <br>
 
 
 ## Conclusion {.unnumbered}
+
+PSCIS crossing `r as.character(my_site)` on Highway 16 had a significant 0.65m outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Downstream of Highway 16, chinook have historically spawned at the confluence of Snowshoe Creek and the Fraser River [@salmonwatershedsprogram2025Spawnerabundance], indicating this stream has provided valuable spawning habitat. Given that the habitat upstream of Highway 16 was rated as high value for spawning and rearing during the 2024 assessment, fish sampling is recommended to further assess whether the crossing is inhibiting fish passage.
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`

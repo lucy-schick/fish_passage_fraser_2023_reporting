@@ -9,15 +9,6 @@ preview_chapter('0100-intro.Rmd')
 rmarkdown::render('scripts/02_reporting/0160-photos-import.Rmd')
 source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
-# this will swap out the real appendix rmd and html and swap in a dummy placeholder for the build to speed it up
-file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
-# we only really need to do this if build is new and html should replace the one in hold
-file.rename("docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html", "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html")
-fs::file_copy(
-  'hold/0600-appendix-placeholder.Rmd',
-  '0600-appendix-placeholder.Rmd',
-  overwrite = TRUE
-  )
 
 
 # add/update the NEWS.md to the book as an appendix and build the gitbook
@@ -27,19 +18,47 @@ fs::file_copy(
   source('scripts/staticimports.R')
   my_news_to_appendix()
 
+  # this will swap out the real appendix rmd and html and swap in a dummy placeholder for the build to speed it up
+  file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
+  # we only really need to do this if build is new and html should replace the one in hold
+  file.rename("docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html", "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html")
+  fs::file_copy(
+    'hold/0600-appendix-placeholder.Rmd',
+    '0600-appendix-placeholder.Rmd',
+    overwrite = TRUE
+  )
+
+
+  # These files are included in the gitbook version already so we move them out of the build
+  files_to_move <- list.files(pattern = ".Rmd$") |>
+    # 2500 is the phase 1 data and photos used in the pdf version
+    stringr::str_subset('2500', negate = F) #move the attachments out
+  files_destination <- paste0('hold/', files_to_move)
+
+  ##move the files
+  mapply(file.rename, from = files_to_move, to = files_destination)
 
 
   rmarkdown::render_site(output_format = 'bookdown::gitbook',
                          encoding = 'UTF-8')
+
+
+  ##move the files from the hold file back to the main file
+  mapply(file.rename, from = files_destination, to = files_to_move)
 
   # now copy back the original appendix overtop of the empty one
   fs::file_copy(
     "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html",
     "docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html",
     overwrite = TRUE
-    )
+  )
+
+  # But back in place after report builds
+  file.rename('0600-appendix-placeholder.Rmd', 'hold/0600-appendix-placeholder.Rmd')
+  file.rename('hold/0600-appendix.Rmd', '0600-appendix.Rmd')
 
 }
+
 
 
 # not run but available to remove files we don't need in the gitbook build (sometimes appendices are not built in gitbook)
@@ -72,21 +91,26 @@ fs::file_copy(
 ##move the phase 1 appendix out of the main directory to a backup file or else the file is too big
 
 
-# define the _bookfile_name from _bookdown.yml
-filename_html <- 'fish_passage_template'
-
 {
+
+  # update util file functions from staticeimports
+  staticimports::import()
+  source('scripts/staticimports.R')
+
+  # define the _bookfile_name from _bookdown.yml
+  filename_html <- 'fish_passage_fraser_2023_reporting'
+
 
   ## move large appendices to hold for pdf build
   ## not required for template
-  # file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
+  file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
 
   ##   then make our printable pdf
   rmarkdown::render_site(output_format = 'pagedown::html_paged',
                          encoding = 'UTF-8')
 
   ## move large appendices back to main directory
-  # file.rename('hold/0600-appendix.Rmd', '0600-appendix.Rmd')
+  file.rename('hold/0600-appendix.Rmd', '0600-appendix.Rmd')
 
   # print to pdf
   pagedown::chrome_print(
@@ -100,10 +124,73 @@ filename_html <- 'fish_passage_template'
                     gs_quality = 'screen',
                     ##this was on the windows machine
                     # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
-                    gs_cmd = "opt/homebrew/bin/gs"
+                    gs_cmd = "/opt/homebrew/bin/gs",
+                    verbose = TRUE
   )
 
   # get rid of the html as its too big and not needed
   file.remove(paste0(filename_html, '.html'))
+
+}
+
+
+######################################## make Phase 1 appendix seperately only when updated
+#################################################################################################
+##we need a workflow to print the Phase 1 attachment
+
+{
+
+  # define the _bookfile_name from _bookdown.yml
+  filename_html <- 'fish_passage_fraser_2023_reporting'
+  repo <- "fish_passage_fraser_2023_reporting"
+
+  files_to_move <- list.files(pattern = ".Rmd$") |>
+    stringr::str_subset(paste0('index|', repo, '|0600'), negate = T)
+
+  files_destination <- paste0('hold/', files_to_move)
+
+  ##move the files
+  mapply(file.rename, from = files_to_move, to = files_destination)
+
+  ##   then make our printable pdf
+  rmarkdown::render_site(output_format = 'pagedown::html_paged',
+                         encoding = 'UTF-8')
+
+  ##move the files from the hold file back to the main file
+  mapply(file.rename, from = files_destination, to = files_to_move)
+
+  pagedown::chrome_print(
+    paste0(filename_html,'.html'),
+    output = "docs/Appendix_1_prep.pdf",
+    timeout = 120
+  )
+
+
+  ##now get rid of the first pages
+  length <- pdftools::pdf_length("docs/Appendix_1_prep.pdf")
+
+  # this changes so let's define
+  crop_this_many_pages <- 8
+
+  # trim up the file.  We ditch the last page only when there are references.  In the case of the bulkley there are due to the yaml file
+  pdftools::pdf_subset("docs/Appendix_1_prep.pdf",
+                       pages = (crop_this_many_pages + 1):(length - 1), output = "docs/Appendix_1.pdf")
+
+  ##clean out the old files
+  file.remove("docs/Appendix_1_prep.pdf")
+  file.remove(paste0(filename_html,'.html'))
+
+  ##it is very important to shrink the size of the pdf so we don't blow up our github repo.
+  # We will set up ghostscript on the mac but for now we do manually.
+
+  # reduce the size
+  tools::compactPDF("docs/Appendix_1.pdf",
+                    gs_quality = 'screen',
+                    ##this was on the windows machine
+                    # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
+                    gs_cmd = "/opt/homebrew/bin/gs",
+                    verbose = TRUE
+  )
+
 
 }
