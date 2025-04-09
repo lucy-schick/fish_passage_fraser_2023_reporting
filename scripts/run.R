@@ -20,14 +20,19 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
   # this will swap out the real appendix rmd and html and swap in a dummy placeholder for the build to speed it up
   file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
-  # we only really need to do this if build is new and html should replace the one in hold
-  file.rename("docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html", "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html")
+
+  # this is a time saver - we swap the real phase 1 to hold and biuld with a dummy file - then replace at the end to get the real report.
+  # this needs to be rebuilt if there are updates to the phase 1...
+  file.rename(
+    "docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html",
+    "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html"
+    )
+
   fs::file_copy(
     'hold/0600-appendix-placeholder.Rmd',
     '0600-appendix-placeholder.Rmd',
     overwrite = TRUE
   )
-
 
   # These files are included in the gitbook version already so we move them out of the build
   files_to_move <- list.files(pattern = ".Rmd$") |>
@@ -54,12 +59,15 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
   )
 
   # But back in place after report builds
-  file.rename('0600-appendix-placeholder.Rmd', 'hold/0600-appendix-placeholder.Rmd')
-  file.rename('hold/0600-appendix.Rmd', '0600-appendix.Rmd')
-
+  file.rename(
+    '0600-appendix-placeholder.Rmd',
+    'hold/0600-appendix-placeholder.Rmd'
+    )
+  file.rename(
+    'hold/0600-appendix.Rmd',
+    '0600-appendix.Rmd'
+    )
 }
-
-
 
 # not run but available to remove files we don't need in the gitbook build (sometimes appendices are not built in gitbook)
 # {
@@ -191,6 +199,4 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
                     gs_cmd = "/opt/homebrew/bin/gs",
                     verbose = TRUE
   )
-
-
 }
