@@ -6,7 +6,6 @@ fish_col_permit_num <-
 
 ```
 
-<br>
 
 ## Collaborative GIS Environment 
 Geographical Information Systems are essential for developing and communicating restoration plans as well as the reasons
@@ -58,7 +57,6 @@ and associated layer file were kept under version control within `bcfishpass` [h
 Loading the QGIS layer file within a QGIS project, allows load and representation of all map component layers provided
 the user points to a postgresql database populated via `bcfishpass` outputs.
 
-<br>
 
 ## Planning
 
@@ -139,7 +137,7 @@ The data used for the model were sourced from the following locations, for years
 ```{r tab-fish-spawning-rearing, eval=TRUE}
 #`r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br><br><br>")}`
 
-species <- c('CH', 'CM', 'CO', 'PK', 'SK', 'ST', 'BT')
+species <- c('CH', 'CO', 'SK', 'ST', 'BT')
 
 text_footnote <- ""
   #"Models for RB, GR and KO are under a process of development and have not yet been released.  All models parameters are preliminary and subject to collaborative development."
@@ -301,7 +299,6 @@ Potential options to remediate fish passage were selected from @moe2011Fieldasse
  + Additional Substrate Material (EM) - Add additional substrate to the culvert and/or downstream weir to embed culvert and reduce overall velocity/turbulence.  This option was considered only when outlet drop = 0, culvert slope <1.0% and stream width ratio < 1.0.
  + Backwater (BW) - Backwatering of the structure to reduce velocity and turbulence. This option was considered only when outlet drop < 0.3m, culvert slope <2.0%, stream width ratio < 1.2 and stream profiling indicates it would be effective..
 
- <br>
 
 
 ### Cost Estimates
@@ -338,9 +335,8 @@ sfpr_xref_road_cost() |>
   fpr::fpr_kable(caption_text = 'Cost multiplier table based on road class and surface type.', scroll = F)
 ```
 
-<br>
 
-## Climate Change Risk Assessment
+### Climate Change Risk Assessment
 
 In collaboration with the Ministry of Transportation and Infrastructure (MoTi), a new climate change replacement program
 aims to prioritize vulnerable culverts for replacement (pers. comm Sean Wong, 2022) based on data collected and ranked
@@ -367,7 +363,6 @@ xref_moti_climate_names  %>%
 
 ```
 
-<br>
 
 ## Habitat Confirmation Assessments
 
@@ -375,9 +370,8 @@ Following fish passage assessments, habitat confirmations were completed in acco
 
 <br>
 
-During habitat confirmations, to standardize data collected and facilitate submission of the data to provincial databases, information was collected on ["Site Cards"](https://www2.gov.bc.ca/gov/content/environment/natural-resource-stewardship/laws-policies-standards-guidance/inventory-standards/aquatic-ecosystems). Habitat characteristics recorded included channel widths, wetted widths, residual pool depths, gradients, bankfull depths, stage, temperature, conductivity, pH, cover by type, substrate and channel morphology (among others). When possible, the crew surveyed downstream of the crossing to a minimum distance 300m and upstream to a minimum distance of 500 - 600m. Any  potential  obstacles  to  fish  passage  were  inventoried  with  photos, physical  descriptions  and  locations  recorded on site cards.  Surveyed routes were recorded with time-signatures on handheld GPS units.
+During habitat confirmations, to standardize data collected and facilitate submission of the data to provincial databases, information was collected on digital field forms adapted from provincial ["Site Cards"](https://www2.gov.bc.ca/gov/content/environment/natural-resource-stewardship/laws-policies-standards-guidance/inventory-standards/aquatic-ecosystems). Habitat characteristics recorded included channel widths, wetted widths, residual pool depths, gradients, bankfull depths, stage, temperature, conductivity, pH, cover by type, substrate and channel morphology (among others). When possible, the crew surveyed downstream of the crossing to a minimum distance 300m and upstream to a minimum distance of 500 - 600m. Any  potential  obstacles  to  fish  passage  were  inventoried  with  photos, physical  descriptions  and  locations  recorded on site cards.  Surveyed routes were recorded with time-signatures on handheld GPS units.
 
-<br>
 
 ```{r eval = F}
 
@@ -409,16 +403,12 @@ During habitat confirmations, to standardize data collected and facilitate submi
 
 Scripted processing and serving of UAV imagery collected during the project is available at https://github.com/NewGraphEnvironment/stac_uav_bc/ [@irvine2025NewGraphEnvironmentstac_uav_bc]. [`OpenDroneMap`](https://github.com/OpenDroneMap/ODM) was utilized to produce orthomosaics, digital surface models (DSMs), and digital terrain models (DTMs) [@opendronemapauthors2025OpenDroneMapODM]. To support efficient web-based access - imagery products were converted to cloud-optimized GeoTIFFs (COGs) using `rio-cogeo`, then collated accordiong to the [SpatioTemporal Asset Catalog  (STAC)](https://github.com/radiantearth/stac-spec) specification with `pystac` and uploaded to S3 storage [@cogeotiff2025cogeotiffriocogeo; @radiantearth2024STACSpatioTemporal; @pystacauthors2025stacutilspystac, @amazonwebservices2025awsawscli]. A `titiler` tile server was set up to facilitate interactive viewing of the orthoimagery and an Application Program Interface (API) leveraging `stac-fastapi-pgstac` is served at https://images.a11s.one to enable linking of collection images through QGIS as well as remote spatial and temporal querying using open source software such as `rstac` [@developmentseed2025developmentseedtitiler; @stac-utils2025stacutilsstacfastapipgstac; @simoes_etal2021Rstacpackage].  
 
-<br>
 
-## Designs
-Engineering designs were conducted by consultants hired by forest licensees with tenure over the roads and/or timber
-harvest planned on the roads where work was conducted.  Completed designs are loaded to the PSCIS data portal.
+## Engineering Design
+Engineering designs were signed and sealed by professional engineers. When possible - completed designs are loaded to the PSCIS data portal.
 
-<br>
 
-<!-- Project specific contractors in this paragraph. -->
+
 ## Remediations
 Structure replacement was conducted by project specific contractors. As-built drawings were completed and loaded to the PSCIS data portal.
 
-<br>
