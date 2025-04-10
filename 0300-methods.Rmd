@@ -402,13 +402,3 @@ During habitat confirmations, to standardize data collected and facilitate submi
 ### Aerial Imagery
 
 Scripted processing and serving of UAV imagery collected during the project is available at https://github.com/NewGraphEnvironment/stac_uav_bc/ [@irvine2025NewGraphEnvironmentstac_uav_bc]. [`OpenDroneMap`](https://github.com/OpenDroneMap/ODM) was utilized to produce orthomosaics, digital surface models (DSMs), and digital terrain models (DTMs) [@opendronemapauthors2025OpenDroneMapODM]. To support efficient web-based access - imagery products were converted to cloud-optimized GeoTIFFs (COGs) using `rio-cogeo`, then collated accordiong to the [SpatioTemporal Asset Catalog  (STAC)](https://github.com/radiantearth/stac-spec) specification with `pystac` and uploaded to S3 storage [@cogeotiff2025cogeotiffriocogeo; @radiantearth2024STACSpatioTemporal; @pystacauthors2025stacutilspystac, @amazonwebservices2025awsawscli]. A `titiler` tile server was set up to facilitate interactive viewing of the orthoimagery and an Application Program Interface (API) leveraging `stac-fastapi-pgstac` is served at https://images.a11s.one to enable linking of collection images through QGIS as well as remote spatial and temporal querying using open source software such as `rstac` [@developmentseed2025developmentseedtitiler; @stac-utils2025stacutilsstacfastapipgstac; @simoes_etal2021Rstacpackage].  
-
-
-## Engineering Design
-Engineering designs were signed and sealed by professional engineers. When possible - completed designs are loaded to the PSCIS data portal.
-
-
-
-## Remediations
-Structure replacement was conducted by project specific contractors. As-built drawings were completed and loaded to the PSCIS data portal.
-
