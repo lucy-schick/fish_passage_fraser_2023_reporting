@@ -1,0 +1,88 @@
+
+# Executive Summary {-}
+
+`r if(identical(gitbook_on, FALSE)) knitr::asis_output(paste0("This report is available as a PDF and as an online interactive report at ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = params$report_url), ". We recommend viewing online as the web-hosted HTML version contains more features and is more easily navigable. Please reference the website for the latest PDF from ", ngr::ngr_str_link_url(url_base = params$repo_url, url_resource = "blob/main/docs/fish_passage_fraser_2023_reporting.pdf", anchor_text = "fish_passage_fraser_2023.pdf"), "."))`
+
+
+`r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
+
+Since 2023, the Society for Ecosystem Restoration Northern British Columbia (SERNbc), with funding from the Ministry of Transportation and Infrastructure, has been actively involved in planning, coordinating, and conducting fish passage restoration efforts within the Nechako River, Lower Chilako River, Morkhill River, Upper Fraser River, and François Lake watershed groups which are sub-basins of the Upper Fraser River watershed. 
+
+<br>
+
+The primary objective of this project is to identify and prioritize fish passage barriers within these study areas,
+develop comprehensive restoration plans to address these barriers, and foster momentum for broader ecosystem restoration
+initiatives. While the primary focus is on fish passage, this work also serves as a lens through which to view the
+broader ecosystems, leveraging efforts to build capacity for ecosystem restoration and improving our understanding of
+watershed health. We recognize that the health of life - such as our own - and the health of our surroundings are
+interconnected, with our overall well-being dependent on the health of our environment.
+
+<br>
+
+Fish passage assessment procedures conducted through SERNbc in the Upper Fraser River Watershed since 2023 are amalgamated `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Tables \\@ref(tab:tab-sites-sum-cap) - \\@ref(tab:tab-sites-cap)")}`
+which includes links to project reporting for each site. A summary of activities included in this report is provided below:
+
+<br>
+
+-  Field assessments were conducted from `r format(min(pscis_phase1_2023$date), format="%B %d, %Y")`-`r format(max(pscis_phase1_2023$date), format="%B %d, %Y")` and `r format(min(pscis_phase1_2024$date), format="%B %d, %Y")`-`r format(max(pscis_phase1_2024$date), format="%B %d, %Y")`, by Allan Irvine, R.P.Bio. and Mateo Winterscheidt, B.Sc, and Lucy Schick, B.Sc. 
+
+-  A total of `r pscis_all |> filter(source != 'pscis_phase2.xlsm') |> nrow()` Fish Passage Assessments were completed across the 2023 and 2024 field seasons, including `r n_distinct(pscis_phase1$my_crossing_reference)` Phase 1 assessments and `r pscis_reassessments |> nrow()` reassessments.
+
+-  During the 2024 field assessments, habitat confirmation assessments were conducted at `r habitat_confirmations_priorities |> dplyr::distinct(stream_name) |> nrow()` sites within the Nechako River, Lower Chilako River, Morkhill River, Upper Fraser River, and François Lake watershed groups. A total of approximately `r habitat_confirmations_priorities |> pull(length_surveyed) |> sum(na.rm = TRUE) |> round(-3)/1000` km of stream was assessed.
+    
+<br>
+
+A major challenge in advancing fish passage restoration is the complexity of working across jurisdictions and with multiple stakeholders—rail and highway authorities, forestry ministries, licensees, and private landowners. These partners are often being asked to accommodate priorities that originate outside their mandates and budgets. Convincing them to invest in difficult, high-cost interventions—like modifying crossings or relocating infrastructure—requires navigating uncertainty about costs and ecological outcomes, as well as a disconnect between the benefits to watershed health and the internal pressures or performance goals of these agencies. It’s a tough ask: to take on massive, uncertain projects when they’re already stretched thin with their own responsibilities.
+
+<br>
+
+Fish passage restoration within the Upper Fraser River watershed and across British Columbia is further complicated by the legacy of infrastructure deeply embedded in the landscape. Roads, railways, highways, community infrastructure and private assets often constrain floodplains and disrupt natural hydrological processes. While targeted repairs to individual barriers are essential, they won’t resolve the broader systemic issues without rethinking and restructuring how infrastructure interacts with watershed function. Loss of riparian vegetation and intensive beaver management only add to the degradation. Addressing these challenges means making strategic, well-communicated choices—picking battles carefully, building trust, and staying committed to a longer-term transformation.
+
+<br>
+
+All field activities from 2023 and 2024—including fish passage assessments, habitat confirmation assessments, and drone imagery collection—were consolidated into a centralized interactive table. This tool enables multi-criteria querying (e.g., by watershed group, stream name, road name, PSCIS ID, or top-ranked sites) with direct links to supporting documentation.
+
+<br>
+
+While preliminary top remediation priorities are provided by watershed group, these rankings are inherently subjective and can depend on the capacity and willingness of infrastructure owners and tenure holders to support implementation—both financially and over the often multi-year project timelines. In practice, we must often act opportunistically, pursuing simpler, lower-cost options to maintain momentum and achieve near-term progress.
+
+<br>
+
+Government, community groups, landowners, non-profits, industry and other stakeholders should work collaboratively to address high and moderate priority barriers identified `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Table \\@ref(tab:tab-sites-cap)")}`. Although the table presents many options, linked reports specify whether each site is a low, moderate, or high priority. Progress on any front is meaningful, and aiming to remediate at least one high-priority site per year per watershed group—regardless of its overall rank—is a practical and effective approach.
+
+<br>
+
+
+Of key importance as well - the placement and design of infrastructure often drives floodplain disconnection and watershed degradation. 
+Thus, sustainable restoration must extend beyond culvert upgrades toward reimagining how infrastructure interacts with the landscape—supporting reconnection of floodplains, wetland restoration, and coexistence with keystone species such as beaver, which create wetlands and slow flows, and salmon, which deliver marine nutrients and cultural richness to upstream ecosystems. Foundation species like cottonwood and old-growth conifers further support watershed health by stabilizing banks, shading streams, and contributing organic material, and their restoration and conservation must be integrated alongside fish passage reconnection in any comprehensive watershed planning effort.
+
+<br>
+
+Although subject to revisions and updates, this report provides a snapshot of the current state of fish passage restoration within 
+study area watershed groups in the Upper Fraser River watershed. It is intended to inform and engage stakeholders, including indigenous communities, government agencies, and the public, in the ongoing work of restoring fish passage and improving watershed health. We hope that this report will inspire further collaboration and action to address the challenges of fish passage restoration in the context of overall watershed health.
+
+<br>
+
+Recommendations for collaborative enhancement of fish passage restoration in the Upper Fraser River Region include:
+
+- Maintain strong partnerships to support funding, site selection, remediation, and monitoring through adaptive management informed by traditional knowledge and real-time data.
+
+- Coordinate with the Ministry of Transportation to pursue funding for engineering designs at the following crossings:
+    - PSCIS crossing 199171 on Burnt Cabin Creek along Gala Bay Road, in the Francois Lake watershed group.
+    - PSCIS crossing 199173 on a tributary to the Nechako River, on Dog Creek Road, in the Nechako River watershed group  
+    
+- Use climate modeling to prioritize crossings that enable access to cold, drought-resistant habitats.
+
+- Integrate fish passage restoration planning with other restoration and enhancement initiatives in the region to
+maximize benefits to fish populations as well as for communities within the Upper Fraser River watershed.  This includes
+working with the Rivershed Society of BC, Nechako Environment and Watershed Stewardship Society (NEWSS), University of Northern British Columbia, Fisheries and Oceans Canada, Ministry of Transportation, provincial regulators, and others to leverage funding, knowledge, and resources for fish passage restoration towards other projects related to
+watershed health in the region. Examples of where this is already taking in place in other watersheds includes:
+    - Leveraging of Morice River watershed group fish passage sites into the Bii Wenii Kwa Restoration/Recovery Plan 
+    - Incorporation of Upper Bulkley River sites into the [Neexdzii Kwah Restoration Planning](https://newgraphenvironment.github.io/restoration_wedzin_kwa_2024) [@irvine_schick2025NeexdziiKwah].
+ 
+- Develop strategies to explore cost and fisheries production benefits of stream crossing structure upgrades alongside
+alternative/additional restoration and enhancement investments such as land conservation/procurement/covenant, cattle
+exclusion, riparian restoration, habitat complexing, water conservation, commercial/recreational fishing management,
+water treatment and research. Ideentify and pursue opportunities to collaborate and leverage initiatives together in
+study area watersheds (ex. fish passage rehabilitation, riparian restoration and cattle exclusion) for maximum likely
+restoration benefits.

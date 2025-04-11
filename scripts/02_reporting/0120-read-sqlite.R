@@ -41,9 +41,10 @@ habitat_confirmation_tracks <- readwritesqlite::rws_read_table("habitat_confirma
 #Read in the uav imagery table
 project_uav <- readwritesqlite::rws_read_table("project_uav", conn = conn)
 
+#Read in the watershed polygons for the watersheds included in the project study area
+wshd_study_areas <- readwritesqlite::rws_read_table("wshd_study_areas", conn = conn)
 
-# You must run `0110-load-wshd_stats.R` at before this
-# watershed stats for the watersheds in this project
+#Read in the upstream watershed stats for the phase 2 habitat confirmation sites
 wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) |>
   # remove any negative values
   dplyr::mutate(dplyr::across(contains('elev'), ~ replace(., . < 0, NA))) |>

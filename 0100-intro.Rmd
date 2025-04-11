@@ -1,12 +1,16 @@
 
 
-# Introduction {#intro}
+# Introduction {-}
 
-`r if(identical(gitbook_on, FALSE)) knitr::asis_output(paste0("This report is available as a PDF and as an online interactive report at ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = params$report_url), ". We recommend viewing online as the web-hosted HTML version contains more features and is more easily navigable. Please reference the website for the latest PDF from ", ngr::ngr_str_link_url(url_base = params$repo_url, url_resource = "raw/main/docs/fish_passage_fraser_2023_reporting.pdf", anchor_text = "fish_passage_fraser_2024.pdf"), "."))`
+`r if(identical(gitbook_on, FALSE)) knitr::asis_output(paste0("This report is available as a PDF and as an online interactive report at ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = params$report_url), ". We recommend viewing online as the web-hosted HTML version contains more features and is more easily navigable. Please reference the website for the latest PDF from ", ngr::ngr_str_link_url(url_base = params$repo_url, url_resource = "blob/main/docs/fish_passage_fraser_2023_reporting.pdf", anchor_text = "fish_passage_fraser_2023.pdf"), "."))`
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
 
-Since 2023, the Society for Ecosystem Restoration Northern British Columbia (SERNbc), with funding from the Ministry of Transportation and Infrastructure, has been actively involved in planning, coordinating, and conducting fish passage restoration efforts within the Upper Fraser River watershed. The primary objective of this project is to identify and prioritize fish passage barriers within these study areas,
+Since 2023, the Society for Ecosystem Restoration Northern British Columbia (SERNbc), with funding from the Ministry of Transportation and Infrastructure, has been actively involved in planning, coordinating, and conducting fish passage restoration efforts within the Nechako River, Lower Chilako River, Morkhill River, Upper Fraser River, and François Lake watershed groups which are sub-basins of the Upper Fraser River watershed. 
+
+<br>
+
+The primary objective of this project is to identify and prioritize fish passage barriers within these study areas,
 develop comprehensive restoration plans to address these barriers, and foster momentum for broader ecosystem restoration
 initiatives. While the primary focus is on fish passage, this work also serves as a lens through which to view the
 broader ecosystems, leveraging efforts to build capacity for ecosystem restoration and improving our understanding of

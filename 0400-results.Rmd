@@ -26,9 +26,9 @@ map <- leaflet::leaflet(height=500, width=780) |>
   # leaflet::addProviderTiles(providers$"Esri.DeLorme") |> 
   leaflet::addProviderTiles("Esri.WorldTopoMap", group = "Topo") |>
   leaflet::addProviderTiles("Esri.WorldImagery", group = "ESRI Aerial") |> 
-  # leaflet::addPolygons(data = wshd_study_areas, color = "#F29A6E", weight = 1, smoothFactor = 0.5,
-  #             opacity = 1.0, fillOpacity = 0,
-  #             fillColor = "#F29A6E", label = wshd_study_areas$watershed_group_name) |>
+  leaflet::addPolygons(data = wshd_study_areas, color = "#F29A6E", weight = 1, smoothFactor = 0.5,
+              opacity = 1.0, fillOpacity = 0,
+              fillColor = "#F29A6E", label = wshd_study_areas$watershed_group_name) |>
   leaflet::addPolygons(data = wshds, color = "#0859C6", weight = 1, smoothFactor = 0.5,
               opacity = 1.0, fillOpacity = 0.25,
               fillColor = "#00DBFF",
@@ -114,12 +114,17 @@ map
 ```
 
 
-## Site Assessment Data Since 2020
+## Site Assessment Data Since 2023
 
 Fish passage assessment procedures conducted through SERNbc in the Upper Fraser River Watershed since 2023 are amalgamated  
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Tables \\@ref(tab:tab-sites-sum-cap) - \\@ref(tab:tab-sites-cap)")}`.
 
 <br>
+
+Since 2020, orthoimagery and elevation model rasters have been generated and stored as Cloud Optimized Geotiffs on a cloud service provider (AWS) with select imagery linked to in the collaborative GIS project. Additionally - a tile service has been set up to facilitate viewing and downloading of individual images, provided `r knitr::asis_output(if (gitbook_on) "in Table \\@ref(tab:tab-uav-imagery-cap)" else ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "results-and-discussion.html", anchor_text = paste0("at", params$report_url, "/results-and-discussion.html")))`. 
+
+`r if(gitbook_on){knitr::asis_output("<br>")}`
+
 
 ```{r ld-db}
 
@@ -223,6 +228,89 @@ sites_all |>
 `r if(gitbook_on){knitr::asis_output("<br>")}`
 
 
+```{r api1, eval = F}
+
+# only needs to be run at the beginning or if we want to update
+
+# Grab the imagery from the stac
+
+# bc bounding box
+bcbbox <-  as.numeric(
+  sf::st_bbox(bcmaps::bc_bound()) |> sf::st_transform(crs = 4326)
+)
+
+# use rstac to query the collection
+q <- rstac::stac("https://images.a11s.one/") |>
+    rstac::stac_search(
+      # collections = "uav-imagery-bc",
+      collections = "imagery-uav-bc-prod",
+                      bbox = bcbbox
+                      
+                     ) |>
+  rstac::post_request()
+
+# get deets of the items
+r <- q |>
+  rstac::items_fetch()
+```
+
+
+```{r uav-clean-burn, eval = F}
+
+# build the table to display the info
+tab_uav <- tibble::tibble(url_download = purrr::map_chr(r$features, ~ purrr::pluck(.x, "assets", "image", "href"))) |> 
+  dplyr::mutate(stub = stringr::str_replace_all(url_download, "https://imagery-uav-bc.s3.amazonaws.com/", "")) |> 
+  tidyr::separate(
+    col = stub, 
+    into = c("region", "watershed_group", "year", "item", "rest"),
+    sep = "/",
+    extra = "drop"
+  ) |> 
+  dplyr::mutate(
+    link_view = 
+                  dplyr::case_when(
+                    !tools::file_path_sans_ext(basename(url_download)) %in% c("dsm", "dtm") ~ 
+                      ngr::ngr_str_link_url(
+                        url_base = "https://viewer.a11s.one/?cog=",
+                        url_resource = url_download, 
+                        url_resource_path = FALSE,
+                        # anchor_text= "URL View"
+                        anchor_text= tools::file_path_sans_ext(basename(url_download))),
+                    T ~ "-"),
+                        link_download = ngr::ngr_str_link_url(url_base = url_download, anchor_text = url_download)
+    )|> 
+  dplyr::select(region, watershed_group, year, item, link_view, link_download)
+
+
+
+# grab the imagery for this project area
+project_region <- "fraser"
+
+project_uav <- tab_uav |> 
+  dplyr::filter(region == project_region)
+
+
+# Burn to sqlite 
+conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
+readwritesqlite::rws_list_tables(conn)
+readwritesqlite::rws_drop_table("project_uav", conn = conn)
+readwritesqlite::rws_write(project_uav, exists = F, delete = TRUE,
+                           conn = conn, x_name = "project_uav")
+readwritesqlite::rws_disconnect(conn)
+
+```
+
+```{r tab-uav-imagery-cap, results="asis", eval= gitbook_on}
+my_caption <- "Drone imagery download and viewer links."
+
+my_tab_caption()
+```
+
+```{r tab-uav-imagery, eval= gitbook_on}
+project_uav |> 
+  my_dt_table(cols_freeze_left = 2, escape = FALSE)
+```
+
 
 ## Collaborative GIS Environment
 
@@ -291,19 +379,34 @@ rfp_tracking_prep |>
 
 ```
 
-`r if(gitbook_on){knitr::asis_output("<br>")}`
 
-## Phase 1 - Fish Passage Assessemnts
+## Planning
 
-During the 2023 field season, field assessments were conducted between `r format(min(pscis_phase1_2023$date), format="%B %d, %Y")` and `r format(max(pscis_phase1_2023$date), format="%B %d, %Y")` by Allan Irvine, R.P.Bio. and Mateo Winterscheidt, B.Sc. A total of `r pscis_phase1_2023 |> nrow()` Phase 1 Fish Passage Assessments were completed.
+### Habitat Modelling
+Habitat modelling from `bcfishpass` including access model, linear spawning/rearing habitat model and lateral habitat 
+connectivity models for watershed groups within our study area were updated for the spring of 2025 and are included
+spatially in the collaborative GIS project.  A snapshot of these outputs related to each modeled and PSCIS stream 
+crossing structure are also included within an `sqlite` database within this year's project reporting/code repository [here](https://github.com/NewGraphEnvironment/fish_passage_skeena_2024_reporting/blob/main/data/bcfishpass.sqlite).
+
+
+#### Statistical Support for `bcfishpass` Fish Habitat Modelling Updates
+Initial mapping of stream discharge and temperature causal effects pathways for the future purpose of focusing aquatic restoration 
+actions in areas of highest potential for positive impacts on fisheries values (ie. elimination of areas from intrinsic models 
+where water temperatures are likely too cold to support fish production) are detailed in @hill_etal2024Spatialstream which is 
+included as [Attachment - Water Temperature Modelling](#attach-bayes). 
+
+
+## Fish Passage Assessemnts
+
+Field assessments were conducted from `r format(min(pscis_phase1_2023$date), format="%B %d, %Y")`-`r format(max(pscis_phase1_2023$date), format="%B %d, %Y")` and `r format(min(pscis_phase1_2024$date), format="%B %d, %Y")`-`r format(max(pscis_phase1_2024$date), format="%B %d, %Y")`, by Allan Irvine, R.P.Bio. and Mateo Winterscheidt, B.Sc, and Lucy Schick, B.Sc. 
+
+### Road Stream Crossings
+
+A total of `r pscis_all |> filter(source != 'pscis_phase2.xlsm') |> nrow()` Fish Passage Assessments were completed, including `r n_distinct(pscis_phase1$my_crossing_reference)` Phase 1 assessments and `r pscis_reassessments |> nrow()` reassessments. 
 
 <br>
 
-During the 2024 field season, field assessments were conducted between `r format(min(pscis_phase1_2024$date), format="%B %d, %Y")` and `r format(max(pscis_phase1_2024$date), format="%B %d, %Y")` by Allan Irvine, R.P.Bio. and Lucy Schick, B.Sc. A total of 9 Fish Passage Assessments were completed, including `r n_distinct(pscis_phase1_2024$my_crossing_reference)` Phase 1 assessments and `r pscis_reassessments |> nrow()` reassessments.
-
-<br>
-
-Of the `r pscis_all |> filter(source != 'pscis_phase2.xlsm') |> nrow()` sites where fish passage assessments were completed, `r pscis_phase1 |> nrow()` were not yet inventoried in the PSCIS system.  This included `r pscis_phase1 |> filter(barrier_result == 'Passable') |> nrow()` crossings considered "passable", `r pscis_phase1 |> filter(barrier_result == 'Potential') |> nrow() |> english::as.english()` crossings considered "potential" barriers, and `r pscis_phase1 |> filter(barrier_result == 'Barrier') |> nrow()` crossings considered "barriers" according to threshold values based on culvert embedment, outlet drop, slope, diameter (relative to channel size) and length [@moe2011Fieldassessment]. Additionally, although all were considered fully passable, `r pscis_phase1 |> filter(barrier_result == 'Unknown') |> nrow() |> english::as.english()` crossings assessed were fords and were ranked as "unknown" according to the provincial protocol.
+Of the `r pscis_all |> filter(source != 'pscis_phase2.xlsm') |> nrow()` sites where fish passage assessments were completed, `r pscis_phase1 |> nrow()` were not yet inventoried in the PSCIS system.  This included `r pscis_phase1 |> filter(barrier_result == 'Passable') |> nrow()` crossings considered "passable", `r pscis_phase1 |> filter(barrier_result == 'Potential') |> nrow()` crossings considered "potential" barriers, and `r pscis_phase1 |> filter(barrier_result == 'Barrier') |> nrow()` crossings considered "barriers" according to threshold values based on culvert embedment, outlet drop, slope, diameter (relative to channel size) and length [@moe2011Fieldassessment]. Additionally, although all were considered fully passable, `r pscis_phase1 |> filter(barrier_result == 'Unknown') |> nrow() |> english::as.english()` crossings assessed were fords and were ranked as "unknown" according to the provincial protocol.
 
 <br>
 
@@ -332,16 +435,15 @@ The "Barrier" and "Potential Barrier" rankings used in this project followed @mo
  
 ```
 
-<br>
 
-## Phase 2 - Habitat Confirmation Assessments
+## Habitat Confirmation Assessments
 
 During the 2024 field assessments, habitat confirmation assessments were conducted at `r habitat_confirmations_priorities |> dplyr::distinct(stream_name) |> nrow()` sites within the Nechako River, Lower Chilako River, Upper Fraser River, Morkill River, and Francois Lake watershed groups. A total of approximately `r habitat_confirmations_priorities |> pull(length_surveyed) |> sum(na.rm = TRUE) |> round(-3)/1000` km of stream was assessed.
 
 <br>
 
 As collaborative decision making was ongoing at the time of reporting, site prioritization can be considered preliminary. 
-Results are summarized in `r if(gitbook_on){knitr::asis_output("Figure \\@ref(fig:map-interactive) and ")}` Table \@ref(tab:tab-overview) with raw habitat data included in [Attachment 1 - Habitat Assessment and Fish Sampling Data]. A summary of preliminary modeling results illustrates the estimated chinook, coho, and steelhead spawning and rearing habitat potentially available upstream of each crossing, based on measured/modelled channel width and upstream accessible stream length, as presented in Figure \@ref(fig:plot-model-all). Detailed information for each site assessed with Phase 2 assessments (including maps) are presented within site specific appendices to this document.
+Results are summarized in `r if(gitbook_on){knitr::asis_output("Figure \\@ref(fig:map-interactive) and ")}` Table \@ref(tab:tab-overview) with raw habitat data included in [Attachment - Data](#attach-dat). A summary of preliminary modeling results illustrates the estimated chinook, coho, and steelhead spawning and rearing habitat potentially available upstream of each crossing, based on measured/modelled channel width and upstream accessible stream length, as presented in Figure \@ref(fig:plot-model-all). Detailed information for each site assessed with Phase 2 assessments (including maps) are presented within site specific appendices to this document.
 
 
 <br>
@@ -477,95 +579,3 @@ bcfishpass_phase2_plot_prep |>
 
 ```
 
-<br>
-
-## Aerial Imagery
-
-Orthoimagery has been gathered for several crossings as part of fish passage restoration planning efforts in the Fraser River Watershed. Data has been stored as Cloud Optimized Geotiffs on a cloud service provider (AWS) with select imagery linked to in the collaborative GIS project. Additionally - a tile service has been set up to facilitate viewing and downloading of individual images, provided in `r knitr::asis_output(if (gitbook_on) "Table \\@ref(tab:tab-uav-imagery-cap)" else ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "results-and-discussion.html", anchor_text = "here"))`. 
-
-
-
-<br>
-
-```{r api1, eval = F}
-
-# only needs to be run at the beginning or if we want to update
-
-# Grab the imagery from the stac
-
-# bc bounding box
-bcbbox <-  as.numeric(
-  sf::st_bbox(bcmaps::bc_bound()) |> sf::st_transform(crs = 4326)
-)
-
-# use rstac to query the collection
-q <- rstac::stac("https://images.a11s.one/") |>
-    rstac::stac_search(
-      # collections = "uav-imagery-bc",
-      collections = "imagery-uav-bc-prod",
-                      bbox = bcbbox
-                      
-                     ) |>
-  rstac::post_request()
-
-# get deets of the items
-r <- q |>
-  rstac::items_fetch()
-```
-
-
-```{r uav-clean-burn, eval = F}
-
-# build the table to display the info
-tab_uav <- tibble::tibble(url_download = purrr::map_chr(r$features, ~ purrr::pluck(.x, "assets", "image", "href"))) |> 
-  dplyr::mutate(stub = stringr::str_replace_all(url_download, "https://imagery-uav-bc.s3.amazonaws.com/", "")) |> 
-  tidyr::separate(
-    col = stub, 
-    into = c("region", "watershed_group", "year", "item", "rest"),
-    sep = "/",
-    extra = "drop"
-  ) |> 
-  dplyr::mutate(
-    link_view = 
-                  dplyr::case_when(
-                    !tools::file_path_sans_ext(basename(url_download)) %in% c("dsm", "dtm") ~ 
-                      ngr::ngr_str_link_url(
-                        url_base = "https://viewer.a11s.one/?cog=",
-                        url_resource = url_download, 
-                        url_resource_path = FALSE,
-                        # anchor_text= "URL View"
-                        anchor_text= tools::file_path_sans_ext(basename(url_download))),
-                    T ~ "-"),
-                        link_download = ngr::ngr_str_link_url(url_base = url_download, anchor_text = url_download)
-    )|> 
-  dplyr::select(region, watershed_group, year, item, link_view, link_download)
-
-
-
-# grab the imagery for this project area
-project_region <- "fraser"
-
-project_uav <- tab_uav |> 
-  dplyr::filter(region == project_region)
-
-
-# Burn to sqlite 
-conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
-readwritesqlite::rws_list_tables(conn)
-readwritesqlite::rws_drop_table("project_uav", conn = conn)
-readwritesqlite::rws_write(project_uav, exists = F, delete = TRUE,
-                           conn = conn, x_name = "project_uav")
-readwritesqlite::rws_disconnect(conn)
-
-```
-
-```{r tab-uav-imagery-cap, results="asis", eval= gitbook_on}
-my_caption <- "Drone imagery download and viewer links."
-
-my_tab_caption()
-```
-
-```{r tab-uav-imagery, eval= gitbook_on}
-project_uav |> 
-  my_dt_table(cols_freeze_left = 2, escape = FALSE)
-```

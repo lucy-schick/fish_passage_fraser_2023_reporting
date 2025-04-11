@@ -1,7 +1,0 @@
-#  `r if(gitbook_on){knitr::asis_output("**Attachment 1 - Habitat Assessment and Fish Sampling Data**")} else knitr::asis_output(" **Attachment 2 - Habitat Assessment and Fish Sampling Data**")` {-}
-
-All field data collected is available `r ngr::ngr_str_link_url(url_base = params$repo_url, url_resource = "raw/main/data/", anchor_text = "here")`.
-
-<br>
-
-Habitat assessment data is available for download `r ngr::ngr_str_link_url(url_base = params$repo_url, url_resource = "blob/main/data/habitat_confirmations.xls", anchor_text = "here")`.

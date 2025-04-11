@@ -75,6 +75,28 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 <br>
 
+## Aerial Imagery {.unnumbered}
+
+An aerial survey was conducted with a remotely piloted aircraft and the resulting imagery was processed into an orthomosaic available to view and download `r if(gitbook_on){knitr::asis_output("in Figure \\@ref(fig:uav-ortho-199256)")}else(knitr::asis_output("[here](https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199256_kenneth_hwy16/odm_orthophoto/odm_orthophoto.tif)"))`.
+
+<br>
+
+```{r uav-ortho-199256-prep, eval = gitbook_on}
+viewer_url <- '<iframe src="https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199256_kenneth_hwy16/odm_orthophoto/odm_orthophoto.tif" scrolling="no" title="UAV Viewer" width="100%" height="600" frameBorder="0"></iframe>'
+
+knitr::asis_output(viewer_url)
+```
+
+```{r uav-ortho-199256, out.width = "0.01%", eval = gitbook_on, fig.cap= my_caption}
+my_photo = 'fig/pixel.png'
+
+my_caption = paste0('Orthomosaic of PSCIS crossing ', my_site, '.')
+
+knitr::include_graphics(my_photo, dpi = NA)
+```
+
+`r if(gitbook_on){knitr::asis_output("<br>")}`
+
 
 ## Stream Characteristics at Crossing `r as.character(my_site)` {.unnumbered}
 
@@ -123,28 +145,6 @@ Downstream of the culvert, the stream ran parallel to the highway, with banks re
 `r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199256-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199256-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value, with gravels suitable for chinook and resident salmonid spawning. The stream was large and gravel-dominated, with extensive deep runs, deep pools, large woody debris, and multiple channels throughout. The riparian area was intact throughout, consisting of a mix of shrub-dominated wetland areas and mature mixed forest. `r fpr_my_habitat_paragraph(loc = 'us')`
 
 <br>
-
-## Aerial Imagery {.unnumbered}
-
-An aerial survey was conducted with a remotely piloted aircraft and the resulting imagery was processed into an orthomosaic available to view and download `r if(gitbook_on){knitr::asis_output("in Figure \\@ref(fig:uav-ortho-199256)")}else(knitr::asis_output("[here](https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199256_kenneth_hwy16/odm_orthophoto/odm_orthophoto.tif)"))`.
-
-<br>
-
-```{r uav-ortho-199256-prep, eval = gitbook_on}
-viewer_url <- '<iframe src="https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199256_kenneth_hwy16/odm_orthophoto/odm_orthophoto.tif" scrolling="no" title="UAV Viewer" width="100%" height="600" frameBorder="0"></iframe>'
-
-knitr::asis_output(viewer_url)
-```
-
-```{r uav-ortho-199256, out.width = "0.01%", eval = gitbook_on, fig.cap= my_caption}
-my_photo = 'fig/pixel.png'
-
-my_caption = paste0('Orthomosaic of PSCIS crossing ', my_site, '.')
-
-knitr::include_graphics(my_photo, dpi = NA)
-```
-
-`r if(gitbook_on){knitr::asis_output("<br>")}`
 
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
