@@ -45,7 +45,7 @@ project_uav <- readwritesqlite::rws_read_table("project_uav", conn = conn)
 wshd_study_areas <- readwritesqlite::rws_read_table("wshd_study_areas", conn = conn)
 
 #Read in the upstream watershed stats for the phase 2 habitat confirmation sites
-wshds_phase2 <- readwritesqlite::rws_read_table("wshds_phase2", conn = conn) |>
+wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) |>
   # remove any negative values
   dplyr::mutate(dplyr::across(contains('elev'), ~ replace(., . < 0, NA))) |>
   dplyr:: mutate(aspect = as.character(aspect))
