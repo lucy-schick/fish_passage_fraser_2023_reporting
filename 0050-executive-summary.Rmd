@@ -24,7 +24,7 @@ which includes links to project reporting for each site. A summary of activities
 
 <br>
 
--  Field assessments were conducted from `r format(min(pscis_phase1_2023$date), format="%B %d, %Y")`-`r format(max(pscis_phase1_2023$date), format="%B %d, %Y")` and `r format(min(pscis_phase1_2024$date), format="%B %d, %Y")`-`r format(max(pscis_phase1_2024$date), format="%B %d, %Y")`, by Allan Irvine, R.P.Bio. and Mateo Winterscheidt, B.Sc, and Lucy Schick, B.Sc. 
+-  Field assessments were conducted from `r format(min(pscis_phase1_2023$date), format="%B %d, %Y")`-`r format(max(pscis_phase1_2024$date), format="%B %d, %Y")`, by Allan Irvine, R.P.Bio., Mateo Winterscheidt, B.Sc, and Lucy Schick, B.Sc. 
 
 -  A total of `r pscis_all |> filter(source != 'pscis_phase2.xlsm') |> nrow()` Fish Passage Assessments were completed across the 2023 and 2024 field seasons, including `r n_distinct(pscis_phase1$my_crossing_reference)` Phase 1 assessments and `r pscis_reassessments |> nrow()` reassessments.
 

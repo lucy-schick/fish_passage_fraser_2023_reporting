@@ -396,9 +396,9 @@ where water temperatures are likely too cold to support fish production) are det
 included as [Attachment - Water Temperature Modelling](#attach-bayes). 
 
 
-## Fish Passage Assessemnts
+## Fish Passage Assessments
 
-Field assessments were conducted from `r format(min(pscis_phase1_2023$date), format="%B %d, %Y")`-`r format(max(pscis_phase1_2023$date), format="%B %d, %Y")` and `r format(min(pscis_phase1_2024$date), format="%B %d, %Y")`-`r format(max(pscis_phase1_2024$date), format="%B %d, %Y")`, by Allan Irvine, R.P.Bio. and Mateo Winterscheidt, B.Sc, and Lucy Schick, B.Sc. 
+Field assessments were conducted from `r format(min(pscis_phase1_2023$date), format="%B %d, %Y")`- `r format(max(pscis_phase1_2024$date), format="%B %d, %Y")`, by Allan Irvine, R.P.Bio., Mateo Winterscheidt, B.Sc, and Lucy Schick, B.Sc. 
 
 ### Road Stream Crossings
 
