@@ -46,7 +46,7 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and several historical chinook observations documented downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. Several other crossings were assessed within the `r fpr::fpr_my_pscis_info()` system in 2023, with results detailed in [Appendix - Phase 1 Fish Passage Assessment Data and Photos].
+In 2023, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and several historical chinook observations documented downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. Several other crossings were assessed within the `r fpr::fpr_my_pscis_info()` system in 2023, with results detailed in `r if(gitbook_on){knitr::asis_output("[Appendix - Phase 1 Fish Passage Assessment Data and Photos]")}else(knitr::asis_output("[Attachment - Phase 1 Data and Photos](#attach-pdf-phase1-dat)"))`.
 
 <br>
 

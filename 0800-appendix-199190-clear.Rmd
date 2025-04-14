@@ -49,7 +49,7 @@ Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray 
 
 <br>
 
-Motivated by these findings, and in addition to a historical chinook salmon observation recorded downstream of Highway 27 in the FISS database [@moe2024KnownBC], several crossings within the Clear Creek system were assessed with fish passage assessments in 2023 with results found in [Appendix - Phase 1 Fish Passage Assessment Data and Photos]. 
+Motivated by these findings, and in addition to a historical chinook salmon observation recorded downstream of Highway 27 in the FISS database [@moe2024KnownBC], several crossings within the Clear Creek system were assessed with fish passage assessments in 2023 with results found in `r if(gitbook_on){knitr::asis_output("[Appendix - Phase 1 Fish Passage Assessment Data and Photos]")}else(knitr::asis_output("[Attachment - Phase 1 Data and Photos](#attach-pdf-phase1-dat)"))`. 
 
 <br>
 
