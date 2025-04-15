@@ -64,7 +64,7 @@ path_tracks <- fs::path_expand("~/Library/CloudStorage/OneDrive-Personal/Project
 
 habitat_confirmation_tracks <- sf::st_read(dsn = path_tracks,
                                            layer = "gps_tracks_2024") |>
-  dplyr::filter(repo == params$repo_name & cleaned == TRUE)
+  dplyr::filter(repo == "fish_passage_fraser_2024_reporting" & cleaned == TRUE)
 
 
 

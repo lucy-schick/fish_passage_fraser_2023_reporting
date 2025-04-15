@@ -37,7 +37,7 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
   # These files are included in the gitbook version already so we move them out of the build
   files_to_move <- list.files(pattern = ".Rmd$") |>
     # 2500 is the phase 1 data and photos used in the pdf version
-    stringr::str_subset('2500', negate = F) #move the attachments out
+    stringr::str_subset('2200', negate = F) #move the attachments out
   files_destination <- paste0('hold/', files_to_move)
 
   ##move the files
@@ -105,8 +105,8 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
   staticimports::import()
   source('scripts/staticimports.R')
 
-  # define the _bookfile_name from _bookdown.yml
-  filename_html <- 'fish_passage_fraser_2023_reporting'
+  # define the _bookfile_name from _bookdown.yml - need to run a chunk of  the index
+  filename_html <- basename(params$repo_url)
 
 
   ## move large appendices to hold for pdf build
@@ -129,7 +129,7 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
   # reduce the size
   tools::compactPDF(paste0("docs/", filename_html, ".pdf"),
-                    gs_quality = 'screen',
+                    gs_quality = 'ebook',
                     ##this was on the windows machine
                     # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
                     gs_cmd = "/opt/homebrew/bin/gs",
@@ -148,12 +148,11 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
 {
 
-  # define the _bookfile_name from _bookdown.yml
-  filename_html <- 'fish_passage_fraser_2023_reporting'
-  repo <- "fish_passage_fraser_2023_reporting"
+  # define the _bookfile_name from _bookdown.yml - need to run a chunk of  the index
+  filename_html <- basename(params$repo_url)
 
   files_to_move <- list.files(pattern = ".Rmd$") |>
-    stringr::str_subset(paste0('index|', repo, '|0600'), negate = T)
+    stringr::str_subset(paste0('index|', filename_html, '|0600'), negate = T)
 
   files_destination <- paste0('hold/', files_to_move)
 
@@ -193,7 +192,7 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
   # reduce the size
   tools::compactPDF("docs/Appendix_1.pdf",
-                    gs_quality = 'screen',
+                    gs_quality = 'ebook',
                     ##this was on the windows machine
                     # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
                     gs_cmd = "/opt/homebrew/bin/gs",
