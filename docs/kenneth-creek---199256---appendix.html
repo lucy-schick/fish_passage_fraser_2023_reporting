@@ -464,9 +464,9 @@ div.csl-indent {
 <h2>Site Location<a href="kenneth-creek---199256---appendix.html#site-location-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>PSCIS crossing 199256 is located on Kenneth Creek, approximately 80km east of Prince George, BC, in the Morkill River watershed group (Figure <a href="kenneth-creek---199256---appendix.html#fig:map-199256">5.35</a>). The crossing is located 9.8km upstream of the confluence of Kenneth Creek and the Fraser River. The crossing is situated on Highway 16, and is the responsibility of the Ministry of Transportation and Infrastructure (<code>chris_hwy_structure_road_id</code>: 3750).</p>
 <p><br></p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="kenneth-creek---199256---appendix.html#cb189-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Kenneth Creek&quot;</span></span>
-<span id="cb189-2"><a href="kenneth-creek---199256---appendix.html#cb189-2" tabindex="-1"></a> </span>
-<span id="cb189-3"><a href="kenneth-creek---199256---appendix.html#cb189-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_kenneth.jpeg&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="kenneth-creek---199256---appendix.html#cb190-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Kenneth Creek&quot;</span></span>
+<span id="cb190-2"><a href="kenneth-creek---199256---appendix.html#cb190-2" tabindex="-1"></a> </span>
+<span id="cb190-3"><a href="kenneth-creek---199256---appendix.html#cb190-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_kenneth.jpeg&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:map-199256"></span>
 <img src="fig/gis/map_kenneth.jpeg" alt="Map of Kenneth Creek" width="100%" />
 <p class="caption">
@@ -491,10 +491,10 @@ a maximum of 1886m to
 <p>A summary of habitat modelling outputs for the crossing are presented in Table
 <a href="kenneth-creek---199256---appendix.html#tab:tab-culvert-bcfp-199256">5.36</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="kenneth-creek---199256---appendix.html#cb190-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
-<span id="cb190-2"><a href="kenneth-creek---199256---appendix.html#cb190-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb190-3"><a href="kenneth-creek---199256---appendix.html#cb190-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
-<span id="cb190-4"><a href="kenneth-creek---199256---appendix.html#cb190-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="kenneth-creek---199256---appendix.html#cb191-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
+<span id="cb191-2"><a href="kenneth-creek---199256---appendix.html#cb191-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb191-3"><a href="kenneth-creek---199256---appendix.html#cb191-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
+<span id="cb191-4"><a href="kenneth-creek---199256---appendix.html#cb191-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-199256">Table 5.35: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199256.
@@ -564,7 +564,7 @@ S
 </tfoot>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="kenneth-creek---199256---appendix.html#cb191-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="kenneth-creek---199256---appendix.html#cb192-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
@@ -841,16 +841,16 @@ SK Rearing (ha)
 <h2>Aerial Imagery<a href="kenneth-creek---199256---appendix.html#aerial-imagery-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An aerial survey was conducted with a remotely piloted aircraft and the resulting imagery was processed into an orthomosaic available to view and download in Figure <a href="kenneth-creek---199256---appendix.html#fig:uav-ortho-199256">5.36</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="kenneth-creek---199256---appendix.html#cb192-1" tabindex="-1"></a>viewer_url <span class="ot">&lt;-</span> <span class="st">&#39;&lt;iframe src=&quot;https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199256_kenneth_hwy16/odm_orthophoto/odm_orthophoto.tif&quot; scrolling=&quot;no&quot; title=&quot;UAV Viewer&quot; width=&quot;100%&quot; height=&quot;600&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;&#39;</span></span>
-<span id="cb192-2"><a href="kenneth-creek---199256---appendix.html#cb192-2" tabindex="-1"></a></span>
-<span id="cb192-3"><a href="kenneth-creek---199256---appendix.html#cb192-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">asis_output</span>(viewer_url)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="kenneth-creek---199256---appendix.html#cb193-1" tabindex="-1"></a>viewer_url <span class="ot">&lt;-</span> <span class="st">&#39;&lt;iframe src=&quot;https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199256_kenneth_hwy16/odm_orthophoto/odm_orthophoto.tif&quot; scrolling=&quot;no&quot; title=&quot;UAV Viewer&quot; width=&quot;100%&quot; height=&quot;600&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;&#39;</span></span>
+<span id="cb193-2"><a href="kenneth-creek---199256---appendix.html#cb193-2" tabindex="-1"></a></span>
+<span id="cb193-3"><a href="kenneth-creek---199256---appendix.html#cb193-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">asis_output</span>(viewer_url)</span></code></pre></div>
 <iframe src="https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199256_kenneth_hwy16/odm_orthophoto/odm_orthophoto.tif" scrolling="no" title="UAV Viewer" width="100%" height="600" frameBorder="0">
 </iframe>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="kenneth-creek---199256---appendix.html#cb193-1" tabindex="-1"></a>my_photo <span class="ot">=</span> <span class="st">&#39;fig/pixel.png&#39;</span></span>
-<span id="cb193-2"><a href="kenneth-creek---199256---appendix.html#cb193-2" tabindex="-1"></a></span>
-<span id="cb193-3"><a href="kenneth-creek---199256---appendix.html#cb193-3" tabindex="-1"></a>my_caption <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Orthomosaic of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span>
-<span id="cb193-4"><a href="kenneth-creek---199256---appendix.html#cb193-4" tabindex="-1"></a></span>
-<span id="cb193-5"><a href="kenneth-creek---199256---appendix.html#cb193-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo, <span class="at">dpi =</span> <span class="cn">NA</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="kenneth-creek---199256---appendix.html#cb194-1" tabindex="-1"></a>my_photo <span class="ot">=</span> <span class="st">&#39;fig/pixel.png&#39;</span></span>
+<span id="cb194-2"><a href="kenneth-creek---199256---appendix.html#cb194-2" tabindex="-1"></a></span>
+<span id="cb194-3"><a href="kenneth-creek---199256---appendix.html#cb194-3" tabindex="-1"></a>my_caption <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Orthomosaic of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span>
+<span id="cb194-4"><a href="kenneth-creek---199256---appendix.html#cb194-4" tabindex="-1"></a></span>
+<span id="cb194-5"><a href="kenneth-creek---199256---appendix.html#cb194-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo, <span class="at">dpi =</span> <span class="cn">NA</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:uav-ortho-199256"></span>
 <img src="fig/pixel.png" alt="Orthomosaic of PSCIS crossing 199256." width="0.01%" />
 <p class="caption">
@@ -867,10 +867,10 @@ Figure 5.36: Orthomosaic of PSCIS crossing 199256.
 pH was 7.8 and
 conductivity was 201 uS/cm.</p>
 <p><br></p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="kenneth-creek---199256---appendix.html#cb194-1" tabindex="-1"></a><span class="co"># fpr::fpr_table_cv_summary_memo()</span></span>
-<span id="cb194-2"><a href="kenneth-creek---199256---appendix.html#cb194-2" tabindex="-1"></a></span>
-<span id="cb194-3"><a href="kenneth-creek---199256---appendix.html#cb194-3" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
-<span id="cb194-4"><a href="kenneth-creek---199256---appendix.html#cb194-4" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="kenneth-creek---199256---appendix.html#cb195-1" tabindex="-1"></a><span class="co"># fpr::fpr_table_cv_summary_memo()</span></span>
+<span id="cb195-2"><a href="kenneth-creek---199256---appendix.html#cb195-2" tabindex="-1"></a></span>
+<span id="cb195-3"><a href="kenneth-creek---199256---appendix.html#cb195-3" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
+<span id="cb195-4"><a href="kenneth-creek---199256---appendix.html#cb195-4" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-199256">Table 5.37: </span>Summary of fish passage assessment for PSCIS crossing 199256.
@@ -1132,9 +1132,9 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="kenneth-creek---199256---appendix.html#cb195-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb195-2"><a href="kenneth-creek---199256---appendix.html#cb195-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
-<span id="cb195-3"><a href="kenneth-creek---199256---appendix.html#cb195-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="kenneth-creek---199256---appendix.html#cb196-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb196-2"><a href="kenneth-creek---199256---appendix.html#cb196-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
+<span id="cb196-3"><a href="kenneth-creek---199256---appendix.html#cb196-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
 </div>
 <div id="stream-characteristics-downstream-of-crossing-199256" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 199256<a href="kenneth-creek---199256---appendix.html#stream-characteristics-downstream-of-crossing-199256" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1158,10 +1158,10 @@ Fix Span / Diameter
 <p>Kenneth Creek is a large, gravel-dominated stream with high-value habitat for salmonid spawning and rearing. Chinook and bull trout have been documented upstream <span class="citation">(Norris [2018] 2024; MoE 2024)</span>, and a dead chinook spawner was observed upstream of the Highway 16 culvert during an informal site visit in 2022. The crossing had a significant 0.7m outlet drop, and fish sampling is recommended to determine if it is currently inhibiting fish passage. Additionally, <code>bcfishpass</code> modeling indicates nearly 50km of potential chinook spawning habitat upstream. The crossing is a moderate priority for replacement.</p>
 <p><br></p>
 <p><br></p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="kenneth-creek---199256---appendix.html#cb196-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
-<span id="cb196-2"><a href="kenneth-creek---199256---appendix.html#cb196-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site)) <span class="sc">|&gt;</span> </span>
-<span id="cb196-3"><a href="kenneth-creek---199256---appendix.html#cb196-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb196-4"><a href="kenneth-creek---199256---appendix.html#cb196-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="kenneth-creek---199256---appendix.html#cb197-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
+<span id="cb197-2"><a href="kenneth-creek---199256---appendix.html#cb197-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site)) <span class="sc">|&gt;</span> </span>
+<span id="cb197-3"><a href="kenneth-creek---199256---appendix.html#cb197-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb197-4"><a href="kenneth-creek---199256---appendix.html#cb197-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-199256">Table 5.38: </span>Summary of habitat details for PSCIS crossing 199256.
@@ -1259,10 +1259,10 @@ high
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="kenneth-creek---199256---appendix.html#cb197-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_1_&#39;</span>)</span>
-<span id="cb197-2"><a href="kenneth-creek---199256---appendix.html#cb197-2" tabindex="-1"></a></span>
-<span id="cb197-3"><a href="kenneth-creek---199256---appendix.html#cb197-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="kenneth-creek---199256---appendix.html#cb198-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="kenneth-creek---199256---appendix.html#cb198-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_1_&#39;</span>)</span>
+<span id="cb198-2"><a href="kenneth-creek---199256---appendix.html#cb198-2" tabindex="-1"></a></span>
+<span id="cb198-3"><a href="kenneth-creek---199256---appendix.html#cb198-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="kenneth-creek---199256---appendix.html#cb199-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199256-01"></span>
 <img src="data/photos/199256/20241007_115214_ds_typical_1_k_.JPG" alt="Typical habitat downstream of PSCIS crossing 199256." width="100%" />
 <p class="caption">
@@ -1270,26 +1270,26 @@ Figure 5.37: Typical habitat downstream of PSCIS crossing 199256.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="kenneth-creek---199256---appendix.html#cb199-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_2_&#39;</span>)</span>
-<span id="cb199-2"><a href="kenneth-creek---199256---appendix.html#cb199-2" tabindex="-1"></a></span>
-<span id="cb199-3"><a href="kenneth-creek---199256---appendix.html#cb199-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="kenneth-creek---199256---appendix.html#cb200-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="kenneth-creek---199256---appendix.html#cb200-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_2_&#39;</span>)</span>
+<span id="cb200-2"><a href="kenneth-creek---199256---appendix.html#cb200-2" tabindex="-1"></a></span>
+<span id="cb200-3"><a href="kenneth-creek---199256---appendix.html#cb200-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="kenneth-creek---199256---appendix.html#cb201-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199256-02"></span>
 <img src="data/photos/199256/20241007_115703_us_typical_2_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199256." width="100%" />
 <p class="caption">
 Figure 5.38: Typical habitat upstream of PSCIS crossing 199256.
 </p>
 </div>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="kenneth-creek---199256---appendix.html#cb201-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb201-2"><a href="kenneth-creek---199256---appendix.html#cb201-2" tabindex="-1"></a></span>
-<span id="cb201-3"><a href="kenneth-creek---199256---appendix.html#cb201-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb201-4"><a href="kenneth-creek---199256---appendix.html#cb201-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb201-5"><a href="kenneth-creek---199256---appendix.html#cb201-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<p><br></p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="kenneth-creek---199256---appendix.html#cb202-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_logsandriprap&#39;</span>)</span>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="kenneth-creek---199256---appendix.html#cb202-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
 <span id="cb202-2"><a href="kenneth-creek---199256---appendix.html#cb202-2" tabindex="-1"></a></span>
-<span id="cb202-3"><a href="kenneth-creek---199256---appendix.html#cb202-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Ripwrapped banks and large wood structures secured with metal wiring located downstream of crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="kenneth-creek---199256---appendix.html#cb203-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<span id="cb202-3"><a href="kenneth-creek---199256---appendix.html#cb202-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb202-4"><a href="kenneth-creek---199256---appendix.html#cb202-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb202-5"><a href="kenneth-creek---199256---appendix.html#cb202-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="kenneth-creek---199256---appendix.html#cb203-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_logsandriprap&#39;</span>)</span>
+<span id="cb203-2"><a href="kenneth-creek---199256---appendix.html#cb203-2" tabindex="-1"></a></span>
+<span id="cb203-3"><a href="kenneth-creek---199256---appendix.html#cb203-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Ripwrapped banks and large wood structures secured with metal wiring located downstream of crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="kenneth-creek---199256---appendix.html#cb204-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199256-03"></span>
 <img src="data/photos/199256/20241007_121102_ds_logsandriprap_k_.JPG" alt="Ripwrapped banks and large wood structures secured with metal wiring located downstream of crossing 199256." width="100%" />
 <p class="caption">
@@ -1297,11 +1297,11 @@ Figure 5.39: Ripwrapped banks and large wood structures secured with metal wirin
 </p>
 </div>
 
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="kenneth-creek---199256---appendix.html#cb204-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb204-2"><a href="kenneth-creek---199256---appendix.html#cb204-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb204-3"><a href="kenneth-creek---199256---appendix.html#cb204-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb204-4"><a href="kenneth-creek---199256---appendix.html#cb204-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="kenneth-creek---199256---appendix.html#cb205-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199260</span></span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="kenneth-creek---199256---appendix.html#cb205-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb205-2"><a href="kenneth-creek---199256---appendix.html#cb205-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb205-3"><a href="kenneth-creek---199256---appendix.html#cb205-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
+<span id="cb205-4"><a href="kenneth-creek---199256---appendix.html#cb205-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="kenneth-creek---199256---appendix.html#cb206-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199260</span></span></code></pre></div>
 </div>
 </div>
             </section>

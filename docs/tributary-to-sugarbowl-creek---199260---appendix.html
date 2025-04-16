@@ -464,9 +464,9 @@ div.csl-indent {
 <h2>Site Location<a href="tributary-to-sugarbowl-creek---199260---appendix.html#site-location-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>PSCIS crossing 199260 is located on Tributary To Sugarbowl Creek, approximately 100km east of Prince George, BC, in the Morkill River watershed group (Figure <a href="tributary-to-sugarbowl-creek---199260---appendix.html#fig:map-199260">5.40</a>). The crossing is located 2.4km upstream of Sugarbowl Creek, which flows into Kenneth Creek before joining the Fraser River. The crossing is situated on Highway 16 and is under the jurisdiction of the Ministry of Transportation and Infrastructure (<code>chris_culvert_id</code>: 1992815).</p>
 <p><br></p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb206-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Tributary to Sugarbowl Creek&quot;</span></span>
-<span id="cb206-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb206-2" tabindex="-1"></a> </span>
-<span id="cb206-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb206-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_trib_sugarbowl.jpeg&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb207-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Tributary to Sugarbowl Creek&quot;</span></span>
+<span id="cb207-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb207-2" tabindex="-1"></a> </span>
+<span id="cb207-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb207-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_trib_sugarbowl.jpeg&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:map-199260"></span>
 <img src="fig/gis/map_trib_sugarbowl.jpeg" alt="Map of Tributary to Sugarbowl Creek" width="100%" />
 <p class="caption">
@@ -493,10 +493,10 @@ a maximum of 1801m to
 <!-- A summary of habitat modelling outputs for the crossing are presented in Table -->
 <!-- \@ref(tab:tab-culvert-bcfp-199260). -->
 <p><br></p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb207-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
-<span id="cb207-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb207-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb207-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb207-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
-<span id="cb207-4"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb207-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb208-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
+<span id="cb208-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb208-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb208-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb208-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
+<span id="cb208-4"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb208-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-199260">Table 5.39: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199260.
@@ -565,7 +565,7 @@ NE
 </tr>
 </tfoot>
 </table>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb208-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb209-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <p><br></p>
 </div>
 <div id="stream-characteristics-at-crossing-199260" class="section level2 unnumbered hasAnchor">
@@ -576,7 +576,7 @@ NE
 pH was 7.8 and
 conductivity was 208 uS/cm.</p>
 <p><br></p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb209-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb210-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-199260">Table 5.40: </span>Summary of fish passage assessment for PSCIS crossing 199260.
@@ -840,18 +840,18 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb210-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb210-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb210-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
-<span id="cb210-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb210-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb211-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb211-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb211-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
+<span id="cb211-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb211-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
 </div>
 <div id="stream-characteristics-downstream-of-crossing-199260" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 199260<a href="tributary-to-sugarbowl-creek---199260---appendix.html#stream-characteristics-downstream-of-crossing-199260" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed downstream from crossing 199260 for 320m (Figure <a href="tributary-to-sugarbowl-creek---199260---appendix.html#fig:photo-199260-01">5.41</a>). The habitat was rated as high value, with gravels suitable for spawning and occasional pools ranging from 0.2–0.4m deep providing overwintering habitat. The stream flowed through a healthy, mature old-growth forest. The average channel width was 7m, the average wetted width was 4.2m, and the average gradient was 5.3%.The dominant substrate was cobbles with boulders sub-dominant.Total cover amount was rated as abundant with large woody debris dominant. Cover was also present as small woody debris and boulders.</p>
+<p>The stream was surveyed downstream from crossing 199260 for 320m (Figure <a href="tributary-to-sugarbowl-creek---199260---appendix.html#fig:photo-199260-01">5.41</a>). The habitat was rated as high value, with gravels suitable for spawning and occasional pools ranging from 0.2–0.4m deep providing overwintering habitat. The stream flowed through a healthy, mature old-growth forest. The average channel width was 7m, the average wetted width was 4.2m, and the average gradient was 5.3%.Total cover amount was rated as abundant with large woody debris dominant. Cover was also present as small woody debris and boulders.The dominant substrate was cobbles with boulders sub-dominant.</p>
 <p><br></p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199260" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199260<a href="tributary-to-sugarbowl-creek---199260---appendix.html#stream-characteristics-upstream-of-crossing-199260" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199260 for 650m (Figure <a href="tributary-to-sugarbowl-creek---199260---appendix.html#fig:photo-199260-02">5.42</a>). The habitat was rated as medium value, and appeared suitable for large bull trout spawning and rearing. The stream was a larger, steeper system with intact, mature coniferous cedar-hemlock riparian cover, primarily stable banks, and abundant large woody debris throughout. A step-pool morphology was present, characterized by pools up to 80cm deep and debris jam steps ranging from 30–60cm. The dominant substrate was cobbles with gravels sub-dominant.The average channel width was 6.1m, the average wetted width was 5.1m, and the average gradient was 7.1%.Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, boulders, undercut banks, deep pools, and overhanging vegetation.</p>
+<p>The stream was surveyed upstream from crossing 199260 for 650m (Figure <a href="tributary-to-sugarbowl-creek---199260---appendix.html#fig:photo-199260-02">5.42</a>). The habitat was rated as medium value, and appeared suitable for large bull trout spawning and rearing. The stream was a larger, steeper system with intact, mature coniferous cedar-hemlock riparian cover, primarily stable banks, and abundant large woody debris throughout. A step-pool morphology was present, characterized by pools up to 80cm deep and debris jam steps ranging from 30–60cm. The average channel width was 6.1m, the average wetted width was 5.1m, and the average gradient was 7.1%.Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, boulders, undercut banks, deep pools, and overhanging vegetation.The dominant substrate was cobbles with gravels sub-dominant.</p>
 <p><br></p>
 </div>
 <div id="structure-remediation-and-cost-estimate-9" class="section level2 unnumbered hasAnchor">
@@ -864,10 +864,10 @@ Fix Span / Diameter
 <p>PSCIS crossing 199260 had a substantial 1.4m outlet drop and is a high priority for replacement. Average gradients were generally above the maximum thresholds for chinook spawning and rearing (4.5% and 5.5%, respectively), but fell within the suitable range for bull trout spawning and rearing (5.5% and 10.5%, respectively). The habitat upstream was rated as medium value for bull trout spawning and rearing, with <code>bcfishpass</code> modeling indicating ~900m of potential bull trout rearing habitat upstream of the crossing. Given the crossings location within Sugarbowl-Grizzly Den Provincial Park and the park’s ecological significance, restoration efforts could align with broader conservation initiatives and public engagement, increasing the likelihood of funding and project momentum.</p>
 <p><br></p>
 <p><br></p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb211-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
-<span id="cb211-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb211-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site)) <span class="sc">|&gt;</span> </span>
-<span id="cb211-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb211-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb211-4"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb211-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb212-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
+<span id="cb212-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb212-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site)) <span class="sc">|&gt;</span> </span>
+<span id="cb212-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb212-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb212-4"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb212-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-199260">Table 5.41: </span>Summary of habitat details for PSCIS crossing 199260.
@@ -965,10 +965,10 @@ medium
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb212-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_1_&#39;</span>)</span>
-<span id="cb212-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb212-2" tabindex="-1"></a></span>
-<span id="cb212-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb212-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb213-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb213-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_1_&#39;</span>)</span>
+<span id="cb213-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb213-2" tabindex="-1"></a></span>
+<span id="cb213-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb213-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb214-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199260-01"></span>
 <img src="data/photos/199260/20241007_142455_ds_typical_1_k_.JPG" alt="Typical habitat downstream of PSCIS crossing 199260." width="100%" />
 <p class="caption">
@@ -976,27 +976,27 @@ Figure 5.41: Typical habitat downstream of PSCIS crossing 199260.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb214-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_1_&#39;</span>)</span>
-<span id="cb214-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb214-2" tabindex="-1"></a></span>
-<span id="cb214-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb214-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb215-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb215-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_1_&#39;</span>)</span>
+<span id="cb215-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb215-2" tabindex="-1"></a></span>
+<span id="cb215-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb215-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb216-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199260-02"></span>
 <img src="data/photos/199260/20241007_141718_us_typical_1_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199260." width="100%" />
 <p class="caption">
 Figure 5.42: Typical habitat upstream of PSCIS crossing 199260.
 </p>
 </div>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb216-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb216-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb216-2" tabindex="-1"></a></span>
-<span id="cb216-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb216-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb216-4"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb216-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb216-5"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb216-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb217-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb217-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb217-2" tabindex="-1"></a></span>
+<span id="cb217-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb217-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb217-4"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb217-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb217-5"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb217-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb217-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb217-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb217-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb217-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb217-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb217-4"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb217-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb218-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199267</span></span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb218-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb218-2"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb218-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb218-3"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb218-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
+<span id="cb218-4"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb218-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="tributary-to-sugarbowl-creek---199260---appendix.html#cb219-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199267</span></span></code></pre></div>
 </div>
 </div>
             </section>

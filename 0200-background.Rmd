@@ -1,5 +1,9 @@
 # Background
 
+```{r setup-background}
+knitr::opts_chunk$set(fig.path = "fig/background/", dev = "png")
+```
+
 ## Project Location
 
 The study area spans from Burns Lake to Valemount, British Columbia, and includes the Nechako River, Lower Chilako River, François Lake, Morkhill River and Upper Fraser River watershed groups.

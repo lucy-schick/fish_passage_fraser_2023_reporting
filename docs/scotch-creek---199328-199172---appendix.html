@@ -464,9 +464,9 @@ div.csl-indent {
 <h2>Site Location<a href="scotch-creek---199328-199172---appendix.html#site-location-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>PSCIS crossings 199328 and 199172 are located on Scotch Creek which flows into the northern side of Fraser Lake, BC, approximately 8km northwest of the Nadleh Whut’en First Nations community, in the Francois Lake watershed group (Figure <a href="scotch-creek---199328-199172---appendix.html#fig:map-199328">5.7</a>). Crossing 199328 is located 230m upstream of Fraser Lake, on Gala Bay Road, and is the responsibility of the Ministry of Transportation and Infrastructure (<code>chris_culvert_id</code>: 1790947 and 3365573). A further 270m upstream, PSCIS crossing 199172 is located on Stella Road and is the responsibility of the Ministry of Transportation and Infrastructure (<code>chris_culvert_id</code>: 1794199).</p>
 <p><br></p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="scotch-creek---199328-199172---appendix.html#cb79-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Scotch Creek&quot;</span></span>
-<span id="cb79-2"><a href="scotch-creek---199328-199172---appendix.html#cb79-2" tabindex="-1"></a> </span>
-<span id="cb79-3"><a href="scotch-creek---199328-199172---appendix.html#cb79-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_scotch.jpeg&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="scotch-creek---199328-199172---appendix.html#cb80-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Scotch Creek&quot;</span></span>
+<span id="cb80-2"><a href="scotch-creek---199328-199172---appendix.html#cb80-2" tabindex="-1"></a> </span>
+<span id="cb80-3"><a href="scotch-creek---199328-199172---appendix.html#cb80-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_scotch.jpeg&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:map-199328"></span>
 <img src="fig/gis/map_scotch.jpeg" alt="Map of Scotch Creek" width="100%" />
 <p class="caption">
@@ -489,10 +489,10 @@ a maximum of 1091m to
 <!-- A summary of habitat modelling outputs for the crossing are presented in Table -->
 <!-- \@ref(tab:tab-culvert-bcfp-199328).  -->
 <!-- <br> -->
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="scotch-creek---199328-199172---appendix.html#cb80-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
-<span id="cb80-2"><a href="scotch-creek---199328-199172---appendix.html#cb80-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb80-3"><a href="scotch-creek---199328-199172---appendix.html#cb80-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
-<span id="cb80-4"><a href="scotch-creek---199328-199172---appendix.html#cb80-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="scotch-creek---199328-199172---appendix.html#cb81-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
+<span id="cb81-2"><a href="scotch-creek---199328-199172---appendix.html#cb81-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb81-3"><a href="scotch-creek---199328-199172---appendix.html#cb81-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
+<span id="cb81-4"><a href="scotch-creek---199328-199172---appendix.html#cb81-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-199328">Table 5.5: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199328.
@@ -561,7 +561,7 @@ S
 </tr>
 </tfoot>
 </table>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="scotch-creek---199328-199172---appendix.html#cb81-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="scotch-creek---199328-199172---appendix.html#cb82-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <p><br></p>
 </div>
 <div id="stream-characteristics-at-crossings-199328-and-199172" class="section level2 unnumbered hasAnchor">
@@ -577,7 +577,7 @@ S
 pH was 7.8 and
 conductivity was 208 uS/cm.</p>
 <p><br></p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="scotch-creek---199328-199172---appendix.html#cb82-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="scotch-creek---199328-199172---appendix.html#cb83-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-199328">Table 5.6: </span>Summary of fish passage assessment for PSCIS crossing 199328.
@@ -841,7 +841,7 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="scotch-creek---199328-199172---appendix.html#cb83-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="scotch-creek---199328-199172---appendix.html#cb84-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-199172">Table 5.7: </span>Summary of fish passage assessment for PSCIS crossing 199172.
@@ -1105,8 +1105,8 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="scotch-creek---199328-199172---appendix.html#cb84-1" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
-<span id="cb84-2"><a href="scotch-creek---199328-199172---appendix.html#cb84-2" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>(<span class="at">dat =</span> pscis_all, <span class="at">site =</span> <span class="dv">203297</span>, <span class="at">site_photo_id =</span> <span class="dv">203297</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="scotch-creek---199328-199172---appendix.html#cb85-1" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
+<span id="cb85-2"><a href="scotch-creek---199328-199172---appendix.html#cb85-2" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>(<span class="at">dat =</span> pscis_all, <span class="at">site =</span> <span class="dv">203297</span>, <span class="at">site_photo_id =</span> <span class="dv">203297</span>)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-203297">Table 5.8: </span>Summary of fish passage assessment for PSCIS crossing 203297.
@@ -1368,14 +1368,14 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="scotch-creek---199328-199172---appendix.html#cb85-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb85-2"><a href="scotch-creek---199328-199172---appendix.html#cb85-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
-<span id="cb85-3"><a href="scotch-creek---199328-199172---appendix.html#cb85-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site2 <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
-<span id="cb85-4"><a href="scotch-creek---199328-199172---appendix.html#cb85-4" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site2 <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="scotch-creek---199328-199172---appendix.html#cb86-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb86-2"><a href="scotch-creek---199328-199172---appendix.html#cb86-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
+<span id="cb86-3"><a href="scotch-creek---199328-199172---appendix.html#cb86-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site2 <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
+<span id="cb86-4"><a href="scotch-creek---199328-199172---appendix.html#cb86-4" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site2 <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
 </div>
 <div id="stream-characteristics-downstream-of-crossing-199328" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 199328<a href="scotch-creek---199328-199172---appendix.html#stream-characteristics-downstream-of-crossing-199328" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed downstream from crossing 199328 for 230m (Figure <a href="scotch-creek---199328-199172---appendix.html#fig:photo-199328-01">5.8</a>). The stream was small, low-gradient, and gravel-dominated, with habitat rated as medium value for spawning and rearing. Channelization with riprap was present near the upstream end of the survey and again near the mouth at Fraser Lake. A possible algal bloom was observed along the lake shoreline (Figure <a href="scotch-creek---199328-199172---appendix.html#fig:photo-199328-02">5.9</a>). The dominant substrate was gravels with fines sub-dominant.The average channel width was 2.9m, the average wetted width was 1.6m, and the average gradient was 1.8%.Total cover amount was rated as moderate with overhanging vegetation dominant. Cover was also present as .</p>
+<p>The stream was surveyed downstream from crossing 199328 for 230m (Figure <a href="scotch-creek---199328-199172---appendix.html#fig:photo-199328-01">5.8</a>). The stream was small, low-gradient, and gravel-dominated, with habitat rated as medium value for spawning and rearing. Channelization with riprap was present near the upstream end of the survey and again near the mouth at Fraser Lake. A possible algal bloom was observed along the lake shoreline (Figure <a href="scotch-creek---199328-199172---appendix.html#fig:photo-199328-02">5.9</a>). The dominant substrate was gravels with fines sub-dominant.Total cover amount was rated as moderate with overhanging vegetation dominant. Cover was also present as .The average channel width was 2.9m, the average wetted width was 1.6m, and the average gradient was 1.8%.</p>
 <p><br></p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199328-and-downstream-of-crossing-199172" class="section level2 unnumbered hasAnchor">
@@ -1385,7 +1385,7 @@ Fix Span / Diameter
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199172" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199172<a href="scotch-creek---199328-199172---appendix.html#stream-characteristics-upstream-of-crossing-199172" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199172 for 550m (Figure <a href="scotch-creek---199328-199172---appendix.html#fig:photo-199172-02">5.11</a>). The habitat was rated as medium value, with abundant functional large woody debris creating pools 20–30cm deep, suitable for overwintering juvenile fish. Overhead cover was extensive, and occasional gravels were suitable for spawning. Approximately 400m upstream of Stella Road, the stream transitioned into a beaver-impounded area with four consecutive dams (1–1.5m high) impounding a large volume of water. Flow was maintained over or under the dams and the impounded area extended to the upper end of the surveyed area. A fish (~40mm) was observed after the second dam. The dominant substrate was gravels with fines sub-dominant.The average channel width was 2.6m, the average wetted width was 1.5m, and the average gradient was 4.3%.Total cover amount was rated as abundant with large woody debris dominant. Cover was also present as small woody debris, undercut banks, and overhanging vegetation.</p>
+<p>The stream was surveyed upstream from crossing 199172 for 550m (Figure <a href="scotch-creek---199328-199172---appendix.html#fig:photo-199172-02">5.11</a>). The habitat was rated as medium value, with abundant functional large woody debris creating pools 20–30cm deep, suitable for overwintering juvenile fish. Overhead cover was extensive, and occasional gravels were suitable for spawning. Approximately 400m upstream of Stella Road, the stream transitioned into a beaver-impounded area with four consecutive dams (1–1.5m high) impounding a large volume of water. Flow was maintained over or under the dams and the impounded area extended to the upper end of the surveyed area. A fish (~40mm) was observed after the second dam. Total cover amount was rated as abundant with large woody debris dominant. Cover was also present as small woody debris, undercut banks, and overhanging vegetation.The average channel width was 2.6m, the average wetted width was 1.5m, and the average gradient was 4.3%.The dominant substrate was gravels with fines sub-dominant.</p>
 <p><br></p>
 <p>PSCIS crossing 203297 was located approximately 150m upstream of Stella Road on a private road, where the culvert had a significant outlet drop, severe erosion at the inlet, and the road was collapsing.</p>
 <p><br></p>
@@ -1404,10 +1404,10 @@ Fix Span / Diameter
 <p>Scotch Creek is a small stream that flows into Fraser Lake, with a documented chinook observation from 2018 near the outflow into the lake <span class="citation">(Norris [2018] 2024; MoE 2024)</span>. The downstream crossing on Gala Bay Road was ranked as passable; however, PSCIS crossing 199172 on Stella Road had a significant 1.35m outlet drop and presented a clear barrier to upstream fish passage. Fish sampling is recommended to determine whether fish are able to ascend past the Stella Road crossing. The crossing is a high priority for replacement. A further 150m upstream of Stella Road, PSCIS crossing 203297 was an additional barrier to fish passage, with a 0.7m outlet drop and severe erosion obstructing the inlet. The road was heavily overgrown and collapsing, appeared to be unused, and would be a strong candidate for deactivation and removal.</p>
 <p><br></p>
 <p><br></p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="scotch-creek---199328-199172---appendix.html#cb86-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
-<span id="cb86-2"><a href="scotch-creek---199328-199172---appendix.html#cb86-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site, my_site2)) <span class="sc">|&gt;</span> </span>
-<span id="cb86-3"><a href="scotch-creek---199328-199172---appendix.html#cb86-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossings &quot;</span>, my_site, <span class="st">&quot; and &quot;</span>, my_site2, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb86-4"><a href="scotch-creek---199328-199172---appendix.html#cb86-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="scotch-creek---199328-199172---appendix.html#cb87-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
+<span id="cb87-2"><a href="scotch-creek---199328-199172---appendix.html#cb87-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site, my_site2)) <span class="sc">|&gt;</span> </span>
+<span id="cb87-3"><a href="scotch-creek---199328-199172---appendix.html#cb87-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossings &quot;</span>, my_site, <span class="st">&quot; and &quot;</span>, my_site2, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb87-4"><a href="scotch-creek---199328-199172---appendix.html#cb87-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-199328">Table 5.9: </span>Summary of habitat details for PSCIS crossings 199328 and 199172.
@@ -1534,10 +1534,10 @@ medium
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="scotch-creek---199328-199172---appendix.html#cb87-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_2_&#39;</span>)</span>
-<span id="cb87-2"><a href="scotch-creek---199328-199172---appendix.html#cb87-2" tabindex="-1"></a></span>
-<span id="cb87-3"><a href="scotch-creek---199328-199172---appendix.html#cb87-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="scotch-creek---199328-199172---appendix.html#cb88-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="scotch-creek---199328-199172---appendix.html#cb88-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_2_&#39;</span>)</span>
+<span id="cb88-2"><a href="scotch-creek---199328-199172---appendix.html#cb88-2" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="scotch-creek---199328-199172---appendix.html#cb88-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="scotch-creek---199328-199172---appendix.html#cb89-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199328-01"></span>
 <img src="data/photos/199328/20241004_111202_ds_typical_2_k_.JPG" alt="Typical habitat downstream of PSCIS crossing 199328." width="100%" />
 <p class="caption">
@@ -1545,26 +1545,26 @@ Figure 5.8: Typical habitat downstream of PSCIS crossing 199328.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="scotch-creek---199328-199172---appendix.html#cb89-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_lakealgalbloom&#39;</span>)</span>
-<span id="cb89-2"><a href="scotch-creek---199328-199172---appendix.html#cb89-2" tabindex="-1"></a></span>
-<span id="cb89-3"><a href="scotch-creek---199328-199172---appendix.html#cb89-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Algal bloom observed downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in Fraser Lake.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="scotch-creek---199328-199172---appendix.html#cb90-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="scotch-creek---199328-199172---appendix.html#cb90-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_lakealgalbloom&#39;</span>)</span>
+<span id="cb90-2"><a href="scotch-creek---199328-199172---appendix.html#cb90-2" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="scotch-creek---199328-199172---appendix.html#cb90-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Algal bloom observed downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in Fraser Lake.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="scotch-creek---199328-199172---appendix.html#cb91-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199328-02"></span>
 <img src="data/photos/199328/20241004_111207_ds_lakealgalbloom_k_.JPG" alt="Algal bloom observed downstream of PSCIS crossing 199328 in Fraser Lake." width="100%" />
 <p class="caption">
 Figure 5.9: Algal bloom observed downstream of PSCIS crossing 199328 in Fraser Lake.
 </p>
 </div>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="scotch-creek---199328-199172---appendix.html#cb91-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb91-2"><a href="scotch-creek---199328-199172---appendix.html#cb91-2" tabindex="-1"></a></span>
-<span id="cb91-3"><a href="scotch-creek---199328-199172---appendix.html#cb91-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb91-4"><a href="scotch-creek---199328-199172---appendix.html#cb91-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb91-5"><a href="scotch-creek---199328-199172---appendix.html#cb91-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<p><br></p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="scotch-creek---199328-199172---appendix.html#cb92-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_1_&#39;</span>)</span>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="scotch-creek---199328-199172---appendix.html#cb92-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
 <span id="cb92-2"><a href="scotch-creek---199328-199172---appendix.html#cb92-2" tabindex="-1"></a></span>
-<span id="cb92-3"><a href="scotch-creek---199328-199172---appendix.html#cb92-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; and downstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="scotch-creek---199328-199172---appendix.html#cb93-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<span id="cb92-3"><a href="scotch-creek---199328-199172---appendix.html#cb92-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb92-4"><a href="scotch-creek---199328-199172---appendix.html#cb92-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb92-5"><a href="scotch-creek---199328-199172---appendix.html#cb92-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="scotch-creek---199328-199172---appendix.html#cb93-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_1_&#39;</span>)</span>
+<span id="cb93-2"><a href="scotch-creek---199328-199172---appendix.html#cb93-2" tabindex="-1"></a></span>
+<span id="cb93-3"><a href="scotch-creek---199328-199172---appendix.html#cb93-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; and downstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="scotch-creek---199328-199172---appendix.html#cb94-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199172-01"></span>
 <img src="data/photos/199172/20241004_103157_ds_typical_1_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199328 and downstream of PSCIS crossing 199172." width="100%" />
 <p class="caption">
@@ -1572,28 +1572,28 @@ Figure 5.10: Typical habitat upstream of PSCIS crossing 199328 and downstream of
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="scotch-creek---199328-199172---appendix.html#cb94-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_1_&#39;</span>)</span>
-<span id="cb94-2"><a href="scotch-creek---199328-199172---appendix.html#cb94-2" tabindex="-1"></a></span>
-<span id="cb94-3"><a href="scotch-creek---199328-199172---appendix.html#cb94-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="scotch-creek---199328-199172---appendix.html#cb95-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="scotch-creek---199328-199172---appendix.html#cb95-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_1_&#39;</span>)</span>
+<span id="cb95-2"><a href="scotch-creek---199328-199172---appendix.html#cb95-2" tabindex="-1"></a></span>
+<span id="cb95-3"><a href="scotch-creek---199328-199172---appendix.html#cb95-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="scotch-creek---199328-199172---appendix.html#cb96-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199172-02"></span>
 <img src="data/photos/199172/20241004_112849_us_typical_1_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199172." width="100%" />
 <p class="caption">
 Figure 5.11: Typical habitat upstream of PSCIS crossing 199172.
 </p>
 </div>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="scotch-creek---199328-199172---appendix.html#cb96-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb96-2"><a href="scotch-creek---199328-199172---appendix.html#cb96-2" tabindex="-1"></a></span>
-<span id="cb96-3"><a href="scotch-creek---199328-199172---appendix.html#cb96-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb96-4"><a href="scotch-creek---199328-199172---appendix.html#cb96-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb96-5"><a href="scotch-creek---199328-199172---appendix.html#cb96-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="scotch-creek---199328-199172---appendix.html#cb97-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb97-2"><a href="scotch-creek---199328-199172---appendix.html#cb97-2" tabindex="-1"></a></span>
+<span id="cb97-3"><a href="scotch-creek---199328-199172---appendix.html#cb97-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb97-4"><a href="scotch-creek---199328-199172---appendix.html#cb97-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb97-5"><a href="scotch-creek---199328-199172---appendix.html#cb97-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="scotch-creek---199328-199172---appendix.html#cb97-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb97-2"><a href="scotch-creek---199328-199172---appendix.html#cb97-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb97-3"><a href="scotch-creek---199328-199172---appendix.html#cb97-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb97-4"><a href="scotch-creek---199328-199172---appendix.html#cb97-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="scotch-creek---199328-199172---appendix.html#cb98-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199173</span></span>
-<span id="cb98-2"><a href="scotch-creek---199328-199172---appendix.html#cb98-2" tabindex="-1"></a>my_site2 <span class="ot">&lt;-</span> <span class="dv">199174</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="scotch-creek---199328-199172---appendix.html#cb98-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb98-2"><a href="scotch-creek---199328-199172---appendix.html#cb98-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb98-3"><a href="scotch-creek---199328-199172---appendix.html#cb98-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
+<span id="cb98-4"><a href="scotch-creek---199328-199172---appendix.html#cb98-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="scotch-creek---199328-199172---appendix.html#cb99-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199173</span></span>
+<span id="cb99-2"><a href="scotch-creek---199328-199172---appendix.html#cb99-2" tabindex="-1"></a>my_site2 <span class="ot">&lt;-</span> <span class="dv">199174</span></span></code></pre></div>
 </div>
 </div>
             </section>

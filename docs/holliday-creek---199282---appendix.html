@@ -464,9 +464,9 @@ div.csl-indent {
 <h2>Site Location<a href="holliday-creek---199282---appendix.html#site-location-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>PSCIS crossing 199282 is located on Holliday Creek, approximately 23km southeast of McBride, BC, in the Upper Fraser River watershed group (Figure <a href="holliday-creek---199282---appendix.html#fig:map-199282">5.50</a>). The crossing is located 2.4km upstream of where Holliday Creek joins the Fraser River. Situated on Highway 16, the crossing is the responsibility of the Ministry of Transportation and Infrastructure (<code>chris_culvert_id</code>: 29925).</p>
 <p><br></p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="holliday-creek---199282---appendix.html#cb249-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Holliday Creek&quot;</span></span>
-<span id="cb249-2"><a href="holliday-creek---199282---appendix.html#cb249-2" tabindex="-1"></a> </span>
-<span id="cb249-3"><a href="holliday-creek---199282---appendix.html#cb249-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_holliday.jpeg&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="holliday-creek---199282---appendix.html#cb250-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Holliday Creek&quot;</span></span>
+<span id="cb250-2"><a href="holliday-creek---199282---appendix.html#cb250-2" tabindex="-1"></a> </span>
+<span id="cb250-3"><a href="holliday-creek---199282---appendix.html#cb250-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_holliday.jpeg&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:map-199282"></span>
 <img src="fig/gis/map_holliday.jpeg" alt="Map of Holliday Creek" width="100%" />
 <p class="caption">
@@ -493,10 +493,10 @@ a maximum of 2553m to
 <p>A summary of habitat modelling outputs for the crossing are presented in Table
 <a href="holliday-creek---199282---appendix.html#tab:tab-culvert-bcfp-199282">5.51</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="holliday-creek---199282---appendix.html#cb250-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
-<span id="cb250-2"><a href="holliday-creek---199282---appendix.html#cb250-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb250-3"><a href="holliday-creek---199282---appendix.html#cb250-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
-<span id="cb250-4"><a href="holliday-creek---199282---appendix.html#cb250-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="holliday-creek---199282---appendix.html#cb251-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
+<span id="cb251-2"><a href="holliday-creek---199282---appendix.html#cb251-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb251-3"><a href="holliday-creek---199282---appendix.html#cb251-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
+<span id="cb251-4"><a href="holliday-creek---199282---appendix.html#cb251-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-199282">Table 5.50: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199282.
@@ -566,7 +566,7 @@ SSW
 </tfoot>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="holliday-creek---199282---appendix.html#cb251-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="holliday-creek---199282---appendix.html#cb252-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
@@ -847,10 +847,10 @@ SK Rearing (ha)
 pH was 7.5 and
 conductivity was 162 uS/cm.</p>
 <p><br></p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="holliday-creek---199282---appendix.html#cb252-1" tabindex="-1"></a><span class="co"># fpr::fpr_table_cv_summary_memo()</span></span>
-<span id="cb252-2"><a href="holliday-creek---199282---appendix.html#cb252-2" tabindex="-1"></a></span>
-<span id="cb252-3"><a href="holliday-creek---199282---appendix.html#cb252-3" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
-<span id="cb252-4"><a href="holliday-creek---199282---appendix.html#cb252-4" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="holliday-creek---199282---appendix.html#cb253-1" tabindex="-1"></a><span class="co"># fpr::fpr_table_cv_summary_memo()</span></span>
+<span id="cb253-2"><a href="holliday-creek---199282---appendix.html#cb253-2" tabindex="-1"></a></span>
+<span id="cb253-3"><a href="holliday-creek---199282---appendix.html#cb253-3" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
+<span id="cb253-4"><a href="holliday-creek---199282---appendix.html#cb253-4" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-199282">Table 5.52: </span>Summary of fish passage assessment for PSCIS crossing 199282.
@@ -1112,9 +1112,9 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="holliday-creek---199282---appendix.html#cb253-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb253-2"><a href="holliday-creek---199282---appendix.html#cb253-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
-<span id="cb253-3"><a href="holliday-creek---199282---appendix.html#cb253-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="holliday-creek---199282---appendix.html#cb254-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb254-2"><a href="holliday-creek---199282---appendix.html#cb254-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
+<span id="cb254-3"><a href="holliday-creek---199282---appendix.html#cb254-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
 </div>
 <div id="stream-characteristics-downstream-of-crossing-199282" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 199282<a href="holliday-creek---199282---appendix.html#stream-characteristics-downstream-of-crossing-199282" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1123,7 +1123,7 @@ Fix Span / Diameter
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199282" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199282<a href="holliday-creek---199282---appendix.html#stream-characteristics-upstream-of-crossing-199282" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199282 for 800m (Figure <a href="holliday-creek---199282---appendix.html#fig:photo-199282-02">5.52</a>). The habitat was rated as medium value for spawning and rearing. Occasional large woody debris features created deep pools, with pockets of gravels suitable for spawning. The average channel width was 11.8m, the average wetted width was 8.9m, and the average gradient was 2.5%.The dominant substrate was cobbles with boulders sub-dominant.Total cover amount was rated as moderate with boulders dominant. Cover was also present as .</p>
+<p>The stream was surveyed upstream from crossing 199282 for 800m (Figure <a href="holliday-creek---199282---appendix.html#fig:photo-199282-02">5.52</a>). The habitat was rated as medium value for spawning and rearing. Occasional large woody debris features created deep pools, with pockets of gravels suitable for spawning. Total cover amount was rated as moderate with boulders dominant. Cover was also present as .The dominant substrate was cobbles with boulders sub-dominant.The average channel width was 11.8m, the average wetted width was 8.9m, and the average gradient was 2.5%.</p>
 <p><br></p>
 </div>
 <div id="structure-remediation-and-cost-estimate-12" class="section level2 unnumbered hasAnchor">
@@ -1135,10 +1135,10 @@ Fix Span / Diameter
 <h2>Conclusion<a href="holliday-creek---199282---appendix.html#conclusion-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Holliday Creek is a large, glaciated tributary to the Fraser River. Chinook and bull trout were captured both upstream and downstream of the PSCIS crossing 199282 in 2004, indicating this stream has provided valuable fish habitat <span class="citation">(Manson 2005)</span>. Habitat modeling from bcfishpass identified 3.3km of potential chinook rearing habitat and 9km of potential bull trout spawning habitat upstream of the crossing, with no other barriers identified upstream of Highway 16. Given the documented species presence and available habitat upstream, fish sampling is recommended to assess whether the 0.8m outlet drop is impeding fish passage. With the Holliday Creek Arch Protected Area and trails located upstream, crossing replacement could gain momentum as part of broader conservation and recreational initiatives <span class="citation">(<span>“Holliday <span>Creek Arch Protected Area</span>”</span> n.d.)</span>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="holliday-creek---199282---appendix.html#cb254-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
-<span id="cb254-2"><a href="holliday-creek---199282---appendix.html#cb254-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site)) <span class="sc">|&gt;</span> </span>
-<span id="cb254-3"><a href="holliday-creek---199282---appendix.html#cb254-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb254-4"><a href="holliday-creek---199282---appendix.html#cb254-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="holliday-creek---199282---appendix.html#cb255-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
+<span id="cb255-2"><a href="holliday-creek---199282---appendix.html#cb255-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site)) <span class="sc">|&gt;</span> </span>
+<span id="cb255-3"><a href="holliday-creek---199282---appendix.html#cb255-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb255-4"><a href="holliday-creek---199282---appendix.html#cb255-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-199282">Table 5.53: </span>Summary of habitat details for PSCIS crossing 199282.
@@ -1236,10 +1236,10 @@ medium
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="holliday-creek---199282---appendix.html#cb255-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_logjam&#39;</span>)</span>
-<span id="cb255-2"><a href="holliday-creek---199282---appendix.html#cb255-2" tabindex="-1"></a></span>
-<span id="cb255-3"><a href="holliday-creek---199282---appendix.html#cb255-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="holliday-creek---199282---appendix.html#cb256-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="holliday-creek---199282---appendix.html#cb256-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_logjam&#39;</span>)</span>
+<span id="cb256-2"><a href="holliday-creek---199282---appendix.html#cb256-2" tabindex="-1"></a></span>
+<span id="cb256-3"><a href="holliday-creek---199282---appendix.html#cb256-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="holliday-creek---199282---appendix.html#cb257-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199282-01"></span>
 <img src="data/photos/199282/20241009_104443_ds_logjam_k_.JPG" alt="Typical habitat downstream of PSCIS crossing 199282." width="100%" />
 <p class="caption">
@@ -1247,21 +1247,21 @@ Figure 5.51: Typical habitat downstream of PSCIS crossing 199282.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="holliday-creek---199282---appendix.html#cb257-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_2_&#39;</span>)</span>
-<span id="cb257-2"><a href="holliday-creek---199282---appendix.html#cb257-2" tabindex="-1"></a></span>
-<span id="cb257-3"><a href="holliday-creek---199282---appendix.html#cb257-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="holliday-creek---199282---appendix.html#cb258-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="holliday-creek---199282---appendix.html#cb258-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_2_&#39;</span>)</span>
+<span id="cb258-2"><a href="holliday-creek---199282---appendix.html#cb258-2" tabindex="-1"></a></span>
+<span id="cb258-3"><a href="holliday-creek---199282---appendix.html#cb258-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="holliday-creek---199282---appendix.html#cb259-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199282-02"></span>
 <img src="data/photos/199282/20241009_101552_us_typical_2_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199282." width="100%" />
 <p class="caption">
 Figure 5.52: Typical habitat upstream of PSCIS crossing 199282.
 </p>
 </div>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="holliday-creek---199282---appendix.html#cb259-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb259-2"><a href="holliday-creek---199282---appendix.html#cb259-2" tabindex="-1"></a></span>
-<span id="cb259-3"><a href="holliday-creek---199282---appendix.html#cb259-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb259-4"><a href="holliday-creek---199282---appendix.html#cb259-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb259-5"><a href="holliday-creek---199282---appendix.html#cb259-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="holliday-creek---199282---appendix.html#cb260-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb260-2"><a href="holliday-creek---199282---appendix.html#cb260-2" tabindex="-1"></a></span>
+<span id="cb260-3"><a href="holliday-creek---199282---appendix.html#cb260-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb260-4"><a href="holliday-creek---199282---appendix.html#cb260-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb260-5"><a href="holliday-creek---199282---appendix.html#cb260-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 
 </div>
 </div>

@@ -464,9 +464,9 @@ div.csl-indent {
 <h2>Site Location<a href="burnt-cabin-creek---199171-7622---appendix.html#site-location" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>PSCIS crossings 199171 and 7622 are located on Burnt Cabin Creek which flows into the northern side of Fraser Lake, BC, approximately 8km northwest of the Nadleh Whut’en First Nations community, in the Francois Lake watershed group (Figure <a href="burnt-cabin-creek---199171-7622---appendix.html#fig:map-199171">5.1</a>). Crossing 199171 is located 50m upstream of Fraser Lake, on Gala Bay Road, and is the responsibility of the Ministry of Transportation and Infrastructure (<code>chris_culvert_id</code>: 1790951). Approximately 275m further upstream, PSCIS crossing 7622 is located on Stella Road and is the responsibility of the Ministry of Transportation and Infrastructure (<code>chris_culvert_id</code>: 1794196).</p>
 <p><br></p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb58-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Burnt Cabin Creek&quot;</span></span>
-<span id="cb58-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb58-2" tabindex="-1"></a> </span>
-<span id="cb58-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb58-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_burnt_cabin.jpeg&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb59-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Burnt Cabin Creek&quot;</span></span>
+<span id="cb59-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb59-2" tabindex="-1"></a> </span>
+<span id="cb59-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb59-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_burnt_cabin.jpeg&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:map-199171"></span>
 <img src="fig/gis/map_burnt_cabin.jpeg" alt="Map of Burnt Cabin Creek" width="100%" />
 <p class="caption">
@@ -487,10 +487,10 @@ a maximum of 1237m to
 <!-- A summary of habitat modelling outputs for the crossing are presented in Table -->
 <!-- \@ref(tab:tab-culvert-bcfp-199171). -->
 <!-- <br> -->
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb59-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
-<span id="cb59-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb59-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb59-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb59-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
-<span id="cb59-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb59-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb60-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
+<span id="cb60-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb60-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb60-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb60-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
+<span id="cb60-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb60-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-199171">Table 5.1: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199171.
@@ -559,23 +559,23 @@ SSW
 </tr>
 </tfoot>
 </table>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb60-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb61-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
 <p><br></p>
 </div>
 <div id="aerial-imagery-1" class="section level2 unnumbered hasAnchor">
 <h2>Aerial Imagery<a href="burnt-cabin-creek---199171-7622---appendix.html#aerial-imagery-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An aerial survey was conducted with a remotely piloted aircraft and the resulting imagery was processed into an orthomosaic available to view and download in Figure <a href="burnt-cabin-creek---199171-7622---appendix.html#fig:uav-ortho-199171">5.2</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb61-1" tabindex="-1"></a>viewer_url <span class="ot">&lt;-</span> <span class="st">&#39;&lt;iframe src=&quot;https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199171_burnt_cabin_gala/odm_orthophoto/odm_orthophoto.tif&quot; scrolling=&quot;no&quot; title=&quot;UAV Viewer&quot; width=&quot;100%&quot; height=&quot;600&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;&#39;</span></span>
-<span id="cb61-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb61-2" tabindex="-1"></a></span>
-<span id="cb61-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb61-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">asis_output</span>(viewer_url)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb62-1" tabindex="-1"></a>viewer_url <span class="ot">&lt;-</span> <span class="st">&#39;&lt;iframe src=&quot;https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199171_burnt_cabin_gala/odm_orthophoto/odm_orthophoto.tif&quot; scrolling=&quot;no&quot; title=&quot;UAV Viewer&quot; width=&quot;100%&quot; height=&quot;600&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;&#39;</span></span>
+<span id="cb62-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb62-2" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb62-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">asis_output</span>(viewer_url)</span></code></pre></div>
 <iframe src="https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199171_burnt_cabin_gala/odm_orthophoto/odm_orthophoto.tif" scrolling="no" title="UAV Viewer" width="100%" height="600" frameBorder="0">
 </iframe>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb62-1" tabindex="-1"></a>my_photo <span class="ot">=</span> <span class="st">&#39;fig/pixel.png&#39;</span></span>
-<span id="cb62-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb62-2" tabindex="-1"></a></span>
-<span id="cb62-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb62-3" tabindex="-1"></a>my_caption <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Orthomosaic of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span>
-<span id="cb62-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb62-4" tabindex="-1"></a></span>
-<span id="cb62-5"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb62-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo, <span class="at">dpi =</span> <span class="cn">NA</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb63-1" tabindex="-1"></a>my_photo <span class="ot">=</span> <span class="st">&#39;fig/pixel.png&#39;</span></span>
+<span id="cb63-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb63-2" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb63-3" tabindex="-1"></a>my_caption <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Orthomosaic of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span>
+<span id="cb63-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb63-4" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb63-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo, <span class="at">dpi =</span> <span class="cn">NA</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:uav-ortho-199171"></span>
 <img src="fig/pixel.png" alt="Orthomosaic of PSCIS crossing 199171." width="0.01%" />
 <p class="caption">
@@ -592,7 +592,7 @@ Figure 5.2: Orthomosaic of PSCIS crossing 199171.
 pH was 8.5 and
 conductivity was 333 uS/cm.</p>
 <p><br></p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb63-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb64-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-199171">Table 5.2: </span>Summary of fish passage assessment for PSCIS crossing 199171.
@@ -856,7 +856,7 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb64-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb65-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-7622">Table 5.3: </span>Summary of fish passage assessment for PSCIS crossing 7622.
@@ -1120,10 +1120,10 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb65-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb65-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb65-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
-<span id="cb65-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb65-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
-<span id="cb65-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb65-4" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site2 <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb66-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb66-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb66-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
+<span id="cb66-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb66-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
+<span id="cb66-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb66-4" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site2 <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
 </div>
 <div id="stream-characteristics-downstream-of-crossing-199171" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 199171<a href="burnt-cabin-creek---199171-7622---appendix.html#stream-characteristics-downstream-of-crossing-199171" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1132,7 +1132,7 @@ Fix Span / Diameter
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199171-and-downstream-of-crossing-7622" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199171 and Downstream of Crossing 7622<a href="burnt-cabin-creek---199171-7622---appendix.html#stream-characteristics-upstream-of-crossing-199171-and-downstream-of-crossing-7622" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199171 for 275m , all the way to crossing 7622 on Stella Road (Figure <a href="burnt-cabin-creek---199171-7622---appendix.html#fig:photo-199171-02">5.4</a>). The habitat was rated as medium value, with good flow and abundant gravels, flowing through several private properties with newly established quad and foot traffic trails. Pools were limited and predominantly shallow. The dominant substrate was gravels with cobbles sub-dominant.The average channel width was 2.4m, the average wetted width was 1.2m, and the average gradient was 4.5%.Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as large woody debris, undercut banks, and overhanging vegetation.</p>
+<p>The stream was surveyed upstream from crossing 199171 for 275m , all the way to crossing 7622 on Stella Road (Figure <a href="burnt-cabin-creek---199171-7622---appendix.html#fig:photo-199171-02">5.4</a>). The habitat was rated as medium value, with good flow and abundant gravels, flowing through several private properties with newly established quad and foot traffic trails. Pools were limited and predominantly shallow. Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as large woody debris, undercut banks, and overhanging vegetation.The average channel width was 2.4m, the average wetted width was 1.2m, and the average gradient was 4.5%.The dominant substrate was gravels with cobbles sub-dominant.</p>
 <p><br></p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-7622" class="section level2 unnumbered hasAnchor">
@@ -1151,10 +1151,10 @@ Fix Span / Diameter
 <h2>Conclusion<a href="burnt-cabin-creek---199171-7622---appendix.html#conclusion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Burnt Cabin Creek is a small stream that flows into Fraser Lake, with reports of historical sockeye spawning by the adjacent landowner. The downstream crossing on Gala Bay Road had a 0.9m outlet drop, while the Stella Road crossing had an even larger 1.15m outlet drop, both of which are likely inhibiting upstream fish passage. Fish sampling is recommended to determine whether fish are able to ascend past the Gala Bay Road crossing. Both crossing’s are a high priority for replacement.</p>
 <p><br></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb66-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
-<span id="cb66-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb66-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site, my_site2)) <span class="sc">|&gt;</span> </span>
-<span id="cb66-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb66-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossings &quot;</span>, my_site, <span class="st">&quot; and &quot;</span>, my_site2, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb66-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb66-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb67-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
+<span id="cb67-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb67-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site, my_site2)) <span class="sc">|&gt;</span> </span>
+<span id="cb67-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb67-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossings &quot;</span>, my_site, <span class="st">&quot; and &quot;</span>, my_site2, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb67-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb67-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-199171">Table 5.4: </span>Summary of habitat details for PSCIS crossings 199171 and 7622.
@@ -1281,10 +1281,10 @@ medium
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb67-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_2_&#39;</span>)</span>
-<span id="cb67-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb67-2" tabindex="-1"></a></span>
-<span id="cb67-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb67-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb68-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb68-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_2_&#39;</span>)</span>
+<span id="cb68-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb68-2" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb68-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb69-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199171-01"></span>
 <img src="data/photos/199171/20241003_153324_ds_typical_2_k_.JPG" alt="Typical habitat downstream of PSCIS crossing 199171." width="100%" />
 <p class="caption">
@@ -1292,26 +1292,26 @@ Figure 5.3: Typical habitat downstream of PSCIS crossing 199171.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb69-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_2&#39;</span>)</span>
-<span id="cb69-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb69-2" tabindex="-1"></a></span>
-<span id="cb69-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb69-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; and downstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb70-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb70-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_2&#39;</span>)</span>
+<span id="cb70-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb70-2" tabindex="-1"></a></span>
+<span id="cb70-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb70-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; and downstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb71-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199171-02"></span>
 <img src="data/photos/199171/20241003_165811_us_typical_2_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199171 and downstream of PSCIS crossing 7622." width="100%" />
 <p class="caption">
 Figure 5.4: Typical habitat upstream of PSCIS crossing 199171 and downstream of PSCIS crossing 7622.
 </p>
 </div>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb71-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb71-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb71-2" tabindex="-1"></a></span>
-<span id="cb71-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb71-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb71-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb71-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb71-5"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb71-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<p><br></p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb72-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;us&#39;</span>)</span>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb72-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
 <span id="cb72-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb72-2" tabindex="-1"></a></span>
-<span id="cb72-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb72-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb73-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<span id="cb72-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb72-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb72-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb72-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb72-5"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb72-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb73-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;us&#39;</span>)</span>
+<span id="cb73-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb73-2" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb73-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb74-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-7622-01"></span>
 <img src="data/photos/7622/TC_00692_us_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 7622." width="100%" />
 <p class="caption">
@@ -1319,28 +1319,28 @@ Figure 5.5: Typical habitat upstream of PSCIS crossing 7622.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb74-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;pipeline&#39;</span>)</span>
-<span id="cb74-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb74-2" tabindex="-1"></a></span>
-<span id="cb74-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb74-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Bank erosion and ripirian removal at the pipeline upstream of crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb75-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb75-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;pipeline&#39;</span>)</span>
+<span id="cb75-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb75-2" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb75-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Bank erosion and ripirian removal at the pipeline upstream of crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb76-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-7622-02"></span>
 <img src="data/photos/7622/TC_00717_pipeline_k_.JPG" alt="Bank erosion and ripirian removal at the pipeline upstream of crossing 7622." width="100%" />
 <p class="caption">
 Figure 5.6: Bank erosion and ripirian removal at the pipeline upstream of crossing 7622.
 </p>
 </div>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb76-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb76-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb76-2" tabindex="-1"></a></span>
-<span id="cb76-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb76-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb76-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb76-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb76-5"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb76-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb77-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb77-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb77-2" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb77-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb77-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb77-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb77-5"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb77-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb77-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb77-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb77-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb77-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb77-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb77-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb77-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb78-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199328</span></span>
-<span id="cb78-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb78-2" tabindex="-1"></a>my_site2 <span class="ot">&lt;-</span> <span class="dv">199172</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb78-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb78-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb78-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb78-3"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb78-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
+<span id="cb78-4"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb78-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb79-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199328</span></span>
+<span id="cb79-2"><a href="burnt-cabin-creek---199171-7622---appendix.html#cb79-2" tabindex="-1"></a>my_site2 <span class="ot">&lt;-</span> <span class="dv">199172</span></span></code></pre></div>
 </div>
 </div>
             </section>
