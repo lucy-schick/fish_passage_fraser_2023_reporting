@@ -1,4 +1,14 @@
-# install.packages('pak')
+# ensure pak is installed and up to date from CRAN
+if (!requireNamespace("pak", quietly = TRUE)) {
+  install.packages("pak")
+} else {
+  # Only run this if an update is needed
+  current <- packageVersion("pak")
+  latest <- package_version(available.packages()["pak", "Version"])
+  if (current < latest) {
+    pak::pak("pak")  # uses pak to update itself = no popup
+  }
+}
 
 pkgs_cran <- c(
   'tidyverse',
