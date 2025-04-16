@@ -27,8 +27,8 @@ pkgs_gh <- c(
   "newgraphenvironment/ngr",
   "newgraphenvironment/staticimports",
   "lucy-schick/fishbc@updated_data",
-  "poissonconsulting/readwritesqlite" #https://github.com/poissonconsulting/readwritesqlite/issues/47
-
+  "poissonconsulting/readwritesqlite", #https://github.com/poissonconsulting/readwritesqlite/issues/47
+  "paleolimbot/rbbt"
 )
 
 pkgs_all <- c(pkgs_cran,

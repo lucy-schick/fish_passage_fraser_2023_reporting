@@ -1,8 +1,8 @@
 fig:overview-map
-fig:hydrograph1
-fig:hydrology-plots2
-fig:hydrograph3
-fig:hydrograph4
+fig:hydrograph-fraser
+fig:hydrograph-isl-pier
+fig:hydrograph-vanderhoof
+fig:hydrograph-chilako
 tab:stock-assess-dat-all
 tab:fiss-species-table
 tab:tab-fish-grad
@@ -135,6 +135,7 @@ tab:tab-culvert-199282
 tab:tab-habitat-summary-199282
 fig:photo-199282-01
 fig:photo-199282-02
+introduction
 background
 project-location
 lhtakoh
@@ -168,7 +169,7 @@ methodology
 planning-1
 habitat-modelling-1
 statistical-support-for-bcfishpass-fish-habitat-modelling-updates-1
-fish-passage-assessemnts
+fish-passage-assessments-1
 road-stream-crossings-1
 habitat-confirmation-assessments-1
 recommendations
