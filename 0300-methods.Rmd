@@ -204,7 +204,7 @@ bcfishpass_spawn_rear_model_references |>
 <br>
 
 ```{r tab-bcfp-def, eval = FALSE}
-xref_bcfishpass_names_updated |>
+xref_bcfishpass_names |>
   dplyr::filter(id_side == 1) |>
   dplyr::arrange(id_join) |>
   dplyr::select(Attribute = report, Definition = column_comment) |>

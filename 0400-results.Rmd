@@ -538,7 +538,7 @@ my_caption = 'Summary of potential rearing and spawning habitat upstream of habi
 ```{r plot-model-all, fig.cap= my_caption, eval=T}
 
 
-bcfp_xref_plot <- xref_bcfishpass_names_updated |> 
+bcfp_xref_plot <- xref_bcfishpass_names |> 
   dplyr::filter(!is.na(id_join) &
          !stringr::str_detect(bcfishpass, 'below') &
          !stringr::str_detect(bcfishpass, 'all') &
