@@ -242,6 +242,20 @@ form_pscis <- dplyr::bind_rows(form_pscis_2024, form_pscis_2023) |>
 # 1. if you want salmon modelling (used for skeena and fraser) then use the following:
 xref_bcfishpass_names <- fpr::fpr_xref_crossings
 
+xref_bcfishpass_names_extra <- tibble::tribble(
+                                                      ~bcfishpass,                           ~report, ~id_join, ~id_side,                                                                                                                    ~column_comment,
+                                                 "bt_spawning_km",                "BT Spawning (km)",      1010,      1,                                             "Length of stream upstream of point modelled as potential bull trout spawning habitat",
+                                                  "bt_rearing_km",                 "BT Rearing (km)",      1000,      1,                                              "Length of stream upstream of point modelled as potential bull trout rearing habitat",
+                              "bt_spawning_belowupstrbarriers_km", "BT Spawning Below Barriers (km)",      1010,      2, "Length of stream upstream of point and below any additional upstream barriers, modelled as potential bull trout spawning habitat",
+                               "bt_rearing_belowupstrbarriers_km",  "BT Rearing Below Barriers (km)",      1000,      2,  "Length of stream upstream of point and below any additional upstream barriers, modelled as potential bull trout rearing habitat"
+                              )
+
+
+xref_bcfishpass_names_updated <- dplyr::bind_rows(
+  xref_bcfishpass_names,
+  xref_bcfishpass_names_extra
+)
+
 # 2. if you want bull trout modelling (peace) then use the following:
 # (the one used in `fpr::fpr_xref_crossings` is for salmon (does not include bull trout) so use a hard coded tribble for this project)
 
