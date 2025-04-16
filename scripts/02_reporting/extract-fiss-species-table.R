@@ -1,11 +1,18 @@
 # This script is used to overcome the issue documented here https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/75
+# be sure bcfish fork is installed if https://github.com/poissonconsulting/fishbc/issues/13 is not closed
 
 
 source('scripts/packages.R')
 
-wshd_codes <- c('MORR', 'ZYMO', 'KISP', 'BULK', 'KLUM')
+wshd_codes <- c(
+  'LCHL',
+  'NECR',
+  'FRAN',
+  # "MORK",
+  "UFRA"
+  )
 
-conn <- fpr_db_conn()
+conn <- fpr::fpr_db_conn()
 ##get the observations from the fiss layer
 fish_species_watershed <- fpr::fpr_db_query(query = glue::glue_sql("SELECT DISTINCT ws.watershed_group_code, x.species_code,x.species_name
                    FROM whse_fish.fiss_fish_obsrvtn_pnt_sp x
@@ -19,13 +26,7 @@ DBI::dbDisconnect(conn)
 
 # split data frame into list of data frames based on watershed group code
 fish_spp_prep <- fish_species_watershed |>
-  group_split(watershed_group_code)
-
-# fish_spp_prep <- list(fish_species_watershed %>% filter(watershed_group_code == 'MORR')%>% rename(Morice = watershed_group_code),
-#                       fish_species_watershed %>% filter(watershed_group_code == 'ZYMO')%>% rename(Zymoetz = watershed_group_code),
-#                       fish_species_watershed %>% filter(watershed_group_code == 'KISP')%>% rename(Kispiox = watershed_group_code),
-#                       fish_species_watershed %>% filter(watershed_group_code == 'BULK')%>% rename(Bulkley = watershed_group_code),
-#                       fish_species_watershed %>% filter(watershed_group_code == 'KLUM')%>% rename(Kitsumkalum = watershed_group_code))
+  dplyr::group_split(watershed_group_code)
 
 # grab watershed names from xref table - https://github.com/NewGraphEnvironment/rfp/issues/5
 xref_wsg <- fpr::fpr_db_query(
@@ -44,41 +45,41 @@ wshd_names <- xref_wsg |>
 names_tbl <- c('species_name', 'species_code', wshd_names)
 
 #merge all data frames in list
-fish_spp <- fish_spp_prep %>%
-  purrr::reduce(full_join, by= c('species_code', 'species_name')) |>
+fish_spp <- fish_spp_prep |>
+  purrr::reduce(dplyr::full_join, by= c('species_code', 'species_name')) |>
   dplyr::relocate(c(species_name, species_code), .before = everything()) |>
   purrr::set_names(names_tbl)
 
 fish_all <- fishbc::freshwaterfish
 fish_cdc <- fishbc::cdc
 
-fish_spp2 <- left_join(fish_spp,
+fish_spp2 <- dplyr::left_join(fish_spp,
                        fish_all,
-                       by = c("species_code" = "Code")) %>%
-  filter(!is.na(Class) & !species_code == 'TR') |> ##mottled sculpin has some sort of error going on
+                       by = c("species_code" = "Code")) |>
+  dplyr::filter(!is.na(Class) & !species_code == 'TR') |> ##mottled sculpin has some sort of error going on
   # mutate(CDCode = case_when(species_code == 'BT' ~ 'F-SACO-11', ##pacific population yo
   #                           T ~ CDCode)) %>%
-  select(species_code,
+  dplyr::select(species_code,
          species_name,
-         all_of(wshd_names),
+         dplyr::all_of(wshd_names),
          CDCode)
 
-fish_spp3 <- left_join(
+fish_spp3 <- dplyr::left_join(
   fish_spp2,
   fish_cdc,
   by = c('CDCode' = 'Species Code')
-) %>%
-  select(`Scientific Name`,
+) |>
+  dplyr::select(`Scientific Name`,
          'Species Name' = species_name,
          # 'Species Code' = species_code,
          `BC List`,
          # `Provincial FRPA`,
          COSEWIC,
          # SARA,
-         all_of(wshd_names)
-         ) %>%
-  mutate(across(all_of(wshd_names), ~ifelse(!is.na(.), "Yes", .))) |>
-  arrange(`Scientific Name`, `Species Name`)
+         dplyr::all_of(wshd_names)
+         ) |>
+  dplyr::mutate(dplyr::across(dplyr::all_of(wshd_names), ~ifelse(!is.na(.), "Yes", .))) |>
+  dplyr::arrange(`Scientific Name`, `Species Name`)
 
 ##print your table to input_raw for use in the report
 fish_spp3 %>% readr::write_csv(file = 'data/inputs_extracted/fiss_species_table.csv')

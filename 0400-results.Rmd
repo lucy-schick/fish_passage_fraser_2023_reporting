@@ -538,7 +538,7 @@ my_caption = 'Summary of potential rearing and spawning habitat upstream of habi
 ```{r plot-model-all, fig.cap= my_caption, eval=T}
 
 
-bcfp_xref_plot <- xref_bcfishpass_names |> 
+bcfp_xref_plot <- xref_bcfishpass_names_updated |> 
   dplyr::filter(!is.na(id_join) &
          !stringr::str_detect(bcfishpass, 'below') &
          !stringr::str_detect(bcfishpass, 'all') &
@@ -552,7 +552,8 @@ bcfishpass_phase2_plot_prep <- bcfishpass |>
   dplyr::filter(stream_crossing_id %in% (pscis_phase2 |> dplyr::pull(pscis_crossing_id))) |> 
   dplyr::select(stream_crossing_id, dplyr::all_of(bcfp_xref_plot$bcfishpass)) |> 
   dplyr::mutate(stream_crossing_id = as.factor(stream_crossing_id)) |> 
-  tidyr::pivot_longer(cols = ch_spawning_km:st_rearing_km) |> 
+  # tidyr::pivot_longer(cols = ch_spawning_km:st_rearing_km) |> 
+   tidyr::pivot_longer(cols = dplyr::all_of(bcfp_xref_plot$bcfishpass)) |> 
   dplyr::filter(value > 0.0 &
                 !is.na(value)) |> 
   dplyr::mutate(
@@ -573,7 +574,7 @@ bcfishpass_phase2_plot_prep |>
   ggplot2::facet_wrap(~name, ncol = 2) +
   # ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   ggplot2::labs(x = "Site", y = "Modelled habitat (km)")+
-  ggplot2::theme_light(base_size = 11) +
+  ggplot2::theme_bw(base_size = 11) +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
 
 
