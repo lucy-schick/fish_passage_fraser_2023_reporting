@@ -85,7 +85,7 @@ Aerial surveys were conducted with a remotely piloted aircraft and the resulting
 <br>
 
 ```{r uav-ortho-199173-prep, eval = gitbook_on}
-viewer_url <- '<iframe src="https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199174_necr_trib_dog_settlement/odm_orthophoto/odm_orthophoto.tif" scrolling="no" title="UAV Viewer" width="100%" height="600" frameBorder="0"></iframe>'
+viewer_url <- '<iframe src="https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199173_necr_trib_dog/odm_orthophoto/odm_orthophoto.tif" scrolling="no" title="UAV Viewer" width="100%" height="600" frameBorder="0"></iframe>'
 
 knitr::asis_output(viewer_url)
 ```
