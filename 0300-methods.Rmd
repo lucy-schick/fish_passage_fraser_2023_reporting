@@ -137,7 +137,7 @@ The data used for the model were sourced from the following locations, for years
 ```{r tab-fish-spawning-rearing, eval=TRUE}
 #`r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br><br><br>")}`
 
-species <- c('CH', 'CO', 'SK', 'ST', 'BT')
+species <- c('CH', 'CO', 'SK', 'BT')
 
 text_footnote <- ""
   #"Models for RB, GR and KO are under a process of development and have not yet been released.  All models parameters are preliminary and subject to collaborative development."
@@ -286,7 +286,7 @@ The habitat gain index is the quantity of modelled habitat upstream of the subje
 
 <br>
 
-For reporting of Phase 1 - fish passage assessments within the body of this report (Table \@ref(tab:tab-barrier-scoring)), a "total" value of habitat <20% output from `bcfishpass` was used to estimate the amount of habitat upstream of each crossing less than 20% gradient before a falls of height >5m - as recorded in @ProvincialObstaclesFish or documented in other `bcfishpass` online documentation. For Phase 2 - habitat confirmation sites, conservative estimates of the linear quantity of habitat to be potentially gained by fish passage restoration, steelhead rearing maximum gradient threshold (8.5%) was used.  To generate estimates for area of habitat upstream (m^2^), the estimated linear length was multiplied by half the downstream channel width measured (overall triangular channel shape) as part of the fish passage assessment protocol. Although these estimates are not generally conservative, have low accuracy and do not account for upstream stream crossing structures they allow a rough idea of the best candidates for follow up.
+For reporting of Phase 1 - fish passage assessments within the body of this report (Table \@ref(tab:tab-barrier-scoring)), a "total" value of habitat <20% output from `bcfishpass` was used to estimate the amount of habitat upstream of each crossing less than 20% gradient before a falls of height >5m - as recorded in @ProvincialObstaclesFish or documented in other `bcfishpass` online documentation. For Phase 2 - habitat confirmation sites, conservative estimates of the linear quantity of habitat to be potentially gained by fish passage restoration, bull trout rearing maximum gradient threshold (10.5%) was used.  To generate estimates for area of habitat upstream (m^2^), the estimated linear length was multiplied by half the downstream channel width measured (overall triangular channel shape) as part of the fish passage assessment protocol. Although these estimates are not generally conservative, have low accuracy and do not account for upstream stream crossing structures they allow a rough idea of the best candidates for follow up.
 
 <br>
 

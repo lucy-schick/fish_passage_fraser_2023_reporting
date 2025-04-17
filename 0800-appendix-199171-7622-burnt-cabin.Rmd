@@ -23,7 +23,8 @@ my_site2 <- 7622
 
 ## Site Location {.unnumbered}
 
-PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()` which flows into the northern side of Fraser Lake, BC,  approximately 8km northwest of the Nadleh Whut'en First Nations community, in the Francois Lake watershed group (Figure \@ref(fig:map-199171)). Crossing `r as.character(my_site)` is located 50m upstream of Fraser Lake, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1790951). Approximately 275m further upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1794196).
+PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()` which flows into the northern side of Fraser Lake, BC,  approximately 8km northwest of the Nadleh Whut'en First Nations community, in the Francois Lake watershed group (Figure \@ref(fig:map-199171)). The stream name `r `fpr::fpr_my_pscis_info()` is the local name for the waterway as it is not named 
+within the freshwater atlas.  Crossing `r as.character(my_site)` is located 50m upstream of Fraser Lake, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` - and approximately 275m further upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)`.  Both crossings are the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: 1790951 and 1794196). The recently completed Coastal Gaslink pipeline crosses the stream approximately 500m upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)`.
 
 <br>
 
@@ -46,7 +47,13 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-PSCIS crossing `r as.character(my_site2)` was first assessed with a fish passage assessment in 2004 [@moe2023PSCISAssessments]. Both crossings `r as.character(my_site)` and `r as.character(my_site2)` were reassessed in 2023 and prioritized for follow-up due to the presence of high-value habitat and historical reports of sockeye spotted along the shoreline by the adjacent landowner. A habitat confirmation assessment encompassing both sites was conducted in 2024. No fisheries information is documented for the stream; however, downstream in Fraser Lake, white sturgeon, rainbow trout, kokanee, sockeye salmon, chinook salmon, bull trout, dolly varden, and other species have been previously recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+PSCIS crossing `r as.character(my_site2)` was first assessed with a fish passage assessment in 2004 under the project name 
+"2004 BC Conservation Corp Assessments, DRV" [@moe2023PSCISAssessments]. Background documentation could not be sourced.
+Both crossings `r as.character(my_site)` and `r as.character(my_site2)` were reassessed in 2023 and prioritized for follow-up due to the presence of 
+a significant amount of modelled habitat as well as habitat rated as medium value during the 2004 assessment. A habitat confirmation assessment encompassing both sites was conducted in 2024. No fisheries information is documented for the stream; however, downstream in Fraser Lake, white sturgeon, rainbow trout, kokanee, sockeye salmon, chinook salmon, bull trout, dolly varden, and other species have been previously recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].  During the site visit to `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`,
+an adjacent landowner reported observing adult sockeye along the shoreline near the confluence of the stream and Fraser Lake in the past.
+They also mentioned that the stream flows year-round, even in dry years, fed by a spring emerging from the mountainside at the headwaters
+and that the stream below Gala Bay Road had been diverted to accommodate a driveway for a recreational property.
 
 <br>
 
@@ -95,11 +102,11 @@ knitr::include_graphics(my_photo, dpi = NA)
 
 ## Stream Characteristics at Crossings `r as.character(my_site)` and `r as.character(my_site2)`  {.unnumbered}
 
-At the time of the 2024 assessment, both PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` were un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Tables \@ref(tab:tab-culvert-199171) - \@ref(tab:tab-culvert-7622)). Crossing `r as.character(my_site)` had a 0.9m outlet drop, while crossing `r as.character(my_site2)` had an even larger 1.15m outlet drop.
+During the 2023 and 2024 assessments, both PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` were un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Tables \@ref(tab:tab-culvert-199171) - \@ref(tab:tab-culvert-7622)). Crossing `r as.character(my_site)` had a 0.9m outlet drop, while crossing `r as.character(my_site2)` had a 1.2m outlet drop.
 
 <br>
 
-At all crossings, the water temperature was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'temperature_c')`$^\circ$C,
+Water temperature was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'temperature_c')`$^\circ$C,
 pH was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'p_h')` and
 conductivity was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'conductivity_m_s_cm')` uS/cm.
 
@@ -133,7 +140,7 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199171-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199171-d01))."))` The stream was highly channelized due to residential properties on both sides. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` with minimal cover and few pools suitable for fish, but gravels were present for spawning. Anecdotal information from a neighboring landowner suggested the stream below Gala Bay Road had been diverted to accommodate a driveway for a recreational property. `r fpr_my_habitat_paragraph(loc = 'ds')`
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199171-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199171-d01))."))` The stream was highly channelized due to residential properties on both sides. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` with minimal cover and few pools suitable for fish, but gravels were present for spawning. `r fpr_my_habitat_paragraph(loc = 'ds')`
 
 <br>
 
@@ -146,7 +153,7 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site2)` {.unnumbered}
 
-`r fpr_my_survey_dist(sit = my_site2, loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-7622-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-7622-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us') |>stringr::str_to_lower()` value with relatively steep gradients and abundant functional large woody debris creating steps and pools 20–30mm deep. In some sections, the stream widened and became shallow, with abundant gravels suitable for spawning. Overhead cover was extensive. Near the upper end of the site, the forest had been cleared for pipeline use, resulting in significant bank erosion and ripirian removal `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-7622-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-7622-d01))."))` `r fpr_my_habitat_paragraph(sit = my_site2, loc = 'us')`
+`r fpr_my_survey_dist(sit = my_site2, loc = 'us')` to the pipeline right of way `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-7622-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-7622-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us') |>stringr::str_to_lower()` value with relatively steep gradients and abundant functional large woody debris creating steps and pools 20 – 30cm deep. In some sections, the stream widened and became shallow, with abundant gravels suitable for spawning. Overhead cover was extensive. Near the upper end of the site, the forest had been cleared for pipeline use, resulting in significant bank erosion and riparian removal `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-7622-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-7622-d01))."))` `r fpr_my_habitat_paragraph(sit = my_site2, loc = 'us')`
 
 <br>
 
@@ -155,7 +162,9 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
 
-Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing (`r as.character(my_site)`) with a bridge (`r fpr::fpr_my_pscis_info(site = my_site, col_pull = recommended_diameter_or_span_meters)` m span) is recommended. This culvert had a 0.9m outlet drop, likely inhibiting fish passage.  At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
+Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing (`r as.character(my_site)`) with a bridge (`r fpr::fpr_my_pscis_info(site = my_site, col_pull = recommended_diameter_or_span_meters)` m span) is recommended. At the time of reporting in 2025, the cost of the work is estimated at \$ `r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
+As the stream width is relatively narrow installation of a streambed simulation culvert could be considered with costs estimated
+as significantly lower than a bridge.
 
 <br>
 
@@ -166,7 +175,12 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-`r fpr::fpr_my_pscis_info()` is a small stream that flows into Fraser Lake, with reports of historical sockeye spawning by the adjacent landowner. The downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` had a 0.9m outlet drop, while the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing had an even larger 1.15m outlet drop, both of which are likely inhibiting upstream fish passage. Fish sampling is recommended to determine whether fish are able to ascend past the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing. Both crossing's are a high priority for replacement.
+`r fpr::fpr_my_pscis_info()` is a small stream that flows into Fraser Lake. The historic observation of an adult sockeye along the
+shoreline of the lake near the stream’s confluence with Fraser Lake combined with the stream’s perennial apparently groundwater
+influenced flow, highlights the site is potentially located near sockeye shoreline spawning activity indicating high ecological
+and cultural importance for the area. The downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` had a 0.9m outlet drop, while the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing had a 1.2m outlet drop, both of which are likely completely inhibiting upstream fish passage for all life stages of fish that would be present. Both crossings are considered high 
+priorities for replacement with the acquisition of an engineering design and replacement cost estimate recommended for the downstream
+crossing. Fish sampling is recommended to determine fish presence and community composition upstream and downstream of both the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` site as well as the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing. 
 
 <br>
 

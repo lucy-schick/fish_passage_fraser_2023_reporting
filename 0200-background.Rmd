@@ -1,5 +1,9 @@
 # Background
 
+```{r setup-background}
+knitr::opts_chunk$set(fig.path = "fig/background/", dev = "png")
+```
+
 ## Project Location
 
 The study area spans from Burns Lake to Valemount, British Columbia, and includes the Nechako River, Lower Chilako River, François Lake, Morkhill River and Upper Fraser River watershed groups.
@@ -94,7 +98,8 @@ The Upper Fraser River, an 8th order stream, drains an area of 232,134km^2^ upst
 
 plot1 <- fasstr::plot_longterm_monthly_stats(
   station_number = "08KA005",
-  ignore_missing = TRUE
+  ignore_missing = TRUE,
+  add_year = 2023
 )
 
 print(plot1$`Long-term_Monthly_Statistics`)
@@ -132,7 +137,8 @@ The Nechako River, meaning "Blackwater people's river", is home to the Cheslatta
 
 plot1 <- fasstr::plot_longterm_monthly_stats(
   station_number = "08JC002",
-  ignore_missing = TRUE
+  ignore_missing = TRUE,
+  add_year = 2023
 )
 
 print(plot1$`Long-term_Monthly_Statistics`)
@@ -148,7 +154,8 @@ print(plot1$`Long-term_Monthly_Statistics`)
 
 plot1 <- fasstr::plot_longterm_monthly_stats(
   station_number = "08JC001",
-  ignore_missing = TRUE
+  ignore_missing = TRUE,
+  add_year = 2023
 )
 
 print(plot1$`Long-term_Monthly_Statistics`)
@@ -174,7 +181,8 @@ The Chilako River, known as Tsalakoh by the Dakelh people, translates to "beaver
 
 plot1 <- fasstr::plot_longterm_monthly_stats(
   station_number = "08JC005",
-  ignore_missing = TRUE
+  ignore_missing = TRUE,
+  add_year = 2023
 )
 
 print(plot1$`Long-term_Monthly_Statistics`)

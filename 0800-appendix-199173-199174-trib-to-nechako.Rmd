@@ -23,7 +23,7 @@ my_site2 <- 199174
 
 ## Site Location {.unnumbered}
 
-PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()`, approximately 4km northeast of the Nadleh Whut'en First Nations community near Fraser Lake, BC, in the Nechako River watershed group (Figure \@ref(fig:map-199173)). Crossing `r as.character(my_site)` is located 115m upstream of the Nechako River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). A further 2km upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` and is the responsibility of the Ministry of Forests. The last 200m of the stream is incorrectly mapped in the BC Freshwater Atlas, and flows directly south to join the Nechako River (see Survey Track in Figure \@ref(fig:map-199173)) rather than following the mapped route, which runs east along Dog Creek Road before joining the Nechako River.
+PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are located on `r fpr::fpr_my_pscis_info()`, approximately 4km northeast of the Nadleh Whut'en First Nations community near Fraser Lake, BC, in the Nechako River watershed group (Figure \@ref(fig:map-199173)). Crossing `r as.character(my_site)` is located 115m upstream of the Nechako River, on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`). A further 2km upstream, PSCIS crossing `r as.character(my_site2)` is located on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` and is the responsibility of the Ministry of Forests. The downstream 200m of the stream is incorrectly mapped in the BC Freshwater Atlas, and flows directly south to join the Nechako River (see Survey Track in Figure \@ref(fig:map-199173)) rather than following the mapped route, which runs east along Dog Creek Road before joining the Nechako River.
 
 <br>
 
@@ -47,11 +47,12 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray and Barry Booth at UNBC, in collaboration with School District (SD) 91, has conducted fish sampling in the Nechako River watershed, including on `r fpr::fpr_my_pscis_info()`. Minnow trapping in 2022 captured chinook just upstream of the crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` [@booth2023SummaryMinnow]. Additionally, minnow trapping in 2021 and 2023 captured chinook in the ~100m section of stream from `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` downstream to the Nechako River [@booth2022SummaryMinnow;@booth2024SummaryMinnow], with eDNA results from 2021 and 2023 also showing a strong detection for chinook in this section [@murray_booth2024NEWSSsalmon;@murray_booth2023Report2023]. 
+Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray and Barry Booth, R.P.Bio at UNBC, in collaboration with School District (SD) 91, has conducted fish sampling in the Nechako River watershed, including on `r fpr::fpr_my_pscis_info()`. Minnow trapping in 2022 captured chinook just upstream of the crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` [@booth2023SummaryMinnow]. Additionally, minnow trapping in 2021 and 2023 captured chinook in the ~100m section of stream from `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` downstream to the Nechako River [@booth2022SummaryMinnow;@booth2024SummaryMinnow], with eDNA results from 2021 and 2023 also showing a strong detection for chinook in this section [@murray_booth2024NEWSSsalmon;@murray_booth2023Report2023]. 
 
 <br>
 
-Motivated by these findings, in 2023, both crossings were assessed with fish passage assessments and prioritized for follow-up due to the presence of high-value habitat. A habitat confirmation assessment encompassing both sites was conducted in 2024.
+In 2023, both crossings were assessed with fish passage assessments and were prioritized for follow-up 
+in 2024 due to the presence of high-value habitat adjacent to Dog Creek Road and due to information from @murray_booth2024NEWSSsalmon and @murray_booth2023Report2023. Habitat confirmations were conducted at both sites in 2024.
 
 <br>
 
@@ -122,11 +123,11 @@ At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on 
 <br>
 
 PSCIS crossing  `r as.character(my_site2)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` was un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(site = my_site2, col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol
-[@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199174)). The crossing was dry at the time of assessment. 
+[@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199174)). The stream was dry at the crossing location at the time of assessment. 
 
 <br>
 
-At all crossings, the water temperature was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'temperature_c')`$^\circ$C,
+Water temperature was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'temperature_c')`$^\circ$C,
 pH was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'p_h')` and
 conductivity was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'conductivity_m_s_cm')` uS/cm.
 
@@ -166,13 +167,13 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199173-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199173-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value, with undercut banks suitable for juvenile chinook and rainbow trout rearing. No natural or man-made barriers were present between `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and the Nechako River. Fish (~40–90mm in length) were observed during the assessment. `r fpr_my_habitat_paragraph(loc = 'ds')`
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199173-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199173-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value, with undercut banks suitable for juvenile chinook and rainbow trout rearing. No natural or man-made barriers were present between `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and the Nechako River. Fish (~40 – 90mm in length) were observed during the assessment. `r fpr_my_habitat_paragraph(loc = 'ds')`
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` and Downstream of Crossing `r as.character(my_site2)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199173-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199173-d01)"))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` with pockets of gravels suitable for rainbow trout and potentially chinook rearing, and fish were observed throughout the survey area. Heavy cattle impacts were evident, particularly in low-gradient sections with easily accessible banks. Fencing intended to restrict cattle access was present but had been breached. Approximately 300–350m upstream, the stream transitioned from a channelized section to a beaver-impounded wetland, with over three mature dams—some up to 1.5m high—vegetated and well-developed. These dams impounded large volumes of water, likely sustaining year-round stream flow downstream at the Dog Creek Road crossing. Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as large woody debris, deep pools, and overhanging vegetation.The average channel width was 3m, the average wetted width was 1.5m, and the average gradient was 2.4%.
+`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199173-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199173-d01)"))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` with pockets of gravels suitable for rainbow trout and potentially chinook rearing, and fish were observed throughout the survey area. Heavy cattle impacts were evident, particularly in low-gradient sections with easily accessible banks. Fencing intended to restrict cattle access was present but had been breached. Approximately 300–350m upstream, the stream transitioned from a channelized section to a beaver-impounded wetland, with over three mature dams — some up to 1.5m high—vegetated and well-developed. These dams impounded large volumes of water, likely sustaining year-round stream flow downstream at the Dog Creek Road crossing. Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as large woody debris, deep pools, and overhanging vegetation.The average channel width was 3m, the average wetted width was 1.5m, and the average gradient was 2.4%.
 
 <br>
 
@@ -182,7 +183,7 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site2)` {.unnumbered}
 
-`r fpr_my_survey_dist(sit = my_site2, loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199174-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199174-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us') |>stringr::str_to_lower()` value and had been heavily impacted by cattle, with evidence of bank trampling and extensive low-gradient muddy sections. Upstream of the culvert, the stream was primarily dry for the first 300m, with young forest and shrubs. At this point, intermittent pools began to appear, associated with beaver activity. At approximately 450–500m upstream, the stream became almost entirely watered, with pools up to 40cm deep. Many surveyed areas resembled wetland habitat, with spirea, willow, alder, and trembling aspen throughout. `r fpr_my_habitat_paragraph(sit = my_site2, loc = 'us')`
+`r fpr_my_survey_dist(sit = my_site2, loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199174-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199174-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us') |>stringr::str_to_lower()` value and had been heavily impacted by cattle, with evidence of bank trampling and extensive low-gradient muddy sections. Upstream of the culvert, the stream was primarily dry for the first 300m, with young forest and shrub riparian. At this point, intermittent pools began to appear, associated with beaver activity. At approximately 450 – 500m upstream, the stream became almost entirely watered, with pools up to 40cm deep. Many surveyed areas resembled wetland habitat, with spirea, willow, alder, and trembling aspen throughout. `r fpr_my_habitat_paragraph(sit = my_site2, loc = 'us')`
 
 <br>
 
@@ -200,7 +201,7 @@ At the time of assessment, the upstream crossing on `r fpr_my_pscis_info(col_pul
 
 ## Conclusion {.unnumbered}
 
-Minnow trapping and eDNA sampling have confirmed the presence of chinook upstream and downstream of the Dog Creek Road crossing as recently as 2023 [@booth2023SummaryMinnow;@murray_booth2023Report2023]. Medium value habitat was observed throughout the sections of stream surveyed from Dog Creek Road to `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)`. No natural or man-made barriers were present between `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and the Nechako River, and the stream provided excellent fish habitat. At the time of assessment, the upstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` (PSCIS `r as.character(my_site2)`) was unlikely a barrier to fish passage, and restoration efforts should prioritize the downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` (PSCIS `r as.character(my_site)`), which had a 0.35m outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Of note, heavy cattle use was observed throughout the surveyed area upstream of Dog Creek Road, consistent with observations documented by @booth2023SummaryMinnow.  
+Minnow trapping and eDNA sampling have confirmed the presence of chinook upstream and downstream of the Dog Creek Road crossing as recently as 2023 [@booth2023SummaryMinnow;@murray_booth2023Report2023]. Medium value habitat was observed throughout the sections of stream surveyed from Dog Creek Road to `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)`. No natural or man-made barriers were present between `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and the Nechako River, and the stream provided high value habitat in this section. At the time of assessment, the upstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` (PSCIS `r as.character(my_site2)`) was unlikely a barrier to fish passage, and restoration efforts should prioritize the downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` (PSCIS `r as.character(my_site)`), which had a 0.35m outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Of note, heavy cattle use was observed throughout the surveyed area upstream of Dog Creek Road, consistent with observations documented by @booth2023SummaryMinnow.  
 
 <br>
 

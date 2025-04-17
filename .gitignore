@@ -12,3 +12,4 @@ rsconnect
 data/inputs_raw/nuseds_all.csv
 test.csv
 fish_passage_fraser_2023_reporting_files/
+*.qgs~
