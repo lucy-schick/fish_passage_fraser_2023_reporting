@@ -54,6 +54,10 @@ Motivated by these findings, and in addition to a historical chinook salmon obse
 
 <br>
 
+Additionally, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section. 
+
+<br>
+
 A summary of habitat modelling outputs for the crossing are presented in Table
 \@ref(tab:tab-culvert-bcfp-199190).
 

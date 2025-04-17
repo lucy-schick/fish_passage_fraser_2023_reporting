@@ -51,7 +51,7 @@ In 2023, crossing `r as.character(my_site)` was assessed with a fish passage ass
 
 <br>
 
-Chinook spawners have been documented at the confluence of Holliday Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. In 2004, chinook and bull trout were captured upstream and downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. 
+In 2004, chinook and bull trout were captured upstream and downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. Additionally, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section. 
 
 <br>
 
