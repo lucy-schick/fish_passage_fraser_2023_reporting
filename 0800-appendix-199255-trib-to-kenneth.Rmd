@@ -43,7 +43,7 @@ At PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 `r fpr::fpr_my_wshd(col = 'elev_site')`m near the crossing (Table
-\@ref(tab:tab-wshd-199255)).
+\@ref(tab:tab-wshd-199255)). Detailed background information regarding the Kenneth Creek watershed is presented in [Kenneth Creek - 199256 - Appendix]. 
 
 <br>
 
