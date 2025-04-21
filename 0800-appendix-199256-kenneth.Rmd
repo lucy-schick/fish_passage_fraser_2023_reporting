@@ -26,6 +26,10 @@ PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info
 
 <br>
 
+The headwaters and confluence of `r fpr::fpr_my_pscis_info()` overlap the Sugarbowl-Grizzly Den Provincial Park which is within the traditional territory of the Lheidli T’enneh (Figure \@ref(fig:map-199256)). The park protects a significant area of old-growth interior cedar-hemlock forest, provides high-quality habitat for wildlife, including grizzly bear, marten, and caribou, and serves as an important movement corridor for caribou. Additionally, the area features a trail system that supports popular alpine backcountry recreation opportunities near Prince George [@SugarbowlGrizzlyPark; @SugarbowlGrizzlyCabinsPGBRS].  
+
+<br>
+
 ```{r map-199256, fig.cap = my_caption}
  my_caption <- "Map of Kenneth Creek"
  
@@ -42,15 +46,27 @@ At PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 `r fpr::fpr_my_wshd(col = 'elev_site')`m near the crossing (Table
-\@ref(tab:tab-wshd-199256)).
+\@ref(tab:tab-wshd-199256)). 
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and chinook observations documented downstream in the FISS database [@moe2024KnownBC]. Additionally, a dead chinook spawner was observed upstream of the Highway 16 culvert during an informal site visit in 2022. A habitat confirmation assessment was subsequently conducted in 2024.
+The Kenneth Creek watershed was assessed in detail using Fish Habitat Assessment Procedures in 1997 by AquaFor Consulting Ltd [@aquaforconsultingltd19981997watershed]. Extensive degradation due to past forest harvesting was noted, with much of the watershed lacking future inputs of functional large woody debris—an element critical for maintaining channel and bank stability, diversifying habitat, and reducing stream velocities. Field observations indicated that the lower 15 reaches provide extremely valuable habitat for chinook salmon, and are also important for bull trout and rainbow trout. These reaches were all found to be severely impacted by past harvesting, with the most negative and cumulative impacts occurring where stream crossings were improperly located or poorly deactivated (if at all). @aquaforconsultingltd19981997watershed stated that although impacts varied across reaches, the system is actively degrading, and if restorative costs are to be best implemented, it should be done immediately to a system which is partially functioning, thereby most effectively minimizing costs and reducing the risks associated with failure of restorative activities.
+
+<br>
+
+In 2006, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was first assessed with a fish passage assessment by DWB Forestry Services Ltd. and documented as a partial barrier due to high water velocities and an 8cm outlet drop [@hooft2006Fishhabitat]. The culvert constricted the channel to less than half its natural width; however, upstream habitat was noted as high value, with chinook captured both upstream and downstream of the crossing. @hooft2006Fishhabitat noted that although adult chinook salmon and rainbow trout could ascend at observed velocities, they were likely impeded during higher spring flows.
+
+<br>
+
+Given the background information for this stream, in 2023, crossing `r as.character(my_site)` was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and chinook observations documented downstream in the FISS database [@moe2024KnownBC]. Additionally, a dead chinook spawner was observed upstream of the Highway 16 culvert during an informal site visit in 2022. A habitat confirmation assessment was subsequently conducted in 2024.
 
 <br>
 
 Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Additionally, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section. 
+
+<br>
+
+Additionally, water level, water temperature, discharge, and conductivity have been collected approximately 250m downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing as part of the Northern BC Hydrology Research project (station 08KA0002). These data are publicly accessible at https://bcgov-env.shinyapps.io/nbchydro/.
 
 <br>
 
@@ -70,7 +86,7 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 <br>
 
 ```{r tab-culvert-bcfp-199256, eval = T}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>
