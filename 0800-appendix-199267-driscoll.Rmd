@@ -26,6 +26,10 @@ PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info
 
 <br>
 
+This crossing is located on the boundary of the Chun T’oh Whudujut (Ancient Forest), a Provincial Park and Protected Area within the traditional territory of the Lheidli T’enneh (Figure \@ref(fig:map-199282)). The park has thousand-year-old western red cedars and a rich biodiversity of plants, mosses, lichens and fungi which can be explored through the trail network. Historically, Lheidli people would visit the stands from summer fishing camps along the upper Fraser River as well as gather medicinal plants, some of which were thought to be extinct. However, the park was not always a protected area and was initially slated for logging until a UNBC graduate student studying lichen biodiversity identified the ancient stands of western red cedars. Recognizing their ecological and cultural significance, trails were developed to highlight the cedars and advocate for their protection. Through partnerships with local hiking groups, UNBC, Lheidli T’enneh, and the Provincial Government, the Ancient Forest biodiversity assessment project has contributed to conservation efforts and tourism-based economic development in the Prince George area [@Chuntohwhudujutancientforest2025].
+
+<br>
+
 ```{r map-199267, fig.cap = my_caption}
  my_caption <- "Map of Driscoll Creek"
  
@@ -51,10 +55,6 @@ In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = r
 <br>
 
 Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Additionally, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section. 
-
-<br>
-
-This crossing is located on the boundary of the Chun T’oh Whudujut (Ancient Forest), a Provincial Park and Protected Area within the traditional territory of the Lheidli T’enneh. The park has thousand-year-old western red cedars and a rich biodiversity of plants, mosses, lichens and fungi which can be explored through the trail network. Historically, Lheidli people would visit the stands from summer fishing camps along the upper Fraser River as well as gather medicinal plants, some of which were thought to be extinct. However, the park was not always a protected area and was initially slated for logging until a UNBC graduate student studying lichen biodiversity identified the ancient stands of western red cedars. Recognizing their ecological and cultural significance, trails were developed to highlight the cedars and advocate for their protection. Through partnerships with local hiking groups, UNBC, Lheidli T’enneh, and the Provincial Government, the Ancient Forest biodiversity assessment project has contributed to conservation efforts and tourism-based economic development in the Prince George area [@Chuntohwhudujutancientforest2025].
 
 <br>
 
