@@ -34,7 +34,7 @@ params:
   job_name: '2024-074-sern-fraser-fish-passage'
   repo_name: "fish_passage_fraser_2023_reporting"
   gis_project_name: "sern_fraser_2024"
-  model_species: "ch"
+  model_species: "bt"
   update_packages: FALSE
   update_form_pscis: FALSE
   update_form_fiss_site: FALSE
