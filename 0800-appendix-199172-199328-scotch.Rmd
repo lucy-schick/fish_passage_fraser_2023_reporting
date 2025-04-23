@@ -52,10 +52,10 @@ In 2023, both crossings were assessed with fish passage assessments and prioriti
 
 <br>
 
-<!-- A summary of habitat modelling outputs for the crossing are presented in Table -->
-<!-- \@ref(tab:tab-culvert-bcfp-199328).  -->
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199328).
 
-<!-- <br> -->
+<br>
 
 ```{r tab-wshd-199328, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |>
@@ -66,8 +66,8 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 ```
 
 
-```{r tab-culvert-bcfp-199328, eval = F}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+```{r tab-culvert-bcfp-199328, eval = T}
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>

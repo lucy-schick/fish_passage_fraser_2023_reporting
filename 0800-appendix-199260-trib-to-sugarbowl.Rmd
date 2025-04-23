@@ -73,8 +73,8 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 ```
 
 
-```{r tab-culvert-bcfp-199260, eval = F}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+```{r tab-culvert-bcfp-199260, eval = T}
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>

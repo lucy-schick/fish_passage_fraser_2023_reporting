@@ -58,10 +58,10 @@ and that the stream below Gala Bay Road had been diverted to accommodate a drive
 
 <br>
 
-<!-- A summary of habitat modelling outputs for the crossing are presented in Table -->
-<!-- \@ref(tab:tab-culvert-bcfp-199171). -->
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199171).
 
-<!-- <br> -->
+<br>
 
 ```{r tab-wshd-199171, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |>
@@ -72,8 +72,8 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 ```
 
 
-```{r tab-culvert-bcfp-199171, eval = F}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+```{r tab-culvert-bcfp-199171, eval = T}
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>
