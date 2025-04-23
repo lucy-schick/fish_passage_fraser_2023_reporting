@@ -50,11 +50,11 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-The Kenneth Creek watershed was assessed in detail using Fish Habitat Assessment Procedures in 1997 by AquaFor Consulting Ltd [@aquaforconsultingltd19981997watershed]. Extensive degradation due to past forest harvesting was noted, with much of the watershed lacking future inputs of functional large woody debris—an element critical for maintaining channel and bank stability, diversifying habitat, and reducing stream velocities. Field observations indicated that the lower 15 reaches provide extremely valuable habitat for chinook salmon, and are also important for bull trout and rainbow trout. These reaches were all found to be severely impacted by past harvesting, with the most negative and cumulative impacts occurring where stream crossings were improperly located or poorly deactivated (if at all). @aquaforconsultingltd19981997watershed stated that although impacts varied across reaches, the system is actively degrading, and if restorative costs are to be best implemented, it should be done immediately to a system which is partially functioning, thereby most effectively minimizing costs and reducing the risks associated with failure of restorative activities.
+The Kenneth Creek watershed was assessed in detail using Fish Habitat Assessment Procedures (FHAP) in 1997 by AquaFor Consulting Ltd [@aquaforconsultingltd19981997watershed]. Extensive degradation due to past forest harvesting was noted, with much of the watershed lacking future inputs of functional large woody debris—an element critical for maintaining channel and bank stability, diversifying habitat, and reducing stream velocities. Field observations indicated that the lower 15 reaches provide extremely valuable habitat for chinook salmon, and are also important for bull trout and rainbow trout. These reaches were all found to be severely impacted by past harvesting, with the most negative and cumulative impacts occurring where stream crossings were improperly located or poorly deactivated (if at all). @aquaforconsultingltd19981997watershed stated that although impacts varied across reaches, the system is actively degrading, and if restorative costs are to be best implemented, it should be done immediately to a system which is partially functioning, thereby most effectively minimizing costs and reducing the risks associated with failure of restorative activities.
 
 <br>
 
-In 2006, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was first assessed with a fish passage assessment by DWB Forestry Services Ltd. and documented as a partial barrier due to high water velocities and an 8cm outlet drop [@hooft2006Fishhabitat]. The culvert constricted the channel to less than half its natural width; however, upstream habitat was noted as high value, with chinook captured both upstream and downstream of the crossing. @hooft2006Fishhabitat noted that although adult chinook salmon and rainbow trout could ascend at observed velocities, they were likely impeded during higher spring flows.
+In 2006, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was assessed with a fish passage assessment by DWB Forestry Services Ltd. and documented as a partial barrier due to high water velocities and an 8cm outlet drop [@hooft2006Fishhabitat]. The culvert constricted the channel to less than half its natural width; however, upstream habitat was noted as high value, with chinook captured both upstream and downstream of the crossing. @hooft2006Fishhabitat noted that although adult chinook salmon and rainbow trout could ascend at the observed velocities, they were likely impeded during higher spring flows.
 
 <br>
 
@@ -62,11 +62,11 @@ Given the background information for this stream, in 2023, crossing `r as.charac
 
 <br>
 
-Upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Additionally, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section. 
+In addition to chinook captured upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` by @hooft2006Fishhabitat, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Also, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section. 
 
 <br>
 
-Additionally, water level, water temperature, discharge, and conductivity have been collected approximately 250m downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing as part of the Northern BC Hydrology Research project (station 08KA0002). These data are publicly accessible at https://bcgov-env.shinyapps.io/nbchydro/.
+Water level, water temperature, discharge, and conductivity have been collected approximately 250m downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing as part of the Northern BC Hydrology Research project (station 08KA0002). These data are publicly accessible at https://bcgov-env.shinyapps.io/nbchydro/.
 
 <br>
 
@@ -172,7 +172,15 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-Kenneth Creek is a large, gravel-dominated stream with high-value habitat for salmonid spawning and rearing. Chinook and bull trout have been documented upstream [@norris2024smnorrisbcfishobs; @moe2024KnownBC], and a dead chinook spawner was observed upstream of the Highway 16 culvert during an informal site visit in 2022. The crossing had a significant 0.7m outlet drop, and fish sampling is recommended to determine if it is currently inhibiting fish passage. Additionally, `bcfishpass` modeling indicates nearly 50km of potential chinook spawning habitat upstream. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement.
+Kenneth Creek is a large, gravel-dominated stream with high-value habitat for salmonid spawning and rearing. Chinook and bull trout have been documented upstream of Highway 16 [@norris2024smnorrisbcfishobs; @moe2024KnownBC], and a dead chinook spawner was observed upstream of the Highway 16 culvert during an informal site visit in 2022. `bcfishpass` modeling indicates nearly 50km of potential chinook spawning habitat upstream of Highway 16.  The crossing had a significant outlet drop which may inhibit passage for younger life stages of salmonids. Furthermore, high water velocities in the culvert, as reported by @hooft2006Fishhabitat, likely further inhibit upstream passage at the crossing. Fish sampling (electroshocking or eDNA sampling) is recommended to determine which anadromous species and life stages are currently able to ascend past the crossing. 
+
+<br>
+
+Due to PSCIS crossing `r as.character(my_site)` being located on highway 16, replacement of the crossing would be a large and expensive undertaking. Previous assessment by @hooft2006Fishhabitat considered various mitigation options, including substrate placement, baffles, and downstream weirs, and concluded that replacement with a clear-spanning bridge or open-bottom structure is the only permanent solution to restore fish passage and address hydraulic concerns. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement.
+
+<br>
+
+Given the stream’s ecological value, restoration concerns outlined in @aquaforconsultingltd19981997watershed should be explored and the streams overlap with Sugarbowl–Grizzly Den Provincial Park could add additional conservation relevance. 
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
