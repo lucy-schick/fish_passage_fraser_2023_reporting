@@ -22,7 +22,7 @@ my_site <- 199237
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 45km northwest of McBride, BC, in the Morkill River watershed group.  (Figure \@ref(fig:map-199237)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of where `r fpr::fpr_my_pscis_info()` joins the Fraser River. The crossing is situation on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`).
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 45km northwest of McBride, BC, in the Morkill River watershed group.  (Figure \@ref(fig:map-199237)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of where `r fpr::fpr_my_pscis_info()` joins the Fraser River. The crossing is situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and is the responsibility of the Ministry of Transportation and Infrastructure (`chris_hwy_structure_road_id`: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`).
 
 <br>
 
@@ -133,7 +133,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` on Highway 16 had a significant 0.65m outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Downstream of Highway 16, chinook have historically spawned at the confluence of Snowshoe Creek and the Fraser River [@salmonwatershedsprogram2025Spawnerabundance], indicating this stream has provided valuable spawning habitat. Given that the habitat upstream of Highway 16 was rated as high value for spawning and rearing during the 2024 assessment, fish sampling is recommended to further assess whether the crossing is inhibiting fish passage.
+PSCIS crossing `r as.character(my_site)` on Highway 16 had a significant outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Downstream of Highway 16, chinook have historically spawned at the confluence of Snowshoe Creek and the Fraser River [@salmonwatershedsprogram2025Spawnerabundance], indicating this stream has provided valuable spawning habitat. Given that the habitat upstream of Highway 16 was rated as high value for spawning and rearing during the 2024 assessment, fish sampling is recommended to further assess whether the crossing is inhibiting fish passage.
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`

@@ -244,7 +244,7 @@ knitr::include_graphics(my_photo1)
 ```{r photo-7622-02-prep, eval=T}
 my_photo2 = fpr::fpr_photo_pull_by_str(site = my_site2, str_to_pull = 'pipeline')
 
-my_caption2 = paste0('Bank erosion and ripirian removal at the pipeline upstream of crossing ', my_site2, '.')
+my_caption2 = paste0('Bank erosion and riparian removal at the pipeline upstream of crossing ', my_site2, '.')
 
 
 ```

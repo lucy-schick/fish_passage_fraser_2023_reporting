@@ -55,7 +55,7 @@ Bull trout were captured upstream and downstream of crossing `r as.character(my_
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and known fish observation recorded upstream of the crossing as prevously mentioned. A habitat confirmation assessment was subsequently conducted in 2024, encompassing crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` as well as crossing `r as.character(my_site2)` located 300m upstream on the CN railway. 
+In 2023, crossing `r as.character(my_site)` was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and known fish observation recorded upstream of the crossing as previously mentioned. A habitat confirmation assessment was subsequently conducted in 2024, encompassing crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` as well as crossing `r as.character(my_site2)` located 300m upstream on the CN railway. 
 
 <br>
 
@@ -95,7 +95,7 @@ First assessed in 2024, PSCIS crossing `r as.character(my_site2)` on the CN `r f
 
 <br>
 
-In 2024, three other PSCIS crossings were assessed on Teepee Creek and can be found in `r if(gitbook_on){knitr::asis_output("[Appendix - Phase 1 Fish Passage Assessment Data and Photos]")}else(knitr::asis_output("[Attachment - Phase 1 Data and Photos](#attach-pdf-phase1-dat)"))`. Approximately 700m downstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, PSCIS crossing 7620 was located on the CN Railway (Figure \@ref(fig:map-199278)). Although the crossing ranked was as barrier to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment], the culvert was embedded, 100% backwatered, and was not a barrier to fish passage at the time of the survey. Roughly 70m downstream of Highway 5, there was a small bridge on private land (PSCIS 203300)(Figure \@ref(fig:map-199278)). Approximately 600m upstream of PSCIS crossing  `r as.character(my_site2)` on the CN Railway, PSCIS crossing 4931 was located on Mount Tinsley Pit Road, which falls under the road tenure of Carrier Lumber R13564 (Figure \@ref(fig:map-199278)). The culvert had a significant 1.3m outlet drop. 
+In 2024, three other PSCIS crossings were assessed on Teepee Creek and can be found in `r if(gitbook_on){knitr::asis_output("[Appendix - Phase 1 Fish Passage Assessment Data and Photos]")}else(knitr::asis_output("[Attachment - Phase 1 Data and Photos](#attach-pdf-phase1-dat)"))`. Approximately 700m downstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, PSCIS crossing 7620 was located on the CN Railway (Figure \@ref(fig:map-199278)). Although the crossing was ranked as a barrier to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment], the culvert was embedded, 100% backwatered, and was not a barrier to fish passage at the time of the survey. Roughly 70m downstream of Highway 5, there was a small bridge on private land (PSCIS 203300)(Figure \@ref(fig:map-199278)). Approximately 600m upstream of PSCIS crossing  `r as.character(my_site2)` on the CN Railway, PSCIS crossing 4931 was located on Mount Tinsley Pit Road, which falls under the road tenure of Carrier Lumber R13564 (Figure \@ref(fig:map-199278)). The culvert had a significant 1.3m outlet drop. 
 
 <br>
 

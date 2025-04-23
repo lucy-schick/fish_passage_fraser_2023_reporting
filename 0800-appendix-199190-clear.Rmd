@@ -112,13 +112,13 @@ hab_site |>filter(site == my_site & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value for salmonid spawning an rearing. The stream contained frequent pools suitable for overwintering fish, with abundant cobbles but limited gravels. Evidence of extreme seasonal flows was observed, including large eroding banks, extensive gravel deposits from channel widening (20–30m), and significant log jams.  `r fpr_my_habitat_paragraph(loc = 'ds')`
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value for salmonid spawning and rearing. The stream contained frequent pools suitable for overwintering fish, with abundant cobbles but limited gravels. Evidence of extreme seasonal flows was observed, including large eroding banks, extensive gravel deposits from channel widening (20 – 30m), and significant log jams.  `r fpr_my_habitat_paragraph(loc = 'ds')`
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value. Although the stream had good flow and provided high-quality habitat for the first 100m, it then transitioning to subsurface flow. Approximately 200m upstream of the highway, adjacent to a quarry, the stream was fully dewatered to the top of the surveyed area The channel was highly confined, lacked complexity, and consisted primarily of a straight, coarse cobble and boulder substrate. While some small and large woody debris were present, they did not appear to contribute to habitat formation during periods of flow. `r fpr_my_habitat_paragraph(loc = 'us')`
+`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199190-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199190-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value. Although the stream had good flow and provided high-quality habitat for the first 100m, it then transitioning to subsurface flow. Approximately 200m upstream of the highway, adjacent to a quarry, the stream was fully dewatered to the top of the surveyed area. The channel was highly confined, lacked complexity, and consisted primarily of a straight, coarse cobble and boulder substrate. While some small and large woody debris were present, they did not appear to contribute to habitat formation during periods of flow. `r fpr_my_habitat_paragraph(loc = 'us')`
 
 <br>
  
@@ -132,7 +132,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-The habitat upstream of `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was documented as low value for salmonid spawning and rearing and the crossing is rated as a low priority for replacement due to the intermittent nature of the stream approximately 200m upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`. The culvert had been recently worked on with new cement poured inside of the pipe and riprap placed at the outlet.
+The habitat upstream of PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was documented as low value for salmonid spawning and rearing, and the crossing is rated as a low priority for replacement due to the intermittent nature of the stream approximately 200m upstream of the crossing. The culvert had been recently worked on, with new cement poured inside the pipe and riprap placed at the outlet. However, fish sampling to determine whether fish are utilizing the ~200m of wetted stream upstream of the crossing would still be beneficial.
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 

@@ -22,7 +22,7 @@ my_site <- 199267
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 100km northwest of McBride, BC, in the Morkill River watershed group (Figure \@ref(fig:map-199282)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of where `r fpr::fpr_my_pscis_info()` joins the Fraser River. Situation on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, the crossing is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`).
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 100km northwest of McBride, BC, in the Morkill River watershed group (Figure \@ref(fig:map-199282)). The crossing is located `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream of where `r fpr::fpr_my_pscis_info()` joins the Fraser River. Situated on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, the crossing is the responsibility of the Ministry of Transportation and Infrastructure (`chris_culvert_id`: `r fpr_my_pscis_info(dat = form_pscis_2024, col_pull = moti_chris_culvert_id, site = my_site)`).
 
 <br>
 
@@ -50,7 +50,7 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and a historical chinook observations documented downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. 
+In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and a historical chinook observation documented downstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. 
 
 <br>
 
@@ -132,7 +132,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` on Highway 16 had a significant 0.65m outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Downstream of Highway 16, chinook have historically spawned at the confluence of Driscoll Creek and the Fraser River [@salmonwatershedsprogram2025Spawnerabundance], indicating that this stream has provided valuable spawning habitat. Additionally, modelling from bcfishpass indicates there is ~7km of potential chinook spawning habitat available upstream of the crossing. The habitat upstream of Highway 16 was rated as moderate value for spawning and rearing during the 2024 assessment, and fish sampling is recommended to further assess whether the crossing is inhibiting fish passage. Given the crossing's proximity to Chun T’oh Whudujut (Ancient Forest) Provincial Park and its location within the traditional territory of the Lheidli T’enneh, restoration efforts could align with broader conservation initiatives and community engagement, increasing the likelihood of funding and project momentum.
+PSCIS crossing `r as.character(my_site)` on Highway 16 had a significant outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. The habitat upstream of Highway 16 was rated as moderate value for spawning and rearing during the 2024 assessment, and fish sampling is recommended to further assess whether the crossing is inhibiting fish passage. Given the crossing's proximity to Chun T’oh Whudujut (Ancient Forest) Provincial Park and its location within the traditional territory of the Lheidli T’enneh, restoration efforts could align with broader conservation initiatives and community engagement, increasing the likelihood of funding and project momentum.
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
