@@ -172,7 +172,7 @@ bcfishpass_spawn_rear_model |>
 ```
 
 
-`r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
+<br>
 
 
 <!-- This table has not been included in the most recent reports (skeena and peace 2023). Maybe because we now use 8.5% for ST rearing habitat, which is not what is referenced in this table (they said 7.5) -->
