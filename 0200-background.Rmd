@@ -385,9 +385,15 @@ fiss_species_table %>%
 <br>
 
 ```{r fish-fiss-summary, eval=T}
-fiss_sum_grad <- readr::read_csv(file =  'data/inputs_extracted/fiss_sum_grad.csv')
-fiss_sum_width <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_width.csv')
-fiss_sum_wshed <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_wshed.csv') 
+# Remove the 1 steelhead observation from these csvs because is it likely a mistake
+fiss_sum_grad <- readr::read_csv(file =  'data/inputs_extracted/fiss_sum_grad.csv') |> 
+  dplyr::filter(species_code != "ST")
+
+fiss_sum_width <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_width.csv')|> 
+  dplyr::filter(species_code != "ST")
+
+fiss_sum_wshed <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_wshed.csv') |> 
+  dplyr::filter(species_code != "ST")
 
 ```
 
