@@ -51,8 +51,7 @@ Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray 
 
 <br>
 
-In 2023, both crossings were assessed with fish passage assessments and were prioritized for follow-up 
-in 2024 due to the presence of high-value habitat adjacent to Dog Creek Road and due to information from @murray_booth2024NEWSSsalmon and @murray_booth2023Report2023. Habitat confirmations were conducted at both sites in 2024.
+In 2023, both crossings were assessed with fish passage assessments and prioritized for follow-up in 2024 based on the presence of high-value habitat adjacent to Dog Creek Road and supporting information from @murray_booth2024NEWSSsalmon and @murray_booth2023Report2023. Habitat confirmation assessments were completed at both sites in 2024. A third site, PSCIS crossing 199332, was also assessed in 2023. Located approximately 1.7km upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing on Williams FSR, the site consisted of a bridge with evidence of extensive cattle trampling below. Assessment results from 2023 are presented in `r if(gitbook_on){knitr::asis_output("[Appendix - Phase 1 Fish Passage Assessment Data and Photos]")}else(knitr::asis_output("[Attachment - Phase 1 Data and Photos](#attach-pdf-phase1-dat)"))`.
 
 <br>
 
@@ -129,7 +128,7 @@ At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on 
 <br>
 
 PSCIS crossing  `r as.character(my_site2)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` was un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(site = my_site2, col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol
-[@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199174)). The stream was dry at the crossing location at the time of assessment. 
+[@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199174)). The stream was dry at the crossing location at the time of assessment.
 
 <br>
 
@@ -207,7 +206,11 @@ At the time of assessment, the upstream crossing on `r fpr_my_pscis_info(col_pul
 
 ## Conclusion {.unnumbered}
 
-Minnow trapping and eDNA sampling have confirmed the presence of chinook upstream and downstream of the Dog Creek Road crossing as recently as 2023 [@booth2023SummaryMinnow;@murray_booth2023Report2023]. Medium value habitat was observed throughout the sections of stream surveyed from Dog Creek Road to `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)`. No natural or man-made barriers were present between `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and the Nechako River, and the stream provided high value habitat in this section. At the time of assessment, the upstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` (PSCIS `r as.character(my_site2)`) was unlikely a barrier to fish passage, and restoration efforts should prioritize the downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` (PSCIS `r as.character(my_site)`), which had a significant outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Of note, heavy cattle use was observed throughout the surveyed area upstream of Dog Creek Road, consistent with observations documented by @booth2023SummaryMinnow.  
+Minnow trapping and eDNA sampling have confirmed the presence of chinook upstream and downstream of the Dog Creek Road crossing as recently as 2023 [@booth2023SummaryMinnow;@murray_booth2023Report2023]. Medium value habitat was observed throughout the sections of stream surveyed from Dog Creek Road to `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)`. No natural or man-made barriers were present between `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and the Nechako River, and the stream provided high value habitat in this section. At the time of assessment, the upstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` (PSCIS `r as.character(my_site2)`) was unlikely a barrier to fish passage, and restoration efforts should prioritize the downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` (PSCIS `r as.character(my_site)`), which had a significant outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. 
+
+<br>
+
+Heavy cattle activity in the stream was observed throughout the surveyed area upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)`, consistent with observations documented by @booth2023SummaryMinnow. `r fpr::fpr_my_pscis_info()` presents an opportunity for riparian restoration to exclude cattle from the stream through measures such as fencing and the installation of offsite watering systems. Landowner engagement through education and restoration initiatives should be explored to improve riparian function, reduce cattle inputs, and enhance fish habitat quality.
 
 <br>
 
