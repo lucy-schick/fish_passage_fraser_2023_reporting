@@ -58,10 +58,10 @@ and that the stream below Gala Bay Road had been diverted to accommodate a drive
 
 <br>
 
-<!-- A summary of habitat modelling outputs for the crossing are presented in Table -->
-<!-- \@ref(tab:tab-culvert-bcfp-199171). -->
+A summary of habitat modelling outputs for the crossing are presented in Table
+\@ref(tab:tab-culvert-bcfp-199171).
 
-<!-- <br> -->
+<br>
 
 ```{r tab-wshd-199171, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |>
@@ -72,8 +72,8 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 ```
 
 
-```{r tab-culvert-bcfp-199171, eval = F}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+```{r tab-culvert-bcfp-199171, eval = T}
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>
@@ -147,7 +147,7 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` and Downstream of Crossing `r as.character(my_site2)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')`, all the way to crossing `r as.character(my_site2)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199171-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199171-d01)"))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value, with good flow and abundant gravels, flowing through several private properties with newly established quad and foot traffic trails. Pools were limited and predominantly shallow. `r fpr_my_habitat_paragraph(loc = 'us')`
+`r fpr_my_survey_dist(loc = 'us')`, all the way to crossing `r as.character(my_site2)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199171-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199171-d01)"))` `r fpr_my_habitat_paragraph(loc = 'us')` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value, with good flow and abundant gravels, flowing through several private properties with newly established quad and foot traffic trails. Pools were limited and predominantly shallow.
 
 <br>
 
@@ -158,8 +158,6 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 <br>
 
-
- 
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
 
@@ -177,9 +175,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 ## Conclusion {.unnumbered}
 
 `r fpr::fpr_my_pscis_info()` is a small stream that flows into Fraser Lake. The historic observation of an adult sockeye along the
-shoreline of the lake near the stream’s confluence with Fraser Lake combined with the stream’s perennial apparently groundwater
-influenced flow, highlights the site is potentially located near sockeye shoreline spawning activity indicating high ecological
-and cultural importance for the area. The downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` had a 0.9m outlet drop, while the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing had a 1.2m outlet drop, both of which are likely completely inhibiting upstream fish passage for all life stages of fish that would be present. Both crossings are considered high 
+shoreline of the lake near the stream’s confluence with Fraser Lake combined with the stream’s apparently perennial and groundwater-influenced flow, highlights the site may be located near sockeye shoreline spawning habitat, indicating high ecological and cultural importance for the area. The downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` had a 0.9m outlet drop, while the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing had a 1.2m outlet drop, both of which are likely completely inhibiting upstream fish passage for all life stages of fish that would be present. Both crossings are considered high 
 priorities for replacement with the acquisition of an engineering design and replacement cost estimate recommended for the downstream
 crossing. Fish sampling is recommended to determine fish presence and community composition upstream and downstream of both the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` site as well as the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing. 
 
@@ -248,7 +244,7 @@ knitr::include_graphics(my_photo1)
 ```{r photo-7622-02-prep, eval=T}
 my_photo2 = fpr::fpr_photo_pull_by_str(site = my_site2, str_to_pull = 'pipeline')
 
-my_caption2 = paste0('Bank erosion and ripirian removal at the pipeline upstream of crossing ', my_site2, '.')
+my_caption2 = paste0('Bank erosion and riparian removal at the pipeline upstream of crossing ', my_site2, '.')
 
 
 ```

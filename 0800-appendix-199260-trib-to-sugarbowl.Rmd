@@ -26,6 +26,10 @@ PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info
 
 <br>
 
+This crossing is located in the Sugarbowl-Grizzly Den Provincial Park which is within the traditional territory of the Lheidli T’enneh. The park protects a significant area of old-growth interior cedar-hemlock forest, provides high-quality habitat for wildlife, including grizzly bear, marten, and caribou, and serves as an important movement corridor for caribou. Additionally, the area features a trail system that supports popular alpine backcountry recreation opportunities near Prince George [@SugarbowlGrizzlyPark; @SugarbowlGrizzlyCabinsPGBRS].  
+
+<br>
+
 ```{r map-199260, fig.cap = my_caption}
  my_caption <- "Map of Tributary to Sugarbowl Creek"
  
@@ -51,11 +55,7 @@ In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = r
 
 <br>
 
-Approximately 4.5km downstream of the crossing, near the confluence of Kenneth Creek and the Fraser River, chinook and bull trout have previously been recorded (Figure \@ref(fig:map-199260))[@norris2024smnorrisbcfishobs; @moe2024KnownBC]. At this same location, chinook spawners have been historically documented in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance].  
-
-<br>
-
-This crossing is located in the Sugarbowl-Grizzly Den Provincial Park which is within the traditional territory of the Lheidli T’enneh. The park protects a significant area of old-growth interior cedar-hemlock forest, provides high-quality habitat for wildlife, including grizzly bear, marten, and caribou, and serves as an important movement corridor for caribou. Additionally, the area features a trail system that supports popular alpine backcountry recreation opportunities near Prince George [@SugarbowlGrizzlyPark; @SugarbowlGrizzlyCabinsPGBRS].  
+Approximately 4.5km downstream of the crossing, near the confluence of Kenneth Creek and the Fraser River, chinook and bull trout have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Additionally, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section. 
 
 <!-- <br> -->
 
@@ -73,8 +73,8 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 ```
 
 
-```{r tab-culvert-bcfp-199260, eval = F}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+```{r tab-culvert-bcfp-199260, eval = T}
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>
@@ -112,13 +112,13 @@ hab_site |>filter(site == my_site & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199260-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199260-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |> stringr::str_to_lower()` value, with gravels suitable for spawning and occasional pools ranging from 0.2–0.4m deep providing overwintering habitat. The stream flowed through a healthy, mature old-growth forest. `r fpr_my_habitat_paragraph(loc = 'ds')`
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199260-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199260-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |> stringr::str_to_lower()` value, with gravels suitable for spawning and occasional pools ranging from 0.2 – 0.4m deep providing overwintering habitat. The stream flowed through a healthy, mature old-growth forest. `r fpr_my_habitat_paragraph(loc = 'ds')`
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199260-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199260-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value, and appeared suitable for large bull trout spawning and rearing. The stream was a larger, steeper system with intact, mature coniferous cedar-hemlock riparian cover, primarily stable banks, and abundant large woody debris throughout. A step-pool morphology was present, characterized by pools up to 80cm deep and debris jam steps ranging from 30–60cm. `r fpr_my_habitat_paragraph(loc = 'us')`
+`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199260-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199260-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value, and appeared suitable for large bull trout spawning and rearing. The stream was a larger, steeper system with intact, mature coniferous cedar-hemlock riparian cover, primarily stable banks, and abundant large woody debris throughout. A step-pool morphology was present, characterized by pools up to 80cm deep and debris jam steps ranging from 30 – 60cm. `r fpr_my_habitat_paragraph(loc = 'us')`
 
 <br>
  
@@ -132,7 +132,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` had a substantial 1.4m outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Average gradients were generally above the maximum thresholds for chinook spawning and rearing (4.5% and 5.5%, respectively), but fell within the suitable range for bull trout spawning and rearing (5.5% and 10.5%, respectively). The habitat upstream was rated as `r fpr::fpr_my_priority_info(loc = 'us') |> stringr::str_to_lower()` value for bull trout spawning and rearing, with `bcfishpass` modeling indicating ~900m of potential bull trout rearing habitat upstream of the crossing. Given the crossings location within Sugarbowl-Grizzly Den Provincial Park and the park's ecological significance, restoration efforts could align with broader conservation initiatives and public engagement, increasing the likelihood of funding and project momentum.
+PSCIS crossing `r as.character(my_site)` had a substantial outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Average gradients were generally above the maximum thresholds for chinook spawning and rearing (4.5% and 5.5%, respectively), but fell within the suitable range for bull trout spawning and rearing (5.5% and 10.5%, respectively). The habitat upstream was rated as `r fpr::fpr_my_priority_info(loc = 'us') |> stringr::str_to_lower()` value for bull trout spawning and rearing, with `bcfishpass` modeling indicating ~900m of potential bull trout rearing habitat upstream of the crossing. Given the crossings location within Sugarbowl-Grizzly Den Provincial Park and the park's ecological significance, restoration efforts could align with broader conservation initiatives and public engagement, increasing the likelihood of funding and project momentum.
  
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 

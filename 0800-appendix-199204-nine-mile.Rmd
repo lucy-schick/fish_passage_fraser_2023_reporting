@@ -46,7 +46,7 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray and Barry Booth at UNBC, in collaboration with School District (SD) 91, has been conducting fish sampling in the Nechako River watershed, including on `r fpr::fpr_my_pscis_info()`.  Minnow trapping by @booth2022SummaryMinnow in 2021 captured chinook just downstream of this crossing but not upstream, despite the presence of suitable habitat. The study suggested that these culverts may be a barrier to further upstream movement of chinook [@booth2022SummaryMinnow]. eDNA results from 2021 showed a strong detection for chinook immediately downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing, while 2023 results showed a weaker detection at the same location [@murray_booth2024NEWSSsalmon; @murray_booth2023Report2023]. Additonally, a strong detection for chinook was observed near the confluence of `r fpr::fpr_my_pscis_info()` and the Nechako River in 2023 [@murray_booth2023Report2023].
+Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray and Barry Booth at UNBC, in collaboration with School District (SD) 91, has been conducting fish sampling in the Nechako River watershed, including on `r fpr::fpr_my_pscis_info()`.  Minnow trapping by @booth2022SummaryMinnow in 2021 captured chinook just downstream of this crossing but not upstream, despite the presence of suitable habitat. The study suggested that these culverts may be a barrier to further upstream movement of chinook [@booth2022SummaryMinnow]. eDNA results from 2021 showed a strong detection for chinook immediately downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing, while 2023 results showed a weaker detection at the same location [@murray_booth2024NEWSSsalmon; @murray_booth2023Report2023]. Additionally, a strong detection for chinook was observed near the confluence of `r fpr::fpr_my_pscis_info()` and the Nechako River in 2023 [@murray_booth2023Report2023].
 
 <br>
 
@@ -71,7 +71,7 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 <br>
 
 ```{r tab-culvert-bcfp-199204, eval = T}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>
@@ -110,14 +110,14 @@ hab_site |>filter(site == my_site & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199204-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199204-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value, with good stream flow, frequent deep pools suitable for overwintering fish, and abundant spawning gravels. Significant beaver activity was observed, including old and active dams blocking both culverts on Settlement Road. The first 150m showed signs of cattle trampling, with numerous small trails crossing the stream. Approximately 300m downstream of Settlement Road, the stream had been artificially entrenched, creating a large backwatered pool with water pipes leading in, likely related to the adjacent cut block `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199204-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199204-d01))."))` Despite modifications, the stream remained well-defined, providing excellent fish habitat. The east side of the stream bordered a cut block with a 30–50m buffer zone. One small fish (~40mm) was observed during the survey. `r fpr_my_habitat_paragraph(loc = 'ds')`
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199204-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199204-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value, with good stream flow, frequent deep pools suitable for overwintering fish, and abundant spawning gravels. Significant beaver activity was observed, including old and active dams blocking both culverts on Settlement Road. The first 150m showed signs of cattle trampling, with numerous small trails crossing the stream. Approximately 300m downstream of Settlement Road, the stream had been artificially entrenched, creating a large backwatered pool with water pipes leading in, likely related to the adjacent cut block `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199204-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199204-d01))."))` Despite modifications, the stream remained well-defined, providing excellent fish habitat. The east side of the stream bordered a cut block with a 30 – 50m buffer zone. One small fish (~40mm) was observed during the survey. `r fpr_my_habitat_paragraph(loc = 'ds')`
 
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` (Figure \@ref(fig:photo-199204-03)). The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value for spawning and rearing. The stream was a larger system with significant beaver activity, creating impoundments behind dams ranging from 0.3 to 1.5m in height. Heavy cattle use was evident in riparian areas, with trampled banks, extensive browsing of riparian shrubs, and a significant amount of manure within seasonally inundated areas. Nutrient loading to the stream appeared high, with large amounts of algae present on the primarily gravel substrates in sections of the channel linking beaver-impounded areas. `r fpr_my_habitat_paragraph(loc = 'us')`
+`r fpr_my_survey_dist(loc = 'us')` (Figure \@ref(fig:photo-199204-03)). The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value for spawning and rearing. The stream was a larger system with significant beaver activity, creating impoundments behind dams ranging from 0.3 - 1.5m in height. Heavy cattle use was evident in riparian areas, with trampled banks, extensive browsing of riparian shrubs, and a significant amount of manure within seasonally inundated areas. Nutrient loading to the stream appeared high, with large amounts of algae present on the primarily gravel substrates in sections of the channel linking beaver-impounded areas. `r fpr_my_habitat_paragraph(loc = 'us')`
 
 <br>
  
@@ -131,7 +131,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-Nine Mile Creek is a tributary to the Nechako River and a known chinook system, with chinook captured immediately downstream of the crossing in 2021 and detected through eDNA sampling as recently as 2023 [@booth2022SummaryMinnow;@murray_booth2023Report2023]. Medium value habitat was observed upstream of the crossing, with `bcfishpass` modeling indicating 8km of potential chinook spawning habitat and 16km of potential coho spawning habitat upstream. Downstream provided excellent fish habitat with good stream flow, frequent deep pools suitable for overwintering fish, and abundant spawning gravels. Beaver activity and heavy cattle use was observed both upstream and downstream of the crossing. The culverts had a 0.5m outlet drop, and the crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. 
+Nine Mile Creek is a tributary to the Nechako River and a known chinook system, with chinook captured immediately downstream of the crossing in 2021 and detected through eDNA sampling as recently as 2023 [@booth2022SummaryMinnow;@murray_booth2023Report2023]. Medium value habitat was observed upstream of the crossing, with `bcfishpass` modeling indicating 8km of potential chinook spawning habitat and 16km of potential coho spawning habitat upstream. Downstream provided excellent fish habitat with good stream flow, frequent deep pools suitable for overwintering fish, and abundant spawning gravels. Beaver activity and heavy cattle use was observed both upstream and downstream of the crossing. The culverts had a moderate outlet drop, and the crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Given the species present in the system and the outlet drops at both crossings, fish sampling is recommended to determine whether the culverts are impeding fish passage.
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`

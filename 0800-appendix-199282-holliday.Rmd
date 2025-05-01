@@ -51,11 +51,11 @@ In 2023, crossing `r as.character(my_site)` was assessed with a fish passage ass
 
 <br>
 
-Chinook spawners have been documented at the confluence of Holliday Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. In 2004, chinook and bull trout were captured upstream and downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. 
+In 2004, chinook and bull trout were captured upstream and downstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` crossing by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. Additionally, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section. 
 
 <br>
 
-Upstream of this crossing is the Holliday Creek Arch Protected Area, a small, 395-hectare protected area showcasing a 80 m wide and 18 m high natural stone arch [@HollidayCreekArchProtectedArea]. The park can be accessed via the [Natural Arch Trail](https://www.trailforks.com/trails/natural-arch-trail-742159/), which starts on Mt.Baker Mainline FSR near Highway 16 and climbs ~1000m to an alpine lookout [@HollidayCreekArchProtectedArea]. Outside of the park on the west side of the valley, the [Groeneveld Trail](https://www.trailforks.com/trails/groeneveld-trail/) also provides hiking access to beautiful views [@recreationsitesandtrailsbcGroeneveldtrail]. 
+Upstream of this crossing is the Holliday Creek Arch Protected Area, a small, 395-hectare protected area showcasing a 80m wide and 18m high natural stone arch [@HollidayCreekArchProtectedArea]. The park can be accessed via the [Natural Arch Trail](https://www.trailforks.com/trails/natural-arch-trail-742159/), which starts on Mt.Baker Mainline FSR near Highway 16 and climbs ~1000m to an alpine lookout [@HollidayCreekArchProtectedArea]. Outside of the park on the west side of the valley, the [Groeneveld Trail](https://www.trailforks.com/trails/groeneveld-trail/) also provides hiking access to beautiful views [@recreationsitesandtrailsbcGroeneveldtrail]. 
 
 <br>
 
@@ -75,7 +75,7 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 <br>
 
 ```{r tab-culvert-bcfp-199282, eval = T}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>
@@ -136,7 +136,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-`r fpr::fpr_my_pscis_info()` is a large, glaciated tributary to the Fraser River. Chinook and bull trout were captured both upstream and downstream of the PSCIS crossing `r as.character(my_site)` in 2004, indicating this stream has provided valuable fish habitat [@manson2005Fishcollection]. Habitat modeling from bcfishpass identified 3.3km of potential chinook rearing habitat and 9km of potential bull trout spawning habitat upstream of the crossing, with no other barriers identified upstream of Highway 16. Given the documented species presence and available habitat upstream, fish sampling is recommended to assess whether the 0.8m outlet drop is impeding fish passage. With the Holliday Creek Arch Protected Area and trails located upstream, crossing replacement could gain momentum as part of broader conservation and recreational initiatives [@HollidayCreekArchProtectedArea].
+`r fpr::fpr_my_pscis_info()` is a large, glaciated tributary to the Fraser River. Chinook and bull trout were captured both upstream and downstream of the PSCIS crossing `r as.character(my_site)` in 2004, indicating this stream has provided valuable fish habitat [@manson2005Fishcollection]. Habitat modeling from `bcfishpass` identified 9km of potential bull trout spawning habitat upstream of the crossing, with no other barriers identified upstream of Highway 16. Given the documented species presence and available habitat upstream, fish sampling is recommended to assess whether the outlet drop is impeding fish passage. With the Holliday Creek Arch Protected Area and trails located upstream, crossing replacement could gain momentum as part of broader conservation and recreational initiatives.
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`

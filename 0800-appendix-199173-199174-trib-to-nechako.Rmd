@@ -51,8 +51,7 @@ Since 2020, an ongoing environmental DNA (eDNA) project led by Dr. Brent Murray 
 
 <br>
 
-In 2023, both crossings were assessed with fish passage assessments and were prioritized for follow-up 
-in 2024 due to the presence of high-value habitat adjacent to Dog Creek Road and due to information from @murray_booth2024NEWSSsalmon and @murray_booth2023Report2023. Habitat confirmations were conducted at both sites in 2024.
+In 2023, both crossings were assessed with fish passage assessments and prioritized for follow-up in 2024 based on the presence of high-value habitat adjacent to Dog Creek Road and supporting information from @murray_booth2024NEWSSsalmon and @murray_booth2023Report2023. Habitat confirmation assessments were completed at both sites in 2024. A third site, PSCIS crossing 199332, was also assessed in 2023. Located approximately 1.7km upstream of the `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` crossing on Williams FSR, the site consisted of a bridge with evidence of extensive cattle trampling below. Assessment results from 2023 are presented in `r if(gitbook_on){knitr::asis_output("[Appendix - Phase 1 Fish Passage Assessment Data and Photos]")}else(knitr::asis_output("[Attachment - Phase 1 Data and Photos](#attach-pdf-phase1-dat)"))`.
 
 <br>
 
@@ -73,14 +72,21 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 <br>
 
 ```{r tab-culvert-bcfp-199173, eval = T}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>
 
 ## Aerial Imagery {.unnumbered}
 
-Aerial surveys were conducted with a remotely piloted aircraft and the resulting imagery was processed into orthomosaics. Imagery is available to view and download for PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  `r if(gitbook_on){knitr::asis_output("in Figure \\@ref(fig:uav-ortho-199173)")}else(knitr::asis_output("[here](https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199173_necr_trib_dog/odm_orthophoto/odm_orthophoto.tif)"))`, and PSCIS crossing `r as.character(my_site2)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` `r if(gitbook_on){knitr::asis_output("in Figure \\@ref(fig:uav-ortho-199174)")}else(knitr::asis_output("[here](https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199174_necr_trib_dog_settlement/odm_orthophoto/odm_orthophoto.tif)"))`. 
+Aerial surveys were conducted with a remotely piloted aircraft and the resulting imagery was processed into orthomosaics. Imagery is available to view and download for PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  `r if(gitbook_on){knitr::asis_output("in Figure \\@ref(fig:uav-ortho-199173)")}else(knitr::asis_output("[here](https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199173_necr_trib_dog/odm_orthophoto/odm_orthophoto.tif)"))`. 
+
+```{r, eval = F}
+#text for 199174 UAV once we move to a bigger server - see https://github.com/NewGraphEnvironment/stac_uav_bc/issues/8 
+
+# and PSCIS crossing `r as.character(my_site2)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` `r if(gitbook_on){knitr::asis_output("in Figure \\@ref(fig:uav-ortho-199174)")}else(knitr::asis_output("[here](https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199174_necr_trib_dog_settlement/odm_orthophoto/odm_orthophoto.tif)"))`. 
+
+```
 
 <br>
 
@@ -98,15 +104,14 @@ my_caption = paste0('Orthomosaic of PSCIS crossing ', my_site, '.')
 knitr::include_graphics(my_photo, dpi = NA)
 ```
 
-`r if(gitbook_on){knitr::asis_output("<br>")}`
 
-```{r uav-ortho-199174-prep, eval = gitbook_on}
+```{r uav-ortho-199174-prep, eval = F}
 viewer_url <- '<iframe src="https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/fraser/nechacko/2024/199174_necr_trib_dog_settlement/odm_orthophoto/odm_orthophoto.tif" scrolling="no" title="UAV Viewer" width="100%" height="600" frameBorder="0"></iframe>'
 
 knitr::asis_output(viewer_url)
 ```
 
-```{r uav-ortho-199174, out.width = "0.01%", eval = gitbook_on, fig.cap= my_caption}
+```{r uav-ortho-199174, out.width = "0.01%", eval = gitbook_on, fig.cap= F}
 my_photo = 'fig/pixel.png'
 
 my_caption = paste0('Orthomosaic of PSCIS crossing ', my_site2, '.')
@@ -123,7 +128,7 @@ At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on 
 <br>
 
 PSCIS crossing  `r as.character(my_site2)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` was un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(site = my_site2, col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol
-[@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199174)). The stream was dry at the crossing location at the time of assessment. 
+[@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199174)). The stream was dry at the crossing location at the time of assessment.
 
 <br>
 
@@ -173,7 +178,7 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` and Downstream of Crossing `r as.character(my_site2)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199173-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199173-d01)"))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` with pockets of gravels suitable for rainbow trout and potentially chinook rearing, and fish were observed throughout the survey area. Heavy cattle impacts were evident, particularly in low-gradient sections with easily accessible banks. Fencing intended to restrict cattle access was present but had been breached. Approximately 300–350m upstream, the stream transitioned from a channelized section to a beaver-impounded wetland, with over three mature dams — some up to 1.5m high—vegetated and well-developed. These dams impounded large volumes of water, likely sustaining year-round stream flow downstream at the Dog Creek Road crossing. Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as large woody debris, deep pools, and overhanging vegetation.The average channel width was 3m, the average wetted width was 1.5m, and the average gradient was 2.4%.
+`r fpr_my_survey_dist(loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199173-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199173-d01)"))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` with pockets of gravels suitable for rainbow trout and potentially chinook rearing, and fish were observed throughout the survey area. Heavy cattle impacts were evident, particularly in low-gradient sections with easily accessible banks. Fencing intended to restrict cattle access was present but had been breached. Approximately 300–350m upstream, the stream transitioned from a channelized section to a beaver-impounded wetland, with over three mature dams — some up to 1.5m high — vegetated and well-developed. These dams impounded large volumes of water, likely sustaining year-round stream flow downstream at the Dog Creek Road crossing. Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as large woody debris, deep pools, and overhanging vegetation.The average channel width was 3m, the average wetted width was 1.5m, and the average gradient was 2.4%.
 
 <br>
 
@@ -201,7 +206,11 @@ At the time of assessment, the upstream crossing on `r fpr_my_pscis_info(col_pul
 
 ## Conclusion {.unnumbered}
 
-Minnow trapping and eDNA sampling have confirmed the presence of chinook upstream and downstream of the Dog Creek Road crossing as recently as 2023 [@booth2023SummaryMinnow;@murray_booth2023Report2023]. Medium value habitat was observed throughout the sections of stream surveyed from Dog Creek Road to `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)`. No natural or man-made barriers were present between `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and the Nechako River, and the stream provided high value habitat in this section. At the time of assessment, the upstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` (PSCIS `r as.character(my_site2)`) was unlikely a barrier to fish passage, and restoration efforts should prioritize the downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` (PSCIS `r as.character(my_site)`), which had a 0.35m outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Of note, heavy cattle use was observed throughout the surveyed area upstream of Dog Creek Road, consistent with observations documented by @booth2023SummaryMinnow.  
+Minnow trapping and eDNA sampling have confirmed the presence of chinook upstream and downstream of the Dog Creek Road crossing as recently as 2023 [@booth2023SummaryMinnow;@murray_booth2023Report2023]. Medium value habitat was observed throughout the sections of stream surveyed from Dog Creek Road to `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)`. No natural or man-made barriers were present between `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and the Nechako River, and the stream provided high value habitat in this section. At the time of assessment, the upstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` (PSCIS `r as.character(my_site2)`) was unlikely a barrier to fish passage, and restoration efforts should prioritize the downstream crossing on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` (PSCIS `r as.character(my_site)`), which had a significant outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. 
+
+<br>
+
+Heavy cattle activity in the stream was observed throughout the surveyed area upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` and `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)`, consistent with observations documented by @booth2023SummaryMinnow. `r fpr::fpr_my_pscis_info()` presents an opportunity for riparian restoration to exclude cattle from the stream through measures such as fencing and the installation of offsite watering systems. Landowner engagement through education and restoration initiatives should be explored to improve riparian function, reduce cattle inputs, and enhance fish habitat quality.
 
 <br>
 

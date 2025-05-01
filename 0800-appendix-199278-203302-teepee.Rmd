@@ -27,12 +27,18 @@ PSCIS crossings `r as.character(my_site)` and `r as.character(my_site2)` are loc
 
 <br>
 
+The headwaters of `r fpr::fpr_my_pscis_info()` overlap with Mount Terry Fox Provincial Park, which commemorates Terry Fox for his outstanding achievements [@MountTerryFoxPark]. Previously, access to the park was provided via the [Mount Terry Fox Hiking Trail](https://www.trailforks.com/trails/mount-terry-fox-hiking-trail/)—a 16km out-and-back route gaining 1,740m in elevation on the hillside north of Teepee Creek, beginning near PSCIS crossing 4931 on Tinsley Pit Road [@caledoniaramblershikingclub2025Mountterry]. A newer trail now  begins farther up the Teepee Creek drainage and follows the creek itself, connecting to a network of trails that can be used to access Mount Terry Fox with views of Mount Robson, as well as separate trails leading to alpine lakes and waterfalls. Additional information and downloadable GPX routes for the Teepee Creek trail are available [here](https://hikevalemount.com/teepee-creek-to-mt-terry-fox/) [@hikevalemount2023TeepeeCreek].
+
+<br>
+
 ```{r map-199278, fig.cap = my_caption}
  my_caption <- "Map of Teepee Creek"
  
  knitr::include_graphics("fig/gis/map_teepee.jpeg")
  
 ```
+
+<br>
 
 ## Background {.unnumbered}
 
@@ -45,17 +51,15 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` was assessed with fish passage assessments and prioritized for follow-up due to the presence of high-value habitat and a salmon observation recorded upstream in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment encompassing both crossings `r as.character(my_site)` and `r as.character(my_site2)` was conducted in 2024. 
+Bull trout were captured upstream and downstream of crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` by Triton Environmental Consultants Ltd. in 2004 [@manson2005Fishcollection], and again near the crossing by Applied Aquatic Research Ltd. in 2006 [@appliedaquaticresearch2006ScientificCollection]. Additionally, a salmon observation from 2012 is documented upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` in the FISS database [@moe2024KnownBC].
 
 <br>
 
-Downstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` on the CN railway, PSCIS crossing 7620 was initially assessed in 2007, and upstream of the highway, PSCIS crossing 4931 was initially assessed by Cliff Jackman Contracting Ltd. in 2010 [@moe2023PSCISAssessments]. Both crossings were reassessed during the 2024 field visit.
+In 2023, crossing `r as.character(my_site)` was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and known fish observation recorded upstream of the crossing as previously mentioned. A habitat confirmation assessment was subsequently conducted in 2024, encompassing crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` as well as crossing `r as.character(my_site2)` located 300m upstream on the CN railway. 
 
 <br>
 
-As previously mentioned, a salmon observation from 2012 is documented upstream of Highway 5 in the FISS database [@moe2024KnownBC]. Additionally, in 2004, bull trout were captured upstream and downstream of crossing  `r as.character(my_site)` by Triton Environmental Consultants Ltd. [@manson2005Fishcollection]. 
-
-<br>
+Downstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` on the CN railway, PSCIS crossing 7620 was initially assessed in 2007, and upstream of the highway, PSCIS crossing 4931 was initially assessed by Cliff Jackman Contracting Ltd. in 2010 [@moe2023PSCISAssessments]. Both crossings were reassessed with a fish passage assessment during the 2024 field visit.
 
 <!-- <br> -->
 
@@ -73,8 +77,8 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 ```
 
 
-```{r tab-culvert-bcfp-199278, eval = F}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+```{r tab-culvert-bcfp-199278, eval = T}
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>
@@ -82,20 +86,20 @@ fpr::fpr_table_bcfp(scroll = gitbook_on)
 
 ## Stream Characteristics at Crossings `r as.character(my_site)` and `r as.character(my_site2)`  {.unnumbered}
 
-At the time of the 2024 assessment, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199278)). The culvert had a moderate 0.4m outlet drop.
+During the 2023 and 2024 assessments, PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was un-embedded, non-backwatered and ranked as `r fpr::fpr_my_pscis_info(col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-199278)). The culvert had a moderate 0.4m outlet drop.
 
 <br>
 
-PSCIS crossing  `r as.character(my_site2)` on the CN `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` was un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(site = my_site2, col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol
+First assessed in 2024, PSCIS crossing `r as.character(my_site2)` on the CN `r fpr_my_pscis_info(col_pull = road_name, site = my_site2)` was un-embedded, non-backwatered and ranked as a `r fpr::fpr_my_pscis_info(site = my_site2, col_pull = barrier_result) |>stringr::str_to_lower()` to upstream fish passage according to the provincial protocol
 [@moe2011Fieldassessment] (Table \@ref(tab:tab-culvert-203302)). This culvert had a significant 0.75m outlet drop. 
 
 <br>
 
-In 2024, three other PSCIS crossings were assessed on Teepee Creek and can be found in `r if(gitbook_on){knitr::asis_output("[Appendix - Phase 1 Fish Passage Assessment Data and Photos]")}else(knitr::asis_output("[Attachment - Phase 1 Data and Photos](#attach-pdf-phase1-dat)"))` (Figure \@ref(fig:map-199278)). Approximately 700m downstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, PSCIS crossing 7620 was located on the CN Railway. Although the crossing ranked was as barrier to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment], the culvert was embedded, 100% backwatered, and was not a barrier to fish passage at the time of the survey. Roughly 70m downstream of Highway 5, there was a small bridge on private land (PSCIS 203300). Approximately 600m upstream of PSCIS crossing  `r as.character(my_site2)` on the CN Railway, PSCIS crossing 4931 was located on Mount Tinsley Pit Road, which falls under the road tenure of Carrier Lumber R13564. The culvert had a significant 1.3m outlet drop. 
+In 2024, three other PSCIS crossings were assessed on Teepee Creek and can be found in `r if(gitbook_on){knitr::asis_output("[Appendix - Phase 1 Fish Passage Assessment Data and Photos]")}else(knitr::asis_output("[Attachment - Phase 1 Data and Photos](#attach-pdf-phase1-dat)"))`. Approximately 700m downstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, PSCIS crossing 7620 was located on the CN Railway (Figure \@ref(fig:map-199278)). Although the crossing was ranked as a barrier to upstream fish passage according to the provincial protocol [@moe2011Fieldassessment], the culvert was embedded, 100% backwatered, and was not a barrier to fish passage at the time of the survey. Roughly 70m downstream of Highway 5, there was a small bridge on private land (PSCIS 203300)(Figure \@ref(fig:map-199278)). Approximately 600m upstream of PSCIS crossing  `r as.character(my_site2)` on the CN Railway, PSCIS crossing 4931 was located on Mount Tinsley Pit Road, which falls under the road tenure of Carrier Lumber R13564 (Figure \@ref(fig:map-199278)). The culvert had a significant 1.3m outlet drop. 
 
 <br>
 
-At all crossings, the water temperature was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'temperature_c')`$^\circ$C,
+Water temperature was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'temperature_c')`$^\circ$C,
 pH was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'p_h')` and
 conductivity was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'conductivity_m_s_cm')` uS/cm.
 
@@ -134,19 +138,19 @@ hab_site |>filter(site == my_site2 & location == 'us') |>pull(comments)
 
 ## Stream Characteristics Downstream of Crossing `r as.character(my_site)` {.unnumbered}
 
-`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199278-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199278-d01))."))`. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value, with  with frequent pools 0.3–0.5m deep suitable for overwintering fish and abundant gravels for spawning. `r fpr_my_habitat_paragraph(loc = 'ds')`. Roughly 150m downstream of the culvert, several cattle pens crossed the stream and appeared to be set up to provide cattle access for drinking. These areas were visibly trampled, with significant loss of riparian vegetation.
+`r fpr_my_survey_dist(loc = 'ds')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199278-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199278-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds') |>stringr::str_to_lower()` value, with  with frequent pools 0.3 – 0.5m deep suitable for overwintering fish and abundant gravels for spawning. `r fpr_my_habitat_paragraph(loc = 'ds')` Roughly 150m downstream of the culvert, several cattle pens crossed the stream and appeared to be set up to provide cattle access for drinking. These areas were visibly trampled, with significant loss of riparian vegetation.
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site)` and Downstream of Crossing `r as.character(my_site2)` {.unnumbered}
 
-The stream was surveyed upstream from crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` to crossing `r as.character(my_site2)` on the CN Railway, a distance of approximately 300m `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199278-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199278-d01)"))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value for spawning and rearing, with frequent deep pools formed by boulders and large woody debris, but only limited pockets of unembedded gravels. Numerous small steps ranging from 30–60cm were present due to the steep, boulder-dominated nature of the stream. `r fpr_my_habitat_paragraph(loc = 'us')`
+The stream was surveyed upstream from crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` to crossing `r as.character(my_site2)` on the CN Railway, a distance of approximately 300m `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-199278-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-199278-d01)"))` The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'us') |>stringr::str_to_lower()` value for spawning and rearing, with frequent deep pools formed by boulders and large woody debris, but only limited pockets of unembedded gravels. Numerous small steps ranging from 30 – 60cm were present due to the steep, boulder-dominated nature of the stream. `r fpr_my_habitat_paragraph(loc = 'us')`
 
 <br>
 
 ## Stream Characteristics Upstream of Crossing `r as.character(my_site2)` {.unnumbered}
 
-`r fpr_my_survey_dist(sit = my_site2, loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-203302-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-203302-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us') |> stringr::str_to_lower()` value for spawning and rearing, with few unembedded gravels; however, recent heavy rain caused slight turbidity making it difficult to assess the subtrate. `r fpr_my_habitat_paragraph(sit = my_site2, loc = 'us')` Approximately 100m before the end of the site, the stream showed signs of a large disturbance event that had incised the channel to a depth of 1.2–2m, with major areas of aggregation where the channel was widened and uniform.
+`r fpr_my_survey_dist(sit = my_site2, loc = 'us')` `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-203302-01)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-203302-d01))."))` The habitat was rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us') |> stringr::str_to_lower()` value for spawning and rearing, with few unembedded gravels; however, recent heavy rain caused slight turbidity making it difficult to assess the substrate. `r fpr_my_habitat_paragraph(sit = my_site2, loc = 'us')` Approximately 100m before the end of the site, the stream showed signs of a large disturbance event that had incised the channel to a depth of 1.2 – 2m, with major areas of aggregation where the channel was widened and uniform.
 
 <br>
 
@@ -163,13 +167,11 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` on Highway 5 had a moderate 0.4m outlet drop that could be substantial at lower flows. A large, deep outlet pool indicated the culvert was likely undersized for the stream, and minimal road fill made this crossing a significant flood hazard, which could wash out Highway 5. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Further upstream, PSCIS crossing `r as.character(my_site2)` on the CN Railway had a significant 0.75m outlet drop, likely inhibiting fish passage. This crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(sit = my_site2, col_pull = priority))` priority for replacement. 
+PSCIS crossing `r as.character(my_site)` on Highway 5 had a moderate outlet drop that could be substantial at lower flows. A large, deep outlet pool indicated the culvert was likely undersized for the stream, and minimal road fill made this crossing a significant flood hazard which could wash out Highway 5, a major transportation route. The crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. A further 300m upstream, PSCIS crossing `r as.character(my_site2)` on the CN Railway had a substantial outlet drop, which may inhibit passage for younger life stages of salmonids. This crossing is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(sit = my_site2, col_pull = priority))` priority for replacement. The documented fish observation recorded upstream of the Highway 5 crossing indicate that this stream has provided valuable fish habitat [@manson2005Fishcollection;@moe2024KnownBC]. Given the species present in the system and the outlet drops at both crossings, fish sampling is recommended to assess whether the culverts are impeding fish passage. 
 
 <br>
 
-Bull trout captured upstream and downstream of the crossing in 2004, along with a salmon observation documented upstream of Highway 5 in 2012 [@manson2005Fishcollection: @moe2024KnownBC], indicate that this stream provides valuable fish habitat. Given the species present in the system and the outlet drops at both crossings, fish sampling is recommended to assess whether the culverts are impeding fish passage.
-
-
+Downstream of PSCIS crossing `r as.character(my_site)` on Highway 5, heavy cattle activity has resulted in visibly trampled streambanks and significant loss of riparian vegetation. Additional signs of cattle disturbance were observed further downstream near PSCIS crossing 7620. This lower section of Teepee Creek presents an opportunity for riparian restoration to exclude cattle from the stream through measures such as fencing and the installation of offsite watering systems. Given the stream’s proximity to the Village of Valemount, landowner engagement through education and restoration initiatives should be explored. Furthermore, with Mount Terry Fox Provincial Park and the Teepee Creek trail network located upstream, crossing replacement and habitat restoration efforts could align with broader conservation goals and community initiatives, increasing the likelihood of funding and sustained project momentum.
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 

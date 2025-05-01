@@ -43,15 +43,11 @@ At PSCIS crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a
 `r fpr::fpr_my_wshd()`km^2^. The watershed ranges in elevation from
 a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 `r fpr::fpr_my_wshd(col = 'elev_site')`m near the crossing (Table
-\@ref(tab:tab-wshd-199255)).
+\@ref(tab:tab-wshd-199255)). Detailed background information regarding the Kenneth Creek watershed is presented in [Kenneth Creek - 199256 - Appendix]. 
 
 <br>
 
-In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and its proximity to Kenneth Creek, which has chinook observations documented in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. 
-
-<br>
-
-Chinook spawners have been historically documented at the confluence of Kenneth Creek and the Fraser River in the [Pacific Salmon Explorer](https://www.salmonexplorer.ca/) [@salmonwatershedsprogram2025Spawnerabundance]. Upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
+In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`  was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and its proximity to Kenneth Creek, which has chinook observations documented in the FISS database [@moe2024KnownBC]. A habitat confirmation assessment was subsequently conducted in 2024. Upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
@@ -71,7 +67,7 @@ fpr::fpr_table_wshd_sum(site_id = my_site) |>
 <br>
 
 ```{r tab-culvert-bcfp-199255, eval = T}
-fpr::fpr_table_bcfp(scroll = gitbook_on) 
+fpr::fpr_table_bcfp(scroll = F) 
 ```
 
 <br>

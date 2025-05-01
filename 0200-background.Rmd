@@ -197,6 +197,8 @@ The Fraser River watershed is the largest salmon-producing river system in Briti
 
 <br>
 
+The 2019 Big Bar landslide created a significant barrier to salmon migration in the Fraser River, further stressing already vulnerable populations. Extensive mitigation efforts, including rock removal and the construction of a fishway, have helped improve passage, with an estimated 2.9 million salmon successfully navigating the site in 2022. The Upper Fraser Fisheries Conservation Alliance (UFFCA) has played a key role in supporting emergency response and recovery planning, working with federal and provincial agencies to ensure First Nations' interests and traditional knowledge are incorporated into long-term recovery strategies. This includes ongoing monitoring, habitat restoration, and collaborative management to mitigate future risks to Fraser salmon populations [@Upperfraserfisheriesconservationalliance].
+
 ### Lhtakoh  
 
 The Fraser River mainstem serves as the primary migration corridor for all anadromous fish species returning to spawn in its tributaries. Historically, the Fraser supported some of the largest sockeye and chinook salmon runs in North America. However, climate change, habitat degradation, and fisheries pressures have led to declining salmon populations in recent decades.  
@@ -207,13 +209,19 @@ Upper Fraser sockeye populations have been in decline for several decades, likel
 
 <br>
 
-The Fraser River mainstem serves as the primary migration corridor for all anadromous fish species returning to spawn in its tributaries. Historically, the Fraser supported some of the largest sockeye and chinook salmon runs in North America. However, climate change, habitat degradation, and fisheries pressures have led to declining salmon populations in recent decades. 
+In 2005, @nesbit_etal2005Valemountarea outlined key fisheries areas in the upper Fraser River watershed as the McLennan River, Swift Creek, and the upper mainstem of the Fraser River near Valemount and Tête Jaune Cache. These systems are known to support chinook salmon, with documented spawning in both Swift Creek and the McLennan River. At the time of reporting by @nesbit_etal2005Valemountarea, two Wildlife Habitat Areas (WHA 3155 and WHA 6012) were designated in the Tête Jaune Cache area based on high fisheries values. WHA 3155 encompassed the confluence of the McLennan and Fraser Rivers and was recognized as the largest chinook spawning area in the upper Fraser system. WHA 6012 protected an adjacent side channel further downstream, which was identified as important juvenile rearing and refuge habitat during high flow events. Although both WHAs have since been removed, their prior designation underscores the ecological importance of the area.
 
 <br>
 
-The 2019 Big Bar landslide created a significant barrier to salmon migration in the Fraser River, further stressing already vulnerable populations. Extensive mitigation efforts, including rock removal and the construction of a fishway, have helped improve passage, with an estimated 2.9 million salmon successfully navigating the site in 2022. The Upper Fraser Fisheries Conservation Alliance (UFFCA) has played a key role in supporting emergency response and recovery planning, working with federal and provincial agencies to ensure First Nations' interests and traditional knowledge are incorporated into long-term recovery strategies. This includes ongoing monitoring, habitat restoration, and collaborative management to mitigate future risks to Fraser salmon populations [@Upperfraserfisheriesconservationalliance].
+Swift Creek is the site of ongoing conservation hatchery efforts by the Spruce City Wildlife Association (SCWA), which has operated a volunteer-run hatchery since 1987. Following upgrades in 2020, it is now considered the most technologically advanced hatchery in the province. Focused on restoring upper Fraser River chinook, which are listed as "Endangered" by COSEWIC [@cosewic2019COSEWICassessment], SCWA releases thousands of chinook fry into Swift Creek each spring as part of broader recovery initiatives targeting key spawning systems in the region [@sprucecitywildlifeassociation2023SCWAHatchery].
 
 <br>
+
+Three sub-watersheds within the upper Fraser River basin are designated as Fisheries Sensitive Watersheds (FSWs) due to the presence of sensitive fish species, including chinook salmon and bull trout. The Goat River and Milk River watersheds have held FSW status since 2013 [@flnrord2004Orderfisheries], and the Walker Creek watershed has been designated since 2004 [@flnrord2004Orderfisheriesa].
+
+<br>
+
+The importance of salmon in the upper Fraser is strongly reflected in Valemount’s community identity, education, and ecotourism initiatives. Public engagement with the salmon run is encouraged through accessible viewing areas at George Hicks Regional Park on Swift Creek, the Fraser River at Tête Jaune Cache, and along the McLennan River—locations that serve both as local gathering points and platforms for increasing awareness of salmon life cycles and watershed stewardship [@tourismvalemountSpotSalmon].
 
 <!-- Need more detail and references -->
 <!-- Fraser River salmon populations are monitored through escapement surveys and hydroacoustic assessments. Some key salmon populations include: -->
@@ -235,25 +243,22 @@ The Nechako River also supports a genetically distinct and endangered population
 
 Indigenous fisheries organizations, including individual First Nations, the Carrier Sekani Tribal Council, and the Upper Fraser Fisheries Conservation Alliance (UFFCA), are actively involved in fisheries management in the Nechako watershed. These organizations work to support conservation while ensuring the sustainability of Indigenous fisheries, which have cultural and subsistence importance [@Upperfraserfisheriesconservationalliance].
 
-<br>
 
 
 ### François Lake  
 
 François Lake is one of the largest natural lakes in BC and supports landlocked Kokanee (O. nerka), as well as migratory sockeye salmon that access the lake via the Stellako River. François Lake is a key rearing area for juvenile salmon before migrating to the Fraser River.  
 
-<br>
 
 ### Morkill River  
 
-The Morkill River, a tributary of the Upper Fraser, supports Bull Trout, Mountain Whitefish, and Rainbow Trout. It has limited salmon presence but contributes cold water inputs to the Fraser River, which may benefit migrating fish during warm summer months.  
+The Morkill River, a tributary to the upper Fraser, supports populations of bull trout, mountain whitefish, and rainbow trout. While salmon presence in the system is limited, the Morkill provides cold water inputs to the Fraser River, which may offer thermal refuge for migrating salmonids during warm summer months.
 
-<br>
 
 ### Salmon Stock Assessment Data
 
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
-through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on) { knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)") } else { knitr::asis_output(ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "background.html", anchor_text = "here")) }`. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
+through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on) { knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)") } else { knitr::asis_output(ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "background.html", anchor_text = "here")) }` [@canadaNuSEDSNewSalmon]. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
 
@@ -352,6 +357,11 @@ Summary of historical fish observations in the Upper Fraser River, Nechako River
 
 <br>
 
+A review of available fisheries data, for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups, stratified by different habitat characteristics can provide insight into which habitats may provide the highest intrinsic value for fish species based on the number of fish captured in those habitats in past assessment work (Figures \@ref(fig:fish-plot-grad) - \@ref(fig:fish-plot-width) - \@ref(fig:fish-plot-wshed)).  It should be noted however that it should not be assumed that all habitat types have been sampled in a non-biased fashion or that particular sites selected do not have a disproportionate influence on the overall dataset composition (ie. fish salvage sites are often located adjacent to construction sites which are more commonly located near lower gradient stream reaches).
+
+<br>
+
+
 ```{r fiss-species-table}
 fiss_species_table <- readr::read_csv('data/inputs_extracted/fiss_species_table.csv')
 
@@ -374,15 +384,16 @@ fiss_species_table %>%
 
 <br>
 
-A review of available fisheries data, for the Nechako River, Lower Chilako River, François Lake, Morkill River and Upper Fraser River watershed groups, stratified by different habitat characteristics can provide insight into which habitats may provide the highest intrinsic value for fish species based on the number of fish captured in those habitats in past assessment work (Figures \@ref(fig:fish-plot-grad) - \@ref(fig:fish-plot-width) - \@ref(fig:fish-plot-wshed)).  It should be noted however that it should not be assumed that all habitat types have been sampled in a non-biased fashion or that particular sites selected do not have a disproportionate influence on the overall dataset composition (ie. fish salvage sites are often located adjacent to construction sites which are more commonly located near lower gradient stream reaches).
-
-
-<br>
-
 ```{r fish-fiss-summary, eval=T}
-fiss_sum_grad <- readr::read_csv(file =  'data/inputs_extracted/fiss_sum_grad.csv')
-fiss_sum_width <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_width.csv')
-fiss_sum_wshed <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_wshed.csv') 
+# Remove the 1 steelhead observation from these csvs because is it likely a mistake
+fiss_sum_grad <- readr::read_csv(file =  'data/inputs_extracted/fiss_sum_grad.csv') |> 
+  dplyr::filter(species_code != "ST")
+
+fiss_sum_width <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_width.csv')|> 
+  dplyr::filter(species_code != "ST")
+
+fiss_sum_wshed <- readr::read_csv(file = 'data/inputs_extracted/fiss_sum_wshed.csv') |> 
+  dplyr::filter(species_code != "ST")
 
 ```
 
