@@ -18,8 +18,14 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
   source('scripts/staticimports.R')
   my_news_to_appendix()
 
-  # this will swap out the real appendix rmd and html and swap in a dummy placeholder for the build to speed it up
-  file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
+  # These files are included in the gitbook version already so we move them out of the build
+  files_to_move <- list.files(pattern = ".Rmd$") |>
+    # 2500 is the phase 1 data and photos used in the pdf version
+    stringr::str_subset('0600|2200', negate = F) #move the attachments out
+  files_destination <- paste0('hold/', files_to_move)
+
+  ##move the files
+  mapply(file.rename, from = files_to_move, to = files_destination)
 
   # this is a time saver - we swap the real phase 1 to hold and biuld with a dummy file - then replace at the end to get the real report.
   # this needs to be rebuilt if there are updates to the phase 1...
@@ -34,19 +40,8 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
     overwrite = TRUE
   )
 
-  # These files are included in the gitbook version already so we move them out of the build
-  files_to_move <- list.files(pattern = ".Rmd$") |>
-    # 2500 is the phase 1 data and photos used in the pdf version
-    stringr::str_subset('2200', negate = F) #move the attachments out
-  files_destination <- paste0('hold/', files_to_move)
-
-  ##move the files
-  mapply(file.rename, from = files_to_move, to = files_destination)
-
-
   rmarkdown::render_site(output_format = 'bookdown::gitbook',
                          encoding = 'UTF-8')
-
 
   ##move the files from the hold file back to the main file
   mapply(file.rename, from = files_destination, to = files_to_move)
@@ -63,10 +58,7 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
     '0600-appendix-placeholder.Rmd',
     'hold/0600-appendix-placeholder.Rmd'
     )
-  file.rename(
-    'hold/0600-appendix.Rmd',
-    '0600-appendix.Rmd'
-    )
+
 }
 
 # not run but available to remove files we don't need in the gitbook build (sometimes appendices are not built in gitbook)
@@ -75,20 +67,20 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
 #   source('scripts/functions.R')
 #   news_to_appendix()
 #
-#   # These files are included in the gitbook version already so we move them out of the build
-#   files_to_move <- list.files(pattern = ".Rmd$") %>%
-#     stringr::str_subset(., '2200|2300|2400', negate = F) #move the attachments out
-#   files_destination <- paste0('hold/', files_to_move)
+# These files are included in the gitbook version already so we move them out of the build
+# files_to_move <- list.files(pattern = ".Rmd$") %>%
+#   stringr::str_subset(., '2200|2300|2400', negate = F) #move the attachments out
+# files_destination <- paste0('hold/', files_to_move)
 #
-#   ##move the files
-#   mapply(file.rename, from = files_to_move, to = files_destination)
+# ##move the files
+# mapply(file.rename, from = files_to_move, to = files_destination)
 #
-#   rmarkdown::render_site(output_format = 'bookdown::gitbook',
-#                          encoding = 'UTF-8')
+# rmarkdown::render_site(output_format = 'bookdown::gitbook',
+#                        encoding = 'UTF-8')
 #
-#   ##move the files from the hold file back to the main file
-#   mapply(file.rename, from = files_destination, to = files_to_move)
-# }
+# ##move the files from the hold file back to the main file
+# mapply(file.rename, from = files_destination, to = files_to_move)
+
 
 
 
@@ -97,7 +89,6 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
 ##go to the index.Rmd and change gitbook_on <- FALSE
 #################################################################################################
 ##move the phase 1 appendix out of the main directory to a backup file or else the file is too big
-
 
 {
 
@@ -124,17 +115,17 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
   pagedown::chrome_print(
     paste0(filename_html, '.html'),
     output = paste0('docs/', filename_html, '.pdf'),
-    timeout = 180
+    timeout = 300
   )
 
-  # reduce the size
-  tools::compactPDF(paste0("docs/", filename_html, ".pdf"),
-                    gs_quality = 'ebook',
-                    ##this was on the windows machine
-                    # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
-                    gs_cmd = "/opt/homebrew/bin/gs",
-                    verbose = TRUE
-  )
+  # reduce the size - turning off since its not too big and keeps everything looking good
+  # tools::compactPDF(paste0("docs/", filename_html, ".pdf"),
+  #                   gs_quality = 'ebook',
+  #                   ##this was on the windows machine
+  #                   # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
+  #                   gs_cmd = "/opt/homebrew/bin/gs",
+  #                   verbose = TRUE
+  # )
 
   # get rid of the html as its too big and not needed
   file.remove(paste0(filename_html, '.html'))
