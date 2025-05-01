@@ -434,6 +434,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a>
 <ul>
+<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html#fish_passage_fraser_2023_reporting-0.1.1-2025-06-01"><i class="fa fa-check"></i>fish_passage_fraser_2023_reporting 0.1.1 (2025-06-01)</a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html#fish_passage_fraser_2023_reporting-0.1.0-2025-05-15"><i class="fa fa-check"></i>fish_passage_fraser_2023_reporting 0.1.0 (2025-05-15)</a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html#fish_passage_fraser_2023_reporting-0.0.1-2024-08-25"><i class="fa fa-check"></i>fish_passage_fraser_2023_reporting 0.0.1 (2024-08-25)</a></li>
 </ul></li>
@@ -466,15 +467,18 @@ div.csl-indent {
 <h2>Site Location<a href="teepee-creek---199278-203302---appendix.html#site-location-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>PSCIS crossings 199278 and 203302 are located on Teepee Creek, which flows into the McLennan River approximately 7km north of Valemount, BC, in the Upper Fraser River watershed group (Figure <a href="teepee-creek---199278-203302---appendix.html#fig:map-199278">5.46</a>). Crossing 199278 is located 2.4km upstream of the McLennan River, on Highway 5, and is the responsibility of the Ministry of Transportation and Infrastructure (<code>chris_culvert_id</code>: 1467202). Approximately 300m upstream, PSCIS crossing 203302 is located on and is the responsibility of the CN Railway.</p>
 <p><br></p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="teepee-creek---199278-203302---appendix.html#cb233-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Teepee Creek&quot;</span></span>
-<span id="cb233-2"><a href="teepee-creek---199278-203302---appendix.html#cb233-2" tabindex="-1"></a> </span>
-<span id="cb233-3"><a href="teepee-creek---199278-203302---appendix.html#cb233-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_teepee.jpeg&quot;</span>)</span></code></pre></div>
+<p>The headwaters of Teepee Creek overlap with Mount Terry Fox Provincial Park, which commemorates Terry Fox for his outstanding achievements <span class="citation">(<span>“Mount <span>Terry Fox Park</span>”</span> n.d.)</span>. Previously, access to the park was provided via the <a href="https://www.trailforks.com/trails/mount-terry-fox-hiking-trail/">Mount Terry Fox Hiking Trail</a>—a 16km out-and-back route gaining 1,740m in elevation on the hillside north of Teepee Creek, beginning near PSCIS crossing 4931 on Tinsley Pit Road <span class="citation">(Caledonia Ramblers Hiking Club 2025)</span>. A newer trail now begins farther up the Teepee Creek drainage and follows the creek itself, connecting to a network of trails that can be used to access Mount Terry Fox with views of Mount Robson, as well as separate trails leading to alpine lakes and waterfalls. Additional information and downloadable GPX routes for the Teepee Creek trail are available <a href="https://hikevalemount.com/teepee-creek-to-mt-terry-fox/">here</a> <span class="citation">(Hike Valemount 2023)</span>.</p>
+<p><br></p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="teepee-creek---199278-203302---appendix.html#cb234-1" tabindex="-1"></a> my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Map of Teepee Creek&quot;</span></span>
+<span id="cb234-2"><a href="teepee-creek---199278-203302---appendix.html#cb234-2" tabindex="-1"></a> </span>
+<span id="cb234-3"><a href="teepee-creek---199278-203302---appendix.html#cb234-3" tabindex="-1"></a> knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/gis/map_teepee.jpeg&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:map-199278"></span>
 <img src="fig/gis/map_teepee.jpeg" alt="Map of Teepee Creek" width="100%" />
 <p class="caption">
 Figure 5.46: Map of Teepee Creek
 </p>
 </div>
+<p><br></p>
 </div>
 <div id="background-12" class="section level2 unnumbered hasAnchor">
 <h2>Background<a href="teepee-creek---199278-203302---appendix.html#background-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -483,25 +487,24 @@ third order stream and drains a high elevation watershed of approximately
 11km<sup>2</sup>. The watershed ranges in elevation from
 a maximum of 2648m to
 798m near crossing 199278 (Table
-<a href="teepee-creek---199278-203302---appendix.html#tab:tab-wshd-199278">5.46</a>).</p>
+<a href="teepee-creek---199278-203302---appendix.html#tab:tab-wshd-199278">5.49</a>).</p>
 <p><br></p>
-<p>In 2023, crossing 199278 was assessed with fish passage assessments and prioritized for follow-up due to the presence of high-value habitat and a salmon observation recorded upstream in the FISS database <span class="citation">(MoE 2024)</span>. A habitat confirmation assessment encompassing both crossings 199278 and 203302 was conducted in 2024.</p>
+<p>Bull trout were captured upstream and downstream of crossing 199278 on Highway 5 by Triton Environmental Consultants Ltd. in 2004 <span class="citation">(Manson 2005)</span>, and again near the crossing by Applied Aquatic Research Ltd. in 2006 <span class="citation">(Applied Aquatic Research 2006)</span>. Additionally, a salmon observation from 2012 is documented upstream of Highway 5 in the FISS database <span class="citation">(MoE 2024)</span>.</p>
 <p><br></p>
-<p>Downstream of Highway 5 on the CN railway, PSCIS crossing 7620 was initially assessed in 2007, and upstream of the highway, PSCIS crossing 4931 was initially assessed by Cliff Jackman Contracting Ltd. in 2010 <span class="citation">(MoE 2023)</span>. Both crossings were reassessed during the 2024 field visit.</p>
+<p>In 2023, crossing 199278 was assessed with a fish passage assessment and prioritized for follow-up due to the presence of high-value habitat and known fish observation recorded upstream of the crossing as previously mentioned. A habitat confirmation assessment was subsequently conducted in 2024, encompassing crossing 199278 on Highway 5 as well as crossing 203302 located 300m upstream on the CN railway.</p>
 <p><br></p>
-<p>As previously mentioned, a salmon observation from 2012 is documented upstream of Highway 5 in the FISS database <span class="citation">(MoE 2024)</span>. Additionally, in 2004, bull trout were captured upstream and downstream of crossing 199278 by Triton Environmental Consultants Ltd. <span class="citation">(Manson 2005)</span>.</p>
-<p><br></p>
+<p>Downstream of Highway 5 on the CN railway, PSCIS crossing 7620 was initially assessed in 2007, and upstream of the highway, PSCIS crossing 4931 was initially assessed by Cliff Jackman Contracting Ltd. in 2010 <span class="citation">(MoE 2023)</span>. Both crossings were reassessed with a fish passage assessment during the 2024 field visit.</p>
 <!-- <br> -->
 <!-- A summary of habitat modelling outputs for the crossing are presented in Table -->
 <!-- \@ref(tab:tab-culvert-bcfp-199278).  -->
 <p><br></p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="teepee-creek---199278-203302---appendix.html#cb234-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
-<span id="cb234-2"><a href="teepee-creek---199278-203302---appendix.html#cb234-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb234-3"><a href="teepee-creek---199278-203302---appendix.html#cb234-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
-<span id="cb234-4"><a href="teepee-creek---199278-203302---appendix.html#cb234-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="teepee-creek---199278-203302---appendix.html#cb235-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_wshd_sum</span>(<span class="at">site_id =</span> my_site) <span class="sc">|&gt;</span></span>
+<span id="cb235-2"><a href="teepee-creek---199278-203302---appendix.html#cb235-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb235-3"><a href="teepee-creek---199278-203302---appendix.html#cb235-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
+<span id="cb235-4"><a href="teepee-creek---199278-203302---appendix.html#cb235-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-wshd-199278">Table 5.46: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199278.
+<span id="tab:tab-wshd-199278">Table 5.49: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199278.
 </caption>
 <thead>
 <tr>
@@ -567,29 +570,199 @@ SW
 </tr>
 </tfoot>
 </table>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="teepee-creek---199278-203302---appendix.html#cb235-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> gitbook_on) </span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="teepee-creek---199278-203302---appendix.html#cb236-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> F) </span></code></pre></div>
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<caption style="font-size: initial !important;">
+<span id="tab:tab-culvert-bcfp-199278">Table 5.50: </span>Summary of fish habitat modelling for PSCIS crossing 199278.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Habitat
+</th>
+<th style="text-align:right;">
+Potential
+</th>
+<th style="text-align:right;">
+Remediation Gain
+</th>
+<th style="text-align:right;">
+Remediation Gain (%)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CH Spawning (km)
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CH Rearing (km)
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CO Spawning (km)
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CO Rearing (km)
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CO Rearing (ha)
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SK Spawning (km)
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SK Rearing (km)
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SK Rearing (ha)
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BT Rearing (km)
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BT Spawning (km)
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+–
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup>*</sup> Model data is preliminary and subject to adjustments.
+</td>
+</tr>
+</tfoot>
+</table>
 <p><br></p>
 </div>
 <div id="stream-characteristics-at-crossings-199278-and-203302" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics at Crossings 199278 and 203302<a href="teepee-creek---199278-203302---appendix.html#stream-characteristics-at-crossings-199278-and-203302" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>At the time of the 2024 assessment, PSCIS crossing 199278 on Highway 5 was un-embedded, non-backwatered and ranked as barrier to upstream fish passage according to the provincial protocol <span class="citation">(MoE 2011)</span> (Table <a href="teepee-creek---199278-203302---appendix.html#tab:tab-culvert-199278">5.47</a>). The culvert had a moderate 0.4m outlet drop.</p>
+<p>During the 2023 and 2024 assessments, PSCIS crossing 199278 on Highway 5 was un-embedded, non-backwatered and ranked as barrier to upstream fish passage according to the provincial protocol <span class="citation">(MoE 2011)</span> (Table <a href="teepee-creek---199278-203302---appendix.html#tab:tab-culvert-199278">5.51</a>). The culvert had a moderate 0.4m outlet drop.</p>
 <p><br></p>
-<p>PSCIS crossing 203302 on the CN Railway was un-embedded, non-backwatered and ranked as a barrier to upstream fish passage according to the provincial protocol
-<span class="citation">(MoE 2011)</span> (Table <a href="teepee-creek---199278-203302---appendix.html#tab:tab-culvert-203302">5.48</a>). This culvert had a significant 0.75m outlet drop.</p>
+<p>First assessed in 2024, PSCIS crossing 203302 on the CN Railway was un-embedded, non-backwatered and ranked as a barrier to upstream fish passage according to the provincial protocol
+<span class="citation">(MoE 2011)</span> (Table <a href="teepee-creek---199278-203302---appendix.html#tab:tab-culvert-203302">5.52</a>). This culvert had a significant 0.75m outlet drop.</p>
 <p><br></p>
-<p>In 2024, three other PSCIS crossings were assessed on Teepee Creek and can be found in <a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#appendix---phase-1-fish-passage-assessment-data-and-photos">Appendix - Phase 1 Fish Passage Assessment Data and Photos</a> (Figure <a href="teepee-creek---199278-203302---appendix.html#fig:map-199278">5.46</a>). Approximately 700m downstream of Highway 5, PSCIS crossing 7620 was located on the CN Railway. Although the crossing ranked was as barrier to upstream fish passage according to the provincial protocol <span class="citation">(MoE 2011)</span>, the culvert was embedded, 100% backwatered, and was not a barrier to fish passage at the time of the survey. Roughly 70m downstream of Highway 5, there was a small bridge on private land (PSCIS 203300). Approximately 600m upstream of PSCIS crossing 203302 on the CN Railway, PSCIS crossing 4931 was located on Mount Tinsley Pit Road, which falls under the road tenure of Carrier Lumber R13564. The culvert had a significant 1.3m outlet drop.</p>
+<p>In 2024, three other PSCIS crossings were assessed on Teepee Creek and can be found in <a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#appendix---phase-1-fish-passage-assessment-data-and-photos">Appendix - Phase 1 Fish Passage Assessment Data and Photos</a>. Approximately 700m downstream of Highway 5, PSCIS crossing 7620 was located on the CN Railway (Figure <a href="teepee-creek---199278-203302---appendix.html#fig:map-199278">5.46</a>). Although the crossing was ranked as a barrier to upstream fish passage according to the provincial protocol <span class="citation">(MoE 2011)</span>, the culvert was embedded, 100% backwatered, and was not a barrier to fish passage at the time of the survey. Roughly 70m downstream of Highway 5, there was a small bridge on private land (PSCIS 203300)(Figure <a href="teepee-creek---199278-203302---appendix.html#fig:map-199278">5.46</a>). Approximately 600m upstream of PSCIS crossing 203302 on the CN Railway, PSCIS crossing 4931 was located on Mount Tinsley Pit Road, which falls under the road tenure of Carrier Lumber R13564 (Figure <a href="teepee-creek---199278-203302---appendix.html#fig:map-199278">5.46</a>). The culvert had a significant 1.3m outlet drop.</p>
 <p><br></p>
-<p>At all crossings, the water temperature was 4<span class="math inline">\(^\circ\)</span>C,
+<p>Water temperature was 4<span class="math inline">\(^\circ\)</span>C,
 pH was 7.7 and
 conductivity was 243 uS/cm.</p>
 <p><br></p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="teepee-creek---199278-203302---appendix.html#cb236-1" tabindex="-1"></a><span class="co"># fpr::fpr_table_cv_summary_memo()</span></span>
-<span id="cb236-2"><a href="teepee-creek---199278-203302---appendix.html#cb236-2" tabindex="-1"></a></span>
-<span id="cb236-3"><a href="teepee-creek---199278-203302---appendix.html#cb236-3" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
-<span id="cb236-4"><a href="teepee-creek---199278-203302---appendix.html#cb236-4" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="teepee-creek---199278-203302---appendix.html#cb237-1" tabindex="-1"></a><span class="co"># fpr::fpr_table_cv_summary_memo()</span></span>
+<span id="cb237-2"><a href="teepee-creek---199278-203302---appendix.html#cb237-2" tabindex="-1"></a></span>
+<span id="cb237-3"><a href="teepee-creek---199278-203302---appendix.html#cb237-3" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
+<span id="cb237-4"><a href="teepee-creek---199278-203302---appendix.html#cb237-4" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-199278">Table 5.47: </span>Summary of fish passage assessment for PSCIS crossing 199278.
+<span id="tab:tab-culvert-199278">Table 5.51: </span>Summary of fish passage assessment for PSCIS crossing 199278.
 </caption>
 <thead>
 <tr>
@@ -848,13 +1021,13 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="teepee-creek---199278-203302---appendix.html#cb237-1" tabindex="-1"></a><span class="co"># fpr::fpr_table_cv_summary_memo(site = my_site2, site_photo_id = my_site2)</span></span>
-<span id="cb237-2"><a href="teepee-creek---199278-203302---appendix.html#cb237-2" tabindex="-1"></a></span>
-<span id="cb237-3"><a href="teepee-creek---199278-203302---appendix.html#cb237-3" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
-<span id="cb237-4"><a href="teepee-creek---199278-203302---appendix.html#cb237-4" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>(<span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="teepee-creek---199278-203302---appendix.html#cb238-1" tabindex="-1"></a><span class="co"># fpr::fpr_table_cv_summary_memo(site = my_site2, site_photo_id = my_site2)</span></span>
+<span id="cb238-2"><a href="teepee-creek---199278-203302---appendix.html#cb238-2" tabindex="-1"></a></span>
+<span id="cb238-3"><a href="teepee-creek---199278-203302---appendix.html#cb238-3" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
+<span id="cb238-4"><a href="teepee-creek---199278-203302---appendix.html#cb238-4" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>(<span class="at">site =</span> my_site2, <span class="at">site_photo_id =</span> my_site2)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-203302">Table 5.48: </span>Summary of fish passage assessment for PSCIS crossing 203302.
+<span id="tab:tab-culvert-203302">Table 5.52: </span>Summary of fish passage assessment for PSCIS crossing 203302.
 </caption>
 <thead>
 <tr>
@@ -1113,24 +1286,24 @@ Fix Span / Diameter
 </table></li>
 </ul>
 <p><br></p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="teepee-creek---199278-203302---appendix.html#cb238-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb238-2"><a href="teepee-creek---199278-203302---appendix.html#cb238-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
-<span id="cb238-3"><a href="teepee-creek---199278-203302---appendix.html#cb238-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
-<span id="cb238-4"><a href="teepee-creek---199278-203302---appendix.html#cb238-4" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site2 <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="teepee-creek---199278-203302---appendix.html#cb239-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb239-2"><a href="teepee-creek---199278-203302---appendix.html#cb239-2" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
+<span id="cb239-3"><a href="teepee-creek---199278-203302---appendix.html#cb239-3" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span>
+<span id="cb239-4"><a href="teepee-creek---199278-203302---appendix.html#cb239-4" tabindex="-1"></a>hab_site <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site2 <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments)</span></code></pre></div>
 </div>
 <div id="stream-characteristics-downstream-of-crossing-199278" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 199278<a href="teepee-creek---199278-203302---appendix.html#stream-characteristics-downstream-of-crossing-199278" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed downstream from crossing 199278 for 150m (Figure <a href="teepee-creek---199278-203302---appendix.html#fig:photo-199278-01">5.47</a>).. The habitat was rated as high value, with with frequent pools 0.3–0.5m deep suitable for overwintering fish and abundant gravels for spawning. The average channel width was 7.1m, the average wetted width was 4.5m, and the average gradient was 2.5%.Total cover amount was rated as abundant with large woody debris dominant. Cover was also present as small woody debris, undercut banks, and overhanging vegetation.The dominant substrate was cobbles with gravels sub-dominant.. Roughly 150m downstream of the culvert, several cattle pens crossed the stream and appeared to be set up to provide cattle access for drinking. These areas were visibly trampled, with significant loss of riparian vegetation.</p>
+<p>The stream was surveyed downstream from crossing 199278 for 150m (Figure <a href="teepee-creek---199278-203302---appendix.html#fig:photo-199278-01">5.47</a>). The habitat was rated as high value, with with frequent pools 0.3 – 0.5m deep suitable for overwintering fish and abundant gravels for spawning. The dominant substrate was cobbles with gravels sub-dominant.The average channel width was 7.1m, the average wetted width was 4.5m, and the average gradient was 2.5%.Total cover amount was rated as abundant with large woody debris dominant. Cover was also present as small woody debris, undercut banks, and overhanging vegetation. Roughly 150m downstream of the culvert, several cattle pens crossed the stream and appeared to be set up to provide cattle access for drinking. These areas were visibly trampled, with significant loss of riparian vegetation.</p>
 <p><br></p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199278-and-downstream-of-crossing-203302" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199278 and Downstream of Crossing 203302<a href="teepee-creek---199278-203302---appendix.html#stream-characteristics-upstream-of-crossing-199278-and-downstream-of-crossing-203302" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199278 on Highway 5 to crossing 203302 on the CN Railway, a distance of approximately 300m (Figure <a href="teepee-creek---199278-203302---appendix.html#fig:photo-199278-02">5.48</a>). The habitat was rated as medium value for spawning and rearing, with frequent deep pools formed by boulders and large woody debris, but only limited pockets of unembedded gravels. Numerous small steps ranging from 30–60cm were present due to the steep, boulder-dominated nature of the stream. Total cover amount was rated as moderate with boulders dominant. Cover was also present as large woody debris, undercut banks, and overhanging vegetation.The average channel width was 5.3m, the average wetted width was 3.3m, and the average gradient was 7.2%.The dominant substrate was cobbles with boulders sub-dominant.</p>
+<p>The stream was surveyed upstream from crossing 199278 on Highway 5 to crossing 203302 on the CN Railway, a distance of approximately 300m (Figure <a href="teepee-creek---199278-203302---appendix.html#fig:photo-199278-02">5.48</a>). The habitat was rated as medium value for spawning and rearing, with frequent deep pools formed by boulders and large woody debris, but only limited pockets of unembedded gravels. Numerous small steps ranging from 30 – 60cm were present due to the steep, boulder-dominated nature of the stream. The dominant substrate was cobbles with boulders sub-dominant.Total cover amount was rated as moderate with boulders dominant. Cover was also present as large woody debris, undercut banks, and overhanging vegetation.The average channel width was 5.3m, the average wetted width was 3.3m, and the average gradient was 7.2%.</p>
 <p><br></p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-203302" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 203302<a href="teepee-creek---199278-203302---appendix.html#stream-characteristics-upstream-of-crossing-203302" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 203302 for 600m (Figure <a href="teepee-creek---199278-203302---appendix.html#fig:photo-203302-01">5.49</a>). The habitat was rated as medium value for spawning and rearing, with few unembedded gravels; however, recent heavy rain caused slight turbidity making it difficult to assess the subtrate. The average channel width was 5.4m, the average wetted width was 3.9m, and the average gradient was 6.8%.The dominant substrate was cobbles with boulders sub-dominant.Total cover amount was rated as moderate with boulders dominant. Cover was also present as . Approximately 100m before the end of the site, the stream showed signs of a large disturbance event that had incised the channel to a depth of 1.2–2m, with major areas of aggregation where the channel was widened and uniform.</p>
+<p>The stream was surveyed upstream from crossing 203302 for 600m (Figure <a href="teepee-creek---199278-203302---appendix.html#fig:photo-203302-01">5.49</a>). The habitat was rated as medium value for spawning and rearing, with few unembedded gravels; however, recent heavy rain caused slight turbidity making it difficult to assess the substrate. Total cover amount was rated as moderate with boulders dominant. Cover was also present as .The average channel width was 5.4m, the average wetted width was 3.9m, and the average gradient was 6.8%.The dominant substrate was cobbles with boulders sub-dominant. Approximately 100m before the end of the site, the stream showed signs of a large disturbance event that had incised the channel to a depth of 1.2 – 2m, with major areas of aggregation where the channel was widened and uniform.</p>
 <p><br></p>
 </div>
 <div id="structure-remediation-and-cost-estimate-11" class="section level2 unnumbered hasAnchor">
@@ -1142,18 +1315,18 @@ Fix Span / Diameter
 </div>
 <div id="conclusion-11" class="section level2 unnumbered hasAnchor">
 <h2>Conclusion<a href="teepee-creek---199278-203302---appendix.html#conclusion-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>PSCIS crossing 199278 on Highway 5 had a moderate 0.4m outlet drop that could be substantial at lower flows. A large, deep outlet pool indicated the culvert was likely undersized for the stream, and minimal road fill made this crossing a significant flood hazard, which could wash out Highway 5. The crossing is a high priority for replacement. Further upstream, PSCIS crossing 203302 on the CN Railway had a significant 0.75m outlet drop, likely inhibiting fish passage. This crossing is a moderate priority for replacement.</p>
+<p>PSCIS crossing 199278 on Highway 5 had a moderate outlet drop that could be substantial at lower flows. A large, deep outlet pool indicated the culvert was likely undersized for the stream, and minimal road fill made this crossing a significant flood hazard which could wash out Highway 5, a major transportation route. The crossing is a high priority for replacement. A further 300m upstream, PSCIS crossing 203302 on the CN Railway had a substantial outlet drop, which may inhibit passage for younger life stages of salmonids. This crossing is a moderate priority for replacement. The documented fish observation recorded upstream of the Highway 5 crossing indicate that this stream has provided valuable fish habitat <span class="citation">(Manson 2005; MoE 2024)</span>. Given the species present in the system and the outlet drops at both crossings, fish sampling is recommended to assess whether the culverts are impeding fish passage.</p>
 <p><br></p>
-<p>Bull trout captured upstream and downstream of the crossing in 2004, along with a salmon observation documented upstream of Highway 5 in 2012 <span class="citation">MoE (2024)</span>, indicate that this stream provides valuable fish habitat. Given the species present in the system and the outlet drops at both crossings, fish sampling is recommended to assess whether the culverts are impeding fish passage.</p>
+<p>Downstream of PSCIS crossing 199278 on Highway 5, heavy cattle activity has resulted in visibly trampled streambanks and significant loss of riparian vegetation. Additional signs of cattle disturbance were observed further downstream near PSCIS crossing 7620. This lower section of Teepee Creek presents an opportunity for riparian restoration to exclude cattle from the stream through measures such as fencing and the installation of offsite watering systems. Given the stream’s proximity to the Village of Valemount, landowner engagement through education and restoration initiatives should be explored. Furthermore, with Mount Terry Fox Provincial Park and the Teepee Creek trail network located upstream, crossing replacement and habitat restoration efforts could align with broader conservation goals and community initiatives, increasing the likelihood of funding and sustained project momentum.</p>
 <p><br></p>
 <p><br></p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="teepee-creek---199278-203302---appendix.html#cb239-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
-<span id="cb239-2"><a href="teepee-creek---199278-203302---appendix.html#cb239-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site, my_site2)) <span class="sc">|&gt;</span> </span>
-<span id="cb239-3"><a href="teepee-creek---199278-203302---appendix.html#cb239-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossings &quot;</span>, my_site, <span class="st">&quot; and &quot;</span>, my_site2, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb239-4"><a href="teepee-creek---199278-203302---appendix.html#cb239-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="teepee-creek---199278-203302---appendix.html#cb240-1" tabindex="-1"></a>tab_hab_summary <span class="sc">|&gt;</span></span>
+<span id="cb240-2"><a href="teepee-creek---199278-203302---appendix.html#cb240-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site, my_site2)) <span class="sc">|&gt;</span> </span>
+<span id="cb240-3"><a href="teepee-creek---199278-203302---appendix.html#cb240-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossings &quot;</span>, my_site, <span class="st">&quot; and &quot;</span>, my_site2, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb240-4"><a href="teepee-creek---199278-203302---appendix.html#cb240-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-habitat-summary-199278">Table 5.49: </span>Summary of habitat details for PSCIS crossings 199278 and 203302.
+<span id="tab:tab-habitat-summary-199278">Table 5.53: </span>Summary of habitat details for PSCIS crossings 199278 and 203302.
 </caption>
 <thead>
 <tr>
@@ -1277,10 +1450,10 @@ medium
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="teepee-creek---199278-203302---appendix.html#cb240-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_1_&#39;</span>)</span>
-<span id="cb240-2"><a href="teepee-creek---199278-203302---appendix.html#cb240-2" tabindex="-1"></a></span>
-<span id="cb240-3"><a href="teepee-creek---199278-203302---appendix.html#cb240-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="teepee-creek---199278-203302---appendix.html#cb241-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="teepee-creek---199278-203302---appendix.html#cb241-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;ds_typical_1_&#39;</span>)</span>
+<span id="cb241-2"><a href="teepee-creek---199278-203302---appendix.html#cb241-2" tabindex="-1"></a></span>
+<span id="cb241-3"><a href="teepee-creek---199278-203302---appendix.html#cb241-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="teepee-creek---199278-203302---appendix.html#cb242-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199278-01"></span>
 <img src="data/photos/199278/20241009_132633_ds_typical_1_k_.JPG" alt="Typical habitat downstream of PSCIS crossing 199278." width="100%" />
 <p class="caption">
@@ -1288,43 +1461,43 @@ Figure 5.47: Typical habitat downstream of PSCIS crossing 199278.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="teepee-creek---199278-203302---appendix.html#cb242-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_1_&#39;</span>)</span>
-<span id="cb242-2"><a href="teepee-creek---199278-203302---appendix.html#cb242-2" tabindex="-1"></a></span>
-<span id="cb242-3"><a href="teepee-creek---199278-203302---appendix.html#cb242-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; and downstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="teepee-creek---199278-203302---appendix.html#cb243-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="teepee-creek---199278-203302---appendix.html#cb243-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_1_&#39;</span>)</span>
+<span id="cb243-2"><a href="teepee-creek---199278-203302---appendix.html#cb243-2" tabindex="-1"></a></span>
+<span id="cb243-3"><a href="teepee-creek---199278-203302---appendix.html#cb243-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; and downstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="teepee-creek---199278-203302---appendix.html#cb244-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-199278-02"></span>
 <img src="data/photos/199278/20241009_133133_us_typical_1_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 199278 and downstream of PSCIS crossing 203302." width="100%" />
 <p class="caption">
 Figure 5.48: Typical habitat upstream of PSCIS crossing 199278 and downstream of PSCIS crossing 203302.
 </p>
 </div>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="teepee-creek---199278-203302---appendix.html#cb244-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb244-2"><a href="teepee-creek---199278-203302---appendix.html#cb244-2" tabindex="-1"></a></span>
-<span id="cb244-3"><a href="teepee-creek---199278-203302---appendix.html#cb244-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb244-4"><a href="teepee-creek---199278-203302---appendix.html#cb244-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb244-5"><a href="teepee-creek---199278-203302---appendix.html#cb244-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<p><br></p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="teepee-creek---199278-203302---appendix.html#cb245-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_1_&#39;</span>)</span>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="teepee-creek---199278-203302---appendix.html#cb245-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
 <span id="cb245-2"><a href="teepee-creek---199278-203302---appendix.html#cb245-2" tabindex="-1"></a></span>
-<span id="cb245-3"><a href="teepee-creek---199278-203302---appendix.html#cb245-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="teepee-creek---199278-203302---appendix.html#cb246-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
+<span id="cb245-3"><a href="teepee-creek---199278-203302---appendix.html#cb245-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb245-4"><a href="teepee-creek---199278-203302---appendix.html#cb245-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb245-5"><a href="teepee-creek---199278-203302---appendix.html#cb245-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="teepee-creek---199278-203302---appendix.html#cb246-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">site =</span> my_site2, <span class="at">str_to_pull =</span> <span class="st">&#39;us_typical_1_&#39;</span>)</span>
+<span id="cb246-2"><a href="teepee-creek---199278-203302---appendix.html#cb246-2" tabindex="-1"></a></span>
+<span id="cb246-3"><a href="teepee-creek---199278-203302---appendix.html#cb246-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site2, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="teepee-creek---199278-203302---appendix.html#cb247-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-203302-01"></span>
 <img src="data/photos/203302/20241009_141428_us_typical_1_k_.JPG" alt="Typical habitat upstream of PSCIS crossing 203302." width="100%" />
 <p class="caption">
 Figure 5.49: Typical habitat upstream of PSCIS crossing 203302.
 </p>
 </div>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="teepee-creek---199278-203302---appendix.html#cb247-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb247-2"><a href="teepee-creek---199278-203302---appendix.html#cb247-2" tabindex="-1"></a></span>
-<span id="cb247-3"><a href="teepee-creek---199278-203302---appendix.html#cb247-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb247-4"><a href="teepee-creek---199278-203302---appendix.html#cb247-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb247-5"><a href="teepee-creek---199278-203302---appendix.html#cb247-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="teepee-creek---199278-203302---appendix.html#cb248-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb248-2"><a href="teepee-creek---199278-203302---appendix.html#cb248-2" tabindex="-1"></a></span>
+<span id="cb248-3"><a href="teepee-creek---199278-203302---appendix.html#cb248-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb248-4"><a href="teepee-creek---199278-203302---appendix.html#cb248-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb248-5"><a href="teepee-creek---199278-203302---appendix.html#cb248-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="teepee-creek---199278-203302---appendix.html#cb248-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb248-2"><a href="teepee-creek---199278-203302---appendix.html#cb248-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb248-3"><a href="teepee-creek---199278-203302---appendix.html#cb248-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb248-4"><a href="teepee-creek---199278-203302---appendix.html#cb248-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="teepee-creek---199278-203302---appendix.html#cb249-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199282</span></span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="teepee-creek---199278-203302---appendix.html#cb249-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb249-2"><a href="teepee-creek---199278-203302---appendix.html#cb249-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb249-3"><a href="teepee-creek---199278-203302---appendix.html#cb249-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
+<span id="cb249-4"><a href="teepee-creek---199278-203302---appendix.html#cb249-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="teepee-creek---199278-203302---appendix.html#cb250-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199282</span></span></code></pre></div>
 </div>
 </div>
             </section>

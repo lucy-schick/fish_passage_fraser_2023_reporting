@@ -434,6 +434,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a>
 <ul>
+<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html#fish_passage_fraser_2023_reporting-0.1.1-2025-06-01"><i class="fa fa-check"></i>fish_passage_fraser_2023_reporting 0.1.1 (2025-06-01)</a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html#fish_passage_fraser_2023_reporting-0.1.0-2025-05-15"><i class="fa fa-check"></i>fish_passage_fraser_2023_reporting 0.1.0 (2025-05-15)</a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html#fish_passage_fraser_2023_reporting-0.0.1-2024-08-25"><i class="fa fa-check"></i>fish_passage_fraser_2023_reporting 0.0.1 (2024-08-25)</a></li>
 </ul></li>
@@ -708,6 +709,7 @@ Rearing Gradient Max (%)
 </tr>
 </tfoot>
 </table>
+<p><br></p>
 <!-- This table has not been included in the most recent reports (skeena and peace 2023). Maybe because we now use 8.5% for ST rearing habitat, which is not what is referenced in this table (they said 7.5) -->
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="methods.html#cb26-1" tabindex="-1"></a>bcfishpass_spawn_rear_model_references <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">&#39;data/inputs_raw/bcfishpass_spawn_rear_model_ref.csv&#39;</span>)</span>
 <span id="cb26-2"><a href="methods.html#cb26-2" tabindex="-1"></a></span>
@@ -1115,9 +1117,9 @@ barrier
 </tbody>
 </table>
 <p><br></p>
-<p>The habitat gain index is the quantity of modelled habitat upstream of the subject crossing and represents an estimate of habitat gained with remediation of fish passage at the crossing. For this project, a gradient threshold between accessible and non-accessible habitat was set at 20% (for a minimimum length of 100m) intended to represent the maximum gradient of which the strongest swimmers of anadromous species (steelhead) are likely to be able to migrate upstream.</p>
+<p>The habitat gain index is the quantity of modelled habitat upstream of the subject crossing and represents an estimate of habitat gained with remediation of fish passage at the crossing. For this project, a gradient threshold between accessible and non-accessible habitat was set at 25% (for a minimimum length of 100m) intended to represent the maximum gradient of which the strongest swimmers of anadromous species (bull trout) are likely to be able to migrate upstream.</p>
 <p><br></p>
-<p>For reporting of Phase 1 - fish passage assessments within the body of this report (Table <a href="methods.html#tab:tab-barrier-scoring">3.4</a>), a “total” value of habitat &lt;20% output from <code>bcfishpass</code> was used to estimate the amount of habitat upstream of each crossing less than 20% gradient before a falls of height &gt;5m - as recorded in <span class="citation">MoE (2020)</span> or documented in other <code>bcfishpass</code> online documentation. For Phase 2 - habitat confirmation sites, conservative estimates of the linear quantity of habitat to be potentially gained by fish passage restoration, bull trout rearing maximum gradient threshold (10.5%) was used. To generate estimates for area of habitat upstream (m<sup>2</sup>), the estimated linear length was multiplied by half the downstream channel width measured (overall triangular channel shape) as part of the fish passage assessment protocol. Although these estimates are not generally conservative, have low accuracy and do not account for upstream stream crossing structures they allow a rough idea of the best candidates for follow up.</p>
+<p>For reporting of Phase 1 - fish passage assessments within the body of this report (Table <a href="methods.html#tab:tab-barrier-scoring">3.4</a>), a “total” value of habitat &lt;20% output from <code>bcfishpass</code> was used to estimate the amount of habitat upstream of each crossing less than 25% gradient before a falls of height &gt;5m - as recorded in <span class="citation">MoE (2020)</span> or documented in other <code>bcfishpass</code> online documentation. For Phase 2 - habitat confirmation sites, conservative estimates of the linear quantity of habitat to be potentially gained by fish passage restoration, bull trout rearing maximum gradient threshold (10.5%) was used. To generate estimates for area of habitat upstream (m<sup>2</sup>), the estimated linear length was multiplied by half the downstream channel width measured (overall triangular channel shape) as part of the fish passage assessment protocol. Although these estimates are not generally conservative, have low accuracy and do not account for upstream stream crossing structures they allow a rough idea of the best candidates for follow up.</p>
 <p><br></p>
 <p>Potential options to remediate fish passage were selected from <span class="citation">MoE (2011)</span> and included:</p>
 <ul>

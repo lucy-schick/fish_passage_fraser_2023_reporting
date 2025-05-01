@@ -32,6 +32,7 @@ tab:tab-wshd-sum-all
 fig:plot-model-all
 fig:map-199171
 tab:tab-wshd-199171
+tab:tab-culvert-bcfp-199171
 fig:uav-ortho-199171
 tab:tab-culvert-199171
 tab:tab-culvert-7622
@@ -42,6 +43,7 @@ fig:photo-7622-01
 fig:photo-7622-02
 fig:map-199328
 tab:tab-wshd-199328
+tab:tab-culvert-bcfp-199328
 tab:tab-culvert-199328
 tab:tab-culvert-199172
 tab:tab-culvert-203297
@@ -109,6 +111,7 @@ fig:photo-199256-02
 fig:photo-199256-03
 fig:map-199260
 tab:tab-wshd-199260
+tab:tab-culvert-bcfp-199260
 tab:tab-culvert-199260
 tab:tab-habitat-summary-199260
 fig:photo-199260-01
@@ -122,6 +125,7 @@ fig:photo-199267-01
 fig:photo-199267-02
 fig:map-199278
 tab:tab-wshd-199278
+tab:tab-culvert-bcfp-199278
 tab:tab-culvert-199278
 tab:tab-culvert-203302
 tab:tab-habitat-summary-199278
