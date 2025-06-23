@@ -4,21 +4,9 @@ date: "Created: 2025-02-13 | Updated: `r format(Sys.Date(), '%Y-%m-%d')`"
 output: 
   html_document:
     code_folding: "hide"
-params:
-  repo_owner: "NewGraphEnvironment"
-  repo_name: "fish_passage_fraser_2023_reporting"
-  gis_name: "sern_fraser_2024"
-  job_name: "2024-074-sern-fraser-fish-passage"
 editor_options: 
   chunk_output_type: console
 ---
-
-```{r setup, echo=TRUE, include = TRUE}
-knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, dpi=60, out.width = "100%", eval = FALSE)
-options(scipen=999)
-options(knitr.kable.NA = '--') #'--'
-options(knitr.kable.NAN = '--')
-```
 
 
 # Purpose of this script
@@ -30,10 +18,10 @@ This script is still a WIP and there is an issue about what still needs to be ad
 
 ```{r params}
 # path to raw form_fiss_site after QA
-path_form_pscis_raw <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_pscis_2024_raw.gpkg"))
+path_form_pscis_raw <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_project_name, "/data_field/2024/form_pscis_2024_raw.gpkg"))
 
 #NEW geopcackage path for the form after we have added columns as per this script
-path_form_pscis <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_name, "/data_field/2024/form_pscis_2024.gpkg"))
+path_form_pscis <- fs::path_expand(fs::path("~/Projects/gis/", params$gis_project_name, "/data_field/2024/form_pscis_2024.gpkg"))
 ```
 
 
@@ -51,6 +39,7 @@ We use `fpr_sp_gpkg_backup` to import and backup the data, as well as update the
 # backup to csv and rdata
 form_pscis_raw <- fpr::fpr_sp_gpkg_backup(
   path_gpkg = path_form_pscis_raw,
+  dir_backup = paste0(here::here("data", "backup"), "/"), #need to specify root directory if we want to render this script form the tables.R script, or else it sets the CWD to 01_prep_inputs and makes another data/backup folder there
   update_utm = TRUE,
   update_site_id = FALSE, ## Turn this off after adding pscis ids
   write_back_to_path = FALSE,
@@ -72,7 +61,7 @@ In addition - the 4 sites I added by hand (issue here https://github.com/NewGrap
 
 
 
-```{r time-fix, eval F}
+```{r time-fix, eval T}
 
 form_pscis_time_fix <-  form_pscis_raw |> 
  dplyr::mutate(date_time_start_raw = date_time_start) |> 
@@ -96,7 +85,7 @@ Do some more cleaning
 
 Crossing 22202142 is a phase 1 and phase 2 site. It needs to be submitted in the pscis_phase1 spreadsheet, then resubmitted in the pscis_phase2 spreadsheet once we have its PSCIS ID.
 
-```{r pscis-clean}
+```{r pscis-clean, eval = T}
 
 form_pscis_clean <- form_pscis_raw |>
   dplyr::mutate(date_time_start = lubridate::ymd_hms(date_time_start, tz = "America/Vancouver"),
@@ -166,6 +155,7 @@ form_pscis_ids |>
 
 fpr::fpr_sp_gpkg_backup(
   path_gpkg = path_form_pscis,
+  dir_backup = paste0(here::here("data", "backup"), "/"), #need to specify root directory if we want to render this script form the tables.R script, or else it sets the CWD to 01_prep_inputs and makes another data/backup folder there
   update_utm = FALSE,
   update_site_id = FALSE, ## Turn this off after adding pscis ids
   write_back_to_path = FALSE,
