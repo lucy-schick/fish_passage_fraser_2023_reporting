@@ -2,11 +2,12 @@
 - Update references for NuSeds.
 - use BT modelling for habitat gain index calculations as per https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/153
 - remove DRAFT flag on title page
+- use fixed `fpr_table_cv_summary_memo` https://github.com/NewGraphEnvironment/fpr/issues/115 and apply in all memos
 
 # fish_passage_fraser_2023_reporting 0.1.1 (2025-06-01)
 - update Kenneth and Teepee memos
 - revise background section
-- updtes documented in https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/pull/151
+- updates documented in https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/pull/151
 
 
 # fish_passage_fraser_2023_reporting 0.1.0 (2025-05-15)
