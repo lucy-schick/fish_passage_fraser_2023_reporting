@@ -75,6 +75,8 @@
 <script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
@@ -1000,14 +1002,17 @@ Fix Span / Diameter
 <tfoot>
 <tr>
 <td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> Photos: From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.<img src="data/photos/199328/crossing_all.JPG" />
+<sup></sup> Comments: Two fully embedded PVC pipes, each 0.7m in diameter. One pipe was completely backwatered. Medium-value habitat was observed, with extensive gravels suitable for spawning upstream and downstream. A historic Chinook spawning point was recorded adjacent to the road. Habitat confirmations were conducted upstream, downstream, and above Stella Road. The local name of the stream is Scotch Creek. MoTi chris_culvert_id: 1790947
 </td>
 </tr>
-</tfoot>
-<tfoot>
 <tr>
 <td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> Comments: Two fully embedded PVC pipes, each 0.7m in diameter. One pipe was completely backwatered. Medium-value habitat was observed, with extensive gravels suitable for spawning upstream and downstream. A historic Chinook spawning point was recorded adjacent to the road. Habitat confirmations were conducted upstream, downstream, and above Stella Road. The local name of the stream is Scotch Creek. MoTi chris_culvert_id: 1790947
+<sup></sup> Photos: From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/199328/crossing_all.JPG" />
 </td>
 </tr>
 </tfoot>
@@ -1264,14 +1269,17 @@ Fix Span / Diameter
 <tfoot>
 <tr>
 <td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> Photos: From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.<img src="data/photos/199172/crossing_all.JPG" />
+<sup></sup> Comments: The culvert was very undersized for the stream, as indicated by the large outlet drop. The stream had a good amount of given the time of year and uncharacteristically dry year. Habitat was of medium value, with abundant large woody debris creating complex habitat and pools, providing ample cover for fish. Adjacent landowners reported that the stream was previously used as a water source for bottling and distribution across the province. Habitat confirmations were completed upstream and downstream of Stella Road as well as below Gala Bay Road. The local name of the stream is Scotch Creek. MoTi chris_culvert_id: 1794199
 </td>
 </tr>
-</tfoot>
-<tfoot>
 <tr>
 <td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> Comments: The culvert was very undersized for the stream, as indicated by the large outlet drop. The stream had a good amount of given the time of year and uncharacteristically dry year. Habitat was of medium value, with abundant large woody debris creating complex habitat and pools, providing ample cover for fish. Adjacent landowners reported that the stream was previously used as a water source for bottling and distribution across the province. Habitat confirmations were completed upstream and downstream of Stella Road as well as below Gala Bay Road. The local name of the stream is Scotch Creek. MoTi chris_culvert_id: 1794199
+<sup></sup> Photos: From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/199172/crossing_all.JPG" />
 </td>
 </tr>
 </tfoot>
@@ -1279,7 +1287,7 @@ Fix Span / Diameter
 </ul>
 <p><br></p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="scotch-creek---199328-199172---appendix.html#cb85-1" tabindex="-1"></a><span class="co"># See issue https://github.com/NewGraphEnvironment/mybookdown-template/issues/65</span></span>
-<span id="cb85-2"><a href="scotch-creek---199328-199172---appendix.html#cb85-2" tabindex="-1"></a><span class="fu">fpr_table_cv_summary_memo_test</span>(<span class="at">dat =</span> pscis_all, <span class="at">site =</span> <span class="dv">203297</span>, <span class="at">site_photo_id =</span> <span class="dv">203297</span>)</span></code></pre></div>
+<span id="cb85-2"><a href="scotch-creek---199328-199172---appendix.html#cb85-2" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>(<span class="at">dat =</span> pscis_all, <span class="at">site =</span> <span class="dv">203297</span>, <span class="at">site_photo_id =</span> <span class="dv">203297</span>)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-203297">Table 5.10: </span>Summary of fish passage assessment for PSCIS crossing 203297.
@@ -1534,7 +1542,12 @@ Fix Span / Diameter
 </tr>
 <tr>
 <td style="padding: 0; border:0;" colspan="100%">
-<sup></sup> Photos: From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.<br /><br /><img src="data/photos/203297/crossing_all.JPG" />
+<sup></sup> Photos: From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203297/crossing_all.JPG" />
 </td>
 </tr>
 </tfoot>
@@ -1553,7 +1566,7 @@ Fix Span / Diameter
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199328-and-downstream-of-crossing-199172" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199328 and Downstream of Crossing 199172<a href="scotch-creek---199328-199172---appendix.html#stream-characteristics-upstream-of-crossing-199328-and-downstream-of-crossing-199172" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed from Gala Bay Road upstream to Stella Road, a distance of approximately 270m (Figure <a href="scotch-creek---199328-199172---appendix.html#fig:photo-199172-01">5.10</a>). The habitat was rated as medium value, with limited pools; however, abundant overhanging vegetation and small woody debris provided cover, and gravels suitable for resident salmonid spawning were present. Incision was evident, beginning with a deep cut at the culvert outlet under Stella Road and continuing downstream to Gala Bay Road. The riparian area was generally intact through most of the survey, except for the downstream 75m, where private land development on the north side had resulted in a lawn and riparian vegetation removal up to the channel edge. The dominant substrate was gravels with cobbles sub-dominant.Total cover amount was rated as moderate with overhanging vegetation dominant. Cover was also present as small woody debris and undercut banks.The average channel width was 2.1m, the average wetted width was 1.3m, and the average gradient was 3%.</p>
+<p>The stream was surveyed from Gala Bay Road upstream to Stella Road, a distance of approximately 270m (Figure <a href="scotch-creek---199328-199172---appendix.html#fig:photo-199172-01">5.10</a>). The habitat was rated as medium value, with limited pools; however, abundant overhanging vegetation and small woody debris provided cover, and gravels suitable for resident salmonid spawning were present. Incision was evident, beginning with a deep cut at the culvert outlet under Stella Road and continuing downstream to Gala Bay Road. The riparian area was generally intact through most of the survey, except for the downstream 75m, where private land development on the north side had resulted in a lawn and riparian vegetation removal up to the channel edge. Total cover amount was rated as moderate with overhanging vegetation dominant. Cover was also present as small woody debris and undercut banks.The average channel width was 2.1m, the average wetted width was 1.3m, and the average gradient was 3%.The dominant substrate was gravels with cobbles sub-dominant.</p>
 <p><br></p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199172" class="section level2 unnumbered hasAnchor">

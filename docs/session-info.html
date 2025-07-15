@@ -75,6 +75,8 @@
 <script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
 <link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
@@ -463,7 +465,7 @@ div.csl-indent {
 <div id="session-info" class="section level1 unnumbered hasAnchor">
 <h1>Session Info<a href="session-info.html#session-info" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div class="sourceCode" id="cb263"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb263-1"><a href="session-info.html#cb263-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
-<pre><code>─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<pre><code>─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R version 4.4.2 (2024-10-31)
  os       macOS Sequoia 15.4.1
@@ -473,14 +475,13 @@ div.csl-indent {
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/Vancouver
- date     2025-07-14
+ date     2025-07-15
  rstudio  2025.05.0+496 Mariposa Orchid (desktop)
  pandoc   3.4 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
 
-─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
  package           * version    date (UTC) lib source
  archive             1.1.9      2024-09-12 [2] CRAN (R 4.4.1)
- askpass             1.2.1      2024-10-04 [1] CRAN (R 4.4.1)
  base64enc           0.1-3      2015-07-28 [1] CRAN (R 4.4.1)
  bit                 4.5.0.1    2024-12-03 [1] CRAN (R 4.4.1)
  bit64               4.6.0-1    2025-01-16 [1] CRAN (R 4.4.1)
@@ -552,7 +553,6 @@ div.csl-indent {
  ngr               * 0.0.1      2025-07-11 [1] local
  pagedown          * 0.22       2025-01-07 [1] CRAN (R 4.4.1)
  pak                 0.9.0      2025-05-27 [1] CRAN (R 4.4.1)
- pdftools            3.4.0      2023-09-25 [2] CRAN (R 4.4.0)
  pillar              1.10.1     2025-01-07 [1] CRAN (R 4.4.1)
  pkgbuild            1.4.6      2025-01-16 [1] CRAN (R 4.4.1)
  pkgconfig           2.0.3      2019-09-22 [1] CRAN (R 4.4.1)
@@ -564,7 +564,6 @@ div.csl-indent {
  proxy               0.4-27     2022-06-09 [1] CRAN (R 4.4.1)
  ps                  1.8.1      2024-10-28 [1] CRAN (R 4.4.1)
  purrr             * 1.0.4      2025-02-05 [1] CRAN (R 4.4.1)
- qpdf                1.3.3      2024-03-25 [2] CRAN (R 4.4.0)
  R6                  2.5.1      2021-08-19 [1] CRAN (R 4.4.1)
  rappdirs            0.3.3      2021-01-31 [1] CRAN (R 4.4.1)
  rbbt              * 0.0.0.9000 2025-04-16 [1] Github (paleolimbot/rbbt@212680c)
@@ -586,7 +585,6 @@ div.csl-indent {
  s2                  1.1.7      2024-07-17 [1] CRAN (R 4.4.0)
  sass                0.4.9      2024-03-15 [1] CRAN (R 4.4.0)
  scales              1.3.0      2023-11-28 [1] CRAN (R 4.4.0)
- servr               0.32       2024-10-04 [1] CRAN (R 4.4.1)
  sessioninfo         1.2.2      2021-12-06 [2] CRAN (R 4.4.0)
  sf                * 1.0-20     2025-03-24 [1] CRAN (R 4.4.1)
  shiny               1.10.0     2024-12-14 [1] CRAN (R 4.4.1)
@@ -625,7 +623,7 @@ div.csl-indent {
  [1] /Users/airvine/Library/R/arm64/4.4/library
  [2] /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 
 </div>
             </section>
