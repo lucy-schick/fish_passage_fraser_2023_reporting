@@ -51,7 +51,7 @@ In 2023, crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = r
 
 <br>
 
-Upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Additionally, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section. 
+Upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Additionally, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` (1986 - 2003) presented in Table \@ref(tab:stock-assess-dat-all) of the background section [@fisheriesandoceanscanadaNuSEDSNewSalmon]. 
 
 <br>
 
@@ -134,7 +134,7 @@ Should restoration/maintenance activities proceed, replacement of the `r fpr_my_
 
 ## Conclusion {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` on Highway 16 had a significant outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Downstream of Highway 16, chinook have historically spawned at the confluence of Snowshoe Creek and the Fraser River [@salmonwatershedsprogram2025Spawnerabundance], indicating this stream has provided valuable spawning habitat. Given that the habitat upstream of Highway 16 was rated as high value for spawning and rearing during the 2024 assessment, fish sampling is recommended to further assess whether the crossing is inhibiting fish passage.
+PSCIS crossing `r as.character(my_site)` on Highway 16 had a significant outlet drop and is a `r stringr::str_to_lower(fpr::fpr_my_priority_info(col_pull = priority))` priority for replacement. Although the latest data on record appears to be from 2003, according to @fisheriesandoceanscanadaNuSEDSNewSalmon, chinook have historically spawned within Snowshoe Creek, indicating this stream has provided valuable chinook spawning habitat. Given that the habitat upstream of Highway 16 was rated as high value for spawning and rearing during the 2024 assessment, replacement of the crossing is considered a high priority. In the interim, fish sampling is recommended to further assess whether the crossing is inhibiting fish passage.
 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`

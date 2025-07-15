@@ -102,6 +102,10 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
   ## move large appendices to hold for pdf build
   ## not required for template
+
+  if (fs::file_exists("hold/0600-appendix.Rmd")) {
+    fs::file_move("hold/0600-appendix.Rmd", "0600-appendix.Rmd")
+  }
   file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
 
   ##   then make our printable pdf
