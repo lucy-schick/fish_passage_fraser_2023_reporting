@@ -62,7 +62,7 @@ Given the background information for this stream, in 2023, crossing `r as.charac
 
 <br>
 
-In addition to chinook captured upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` by @hooft2006Fishhabitat, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Also, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section. 
+In addition to chinook captured upstream of `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` by @hooft2006Fishhabitat, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. Also, there is Fisheries and Oceans Canada stock assessment data available for `r fpr::fpr_my_pscis_info()` presented in Table \@ref(tab:stock-assess-dat-all) of the background section [@fisheriesandoceanscanadaNuSEDSNewSalmon]. 
 
 <br>
 

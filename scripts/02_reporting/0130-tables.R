@@ -787,8 +787,10 @@ tab_cost_est_prep4 <- tab_cost_est_prep3 |>
 # Now prepare phase 1 cost estimates.
 
 # since we are using chinook as our model species, the column is called `ch_cm_co_pk_sk_network_km` so we can't make it dynamically.
-sp_network_km <- "ch_cm_co_pk_sk_network_km"
-sp_belowupstrbarriers_network_km <- "ch_cm_co_pk_sk_belowupstrbarriers_network_km"
+# sp_network_km <- "ch_cm_co_pk_sk_network_km"
+sp_network_km <- "bt_stream_km"
+# sp_belowupstrbarriers_network_km <- "ch_cm_co_pk_sk_belowupstrbarriers_network_km"
+sp_belowupstrbarriers_network_km <- "bt_belowupstrbarriers_stream_km"
 
 # Normal way to dynamically make column
 # sp_network_km <- rlang::sym(paste0(params$model_species, "_network_km"))

@@ -258,7 +258,7 @@ The Morkill River, a tributary to the upper Fraser, supports populations of bull
 ### Salmon Stock Assessment Data
 
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
-through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on) { knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)") } else { knitr::asis_output(ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "background.html", anchor_text = "here")) }` [@canadaNuSEDSNewSalmon]. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
+through the [Open Government Portal](https://open.canada.ca/en) with results presented `r if(gitbook_on) { knitr::asis_output("in Table \\@ref(tab:stock-assess-dat-all)") } else { knitr::asis_output(ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "background.html", anchor_text = "here")) }` [@fisheriesandoceanscanadaNuSEDSNewSalmon]. A brief memo on the data extraction process is available [here](http://htmlpreview.github.io/?https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/memos/dfo_stock_assess.html).
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
 
@@ -268,16 +268,20 @@ library("ckanr")
 # set up the connection to the data portal
 ckanr_setup(url = "https://open.canada.ca/data/en")
 
-# Load the most recent Nuseds - currently 20250103
-url <- "https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS_20250103.csv"
+nuseds <- rgovcan::govcan_search(keywords = c("Fraser NuSEDS"), records = 150, format_results = TRUE) |>  
+  pull(resources) %>% 
+  bind_rows()
+
+# Load the most recent Nuseds - currently 20250103 (update july 2025 - looks like that file vanished and now we need nuseds_all_20250513.csv )
+url <- "https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS_20250513.csv"
 # burn directly without bringing into memory
-ckanr::ckan_fetch(url, store = "disk", path = "data/inputs_raw/nuseds_all_20250103.csv") 
+ckanr::ckan_fetch(url, store = "disk", path = "data/inputs_raw/nuseds_all_20250513.csv") 
 
 # ignore the huge file
-usethis::use_git_ignore("data/inputs_raw/nuseds_all_20250103.csv")
+usethis::use_git_ignore("data/inputs_raw/nuseds_all_20250513.csv")
 
 #read it in
-all_area_nuseds <- readr::read_csv('data/inputs_raw/nuseds_all_20250103.csv')
+all_area_nuseds <- readr::read_csv('data/inputs_raw/nuseds_all_20250513.csv')
 
 
 # Big study area so lets filter using the stream names from `form_pscis` (which is the 2024 and 2024 form pscis combined)
@@ -322,10 +326,10 @@ my_caption <- "Fisheries and Oceans Canada stock assessment data for select wate
 # not the results="asis", echo=FALSE in the chunk header
 my_tab_caption()
 
-dfo_sad_tr <- readr::read_csv('data/inputs_raw/study_area_NuSEDS.csv') %>% 
+dfo_sad_tr <- readr::read_csv('data/inputs_raw/study_area_NuSEDS.csv') |> 
   # filtering by total_return_to_river doesn't lose any data so lets keep it for this case (it removed data after 19)
   # dplyr::filter(!is.na(total_return_to_river)) %>%
-  dplyr::arrange(species, analysis_yr) %>% 
+  dplyr::arrange(species, analysis_yr) |> 
   dplyr::select(waterbody,
                 species, 
                 analysis_yr, 

@@ -1,3 +1,8 @@
+# fish_passage_fraser_2023_reporting 0.1.2 (2025-07-14)
+- Update references for NuSeds.
+- use BT modelling for habitat gain index calculations as per https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting/issues/153
+- remove DRAFT flag on title page
+
 # fish_passage_fraser_2023_reporting 0.1.1 (2025-06-01)
 - update Kenneth and Teepee memos
 - revise background section
