@@ -20,15 +20,34 @@ edna_raw <- readxl::read_excel(path) |>
   dplyr::select(-date_mdy)
 
 
+# just keep the sites with a sample date or which are distinct for combos of site_e_dna_data_file and new_site
+edna <- dplyr::bind_rows(
+  edna_raw |> dplyr::filter(!is.na(date)),
+  edna_raw |>
+    dplyr::filter(is.na(date)) |>
+    dplyr::distinct(site_e_dna_data_file, new_site, .keep_all = TRUE)
+) |>
+  dplyr::arrange(site_e_dna_data_file)
+
+
 # burn to repo and gis project
 path_out_repo <- "~/Projects/repo/fish_passage_fraser_2023_reporting/data/gis/edna_unbc_2020-2023_20250128.geojson"
 path_out_gis <- "~/Projects/gis/sern_fraser_2024/edna_unbc_2020-2023_20250128.geojson"
+
+# burn out the clean csv
+
+
 if(fs::file_exists(path_out_repo)){
   fs::file_delete(path_out_repo)
 }
 
-edna_raw |>
-  sf::st_transform(wsg = 4326) |>
+edna |>
+  readr::write_csv(
+    "~/Projects/repo/fish_passage_fraser_2023_reporting/data/inputs_extracted/edna_unbc_2020-2023_20250128.csv"
+  )
+
+edna |>
+  sf::st_transform(crs = 4326) |>
   sf::st_write(
     path_out_repo
   )
@@ -37,7 +56,7 @@ if(fs::file_exists(path_out_gis)){
   fs::file_delete(path_out_gis)
 }
 
-edna_raw |>
+edna |>
   sf::st_write(
     path_out_gis
   )
